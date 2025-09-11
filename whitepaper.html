@@ -1,166 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trustless Payments — Whitepaper</title>
-  <meta name="description" content="Trustless Payments whitepaper: honor through automation. Escrowed payments, fee split, and buy-and-burn mechanics on XRPL." />
-  <link rel="icon" href="favicon.png" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trustless Payments Whitepaper</title>
+<link rel="icon" href="favicon.png">
 
-  <style>
-    :root{
-      --bg:#0b0f14;
-      --card:#0f1520;
-      --muted:#aab4c0;
-      --text:#e8eef6;
-      --primary:#1f5fe0; /* same blue as first approved version */
-      --primary-25: rgba(31,95,224,0.25);
-      --border:#1c2633;
-      --accent:#12d18e;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+<!-- ====== Styles (unchanged theme) ====== -->
+<style>
+  body{margin:0;background:#05080d;color:#e6f0ff;font-family:'Inter',sans-serif}
+  a{color:inherit;text-decoration:none}
+  header,section,footer{padding:20px}
+  h1{font-size:2rem;color:#3fa3ff;margin-top:0}
+  h2{color:#cde0ff;margin-top:40px}
+  p{line-height:1.6}
 
-    /* NAV */
-    .nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(11,15,20,.95), rgba(11,15,20,.80));backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border)}
-    .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.2px}
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
-    .brand span{font-size:1.02rem}
-    .menu{display:flex;align-items:center;gap:1.2rem}
-    .menu a{font-weight:600;font-size:.95rem;color:var(--muted);padding:.4rem .6rem;border-radius:10px;border:1px solid transparent;transition:.15s}
-    .menu a:hover{color:var(--text);border-color:var(--border);background:rgba(255,255,255,0.02)}
-    .menu .btn{color:#fff;background:var(--primary);border-color:transparent}
-    .menu .btn:hover{box-shadow:0 6px 20px var(--primary-25);transform:translateY(-1px)}
-    .hamburger{display:none}
+  /* NAV */
+  .nav{background:#05080d;display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid #0d1a26;position:sticky;top:0;z-index:99}
+  .nav .brand{display:flex;align-items:center;font-weight:700;color:#3fa3ff;font-size:1.1rem}
+  .nav .brand:hover{opacity:.9}
+  .nav .menu{display:flex;gap:20px}
+  .nav .menu a{color:#e6f0ff;font-weight:600;padding:8px 12px;border-radius:8px;transition:background .2s}
+  .nav .menu a:hover{background:#0d1a26}
+  .nav .menu .active{background:#0d1a26}
+  .menu-toggle{display:none}
 
-    /* HERO */
-    .hero{padding:56px 0 28px;border-bottom:1px solid var(--border);background:
-      radial-gradient(900px 300px at 50% -50%, rgba(31,95,224,.25), transparent 60%);}
-    .eyebrow{display:inline-block;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;margin-bottom:.6rem}
-    h1{margin:0 0 10px 0;font-size:2.05rem;line-height:1.2;color:var(--primary)}
-    .sub{color:#cdd6e2;max-width:760px}
+  /* Buttons */
+  .btn{background:#3fa3ff;color:#05080d;padding:10px 18px;border-radius:8px;font-weight:700;display:inline-block}
+  .btn:hover{background:#66bbff}
 
-    /* PAPER CARD */
-    .paper{margin:28px auto 60px;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-    .paper-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#101725,#0e1420)}
-    .paper-head .title{font-weight:700}
-    .actions{display:flex;gap:10px}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);padding:.6rem .9rem;border-radius:12px;font-weight:700;font-size:.92rem;transition:.15s}
-    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,0.02)}
-    .btn.primary{background:var(--primary);border-color:transparent;color:#fff}
-    .btn.primary:hover{box-shadow:0 10px 26px var(--primary-25)}
-    .btn small{opacity:.75;font-weight:600}
-    .pdf-icon{width:16px;height:16px;display:inline-block;border:2px solid currentColor;border-radius:3px;position:relative}
-    .pdf-icon:after{content:"";position:absolute;right:-2px;top:-2px;width:8px;height:8px;background:currentColor;border-radius:2px}
+  .pdf-box{background:#0d1a26;border-radius:12px;padding:20px;margin-top:20px}
+  .pdf-actions{display:flex;gap:15px;margin-top:10px}
+  .divider{border-top:1px solid #1a2a3d;margin:20px 0}
 
-    .paper-body{padding:24px}
-    .paper-body h2{color:var(--text);margin:22px 0 8px 0;font-size:1.15rem}
-    .paper-body p{color:#d7dfeb;line-height:1.7;margin:0 0 14px}
-    .muted{color:var(--muted)}
-    .divider{height:1px;background:var(--border);margin:20px 0}
-
-    /* FOOTER */
-    footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:.9rem}
-
-    /* RESPONSIVE */
-    @media (max-width: 920px){
-      .menu{display:none}
-      .hamburger{display:block;border:1px solid var(--border);border-radius:10px;padding:.5rem .6rem;color:var(--muted)}
-      .paper-body{padding:18px}
-      h1{font-size:1.7rem}
-    }
-  </style>
+  footer{border-top:1px solid #0d1a26;text-align:center;font-size:.9rem;color:#9ab0c9;padding:30px 20px}
+</style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="container nav-wrap">
-      <!-- Left brand: Trustless Payments (links to index.html) -->
-      <a class="brand" href="index.html" aria-label="Trustless Payments — Home">
-        <span class="dot" aria-hidden="true"></span>
-        <span>Trustless Payments</span>
-      </a>
+<!-- ====== NAV ====== -->
+<nav class="nav">
+  <a href="index.html" class="brand">Trustless Payments</a>
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="token.html">Token</a>
+    <a href="nfts.html">NFTs</a>
+    <a href="whitepaper.html" class="active">Whitepaper</a>
+  </div>
+</nav>
 
-      <!-- Right menu (matching index.html) -->
-      <div class="menu" role="navigation" aria-label="Main">
-        <a href="index.html">Home</a>
-        <a href="whitepaper.html" aria-current="page">Whitepaper</a>
-        <a href="token.html">Token</a>
-        <a href="book.html">Book of Kek</a>
-        <a href="contact.html">Contact</a>
-        <a class="btn" href="index.html#app">Open App</a>
-      </div>
+<!-- ====== HERO ====== -->
+<header>
+  <h1>Trustless Payments Whitepaper</h1>
+  <p>Honor through automation. Escrowed payments that only unlock when objective conditions are met. This page hosts the latest PDF and an accessible HTML version for quick reading.</p>
+</header>
 
-      <!-- Mobile placeholder (keeps layout tidy; optional to wire later) -->
-      <button class="hamburger" aria-label="Menu">☰</button>
-    </div>
-  </nav>
+<!-- ====== PDF BOX ====== -->
+<section class="pdf-box">
+  <strong>trustless_whitepaper.pdf</strong>
+  <div class="pdf-actions">
+    <a class="btn" href="trustless_whitepaper.pdf" target="_blank">View PDF</a>
+    <a class="btn" href="trustless_whitepaper.pdf" download>Download PDF</a>
+  </div>
+  <div class="divider"></div>
+  <p><em>Note:</em> This is a quick-read HTML version. The canonical source is the PDF above.</p>
+</section>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="container">
-      <span class="eyebrow">Documentation</span>
-      <h1>Trustless Whitepaper</h1>
-      <p class="sub">Honor through automation. Escrowed payments that only unlock when objective conditions are met. This page hosts the latest PDF and an accessible HTML view for quick reading.</p>
-    </div>
-  </header>
+<!-- ====== WHITEPAPER CONTENT ====== -->
+<section>
+  <h2>Abstract</h2>
+  <p>Trustless Payments is an XRPL-native escrow framework that replaces subjective trust with deterministic code. Funds are locked, conditions are monitored, and value is released only when pre-agreed signals are satisfied.</p>
 
-  <!-- PAPER CARD -->
-  <main class="container">
-    <section class="paper" aria-labelledby="paper-title">
-      <div class="paper-head">
-        <div class="title" id="paper-title">trustless_whitepaper.pdf</div>
-        <div class="actions">
-          <a class="btn" href="trustless_whitepaper.pdf" target="_blank" rel="noopener">
-            <span class="pdf-icon" aria-hidden="true"></span>
-            <span>View PDF</span>
-          </a>
-          <a class="btn primary" href="trustless_whitepaper.pdf" download>
-            <span>Download</span>
-            <small>PDF</small>
-          </a>
-        </div>
-      </div>
+  <h2>Philosophy</h2>
+  <p>A payment fails if trust breaks. We level the playing field by binding promises to verifiable conditions—removing room for opportunism while preserving speed and simplicity.</p>
 
-      <!-- If you want to paste the HTML version of your whitepaper, use below. -->
-      <div class="paper-body">
-        <p class="muted"><em>Note:</em> This is the quick-read HTML version. The canonical source is the PDF above.</p>
-        <div class="divider"></div>
+  <h2>Mechanics</h2>
+  <p>Users define escrow amount, destination, target market cap, and expiry. Funding is detected on-ledger. Upon satisfaction or expiry, the system automates release or return. A 5.89% fee is applied: 50% to the developer wallet and 50% to automated token buy-and-burn.</p>
 
-        <!-- ====== BEGIN WHITEPAPER HTML CONTENT (editable) ====== -->
-        <h2>Abstract</h2>
-        <p>Trustless Payments is an XRPL-native escrow framework that replaces subjective trust with deterministic code. Funds are locked, conditions are monitored, and value is released only when pre-agreed signals are met.</p>
+  <h2>Token Alignment</h2>
+  <p>Fees drive scarcity through automated buy-and-burn, reinforcing Trustless Payments token value over time.</p>
 
-        <h2>Philosophy</h2>
-        <p>“A payment fails if trust breaks.” We level the playing field by binding promises to verifiable conditions—removing room for opportunism while preserving speed and simplicity.</p>
+  <h2>Roadmap</h2>
+  <p>Planned upgrades include additional condition types, expanded analytics, and multi-chain adapters—while keeping the core mantra: simple, verifiable, trustless.</p>
+</section>
 
-        <h2>Mechanics</h2>
-        <p>Users define the escrow amount, destination, target conditions, and expiry. Funding is detected on-ledger. Upon satisfaction or expiry, the system automates release or return. A <strong>5.89%</strong> fee is applied: <strong>50%</strong> to the developer wallet and <strong>50%</strong> is used for buy-and-burn of the associated token.</p>
+<footer>
+  © <span id="year"></span> Trustless Payments. All rights reserved.
+</footer>
 
-        <h2>Token Alignment</h2>
-        <p>Fees drive scarcity via automated buy-and-burn. Utility NFTs may further reduce fees and expand governance rights.</p>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
-        <h2>Roadmap</h2>
-        <p>Milestones include broader condition types, extended analytics, and cross-chain adapters—while keeping the core mantra: simple, verifiable, trustless.</p>
-        <!-- ====== END WHITEPAPER HTML CONTENT ====== -->
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      © <span id="y"></span> Trustless Payments. All rights reserved.
-    </div>
-  </footer>
-
-  <script>
-    // year stamp
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
