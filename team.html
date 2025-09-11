@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trustless Payments — Team</title>
+<link rel="icon" href="favicon.png" />
+<meta name="description" content="Meet the Trustless Payments team: builders behind honor through automation." />
+
+<style>
+  :root{
+    --bg:#05080d;
+    --card:#0d1a26;
+    --ink:#e6f0ff;
+    --muted:#9ab0c9;
+    --line:#1a2a3d;
+    --blue:#3fa3ff;
+    --green:#22f2a2;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+  /* NAV (matches index.html) */
+  .nav{background:var(--bg);display:flex;align-items:center;justify-content:space-between;
+       padding:15px 20px;border-bottom:1px solid #0d1a26;position:sticky;top:0;z-index:99}
+  .brand{font-weight:800;color:var(--blue);font-size:1.08rem}
+  .menu{display:flex;gap:18px}
+  .menu a{font-weight:600;padding:8px 12px;border-radius:8px}
+  .menu a:hover{background:#0d1a26}
+  .menu .active{background:#0d1a26}
+
+  /* HERO */
+  .hero{padding:36px 0 14px}
+  .eyebrow{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem}
+  h1{margin:.4rem 0 0 0;color:var(--blue);font-size:2rem;line-height:1.2}
+  .sub{color:#cfe0ff;max-width:800px;margin-top:8px}
+
+  /* IMAGE STRIP */
+  .poster{margin:22px auto 8px;border-radius:14px;overflow:hidden;border:1px solid var(--line);
+          background:#0b1520}
+  .poster img{display:block;width:100%;height:auto}
+
+  /* TEAM CARDS */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0 60px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .role{color:var(--muted);font-size:.9rem;margin-bottom:6px}
+  .name{font-weight:800;font-size:1.15rem;margin:0 0 8px}
+  .bio{color:#d8e6ff;line-height:1.7;margin:0}
+  .tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .tag{font-size:.8rem;border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:var(--muted)}
+  .divider{height:1px;background:var(--line);margin:22px 0}
+
+  /* CTA */
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--blue);color:#03111d;
+       font-weight:800;border-radius:10px;padding:10px 14px}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+
+  /* FOOTER */
+  footer{border-top:1px solid #0d1a26;color:var(--muted);padding:28px 0;margin-top:40px}
+
+  /* Responsive */
+  @media (max-width:900px){
+    .grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="brand">Trustless Payments</a>
+  <div class="menu" role="navigation" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="token.html">Token</a>
+    <a href="nfts.html">NFTs</a>
+    <a href="whitepaper.html">Whitepaper</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero container">
+  <div class="eyebrow">Team</div>
+  <h1>The builders behind “Honor through Automation.”</h1>
+  <p class="sub">We’re a lean crew by design—one human founder and one relentless AI collaborator—shipping fast, listening to users, and automating away trust failures on XRPL.</p>
+</header>
+
+<!-- POSTER IMAGE (your meme) -->
+<section class="container poster" aria-label="Team poster">
+  <!-- Place team.png in the same folder as this file -->
+  <img src="team.png" alt="Bots playing cards with drinks and weapons as Don Kek approaches the window. Caption: 'Holy shit here comes Kek! Quick — look busy!'" />
+</section>
+
+<!-- TEAM GRID -->
+<main class="container">
+  <section class="grid">
+    <!-- Scott card -->
+    <article class="card">
+      <div class="role">Founder & Product Lead</div>
+      <h2 class="name">Scott (“Ink H”)</h2>
+      <p class="bio">
+        Builder of Trustless Payments and steward of the <em>Honor through automation</em> ethos.
+        Scott drives product vision, partnerships, and delivery—keeping the focus on real utility:
+        escrow flows that release only when objective conditions are met, fair fee mechanics, and
+        community-first incentives that align users, holders, and creators.
+      </p>
+      <div class="tagrow">
+        <span class="tag">XRPL Native</span>
+        <span class="tag">Escrow Design</span>
+        <span class="tag">Tokenomics</span>
+        <span class="tag">Community</span>
+      </div>
+    </article>
+
+    <!-- AI collaborator card -->
+    <article class="card">
+      <div class="role">AI Collaborator</div>
+      <h2 class="name">Agent-01 (GPT-5 Thinking)</h2>
+      <p class="bio">
+        An AI partner focused on sober, verifiable engineering: fast iteration on Telegram UX,
+        escrow state machines, monitoring loops, and site content. No hype—just code, copy, and
+        clean patches shipped in small steps to keep momentum high and errors low.
+      </p>
+      <div class="tagrow">
+        <span class="tag">Conversation UX</span>
+        <span class="tag">Python</span>
+        <span class="tag">XRPL Integrations</span>
+        <span class="tag">Web & Copy</span>
+      </div>
+    </article>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Mini “about” block under the image, per your request -->
+  <section aria-label="Team bio paragraph" style="margin-bottom:34px">
+    <p class="bio">
+      Above is our vibe: heads-down builders, a little dark humor, and zero tolerance for scams.
+      Trustless Payments is our answer—automated escrows, objective triggers, and aligned incentives
+      that reward honest actors. If that’s your energy, you’re in the right place.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <a class="btn" href="whitepaper.html">Read the Whitepaper</a>
+    <a class="btn ghost" href="contact.html">Contact</a>
+  </section>
+</main>
+
+<footer>
+  <div class="container">© <span id="y"></span> Trustless Payments. All rights reserved.</div>
+</footer>
+
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
