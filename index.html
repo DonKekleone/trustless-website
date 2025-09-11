@@ -1,68 +1,295 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Trustless Payments — Honor through automation</title>
-  <meta name="description" content="Trustless escrow bot on XRPL. Honor through automation.">
+  <meta name="description" content="Create escrowed payments that release only when goals are hit. Honor through automation. Built on XRPL."/>
+  <meta name="theme-color" content="#0ea5e9"/>
+  <meta property="og:title" content="Trustless Payments — Honor through automation"/>
+  <meta property="og:description" content="Proof-then-pay. Escrow, milestones, release/refund—on rails."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="book-cover.png"/>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100">
   <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <span class="font-semibold tracking-wide">Trustless Payments</span>
+      <a href="#" class="flex items-center gap-3">
+        <span class="font-semibold tracking-wide">Trustless Payments</span>
+      </a>
+
+      <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="#how" class="hover:text-white">How it works</a>
         <a href="#fees" class="hover:text-white">Fees & Burn</a>
         <a href="#roadmap" class="hover:text-white">Roadmap</a>
-        <a href="book.html" class="hover:text-white">Book of Kek</a>
-        <a href="#faq" class="hover:text-white">FAQ</a>
+        <a href="about.html" class="hover:text-white">About</a>
+        <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
+        <a href="team.html" class="hover:text-white">Team</a>
+        <a href="whitepaper.html" class="hover:text-white">Whitepaper</a>
+        <a href="book.html" class="hover:text-white">Book</a>
+      </nav>
+
+      <!-- CTA + mobile menu -->
+      <div class="flex items-center gap-2">
+        <a href="https://t.me/TrustlessBot" target="_blank" class="hidden md:inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">Open Bot</a>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-lg border border-white/15 px-3 py-2">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-slate-950/95">
+      <nav class="mx-auto max-w-7xl px-4 py-3 grid gap-2 text-slate-300">
+        <a href="#how" class="hover:text-white">How it works</a>
+        <a href="#fees" class="hover:text-white">Fees & Burn</a>
+        <a href="#roadmap" class="hover:text-white">Roadmap</a>
+        <a href="about.html" class="hover:text-white">About</a>
+        <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
+        <a href="team.html" class="hover:text-white">Team</a>
+        <a href="whitepaper.html" class="hover:text-white">Whitepaper</a>
+        <a href="book.html" class="hover:text-white">Book</a>
+        <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition mt-2">Open Bot</a>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
-  <main class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 text-center space-y-10">
-    <!-- New Core Philosophy block -->
-    <section class="space-y-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-cyan-400">Core Philosophy of $TRUSTLESS</h2>
-      <p class="text-lg md:text-xl text-slate-200 leading-relaxed">
-        “A payment fails if trust breaks. We remove trust from the equation and replace it with code that holds all parties accountable.”
-      </p>
-    </section>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="max-w-3xl mx-auto text-center">
+        <!-- Core Philosophy PARAGRAPH ONLY -->
+        <blockquote class="text-xl md:text-2xl leading-relaxed text-slate-200">
+          “A payment fails if trust breaks. We remove trust from the equation and replace it with code that holds all parties accountable.”
+        </blockquote>
 
-    <!-- Existing headline -->
-    <section class="space-y-4">
-      <h1 class="text-5xl md:text-6xl font-extrabold text-white tracking-tight">
-        Honor through automation.
-      </h1>
-      <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
-        Create escrowed payments that release only when goals are hit. No excuses, no trust games—just code.
-      </p>
-    </section>
+        <!-- spacing between the quote and headline -->
+        <div class="h-6 md:h-8"></div>
 
-    <!-- Rest of your existing content remains the same -->
-    <div class="mt-10 flex flex-wrap justify-center gap-6 text-lg text-slate-300">
-      <div class="flex items-center gap-2">
-        <span class="font-semibold">5.89% fee</span>
-        <span>(50% dev / 50% buy+burn)</span>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          Honor through automation.
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-slate-300">
+          Create escrowed payments that release <span class="text-white font-semibold">only</span> when goals are hit. No excuses, no trust games—just code.
+        </p>
+
+        <ul class="mt-6 text-slate-300 space-y-2 list-disc list-inside text-left mx-auto max-w-xl">
+          <li>5.89% fee <span class="text-slate-400">(50% dev / 50% buy+burn)</span></li>
+          <li>Market-cap targets, deadlines, automated release or refund</li>
+          <li>Built for XRPL tokens; multi-chain roadmap</li>
+        </ul>
+
+        <div class="mt-10 flex flex-wrap gap-3 justify-center">
+          <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-slate-900 font-semibold hover:bg-cyan-400 transition">Launch Telegram Bot</a>
+          <a href="book.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-3 hover:bg-white/5 transition">Read The Book of KEK</a>
+        </div>
       </div>
-      <div>• Market-cap targets, deadlines, automated release or refund</div>
-      <div>• Built for XRPL tokens; multi-chain roadmap</div>
     </div>
+  </section>
 
-    <div class="mt-10 flex flex-wrap justify-center gap-6">
-      <a href="https://t.me/YOURBOTLINK" class="rounded-xl bg-cyan-500 px-8 py-4 font-bold text-slate-900 hover:bg-cyan-400 transition">Launch Telegram Bot</a>
-      <a href="book.html" class="rounded-xl border border-cyan-500 px-8 py-4 font-bold hover:bg-cyan-500/10 transition">Read The Book of Kek</a>
+  <!-- PROOF BAR -->
+  <section class="py-4 border-y border-white/10 bg-slate-900/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-300 flex flex-wrap gap-6 items-center justify-between">
+      <div>✅ Live now on XRPL</div>
+      <div>🔥 Fee split: 50% dev / 50% buy+burn</div>
+      <div>🪙 NFT perks: holders pay 1% (coming soon)</div>
     </div>
+  </section>
 
-    <p class="mt-10 text-green-400 font-semibold">✅ Live now on XRPL</p>
-  </main>
+  <!-- HOW IT WORKS -->
+  <section id="how" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold">How it works</h2>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6">
+          <div class="text-cyan-300 font-semibold">1. Create</div>
+          <p class="mt-2 text-slate-300">Open the bot and enter: escrow amount, recipient, contract address, target market cap (whole number), and expiry in days.</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="text-cyan-300 font-semibold">2. Fund</div>
+          <p class="mt-2 text-slate-300">Send the exact XRP to the escrow address with the provided destination tag. Post your TX hash. The bot auto-detects funding.</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="text-cyan-300 font-semibold">3. Automate</div>
+          <p class="mt-2 text-slate-300">If goals are hit before the deadline, funds release. Otherwise, they refund. No middlemen. No drama.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEES & BURN -->
+  <section id="fees" class="py-20 bg-slate-900/40 border-y border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold">Fees & Buy-Burn</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6 items-start">
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-semibold text-cyan-300">5.89% Escrow Fee</h3>
+          <ul class="mt-3 list-disc list-inside text-slate-300 space-y-1">
+            <li>50% → Dev wallet (sustains product growth)</li>
+            <li>50% → Market-buy & burn associated token</li>
+            <li>NFT holders: target 1% fee (planned)</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-semibold text-cyan-300">Transparency</h3>
+          <p class="mt-3 text-slate-300">Every burn & split is visible on-chain. We keep a level playing field—code that holds everyone accountable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold">Roadmap</h2>
+      <ol class="mt-8 relative border-l border-white/10 pl-6 space-y-8">
+        <li>
+          <span class="absolute -left-2 top-0 h-4 w-4 rounded-full bg-cyan-400"></span>
+          <h3 class="font-semibold">MVP live on XRPL</h3>
+          <p class="text-slate-300">Stable bot, escrow create → fund → release/refund flow.</p>
+        </li>
+        <li>
+          <span class="absolute -left-2 h-4 w-4 rounded-full bg-cyan-400"></span>
+          <h3 class="font-semibold">NFT: Trustless Toads</h3>
+          <p class="text-slate-300">123 toads in suits. Utility: fee reduction + community perks.</p>
+        </li>
+        <li>
+          <span class="absolute -left-2 h-4 w-4 rounded-full bg-cyan-400"></span>
+          <h3 class="font-semibold">Escrow Enforcement Unit (33)</h3>
+          <p class="text-slate-300">Governance & fee sharing for power users.</p>
+        </li>
+        <li>
+          <span class="absolute -left-2 h-4 w-4 rounded-full bg-cyan-400"></span>
+          <h3 class="font-semibold">Multi-chain expansion</h3>
+          <p class="text-slate-300">Bring order to other chains, one rug-factory at a time.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 bg-slate-900/40 border-y border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold">FAQ</h2>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <details class="glass rounded-2xl p-6 group open:bg-white/5">
+          <summary class="cursor-pointer font-semibold">Is this financial advice?</summary>
+          <p class="mt-2 text-slate-300">No. Trustless is a tool for automated escrow on XRPL. Nothing here is investment advice.</p>
+        </details>
+        <details class="glass rounded-2xl p-6">
+          <summary class="cursor-pointer font-semibold">Do I need to share my secret keys?</summary>
+          <p class="mt-2 text-slate-300">Never. The bot does not ask for or store your secrets. You fund escrows from your own wallet.</p>
+        </details>
+        <details class="glass rounded-2xl p-6">
+          <summary class="cursor-pointer font-semibold">Can I use a custom domain?</summary>
+          <p class="mt-2 text-slate-300">Yes. Start free, then attach a domain later with one click on most hosts.</p>
+        </details>
+        <details class="glass rounded-2xl p-6">
+          <summary class="cursor-pointer font-semibold">Where do fees go?</summary>
+          <p class="mt-2 text-slate-300">50% to the dev wallet for ongoing work; 50% buys & burns the associated token—fully on-chain.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold">Ready to escrow like a pro?</h2>
+      <p class="mt-4 text-slate-300">Kick off your first trustless payment in minutes.</p>
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 text-slate-900 font-semibold hover:bg-cyan-400 transition">Launch Telegram Bot</a>
+        <a href="#faq" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Read the FAQ</a>
+      </div>
+    </div>
+  </section>
 
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
-    <p>© <span id="year"></span> Trustless Payments. All rights reserved.</p>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p>© <span id="year"></span> Trustless Payments. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
+      <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
+    </div>
   </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+
+  <!-- One-time Book popup -->
+  <div id="book-pop" class="hidden fixed bottom-4 right-4 z-50 max-w-xs glass rounded-2xl p-4 shadow-lg">
+    <button id="pop-close" class="absolute -top-2 -right-2 bg-slate-800 text-slate-100 rounded-full w-7 h-7 border border-white/10">✕</button>
+    <div class="flex gap-3">
+      <img src="book-cover.png" alt="Book of Kek" class="w-16 h-20 object-cover rounded-lg ring-1 ring-cyan-400/30">
+      <div class="text-sm">
+        <div class="font-semibold">The Book of KEK (Free)</div>
+        <p class="text-slate-300 mt-1">Complete lore of Don Kek & the Trustless Toads. Short, heavy, and useful.</p>
+        <a href="book.html" class="mt-2 inline-block rounded-lg bg-cyan-500 px-3 py-1.5 text-slate-900 font-semibold hover:bg-cyan-400 transition">Download</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (menuBtn) menuBtn.onclick = () => mobileNav.classList.toggle('hidden');
+
+    // Legal modal (simple)
+    const legal = `
+      <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
+      <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
+      <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
+      <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
+    const legalLink = document.getElementById('legal-link');
+    if (legalLink) {
+      legalLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
+        modal.innerHTML = `
+          <div class='absolute inset-0 bg-black/70'></div>
+          <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
+            <div>${legal}</div>
+            <div class='mt-6 text-right'>
+              <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
+            </div>
+          </div>`;
+        document.body.appendChild(modal);
+        document.getElementById('close-legal').onclick = () => modal.remove();
+      });
+    }
+
+    // One-time popup: show once per device
+    const POP_KEY = 'kekPopupShown_v1';
+    function showPopupOnce() {
+      try {
+        if (localStorage.getItem(POP_KEY)) return;
+        const pop = document.getElementById('book-pop');
+        if (!pop) return;
+        setTimeout(() => {
+          pop.classList.remove('hidden');
+        }, 1200);
+        const closeBtn = document.getElementById('pop-close');
+        const onClose = () => {
+          pop.classList.add('hidden');
+          try { localStorage.setItem(POP_KEY, '1'); } catch (e) {}
+        };
+        closeBtn.addEventListener('click', onClose);
+        pop.querySelector('a[href="book.html"]').addEventListener('click', onClose);
+      } catch (e) {}
+    }
+    showPopupOnce();
+  </script>
 </body>
 </html>
