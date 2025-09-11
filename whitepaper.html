@@ -4,126 +4,193 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Trustless Payments — Whitepaper</title>
-  <meta name="description" content="Trustless Payments whitepaper: Honor Through Automation. XRPL escrow protocol, deflationary $TRUSTLESS tokenomics, NFT utility, and governance." />
-  <meta property="og:title" content="Trustless Payments — Whitepaper" />
-  <meta property="og:description" content="Honor Through Automation on XRPL: escrow automation, fee split + buy/burn, NFT utility, and governance roadmap." />
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="/assets/og-trustless.jpg" />
-  <meta name="theme-color" content="#0a0a0a" />
-  <link rel="stylesheet" href="/style.css" />
-  <script src="/script.js" defer></script>
+  <meta name="description" content="Trustless Payments whitepaper: Honor Through Automation on XRPL." />
+  <meta name="theme-color" content="#0a0b0d" />
+  <style>
+    :root{
+      --bg:#0a0b0d; --bg2:#0d1016; --panel:#111317; --muted:#9aa3b8; --text:#e9edff;
+      --accent:#33bbff; /* same blue from the first version */
+      --accent-2:#53ffa8; --border:#1b1f27; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{opacity:.92}
+    .container{max-width:1000px;margin:0 auto;padding:22px}
+
+    /* Header / Nav (matches index hamburger layout) */
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(10,11,13,.65);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--border)}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+    .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 0 12px rgba(83,255,168,.6)}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:var(--muted);font-weight:700}
+    .nav-links a.active,.nav-links a:hover{color:#fff}
+    .menu-toggle{display:none;flex-direction:column;gap:4px;padding:8px 10px;border:1px solid var(--border);background:#141821;border-radius:10px}
+    .menu-toggle .bar{width:20px;height:2px;background:#cfe1ff;border-radius:1px}
+    @media(max-width:860px){
+      .menu-toggle{display:flex}
+      .nav-links{position:absolute;right:20px;top:64px;background:#10141c;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:10px 14px;display:none;flex-direction:column;min-width:180px}
+      .nav-links.show{display:flex}
+    }
+
+    .hero{padding:44px 0 10px}
+    .title{font-size:clamp(28px,3.6vw,42px);line-height:1.15;margin:0 0 10px;font-weight:900;color:var(--accent)}
+    .subtitle{color:var(--muted);max-width:820px;margin:0}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 0}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border-radius:12px;border:1px solid var(--border);background:#141821;color:#fff;font-weight:800;box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#051018;border:none}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:930px){.grid{grid-template-columns:2.1fr 1fr}}
+
+    .panel{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.00));border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+    .panel .inner{padding:22px}
+
+    .toc{position:sticky;top:90px}
+    .toc h3{margin:0 0 6px}
+    .toc a{display:block;color:#cfd6ee;padding:6px 0;border-left:2px solid transparent}
+    .toc a:hover{color:#fff;border-left-color:var(--accent)}
+
+    h2{margin:26px 0 6px;font-size:22px}
+    h3{margin:20px 0 6px;font-size:18px}
+    p,li{color:#d9def0}
+    ul{margin:10px 0 10px 20px}
+
+    .embed{height:72vh;border:none;width:100%;border-radius:12px}
+
+    footer{margin:40px 0 60px;color:var(--muted);text-align:center}
+    .badge{display:inline-block;padding:2px 8px;border:1px solid var(--border);border-radius:999px;background:#131720;font-size:12px;color:#b9c3e2}
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="container flex justify-between items-center">
-      <div class="logo"><a href="/index.html">Trustless Payments</a></div>
-      <nav class="main-nav" id="main-nav">
-        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-        <ul class="nav-links" id="nav-links">
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/token.html">Token</a></li>
-          <li><a href="/nfts.html">NFTs</a></li>
-          <li><a class="active" href="/whitepaper.html">Whitepaper</a></li>
-        </ul>
+    <div class="container row">
+      <div class="brand"><span class="dot"></span><a href="/index.html" style="color:#fff;text-decoration:none">Trustless</a></div>
+      <nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        <div class="nav-links" id="navLinks">
+          <a href="/index.html">Home</a>
+          <a href="/token.html">Token</a>
+          <a href="/nfts.html">NFTs</a>
+          <a class="active" href="/whitepaper.html">Whitepaper</a>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main class="container whitepaper-page">
-    <section class="hero">
-      <h1>Trustless Payments — Whitepaper</h1>
-      <p class="subtitle">Honor Through Automation. An XRPL-native escrow protocol with deflationary tokenomics, NFT utility, and community governance.</p>
-      <div class="actions">
-        <a class="btn primary" href="trustless_whitepaper.pdf" download>Download PDF</a>
-        <button class="btn secondary" onclick="window.print()">Print</button>
+  <section class="hero container">
+    <div class="grid">
+      <div>
+        <h1 class="title">Trustless Payments — Whitepaper</h1>
+        <p class="subtitle">Honor Through Automation. An XRPL-native escrow protocol with deflationary tokenomics, NFT utility, and community governance.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="trustless_whitepaper.pdf" download>Download PDF</a>
+          <button class="btn" onclick="window.print()">Print</button>
+        </div>
       </div>
-    </section>
+      <aside>
+        <div class="panel toc">
+          <div class="inner">
+            <span class="badge">On this page</span>
+            <h3>Contents</h3>
+            <nav id="toc"></nav>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-    <section class="toc">
-      <h2>Contents</h2>
-      <ul>
-        <li><a href="#abstract">Abstract</a></li>
-        <li><a href="#problem">The Problem</a></li>
-        <li><a href="#solution">The Solution</a></li>
-        <li><a href="#tokenomics">Tokenomics</a></li>
-        <li><a href="#governance">Governance &amp; Community</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-        <li><a href="#lore">Lore</a></li>
-        <li><a href="#conclusion">Conclusion</a></li>
-      </ul>
-    </section>
+  <main class="container">
+    <div class="panel">
+      <div class="inner">
+        <article id="whitepaper">
+          <h2 id="abstract">Abstract</h2>
+          <p>Trustless Payments is a protocol and toolset designed to restore fairness in digital finance by removing human failure from transactions. Built on the XRP Ledger (XRPL) and powered by the deflationary <strong>$TRUSTLESS</strong> token, the system enables automated escrow payments, milestone-based releases, and transparent fee distribution. Our vision is to create a level playing field where code enforces honesty and communities direct the future of decentralized payments.</p>
 
-    <section class="whitepaper-content">
-      <h2 id="abstract">Abstract</h2>
-      <p>Trustless Payments is a protocol and toolset designed to restore fairness in digital finance by removing human failure from transactions. Built on the XRP Ledger (XRPL) and powered by the deflationary $TRUSTLESS token, the system enables automated escrow payments, milestone-based releases, and transparent fee distribution. Our vision is to create a level playing field where code enforces honesty and communities direct the future of decentralized payments.</p>
+          <h2 id="problem">The Problem</h2>
+          <p>Traditional payments depend on trust between parties — a fragile link often broken by scams, manipulation, or delays. Escrow services exist, but they are centralized, expensive, and vulnerable. The result is billions lost annually and widespread reluctance to transact with strangers online.</p>
 
-      <h2 id="problem">The Problem</h2>
-      <p>Traditional payments depend on trust between parties — a fragile link often broken by scams, manipulation, or delays. Escrow services exist, but they are centralized, expensive, and vulnerable. The result is billions lost annually and widespread reluctance to transact with strangers online.</p>
-
-      <h2 id="solution">The Solution</h2>
-      <p><strong>Trustless Payments automates what humans cannot guarantee:</strong></p>
-      <ul>
-        <li><strong>Smart Escrow:</strong> Funds are locked in escrow and only released when predetermined conditions are met (e.g., token market cap milestones, deadlines).</li>
-        <li><strong>Fee Mechanics:</strong> A <strong>5.89%</strong> fee per escrow transaction is enforced. Half goes to the dev fund, half automatically buys and burns <strong>$TRUSTLESS</strong> (or designated partner token), creating ongoing deflationary pressure.</li>
-        <li><strong>NFT Utility:</strong> Holders of <em>Trustless Toads</em> NFTs enjoy reduced fees (down to 1%) and access to staking pools. A second collection — the <em>Escrow Enforcement Unit</em> — provides governance and revenue sharing to elite community members.</li>
-      </ul>
-
-      <h2 id="tokenomics">Tokenomics</h2>
-      <ul>
-        <li><strong>Ticker:</strong> $TRUSTLESS</li>
-        <li><strong>Supply:</strong> Fixed, with progressive deflation through buy-and-burn.</li>
-        <li><strong>Utility:</strong>
+          <h2 id="solution">The Solution</h2>
+          <p><strong>Trustless Payments automates what humans cannot guarantee:</strong></p>
           <ul>
-            <li>Pay bot fees.</li>
-            <li>Gain reduced-fee access via NFT ownership.</li>
-            <li>Participate in governance through Escrow Enforcement Unit NFTs.</li>
+            <li><strong>Smart Escrow:</strong> Funds are locked in escrow and only released when predetermined conditions are met (e.g., token market cap milestones, deadlines).</li>
+            <li><strong>Fee Mechanics:</strong> A <strong>5.89%</strong> fee per escrow transaction is enforced. Half goes to the dev fund, half automatically buys and burns <strong>$TRUSTLESS</strong> (or designated partner token), creating ongoing deflationary pressure.</li>
+            <li><strong>NFT Utility:</strong> Holders of <em>Trustless Toads</em> NFTs enjoy reduced fees (down to 1%) and access to staking pools. A second collection — the <em>Escrow Enforcement Unit</em> — provides governance and revenue sharing to elite community members.</li>
           </ul>
-        </li>
-      </ul>
 
-      <h2 id="governance">Governance &amp; Community</h2>
-      <p>The long-term vision is a roundtable of Escrow Enforcement Agents — 33 unique NFTs that grant holders voting power over protocol development and a share of fee revenue. These agents form the mastermind council directing expansion into new tools (payment bots, trading bots, automated arbitrage agents).</p>
+          <h2 id="tokenomics">Tokenomics</h2>
+          <ul>
+            <li><strong>Ticker:</strong> $TRUSTLESS</li>
+            <li><strong>Supply:</strong> Fixed, with progressive deflation through buy-and-burn.</li>
+            <li><strong>Utility:</strong>
+              <ul>
+                <li>Pay bot fees.</li>
+                <li>Gain reduced-fee access via NFT ownership.</li>
+                <li>Participate in governance through Escrow Enforcement Unit NFTs.</li>
+              </ul>
+            </li>
+          </ul>
 
-      <h2 id="roadmap">Roadmap</h2>
-      <h3>Phase 1 — MVP (Now)</h3>
-      <ul>
-        <li>Telegram bot for XRPL escrows.</li>
-        <li>Automated fee split (dev + buy/burn).</li>
-        <li>NFT fee reduction system.</li>
-      </ul>
-      <h3>Phase 2 — Expansion</h3>
-      <ul>
-        <li>Multi-chain escrow support.</li>
-        <li>Advanced market triggers (price, volume, on-chain data).</li>
-        <li>Trustless Toads NFT collection launch.</li>
-      </ul>
-      <h3>Phase 3 — Governance &amp; Growth</h3>
-      <ul>
-        <li>Escrow Enforcement Unit NFT mint.</li>
-        <li>Fee sharing and governance activation.</li>
-        <li>Scaling into ads, partnerships, and further bot ecosystems.</li>
-      </ul>
+          <h2 id="governance">Governance &amp; Community</h2>
+          <p>The long-term vision is a roundtable of Escrow Enforcement Agents — 33 unique NFTs that grant holders voting power over protocol development and a share of fee revenue. These agents form the mastermind council directing expansion into new tools (payment bots, trading bots, automated arbitrage agents).</p>
 
-      <h2 id="lore">Lore</h2>
-      <p>The Trustless movement is more than software — it is a resistance against fraud. In our story, Frogs (the community) work alongside Bots (automation) to enforce honesty. Together, they restore order on XRPL and beyond. Each escrow is not just a transaction — it is a battle won against dishonesty.</p>
+          <h2 id="roadmap">Roadmap</h2>
+          <h3>Phase 1 — MVP (Now)</h3>
+          <ul>
+            <li>Telegram bot for XRPL escrows.</li>
+            <li>Automated fee split (dev + buy/burn).</li>
+            <li>NFT fee reduction system.</li>
+          </ul>
+          <h3>Phase 2 — Expansion</h3>
+          <ul>
+            <li>Multi-chain escrow support.</li>
+            <li>Advanced market triggers (price, volume, on-chain data).</li>
+            <li>Trustless Toads NFT collection launch.</li>
+          </ul>
+          <h3>Phase 3 — Governance &amp; Growth</h3>
+          <ul>
+            <li>Escrow Enforcement Unit NFT mint.</li>
+            <li>Fee sharing and governance activation.</li>
+            <li>Scaling into ads, partnerships, and further bot ecosystems.</li>
+          </ul>
 
-      <h2 id="conclusion">Conclusion</h2>
-      <p><strong>Trustless Payments</strong> delivers honor through automation: a system where code enforces honesty, tokens deflate by design, and communities command the future. By combining escrow payments, NFTs, and a deflationary token model, Trustless sets the stage for a new era of unstoppable digital commerce.</p>
+          <h2 id="lore">Lore</h2>
+          <p>The Trustless movement is more than software — it is a resistance against fraud. In our story, Frogs (the community) work alongside Bots (automation) to enforce honesty. Together, they restore order on XRPL and beyond. Each escrow is not just a transaction — it is a battle won against dishonesty.</p>
 
-      <div class="pdf-embed">
-        <iframe src="trustless_whitepaper.pdf" title="Trustless Whitepaper"></iframe>
+          <h2 id="conclusion">Conclusion</h2>
+          <p><strong>Trustless Payments</strong> delivers honor through automation: a system where code enforces honesty, tokens deflate by design, and communities command the future. By combining escrow payments, NFTs, and a deflationary token model, Trustless sets the stage for a new era of unstoppable digital commerce.</p>
+
+          <hr style="border:0;border-top:1px solid var(--border);margin:22px 0" />
+          <section>
+            <h3>Prefer the PDF?</h3>
+            <p class="muted">Read it in-browser below or download a copy.</p>
+            <iframe class="embed" src="trustless_whitepaper.pdf" title="Trustless Whitepaper"></iframe>
+          </section>
+        </article>
       </div>
-    </section>
+    </div>
+
+    <footer>
+      <p>© <span id="year"></span> Trustless — Honor Through Automation.</p>
+    </footer>
   </main>
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> Trustless — Honor Through Automation.</p>
-  </footer>
   <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('menuToggle');
+    const links = document.getElementById('navLinks');
+    btn && btn.addEventListener('click',()=>links.classList.toggle('show'));
+
+    // Build TOC
+    const toc = document.getElementById('toc');
+    document.querySelectorAll('#whitepaper h2').forEach(h=>{
+      const a=document.createElement('a');
+      a.href = `#${h.id}`;
+      a.textContent = h.textContent;
+      toc.appendChild(a);
+    });
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
