@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trustless Payments — Roadmap</title>
+  <link rel="icon" href="favicon.png" />
+  <meta name="description" content="Milestones for Trustless Payments: MVP on XRPL, NFTs, Escrow Enforcement Unit, and multi-chain expansion." />
+  <meta property="og:title" content="Trustless Payments — Roadmap" />
+  <meta property="og:description" content="See what's shipped and what's next." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Roadmap" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/30">
+          <!-- Frog shield -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-cyan-300" fill="currentColor">
+            <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
+            <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
+            <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
+          </svg>
+        </span>
+        <span class="font-semibold tracking-wide">Trustless Payments</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="index.html#about" class="hover:text-white">About</a>
+        <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
+        <a href="roadmap.html" class="hover:text-white font-semibold text-white">Roadmap</a>
+        <a href="nfts.html" class="hover:text-white">NFT's</a>
+        <a href="book.html" class="hover:text-white">Book of Kek</a>
+        <a href="team.html" class="hover:text-white">Team</a>
+        <a href="faq.html" class="hover:text-white">F.A.Q.</a>
+      </nav>
+
+      <div class="relative z-50">
+        <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
+                class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
+          <span class="sr-only">Open menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+
+        <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
+          <nav class="py-2 text-slate-100 text-sm">
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#about">About</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="roadmap.html">Roadmap</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFT's</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#contact">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold">Roadmap</h1>
+      <p class="mt-3 text-slate-300 max-w-3xl">What’s shipped and what’s next. We keep it simple, verifiable, and focused on real utility.</p>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
+    <ol class="relative border-l border-white/10 pl-6 space-y-10">
+      <!-- dot -->
+      <li class="relative">
+        <span class="absolute -left-2 top-1.5 h-4 w-4 rounded-full bg-cyan-400"></span>
+        <h3 class="text-lg md:text-xl font-extrabold">MVP live on XRPL</h3>
+        <p class="mt-1 text-slate-300">Stable bot, escrow create → fund → release/refund flow.</p>
+      </li>
+
+      <li class="relative">
+        <span class="absolute -left-2 top-1.5 h-4 w-4 rounded-full bg-cyan-400"></span>
+        <h3 class="text-lg md:text-xl font-extrabold">NFT: Trustless Toads</h3>
+        <p class="mt-1 text-slate-300">123 toads in suits. Utility: fee reduction + community perks.</p>
+      </li>
+
+      <li class="relative">
+        <span class="absolute -left-2 top-1.5 h-4 w-4 rounded-full bg-cyan-400"></span>
+        <h3 class="text-lg md:text-xl font-extrabold">Escrow Enforcement Unit (33)</h3>
+        <p class="mt-1 text-slate-300">Governance &amp; fee sharing for power users.</p>
+      </li>
+
+      <li class="relative">
+        <span class="absolute -left-2 top-1.5 h-4 w-4 rounded-full bg-cyan-400"></span>
+        <h3 class="text-lg md:text-xl font-extrabold">Multi-chain expansion</h3>
+        <p class="mt-1 text-slate-300">Bring order to other chains, one rug-factory at a time.</p>
+      </li>
+    </ol>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p>© <span id="year"></span> Trustless Payments. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
+      <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Legal modal
+    const legal = `\
+    <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
+    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
+    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
+    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
+    document.getElementById('legal-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
+      modal.innerHTML = `
+        <div class='absolute inset-0 bg-black/70'></div>
+        <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
+          <div>${legal}</div>
+          <div class='mt-6 text-right'>
+            <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+      document.getElementById('close-legal').onclick = () => modal.remove();
+    });
+
+    // Hamburger menu
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mainMenu');
+    function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
+    function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
+    menuBtn.addEventListener('click', () => {
+      (menuBtn.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('click', (e) => { if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+  </script>
+</body>
+</html>
