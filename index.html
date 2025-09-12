@@ -21,20 +21,54 @@
   <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
+      <!-- Logo: frog in shield + text -->
+      <a href="index.html" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/30">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-cyan-300"><path d="M7 10a5 5 0 1 1 10 0v2h1a3 3 0 1 1 0 6H6a3 3 0 1 1 0-6h1v-2Z"/><circle cx="9" cy="7" r="1.5" /><circle cx="15" cy="7" r="1.5" /></svg>
+          <!-- Frog in shield (simple SVG) -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-cyan-300" fill="currentColor">
+            <!-- shield -->
+            <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
+            <!-- frog eyes -->
+            <circle cx="9.2" cy="9.4" r="1.1" class="text-slate-900" fill="currentColor"></circle>
+            <circle cx="14.8" cy="9.4" r="1.1" class="text-slate-900" fill="currentColor"></circle>
+            <!-- smile -->
+            <path d="M8.8 12.2c.9 1 2.5 1.5 3.2 1.5s2.3-.5 3.2-1.5" stroke="currentColor" stroke-width="1.2" fill="none" />
+          </svg>
         </span>
-        <span class="font-semibold tracking-wide">Trustless</span>
+        <span class="font-semibold tracking-wide">Trustless Payments</span>
       </a>
+
+      <!-- Desktop inline links (unchanged) -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="#how" class="hover:text-white">How it works</a>
         <a href="#fees" class="hover:text-white">Fees & Burn</a>
         <a href="#roadmap" class="hover:text-white">Roadmap</a>
         <a href="#faq" class="hover:text-white">FAQ</a>
       </nav>
-      <div class="flex items-center gap-2">
-        <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">Open Bot</a>
+
+      <!-- Right: Hamburger dropdown (replaces Bot button) -->
+      <div class="relative">
+        <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
+                class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
+          <span class="sr-only">Open menu</span>
+          <!-- hamburger icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+
+        <!-- Dropdown panel -->
+        <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 glass rounded-xl p-2 shadow-xl">
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="index.html">Home</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#how">About</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#roadmap">Roadmap</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#fees">Tokenomics</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="nfts.html">NFT's</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#buy">$BUY $TRUSTLESS</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="book.html">Book of Kek</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="team.html">Team</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="contact.html">Contact</a>
+        </div>
       </div>
     </div>
   </header>
@@ -180,7 +214,10 @@
   </footer>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear()
+
+    // Legal modal
     const legal = `\
     <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
     <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
@@ -197,10 +234,33 @@
           <div class='mt-6 text-right'>
             <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
           </div>
-        </div>`
+        </div>`;
       document.body.appendChild(modal);
       document.getElementById('close-legal').onclick = () => modal.remove();
-    })
+    });
+
+    // Hamburger dropdown logic
+    const menuBtn = document.getElementById('menuBtn');
+    const menu    = document.getElementById('mainMenu');
+
+    function closeMenu() {
+      menu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+    function openMenu() {
+      menu.classList.remove('hidden');
+      menuBtn.setAttribute('aria-expanded', 'true');
+    }
+    menuBtn.addEventListener('click', () => {
+      const open = menuBtn.getAttribute('aria-expanded') === 'true';
+      open ? closeMenu() : openMenu();
+    });
+    // click outside to close
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
+    });
+    // esc to close
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
   </script>
 </body>
 </html>
