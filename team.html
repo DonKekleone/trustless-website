@@ -1,160 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Trustless Payments — Team</title>
-<link rel="icon" href="favicon.png" />
-<meta name="description" content="Meet the Trustless Payments team: builders behind honor through automation." />
-
-<style>
-  :root{
-    --bg:#05080d;
-    --card:#0d1a26;
-    --ink:#e6f0ff;
-    --muted:#9ab0c9;
-    --line:#1a2a3d;
-    --blue:#3fa3ff;
-    --green:#22f2a2;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-  a{color:inherit;text-decoration:none}
-  .container{max-width:1100px;margin:0 auto;padding:0 20px}
-
-  /* NAV (matches index.html) */
-  .nav{background:var(--bg);display:flex;align-items:center;justify-content:space-between;
-       padding:15px 20px;border-bottom:1px solid #0d1a26;position:sticky;top:0;z-index:99}
-  .brand{font-weight:800;color:var(--blue);font-size:1.08rem}
-  .menu{display:flex;gap:18px}
-  .menu a{font-weight:600;padding:8px 12px;border-radius:8px}
-  .menu a:hover{background:#0d1a26}
-  .menu .active{background:#0d1a26}
-
-  /* HERO */
-  .hero{padding:36px 0 14px}
-  .eyebrow{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem}
-  h1{margin:.4rem 0 0 0;color:var(--blue);font-size:2rem;line-height:1.2}
-  .sub{color:#cfe0ff;max-width:800px;margin-top:8px}
-
-  /* IMAGE STRIP */
-  .poster{margin:22px auto 8px;border-radius:14px;overflow:hidden;border:1px solid var(--line);
-          background:#0b1520}
-  .poster img{display:block;width:100%;height:auto}
-
-  /* TEAM CARDS */
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0 60px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
-  .role{color:var(--muted);font-size:.9rem;margin-bottom:6px}
-  .name{font-weight:800;font-size:1.15rem;margin:0 0 8px}
-  .bio{color:#d8e6ff;line-height:1.7;margin:0}
-  .tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-  .tag{font-size:.8rem;border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:var(--muted)}
-  .divider{height:1px;background:var(--line);margin:22px 0}
-
-  /* CTA */
-  .cta{display:flex;gap:12px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--blue);color:#03111d;
-       font-weight:800;border-radius:10px;padding:10px 14px}
-  .btn:hover{filter:brightness(1.08)}
-  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
-
-  /* FOOTER */
-  footer{border-top:1px solid #0d1a26;color:var(--muted);padding:28px 0;margin-top:40px}
-
-  /* Responsive */
-  @media (max-width:900px){
-    .grid{grid-template-columns:1fr}
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Team — Trustless Payments</title>
+  <meta name="description" content="The builders behind Trustless Payments: Don Kek and Agent-01." />
+  <meta property="og:title" content="Team — Trustless Payments" />
+  <meta property="og:description" content="Lean crew shipping fast: Don Kek & Agent-01 (GPT-5 Thinking)." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Team" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
-<body>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo: frog in shield + text -->
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/30">
+          <!-- Frog in shield SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-cyan-300" fill="currentColor">
+            <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
+            <circle cx="9.2" cy="9.4" r="1.1" fill="currentColor" class="text-slate-900"></circle>
+            <circle cx="14.8" cy="9.4" r="1.1" fill="currentColor" class="text-slate-900"></circle>
+            <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
+          </svg>
+        </span>
+        <span class="font-semibold tracking-wide">Trustless Payments</span>
+      </a>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="index.html" class="brand">Trustless Payments</a>
-  <div class="menu" role="navigation" aria-label="Main">
-    <a href="index.html">Home</a>
-    <a href="token.html">Token</a>
-    <a href="nfts.html">NFTs</a>
-    <a href="whitepaper.html">Whitepaper</a>
-  </div>
-</nav>
+      <!-- Desktop quick links (mirror index) -->
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="index.html#about" class="hover:text-white">About</a>
+        <a href="index.html#tokenomics" class="hover:text-white">Tokenomics</a>
+        <a href="index.html#roadmap" class="hover:text-white">Roadmap</a>
+        <a href="index.html#faq" class="hover:text-white">FAQ</a>
+      </nav>
 
-<!-- HERO -->
-<header class="hero container">
-  <div class="eyebrow">Team</div>
-  <h1>The builders behind “Honor through Automation.”</h1>
-  <p class="sub">We’re a lean crew by design—one human founder and one relentless AI collaborator—shipping fast, listening to users, and automating away trust failures on XRPL.</p>
-</header>
+      <!-- Right: Hamburger dropdown (same order as index) -->
+      <div class="relative z-50">
+        <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
+                class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
+          <span class="sr-only">Open menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
 
-<!-- POSTER IMAGE (your meme) -->
-<section class="container poster" aria-label="Team poster">
-  <!-- Place team.png in the same folder as this file -->
-  <img src="team.png" alt="Bots playing cards with drinks and weapons as Don Kek approaches the window. Caption: 'Holy shit here comes Kek! Quick — look busy!'" />
-</section>
-
-<!-- TEAM GRID -->
-<main class="container">
-  <section class="grid">
-    <!-- Kek card -->
-    <article class="card">
-      <div class="role">Founder & Product Lead</div>
-      <h2 class="name">Don Kek</h2>
-      <p class="bio">
-        Builder of Trustless Payments and steward of the <em>Honor through automation</em> ethos.
-        Kek drives product vision, partnerships, and delivery—keeping the focus on real utility:
-        escrow flows that release only when objective conditions are met, fair fee mechanics, and
-        community-first incentives that align users, holders, and creators.
-      </p>
-      <div class="tagrow">
-        <span class="tag">XRPL Native</span>
-        <span class="tag">Escrow Design</span>
-        <span class="tag">Tokenomics</span>
-        <span class="tag">Community</span>
+        <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
+          <nav class="py-2 text-slate-100 text-sm">
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#about">About</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#roadmap">Roadmap</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#tokenomics">Tokenomics</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#nfts">NFT's</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#buy">Buy $TRUSTLESS</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="team.html">Team</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#faq">F.A.Q.</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#contact">Contact</a>
+          </nav>
+        </div>
       </div>
-    </article>
+    </div>
+  </header>
 
-    <!-- AI collaborator card -->
-    <article class="card">
-      <div class="role">AI Collaborator</div>
-      <h2 class="name">Agent-01 (GPT-5 Thinking)</h2>
-      <p class="bio">
-        An AI partner focused on sober, verifiable engineering: fast iteration on Telegram UX,
-        escrow state machines, monitoring loops, and site content. No hype—just code, copy, and
-        clean patches shipped in small steps to keep momentum high and errors low.
-      </p>
-      <div class="tagrow">
-        <span class="tag">Conversation UX</span>
-        <span class="tag">Python</span>
-        <span class="tag">XRPL Integrations</span>
-        <span class="tag">Web & Copy</span>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <p class="uppercase tracking-widest text-slate-400 text-xs">Team</p>
+      <h1 class="mt-2 text-4xl md:text-5xl font-extrabold">The builders behind <span class="text-cyan-400">“Honor through automation.”</span></h1>
+      <p class="mt-4 text-slate-300 max-w-3xl">Lean by design—one human founder and one relentless AI collaborator—shipping fast, listening to users, and automating away trust failures on XRPL.</p>
+    </div>
+  </section>
+
+  <!-- TEAM CARDS -->
+  <main class="pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-6">
+      <!-- Don Kek -->
+      <article class="grid md:grid-cols-[260px_1fr] gap-6 items-start glass rounded-2xl p-6">
+        <img src="Kek.png" alt="Don Kek portrait" class="w-full md:w-64 aspect-square object-cover rounded-xl shadow-lg ring-1 ring-white/10">
+        <div>
+          <p class="text-slate-400 text-sm">Founder & Product Lead</p>
+          <h2 class="text-2xl md:text-3xl font-bold">Don Kek</h2>
+          <p class="mt-2 text-slate-300">
+            Builder of Trustless Payments and steward of the <em>Honor through automation</em> ethos.
+            Drives product vision, partnerships, and delivery—keeping focus on real utility:
+            escrow flows that release only when objective conditions are met, fair fee mechanics,
+            and community-first incentives that align users, holders, and creators.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">XRPL Native</span>
+            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Escrow Design</span>
+            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Tokenomics</span>
+            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Community</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Agent-01 -->
+      <article class="grid md:grid-cols-[260px_1fr] gap-6 items-start glass rounded-2xl p-6">
+        <div class="w-full md:w-64 aspect-square rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 grid place-items-center ring-1 ring-white/10">
+          <span class="text-slate-300 font-semibold">Agent-01</span>
+        </div>
+        <div>
+          <p class="text-slate-400 text-sm">AI Collaborator</p>
+          <h2 class="text-2xl md:text-3xl font-bold">Agent-01 (GPT-5 Thinking)</h2>
+          <p class="mt-2 text-slate-300">
+            An AI partner focused on sober, verifiable engineering: fast iteration on Telegram UX,
+            escrow state machines, monitoring loops, and site content. No hype—just code, copy,
+            and clean patches shipped in small steps to keep momentum high and errors low.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Conversation UX</span>
+            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Python</span>
+            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">XRPL Integrations</span>
+            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Web & Copy</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- CTA -->
+      <div class="pt-4 text-center">
+        <a href="index.html#whitepaper" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 text-slate-900 font-semibold hover:bg-cyan-400 transition">Read the Whitepaper</a>
+        <a href="index.html#contact" class="ml-3 inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Contact</a>
       </div>
-    </article>
-  </section>
+    </div>
+  </main>
 
-  <div class="divider"></div>
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p>© <span id="year"></span> Trustless. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
+      <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
+    </div>
+  </footer>
 
-  <!-- Mini “about” block under the image, per your request -->
-  <section aria-label="Team bio paragraph" style="margin-bottom:34px">
-    <p class="bio">
-      Above is our vibe: heads-down builders, a little dark humor, and zero tolerance for scams.
-      Trustless Payments is our answer—automated escrows, objective triggers, and aligned incentives
-      that reward honest actors. If that’s your energy, you’re in the right place.
-    </p>
-  </section>
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear()
 
-  <!-- CTA -->
-  <section class="cta">
-    <a class="btn" href="whitepaper.html">Read the Whitepaper</a>
-    <a class="btn ghost" href="contact.html">Contact</a>
-  </section>
-</main>
+    // Legal modal
+    const legal = `\
+    <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
+    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
+    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
+    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`
+    document.getElementById('legal-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
+      modal.innerHTML = `
+        <div class='absolute inset-0 bg-black/70'></div>
+        <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
+          <div>${legal}</div>
+          <div class='mt-6 text-right'>
+            <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+      document.getElementById('close-legal').onclick = () => modal.remove();
+    });
 
-<footer>
-  <div class="container">© <span id="y"></span> Trustless Payments. All rights reserved.</div>
-</footer>
+    // Hamburger dropdown logic
+    const menuBtn = document.getElementById('menuBtn');
+    const menu    = document.getElementById('mainMenu');
 
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+    function closeMenu() { menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded', 'false'); }
+    function openMenu()  { menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded', 'true'); }
+
+    menuBtn.addEventListener('click', () => {
+      const open = menuBtn.getAttribute('aria-expanded') === 'true';
+      open ? closeMenu() : openMenu();
+    });
+
+    // close on link click, outside click, or ESC
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  </script>
 </body>
 </html>
