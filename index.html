@@ -17,34 +17,30 @@
     html { scroll-behavior: smooth; }
   </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100">
+<body class="min-h-screen bg-slate-950 text-slate-100" id="top">
   <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <!-- Logo: frog in shield + text -->
-      <a href="index.html" class="flex items-center gap-3">
+      <!-- Logo: shield + frog + text -->
+      <a href="index.html#top" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/30">
           <!-- Frog in shield SVG -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-cyan-300" fill="currentColor">
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
-            <circle cx="9.2" cy="9.4" r="1.1" fill="currentColor" class="text-slate-900"></circle>
-            <circle cx="14.8" cy="9.4" r="1.1" fill="currentColor" class="text-slate-900"></circle>
-            <!-- straight mouth -->
+            <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
             <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
           </svg>
         </span>
         <span class="font-semibold tracking-wide">Trustless Payments</span>
       </a>
 
-      <!-- Desktop inline links (keep minimal) -->
+      <!-- Desktop minimal nav (optional quick links) -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a href="#about" class="hover:text-white">About</a>
-        <a href="#tokenomics" class="hover:text-white">Tokenomics</a>
-        <a href="#roadmap" class="hover:text-white">Roadmap</a>
-        <a href="#faq" class="hover:text-white">FAQ</a>
+        <a href="#how" class="hover:text-white">How it works</a>
+        <a href="#fees" class="hover:text-white">Fees & Burn</a>
       </nav>
 
-      <!-- Right: Hamburger dropdown (anchors to all sections) -->
+      <!-- Right: Hamburger dropdown linking to pages -->
       <div class="relative z-50">
         <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
                 class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
@@ -54,26 +50,23 @@
           </svg>
         </button>
 
-        <!-- Opaque dropdown panel -->
         <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
           <nav class="py-2 text-slate-100 text-sm">
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#top">Home</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#about">About</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#roadmap">Roadmap</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#tokenomics">Tokenomics</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#nfts">NFT's</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#buy">Buy $TRUSTLESS</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#book">Book of Kek</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#team">Team</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#faq">F.A.Q.</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#contact">Contact</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFT's</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="contact.html">Contact</a>
           </nav>
         </div>
       </div>
     </div>
   </header>
-
-  <div id="top"></div>
 
   <!-- HERO -->
   <section class="relative overflow-hidden">
@@ -94,30 +87,7 @@
         </ul>
         <div class="mt-10 flex flex-wrap gap-3">
           <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-slate-900 font-semibold hover:bg-cyan-400 transition">Launch Telegram Bot</a>
-          <a href="#about" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-3 hover:bg-white/5 transition">Learn more</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="py-20 bg-slate-900/40 border-y border-white/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold">About</h2>
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <div class="glass rounded-2xl p-6">
-          <p class="text-slate-300">
-            Trustless is a payments layer for XRPL where promises get verified—then paid. 
-            Our Telegram bot runs deals on rails: escrow, milestones, auto-release/refund. 
-            No middlemen. No drama.
-          </p>
-        </div>
-        <div class="glass rounded-2xl p-6">
-          <ul class="list-disc list-inside text-slate-300 space-y-1">
-            <li>Proof-then-pay workflow</li>
-            <li>Transparent fee split + buy-burn</li>
-            <li>Future: multi-chain expansion</li>
-          </ul>
+          <a href="#how" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-3 hover:bg-white/5 transition">Learn more</a>
         </div>
       </div>
     </div>
@@ -130,24 +100,24 @@
       <div class="mt-10 grid md:grid-cols-3 gap-6">
         <div class="glass rounded-2xl p-6">
           <div class="text-cyan-300 font-semibold">1. Create</div>
-          <p class="mt-2 text-slate-300">Enter escrow amount, recipient, contract address, target market cap (whole number), and expiry in days.</p>
+          <p class="mt-2 text-slate-300">Open the bot and enter: escrow amount, recipient, contract address, target market cap (whole number), and expiry in days.</p>
         </div>
         <div class="glass rounded-2xl p-6">
           <div class="text-cyan-300 font-semibold">2. Fund</div>
-          <p class="mt-2 text-slate-300">Send the exact XRP with the provided destination tag. Post your TX hash. The bot auto-detects funding.</p>
+          <p class="mt-2 text-slate-300">Send the exact XRP to the escrow address with the provided destination tag. Post your TX hash. The bot auto-detects funding.</p>
         </div>
         <div class="glass rounded-2xl p-6">
           <div class="text-cyan-300 font-semibold">3. Automate</div>
-          <p class="mt-2 text-slate-300">Goals hit → release. Otherwise → refund. Code, not trust.</p>
+          <p class="mt-2 text-slate-300">If goals are hit before the deadline, funds release. Otherwise, they refund. No middlemen. No drama.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TOKENOMICS -->
-  <section id="tokenomics" class="py-20 bg-slate-900/40 border-y border-white/10">
+  <!-- FEES & BURN -->
+  <section id="fees" class="py-20 bg-slate-900/40 border-y border-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold">Tokenomics</h2>
+      <h2 class="text-2xl md:text-3xl font-bold">Fees & Buy-Burn</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6 items-start">
         <div class="glass rounded-2xl p-6">
           <h3 class="font-semibold text-cyan-300">5.89% Escrow Fee</h3>
@@ -162,225 +132,21 @@
           <p class="mt-3 text-slate-300">Every burn & split is visible on-chain. We keep a level playing field—code that holds everyone accountable.</p>
         </div>
       </div>
-      <p class="mt-6 text-center text-slate-400 text-sm">More tokenomics details TBA.</p>
     </div>
   </section>
 
-  <!-- NFTS -->
-  <section id="nfts" class="py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold">NFT’s</h2>
-      <div class="mt-8 grid md:grid-cols-2 gap-6">
-        <div class="glass rounded-2xl p-6">
-          <h3 class="font-semibold text-cyan-300">Trustless Toads (123)</h3>
-          <p class="mt-2 text-slate-300">Mafia-style toads in suits. Utility: reduced fees + community perks. <em>TBA soon.</em></p>
-        </div>
-        <div class="glass rounded-2xl p-6">
-          <h3 class="font-semibold text-cyan-300">Escrow Enforcement Unit (33)</h3>
-          <p class="mt-2 text-slate-300">Premium governance + fee sharing for power users. <em>TBA soon.</em></p>
-        </div>
+  <!-- CTA -->
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold">Ready to escrow like a pro?</h2>
+      <p class="mt-4 text-slate-300">Kick off your first trustless payment in minutes.</p>
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 text-slate-900 font-semibold hover:bg-cyan-400 transition">Open Bot</a>
+        <a href="whitepaper.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">View Whitepaper</a>
       </div>
     </div>
   </section>
 
-  <!-- ROADMAP -->
-  <section id="roadmap" class="py-20 bg-slate-900/40 border-y border-white/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold">Roadmap</h2>
-    <ol class="mt-8 relative border-l border-white/10 pl-6 space-y-8">
-        <li>
-          <span class="absolute -left-2 top-0 h-4 w-4 rounded-full bg-cyan-400"></span>
-          <h3 class="font-semibold">MVP live on XRPL</h3>
-          <p class="text-slate-300">Stable bot, escrow create → fund → release/refund flow.</p>
-        </li>
-        <li>
-          <span class="absolute -left-2 h-4 w-4 rounded-full bg-cyan-400"></span>
-          <h3 class="font-semibold">NFT: Trustless Toads</h3>
-          <p class="text-slate-300">123 toads in suits. Utility: fee reduction + community perks.</p>
-        </li>
-        <li>
-          <span class="absolute -left-2 h-4 w-4 rounded-full bg-cyan-400"></span>
-          <h3 class="font-semibold">Escrow Enforcement Unit (33)</h3>
-          <p class="text-slate-300">Governance & fee sharing for power users.</p>
-        </li>
-        <li>
-          <span class="absolute -left-2 h-4 w-4 rounded-full bg-cyan-400"></span>
-          <h3 class="font-semibold">Multi-chain expansion</h3>
-          <p class="text-slate-300">Bring order to other chains, one rug-factory at a time.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- BUY -->
-  <section id="buy" class="py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold text-center">Buy $TRUSTLESS</h2>
-
-      <!-- Step 1: Install Xaman -->
-      <div class="mt-10 grid md:grid-cols-2 gap-6">
-        <div class="glass rounded-2xl p-6">
-          <h3 class="font-semibold text-cyan-300">Step 1 — Install Xaman (XRPL Wallet)</h3>
-          <p class="mt-2 text-slate-300">Download the official mobile wallet to hold XRP and interact with the XRPL DEX.</p>
-          <div class="mt-4 flex flex-wrap gap-3">
-            <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-slate-100 text-slate-900 px-4 py-2 font-semibold hover:bg-white transition">Google Play</a>
-            <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-slate-100 text-slate-900 px-4 py-2 font-semibold hover:bg-white transition">App Store</a>
-          </div>
-        </div>
-
-        <!-- Step 2: Create wallet safely -->
-        <div class="glass rounded-2xl p-6">
-          <h3 class="font-semibold text-cyan-300">Step 2 — Create Wallet (Safety First)</h3>
-          <ul class="mt-2 list-disc list-inside text-slate-300 space-y-1">
-            <li>Generate your seed/secret in a private place. <strong>Never share it.</strong></li>
-            <li>If using a phone, consider turning on <em>Airplane Mode</em> while writing down the seed (then re-enable internet after).</li>
-            <li>Store the seed <strong>offline</strong> (paper/steel). Don’t screenshot. Don’t email it.</li>
-            <li>Back up your wallet in Xaman after creation.</li>
-          </ul>
-          <p class="mt-3 text-slate-400 text-sm">We will never ask for your secret. Anyone who does is a scammer.</p>
-        </div>
-
-        <!-- Step 3: Fund -->
-        <div class="glass rounded-2xl p-6">
-          <h3 class="font-semibold text-cyan-300">Step 3 — Fund with XRP</h3>
-          <p class="mt-2 text-slate-300">Deposit XRP to your Xaman address from an exchange or another wallet. Keep a small extra amount for network fees.</p>
-        </div>
-
-        <!-- Step 4: Buy on XRPL DEX -->
-        <div class="glass rounded-2xl p-6">
-          <h3 class="font-semibold text-cyan-300">Step 4 — Buy $TRUSTLESS on the DEX</h3>
-          <p class="mt-2 text-slate-300">Choose any XRPL marketplace below. We’ll add direct links soon.</p>
-          <div class="mt-4 flex flex-wrap gap-3">
-            <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">Magnetic</a>
-            <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">First Ledger</a>
-            <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">XPMarket</a>
-          </div>
-          <p class="mt-3 text-slate-400 text-sm">Some tokens require a trustline before trading. If needed, we’ll display the issuer and limit here (TBA).</p>
-        </div>
-      </div>
-
-      <p class="mt-8 text-center text-slate-400 text-sm">Need help? Ping us in Telegram and we’ll walk you through it.</p>
-      <div class="mt-4 text-center">
-        <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Open Telegram</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- BOOK OF KEK -->
-  <section id="book" class="py-20 bg-slate-900/40 border-y border-white/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold">The Book of Kek</h2>
-      <div class="mt-6 grid md:grid-cols-2 gap-6 items-start">
-        <div class="glass rounded-2xl p-6">
-          <p class="text-slate-300">Short chapters, heavy lessons. The Trustless mindset + system in one free PDF.</p>
-          <div class="mt-4 flex gap-3">
-            <a href="book.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-3 hover:bg-white/5 transition">Read online</a>
-            <a href="trustless_book_of_kek.pdf" download class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-slate-900 font-semibold hover:bg-cyan-400 transition">Download PDF</a>
-          </div>
-        </div>
-        <div class="glass rounded-2xl p-6">
-          <p class="text-slate-300">Make ’em earn it—or they don’t earn anything. <strong>Honor through automation.</strong></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold">FAQ</h2>
-      <div class="mt-8 grid md:grid-cols-2 gap-6">
-        <details class="glass rounded-2xl p-6 group open:bg-white/5">
-          <summary class="cursor-pointer font-semibold">Is this financial advice?</summary>
-          <p class="mt-2 text-slate-300">No. Trustless is a tool for automated escrow on XRPL. Nothing here is investment advice.</p>
-        </details>
-        <details class="glass rounded-2xl p-6">
-          <summary class="cursor-pointer font-semibold">Do I need to share my secret keys?</summary>
-          <p class="mt-2 text-slate-300">Never. The bot does not ask for or store your secrets. You fund escrows from your own wallet.</p>
-        </details>
-        <details class="glass rounded-2xl p-6">
-          <summary class="cursor-pointer font-semibold">Wen moon? 🐸🚀</summary>
-          <p class="mt-2 text-slate-300">Moon is not on the roadmap. We build, burn fees, and let the market decide the altitude.</p>
-        </details>
-        <details class="glass rounded-2xl p-6">
-          <summary class="cursor-pointer font-semibold">Where do fees go?</summary>
-          <p class="mt-2 text-slate-300">50% to the dev wallet for ongoing work; 50% buys & burns the associated token—fully on-chain.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEAM (updated) -->
-  <section id="team" class="py-20 bg-slate-900/40 border-y border-white/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p class="uppercase tracking-widest text-slate-400 text-xs">Team</p>
-      <h2 class="mt-2 text-3xl md:text-4xl font-extrabold">The builders behind <span class="text-cyan-400">“Honor through automation.”</span></h2>
-      <p class="mt-3 text-slate-300 max-w-3xl">Lean by design—one human founder and one relentless AI collaborator—shipping fast, listening to users, and automating away trust failures on XRPL.</p>
-
-      <!-- Don Kek -->
-      <div class="mt-10 grid md:grid-cols-[220px_1fr] gap-6 items-start glass rounded-2xl p-6">
-        <img src="kek.png" alt="Don Kek portrait" class="w-full md:w-56 aspect-square object-cover rounded-xl shadow-lg ring-1 ring-white/10">
-        <div>
-          <p class="text-slate-400 text-sm">Founder & Product Lead</p>
-          <h3 class="text-2xl font-bold">Don Kek</h3>
-          <p class="mt-2 text-slate-300">
-            Builder of Trustless Payments and steward of the <em>Honor through automation</em> ethos.
-            Drives product vision, partnerships, and delivery—keeping focus on real utility:
-            escrow flows that release only when objective conditions are met, fair fee mechanics,
-            and community-first incentives that align users, holders, and creators.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">XRPL Native</span>
-            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Escrow Design</span>
-            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Tokenomics</span>
-            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Community</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Agent-01 -->
-      <div class="mt-6 grid md:grid-cols-[220px_1fr] gap-6 items-start glass rounded-2xl p-6">
-        <div class="w-full md:w-56 aspect-square rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 grid place-items-center ring-1 ring-white/10">
-          <span class="text-slate-300 font-semibold">Agent-01</span>
-        </div>
-        <div>
-          <p class="text-slate-400 text-sm">AI Collaborator</p>
-          <h3 class="text-2xl font-bold">Agent-01 (GPT-5 Thinking)</h3>
-          <p class="mt-2 text-slate-300">
-            An AI partner focused on sober, verifiable engineering: fast iteration on Telegram UX,
-            escrow state machines, monitoring loops, and site content. No hype—just code, copy,
-            and clean patches shipped in small steps to keep momentum high and errors low.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Conversation UX</span>
-            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Python</span>
-            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">XRPL Integrations</span>
-            <span class="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10">Web & Copy</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-6 text-right">
-        <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5 transition">Contact</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
-      <div class="mt-6 glass rounded-2xl p-6">
-        <p class="text-slate-300">Questions, partnerships, media?</p>
-        <div class="mt-3 flex flex-wrap gap-3">
-          <a href="mailto:team@trustless.app" class="inline-flex items-center rounded-xl border border-white/15 px-5 py-3 hover:bg-white/5 transition">Email</a>
-          <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex items-center rounded-xl bg-cyan-500 px-5 py-3 text-slate-900 font-semibold hover:bg-cyan-400 transition">Telegram</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <p>© <span id="year"></span> Trustless. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
@@ -389,10 +155,7 @@
   </footer>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear()
-
-    // Legal modal
     const legal = `\
     <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
     <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
@@ -409,30 +172,25 @@
           <div class='mt-6 text-right'>
             <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
           </div>
-        </div>`;
+        </div>`
       document.body.appendChild(modal);
       document.getElementById('close-legal').onclick = () => modal.remove();
-    });
+    })
 
-    // Hamburger dropdown logic
+    // Hamburger menu logic
     const menuBtn = document.getElementById('menuBtn');
     const menu    = document.getElementById('mainMenu');
 
-    function closeMenu() {
-      menu.classList.add('hidden');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    }
-    function openMenu() {
-      menu.classList.remove('hidden');
-      menuBtn.setAttribute('aria-expanded', 'true');
-    }
+    function closeMenu() { menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded', 'false'); }
+    function openMenu()  { menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded', 'true'); }
+
     menuBtn.addEventListener('click', () => {
       const open = menuBtn.getAttribute('aria-expanded') === 'true';
       open ? closeMenu() : openMenu();
     });
-    // close on link click
+
+    // close on link click, outside click, or ESC
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-    // click outside / esc to close
     document.addEventListener('click', (e) => {
       if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
     });
