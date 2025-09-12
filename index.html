@@ -24,21 +24,19 @@
       <!-- Logo: frog in shield + text -->
       <a href="index.html" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/30">
-          <!-- Frog in shield (simple SVG) -->
+          <!-- Frog in shield SVG -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-cyan-300" fill="currentColor">
-            <!-- shield -->
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
-            <!-- frog eyes -->
-            <circle cx="9.2" cy="9.4" r="1.1" class="text-slate-900" fill="currentColor"></circle>
-            <circle cx="14.8" cy="9.4" r="1.1" class="text-slate-900" fill="currentColor"></circle>
-            <!-- smile -->
-            <path d="M8.8 12.2c.9 1 2.5 1.5 3.2 1.5s2.3-.5 3.2-1.5" stroke="currentColor" stroke-width="1.2" fill="none" />
+            <circle cx="9.2" cy="9.4" r="1.1" fill="currentColor" class="text-slate-900"></circle>
+            <circle cx="14.8" cy="9.4" r="1.1" fill="currentColor" class="text-slate-900"></circle>
+            <!-- straight mouth (no smile) -->
+            <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
           </svg>
         </span>
         <span class="font-semibold tracking-wide">Trustless Payments</span>
       </a>
 
-      <!-- Desktop inline links (unchanged) -->
+      <!-- Desktop inline links -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="#how" class="hover:text-white">How it works</a>
         <a href="#fees" class="hover:text-white">Fees & Burn</a>
@@ -46,28 +44,30 @@
         <a href="#faq" class="hover:text-white">FAQ</a>
       </nav>
 
-      <!-- Right: Hamburger dropdown (replaces Bot button) -->
-      <div class="relative">
+      <!-- Right: Hamburger dropdown -->
+      <div class="relative z-50">
         <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
                 class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
           <span class="sr-only">Open menu</span>
-          <!-- hamburger icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
           </svg>
         </button>
 
-        <!-- Dropdown panel -->
-        <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 glass rounded-xl p-2 shadow-xl">
-          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="index.html">Home</a>
-          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#how">About</a>
-          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#roadmap">Roadmap</a>
-          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#fees">Tokenomics</a>
-          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="nfts.html">NFT's</a>
-          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="#buy">$BUY $TRUSTLESS</a>
-          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="book.html">Book of Kek</a>
-          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="team.html">Team</a>
-          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="contact.html">Contact</a>
+        <!-- Opaque dropdown panel -->
+        <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
+          <nav class="py-2 text-slate-100 text-sm">
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#how">About</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#roadmap">Roadmap</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#fees">Tokenomics</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFT's</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#buy">Buy $TRUSTLESS</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="#faq">F.A.Q.</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="contact.html">Contact</a>
+          </nav>
         </div>
       </div>
     </div>
@@ -195,7 +195,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="py-20">
+  <section id="buy" class="py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl md:text-4xl font-extrabold">Ready to escrow like a pro?</h2>
       <p class="mt-4 text-slate-300">Kick off your first trustless payment in minutes.</p>
@@ -255,11 +255,12 @@
       const open = menuBtn.getAttribute('aria-expanded') === 'true';
       open ? closeMenu() : openMenu();
     });
-    // click outside to close
+    // close on link click
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    // click outside / esc to close
     document.addEventListener('click', (e) => {
       if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
     });
-    // esc to close
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
   </script>
 </body>
