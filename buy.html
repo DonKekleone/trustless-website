@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Buy $TRUSTLESS</title>
+  <link rel="icon" href="favicon.png" />
+  <meta name="description" content="Step-by-step guide to buy $TRUSTLESS using Xaman wallet on XRPL.">
+  <meta property="og:title" content="How to Buy $TRUSTLESS" />
+  <meta property="og:description" content="Install Xaman, create a safe wallet, fund with XRP, and buy on XRPL DEX." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=How+to+Buy+%24TRUSTLESS" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/30">
+          <!-- Frog shield -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-cyan-300" fill="currentColor">
+            <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
+            <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
+            <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
+          </svg>
+        </span>
+        <span class="font-semibold tracking-wide">Trustless Payments</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="index.html#about" class="hover:text-white">About</a>
+        <a href="index.html#tokenomics" class="hover:text-white">Tokenomics</a>
+        <a href="index.html#roadmap" class="hover:text-white">Roadmap</a>
+        <a href="nfts.html" class="hover:text-white">NFT's</a>
+        <a href="book.html" class="hover:text-white">Book of Kek</a>
+        <a href="team.html" class="hover:text-white">Team</a>
+        <a href="index.html#faq" class="hover:text-white">FAQ</a>
+      </nav>
+
+      <div class="relative z-50">
+        <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
+                class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
+          <span class="sr-only">Open menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+
+        <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
+          <nav class="py-2 text-slate-100 text-sm">
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#about">About</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#roadmap">Roadmap</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#tokenomics">Tokenomics</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFT's</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="buy.html">Buy $TRUSTLESS</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#faq">F.A.Q.</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#contact">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-center">How to Buy <span class="text-cyan-400">$TRUSTLESS</span></h1>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20 space-y-6">
+    <!-- Step 1 -->
+    <section class="glass rounded-2xl p-6">
+      <h2 class="text-xl md:text-2xl font-extrabold text-cyan-300">Step 1 — Install Xaman (XRPL Wallet)</h2>
+      <p class="mt-2 text-slate-300">Download the official mobile wallet to hold XRP and interact with the XRPL DEX.</p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-slate-900 font-semibold hover:bg-slate-100 transition">Google Play</a>
+        <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-slate-900 font-semibold hover:bg-slate-100 transition">App Store</a>
+      </div>
+    </section>
+
+    <!-- Step 2 -->
+    <section class="glass rounded-2xl p-6">
+      <h2 class="text-xl md:text-2xl font-extrabold text-cyan-300">Step 2 — Create Wallet (Safety First)</h2>
+      <ul class="mt-3 list-disc list-inside text-slate-300 space-y-2">
+        <li>Generate your seed/secret in a private place. <strong>Never share it.</strong></li>
+        <li>If using a phone, consider turning on <em>Airplane Mode</em> while writing down the seed (then re-enable internet after).</li>
+        <li>Store the seed <strong>offline</strong> (paper/steel). Don’t screenshot. Don’t email it.</li>
+        <li>Back up your wallet in Xaman after creation.</li>
+      </ul>
+      <p class="mt-3 text-slate-400 text-sm">We will never ask for your secret. Anyone who does is a scammer.</p>
+    </section>
+
+    <!-- Step 3 -->
+    <section class="glass rounded-2xl p-6">
+      <h2 class="text-xl md:text-2xl font-extrabold text-cyan-300">Step 3 — Fund with XRP</h2>
+      <p class="mt-2 text-slate-300">Deposit XRP to your Xaman address from an exchange or another wallet. Keep a small extra amount for network fees.</p>
+    </section>
+
+    <!-- Step 4 -->
+    <section class="glass rounded-2xl p-6">
+      <h2 class="text-xl md:text-2xl font-extrabold text-cyan-300">Step 4 — Buy $TRUSTLESS on the DEX</h2>
+      <p class="mt-2 text-slate-300">Choose any XRPL marketplace below. We’ll add direct links soon.</p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">Magnetic</a>
+        <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">First Ledger</a>
+        <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">XPMarket</a>
+      </div>
+      <p class="mt-4 text-slate-400 text-sm">Some tokens require a trustline before trading. If needed, we’ll display the issuer and limit here (TBA).</p>
+    </section>
+
+    <!-- Help -->
+    <section class="text-center">
+      <p class="text-slate-300">Need help? Ping us in Telegram and we’ll walk you through it.</p>
+      <div class="mt-4">
+        <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Open Telegram</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p>© <span id="year"></span> Trustless Payments. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
+      <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear()
+
+    // Legal modal
+    const legal = `\
+    <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
+    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
+    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
+    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`
+    document.getElementById('legal-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
+      modal.innerHTML = `
+        <div class='absolute inset-0 bg-black/70'></div>
+        <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
+          <div>${legal}</div>
+          <div class='mt-6 text-right'>
+            <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+      document.getElementById('close-legal').onclick = () => modal.remove();
+    });
+
+    // Hamburger menu
+    const menuBtn = document.getElementById('menuBtn');
+    const menu    = document.getElementById('mainMenu');
+    function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
+    function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
+    menuBtn.addEventListener('click', () => {
+      (menuBtn.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('click', (e) => { if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+  </script>
+</body>
+</html>
