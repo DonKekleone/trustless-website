@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trustless Payments — Tokenomics</title>
+<link rel="icon" href="favicon.png" />
+<meta name="description" content="TRUSTLESS tokenomics: 100M fixed supply, fee-driven buy-and-burn, community-first distribution." />
+
+<style>
+  :root{
+    --bg:#05080d;
+    --card:#0d1a26;
+    --ink:#e6f0ff;
+    --muted:#9ab0c9;
+    --line:#1a2a3d;
+    --blue:#3fa3ff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+  /* NAV (match site) */
+  .nav{background:var(--bg);display:flex;align-items:center;justify-content:space-between;
+       padding:15px 20px;border-bottom:1px solid #0d1a26;position:sticky;top:0;z-index:99}
+  .brand{font-weight:800;color:var(--blue);font-size:1.08rem}
+  .menu{display:flex;gap:18px}
+  .menu a{font-weight:600;padding:8px 12px;border-radius:8px}
+  .menu a:hover{background:#0d1a26}
+  .menu .active{background:#0d1a26}
+
+  /* HERO */
+  .hero{padding:36px 0 10px}
+  .eyebrow{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem}
+  h1{margin:.4rem 0 0 0;color:var(--blue);font-size:2rem;line-height:1.2}
+  .sub{color:#cfe0ff;max-width:820px;margin-top:8px}
+
+  /* CARD + GRID */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin:22px 0 50px}
+  .divider{height:1px;background:var(--line);margin:20px 0}
+  .muted{color:var(--muted)}
+  .list{margin:0;padding-left:18px}
+  .list li{margin:8px 0;line-height:1.6}
+
+  /* Image */
+  .chart{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:#0b1520}
+
+  /* Table-ish blocks */
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:8px 14px}
+  .kv div:nth-child(odd){color:var(--muted)}
+
+  /* FOOTER */
+  footer{border-top:1px solid #0d1a26;color:var(--muted);padding:28px 0;margin-top:40px}
+
+  /* Responsive */
+  @media (max-width:900px){
+    .grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="brand">Trustless Payments</a>
+  <div class="menu" role="navigation" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="token.html">Token</a>
+    <a href="nfts.html">NFTs</a>
+    <a href="whitepaper.html">Whitepaper</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero container">
+  <div class="eyebrow">Tokenomics</div>
+  <h1>TRUSTLESS — 100M Fixed Supply</h1>
+  <p class="sub">Deflation by design: escrow fee buy-and-burn plus tight circulation. Built for utility and aligned incentives.</p>
+</header>
+
+<main class="container">
+  <section class="grid">
+    <!-- Left: Text -->
+    <article class="card">
+      <h2 style="margin:0 0 8px">Distribution</h2>
+      <p class="muted" style="margin-top:0">Initial allocation targets. Subject to governance refinement over time.</p>
+      <ul class="list">
+        <li><strong>Community & Liquidity — 45%</strong><br><span class="muted">DEX pools, liquidity incentives, community bootstrapping.</span></li>
+        <li><strong>Marketing & Partnerships — 12%</strong><br><span class="muted">Listings, creators, bounties, ecosystem collabs.</span></li>
+        <li><strong>NFT Staking & Holder Rewards — 10%</strong><br><span class="muted">Trustless Toads + future collections utility rewards.</span></li>
+        <li><strong>Development & Ecosystem — 13%</strong><br><span class="muted">Bot upgrades, infra, audits, feature R&D.</span></li>
+        <li><strong>Team & Advisors (Vested) — 12%</strong><br><span class="muted">Long-term incentives; multi-year linear vesting.</span></li>
+        <li><strong>Treasury / Reserve — 8%</strong><br><span class="muted">Stability buffer, opportunistic buys, cross-chain expansion.</span></li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h3 style="margin:0 0 8px">Value Loops</h3>
+      <ul class="list">
+        <li><strong>Fee Burn Engine:</strong> 5.89% escrow fee → 50% dev wallet / 50% market-buy & burn.</li>
+        <li><strong>NFT Utility:</strong> Holders can unlock fee discounts (e.g., down to 1%) and staking rewards.</li>
+        <li><strong>Governance Hooks:</strong> Future on-chain votes for treasury usage & roadmap priorities.</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h3 style="margin:0 0 8px">Vesting & Liquidity</h3>
+      <div class="kv">
+        <div>Team / Advisors</div><div>12–24 month linear vest after a short cliff</div>
+        <div>Marketing</div><div>Programmatic releases to prevent dumps</div>
+        <div>Liquidity</div><div>Seed DEX pools; consider partial LP token burn</div>
+      </div>
+    </article>
+
+    <!-- Right: Chart -->
+    <aside class="card">
+      <h2 style="margin:0 0 8px">Pie Chart</h2>
+      <p class="muted" style="margin-top:0">Visual snapshot of the 100M allocation.</p>
+      <!-- Place tokenomics.png next to this HTML file -->
+      <img class="chart" src="tokenomics.png" alt="Pie chart of TRUSTLESS token distribution: 45% Community & Liquidity, 12% Marketing & Partnerships, 10% NFT Staking & Holder Rewards, 13% Development & Ecosystem, 12% Team & Advisors, 8% Treasury / Reserve." />
+      <p style="margin-top:10px">
+        <a href="tokenomics.png" download>Download chart (PNG)</a>
+      </p>
+    </aside>
+  </section>
+</main>
+
+<footer>
+  <div class="container">© <span id="y"></span> Trustless Payments. All rights reserved.</div>
+</footer>
+
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
