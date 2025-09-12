@@ -1,181 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Book of Kek — Trustless Payments</title>
-<link rel="icon" href="favicon.png" />
-<meta name="description" content="The Book of Kek — free download. From the desk of Don Kek & the Trustless Toad Mafia. Honor through automation." />
-
-<style>
-  :root{
-    --bg:#05080d;
-    --card:#0d1a26;
-    --ink:#e6f0ff;
-    --muted:#9ab0c9;
-    --line:#1a2a3d;
-    --blue:#3fa3ff;  /* same blue as WP page */
-    --overlay:rgba(5,8,13,.85);
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-  a{color:inherit;text-decoration:none}
-  .container{max-width:1100px;margin:0 auto;padding:0 20px}
-
-  /* NAV (match index with hamburger) */
-  .nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid #0d1a26}
-  .nav-wrap{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
-  .brand{font-weight:800;color:var(--blue);font-size:1.08rem}
-  .menu{display:none;gap:18px}
-  .menu a{font-weight:600;padding:8px 12px;border-radius:8px}
-  .menu a:hover{background:#0d1a26}
-  .hamburger{display:inline-flex;border:1px solid var(--line);background:transparent;color:var(--ink);
-             padding:10px;border-radius:10px;cursor:pointer}
-  .hamburger:focus{outline:2px solid var(--line)}
-
-  /* Mobile dropdown */
-  .drawer{position:fixed;right:16px;top:76px;min-width:220px;background:var(--overlay);
-          border:1px solid var(--line);backdrop-filter:blur(6px);border-radius:14px;padding:12px;display:none}
-  .drawer a{display:block;padding:10px 12px;border-radius:10px}
-  .drawer a:hover{background:#0d1a26}
-
-  /* HERO */
-  .hero{padding:34px 0 20px}
-  .kicker{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem}
-  h1{margin:16px 0 0;color:var(--blue);font-size:2rem;line-height:1.2;text-align:center}
-  .sub{color:#cfe0ff;text-align:center;max-width:900px;margin:8px auto 0}
-
-  /* Cover + actions */
-  .cover{margin:26px auto;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  .cover img{display:block;width:100%;height:auto}
-  .pad{padding:18px}
-  .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-  .btn{display:inline-flex;align-items:center;gap:.45rem;background:linear-gradient(135deg,#2fe0b6,#3fa3ff);
-       color:#03111d;font-weight:800;border-radius:12px;padding:12px 16px}
-  .btn:hover{filter:brightness(1.08)}
-  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
-
-  /* Content blocks */
-  .section{margin:28px 0;background:var(--card);border:1px solid var(--line);border-radius:14px}
-  .section .pad{padding:18px}
-  .h2{font-size:1.2rem;font-weight:800;margin:0 0 10px}
-  .muted{color:var(--muted)}
-  .list{margin:0;padding-left:18px}
-  .list li{margin:8px 0;line-height:1.6}
-
-  footer{border-top:1px solid #0d1a26;color:var(--muted);padding:28px 0;margin-top:34px}
-
-  /* Desktop menu shows; hamburger hides */
-  @media (min-width:900px){
-    .menu{display:flex}
-    .hamburger{display:none}
-    .drawer{display:none !important}
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Book of KEK — Trustless</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-wrap container">
-    <a href="index.html" class="brand">Trustless Payments</a>
-
-    <!-- desktop menu -->
-    <div class="menu" role="navigation" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="token.html">Token</a>
-      <a href="nfts.html">NFTs</a>
-      <a href="whitepaper.html">Whitepaper</a>
+  <!-- ======== Top Navigation ======== -->
+  <header>
+    <div class="logo">
+      <a href="index.html">Trustless Payments</a>
     </div>
-
-    <!-- mobile toggle -->
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
-      <!-- 3 lines -->
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
-  </div>
-</nav>
-
-<!-- mobile drawer -->
-<div id="drawer" class="drawer" role="menu" aria-labelledby="hamburger">
-  <a href="index.html" role="menuitem">Home</a>
-  <a href="token.html" role="menuitem">Token</a>
-  <a href="nfts.html" role="menuitem">NFTs</a>
-  <a href="whitepaper.html" role="menuitem">Whitepaper</a>
-</div>
-
-<!-- HERO -->
-<header class="hero container">
-  <div class="kicker">Free Download</div>
-  <h1>💥 THE BOOK OF KEK (FREE)</h1>
-  <p class="sub">— from the desk of Don Kek &amp; the Trustless Toad Mafia —</p>
-</header>
-
-<!-- COVER + ACTIONS -->
-<section class="container cover">
-  <img src="book-cover.png" alt="The Book of Kek cover" />
-  <div class="pad">
-    <div class="actions">
-      <a class="btn" href="book-of-kek.pdf" download>Download PDF</a>
-      <a class="btn ghost" href="#contents">Read what’s inside</a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTENT -->
-<main class="container">
-  <section id="contents" class="section">
-    <div class="pad">
-      <h2 class="h2">What you’re getting (no fluff, all steel)</h2>
-      <ul class="list">
-        <li><strong>Mindset that bites:</strong> a boundary that kills 80% of nonsense on contact.</li>
-        <li><strong>Proof-Then-Pay, codified:</strong> turn talk into milestones → releases → refunds.</li>
-        <li><strong>Hype detector:</strong> two signals that slice through charisma and catch the lie.</li>
-        <li><strong>Rituals that stick:</strong> simple reps so you don’t fold at 2 a.m.</li>
-        <li><strong>Mechanized integrity:</strong> a peek at the tool that enforces rules—no begging.</li>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="whitepaper.html">Whitepaper</a></li>
+        <li><a href="book.html" class="active">Book of Kek</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-    </div>
-  </section>
+    </nav>
+  </header>
 
-  <section class="section">
-    <div class="pad">
-      <h2 class="h2">🐸 The Family Business (how the flywheel turns)</h2>
-      <ul class="list">
+  <main>
+    <section class="hero center">
+      <h1>💥 THE BOOK OF KEK (FREE) 💥</h1>
+      <p><em>—from the desk of Don Kek & the Trustless Toad Mafia—</em></p>
+      <img src="book-cover.png" alt="Book of Kek Cover" class="book-cover" />
+      <p>
+        <a href="trustless_book_of_kek.pdf" class="download-btn" download>
+          📥 Download the Book of Kek (PDF)
+        </a>
+      </p>
+    </section>
+
+    <section class="book-of-kek">
+      <p>Listen up. We’re done paying first and praying later.<br>
+      This ain’t church. This is business. In our swamp, promises get tested… or payments don’t move. Capisce? 😎</p>
+
+      <h2>🧱 What you’re getting (no fluff, all steel)</h2>
+      <p>The Book of KEK is the little black book the wise guys whisper about—short chapters, heavy lessons, and a Trustless Mindset + Trustless System that makes scams tap out before they waste your oxygen.</p>
+      <ul>
+        <li>🧠 Mindset that bites: the 9-word boundary that kills 80% of nonsense on contact.</li>
+        <li>🧾 Proof-Then-Pay, codified: turn talk into milestones → releases → refunds (on rails).</li>
+        <li>👁️ Hype detector: two signals that slice through charisma and catch the lie before it lands.</li>
+        <li>🧘 Rituals that stick: simple reps that install new reflexes in your gut (so you don’t fold at 2 a.m.).</li>
+        <li>🔧 Mechanized integrity: a peek at the tool that enforces your rules automatically—no begging, no gatekeepers.</li>
+      </ul>
+
+      <h2>🐸 The Family Business (how the flywheel turns)</h2>
+      <ul>
         <li>Book teaches the code of conduct (in your bones).</li>
         <li>Bot runs the rules (escrow, milestones, auto-release/refund).</li>
         <li>Tokens grease the machine (utility + incentives).</li>
-        <li>NFTs fund the operation (membership, culture, firepower).</li>
-        <li>You? Stop leaking time to clowns and start shipping value like a boss.</li>
+        <li>NFTs are the heart of the Trustless empire—community, culture, and rewards.</li>
+        <li>You stop leaking time to clowns and start shipping value like a boss.</li>
       </ul>
-    </div>
-  </section>
-</main>
 
-<footer>
-  <div class="container">© <span id="y"></span> Trustless Payments. All rights reserved.</div>
-</footer>
+      <h2>🩸 A quick story from the streets</h2>
+      <p>Kek paid first. The “king” vanished. Rent cried. Pride bled.<br>
+      Then he did the only thing that works: he rebuilt his operating system—how he thinks, what he tolerates, and the rails his work runs on.</p>
+      <p>That OS is what you’re holding: The Book of KEK.<br>
+      Not a pep talk. Not a whitepaper. A weaponized philosophy that drops into your subconscious and rewires the reflexes you use when money, promises, and people collide.</p>
 
-<script>
-  // year
-  document.getElementById('y').textContent = new Date().getFullYear();
+      <h2>🧭 Two Tracks. One Outcome.</h2>
+      <p><strong>Track 1 — Trustless Mindset (Personal OS):</strong> Build a spine you don’t have to defend. Boundaries, incentives, proof-then-pay habits baked into reflex.</p>
+      <p><strong>Track 2 — Trustless System (Practical Rails):</strong> Run deals on rails—escrows, milestones, releases, refunds. No drama, no guesswork. Conditions met → value moves.</p>
+      <p>Mindset makes you hard to exploit.<br>System makes you easy to work with.</p>
 
-  // hamburger toggle
-  const btn = document.getElementById('hamburger');
-  const drawer = document.getElementById('drawer');
-  btn.addEventListener('click', () => {
-    const open = drawer.style.display === 'block';
-    drawer.style.display = open ? 'none' : 'block';
-    btn.setAttribute('aria-expanded', String(!open));
-  });
-  // close drawer when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!drawer.contains(e.target) && !btn.contains(e.target)) {
-      drawer.style.display = 'none';
-      btn.setAttribute('aria-expanded','false');
-    }
-  });
-</script>
+      <h2>⚔️ Why this hits different</h2>
+      <ul>
+        <li>Written to integrate, not to impress. Short stories + sharp rules that sink into the subconscious and run automatically under stress.</li>
+        <li>Personal development with teeth. Confidence grounded in verifiable process, not slogans.</li>
+        <li>Heavy knowledge. The kind that changes how you negotiate, hire, sell, build, and sleep. You’ll feel it in your gut first—then in your calendar, bank account, and relationships.</li>
+      </ul>
+      <p><strong>Big Promise:</strong> finish this book and you’ll think cleaner, decide faster, and stop bleeding time to people and systems that never deserved it.</p>
+
+      <h2>👥 Who this book is for</h2>
+      <ul>
+        <li>People who’ve been burned and refuse to grow bitter—they grow systems.</li>
+        <li>Anyone who believes character matters—and that code can help enforce it.</li>
+        <li>Builders, devs, designers, artists, service killers who want to be kinder without being naive and firm without being toxic.</li>
+      </ul>
+      <p><strong>Not for:</strong> hype-chasers, entitlement, or “pay me first then I’ll think about it” energy.</p>
+
+      <h2>📜 The Don’s Orders</h2>
+      <ul>
+        <li>Stop trusting. Start verifying.</li>
+        <li>Stop apologizing for boundaries. They’re the gift.</li>
+        <li>Stop hoping for better people. Build better rules.</li>
+      </ul>
+
+      <h2>🟩 Your move</h2>
+      <p>The book’s free. The upgrade isn’t.<br>
+      Read one chapter tonight, and tomorrow you’ll walk different.</p>
+      <p><strong>Grab The Book of KEK.</strong><br>
+      Read the book to change your defaults.<br>
+      Use the bot when talk turns to terms.<br>
+      Join via tokens/NFTs if you want to help build the future.</p>
+      <p>(No promises, no price talk—just participation in a system that rewards delivery and punishes nonsense.)</p>
+
+      <p><strong>Make ’em earn it—or they don’t earn anything. 🐸💣🟢<br>
+      Honor through automation.</strong></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Trustless Payments</p>
+  </footer>
 </body>
 </html>
