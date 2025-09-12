@@ -3,70 +3,38 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trustless Payments — Honor through automation</title>
+  <title>Trustless — Honor through automation</title>
   <meta name="description" content="Trustless is a Telegram escrow bot for XRPL tokens. Create escrowed payments released only when goals are hit. 5.89% fee (50% dev / 50% buy+burn)." />
-  <meta property="og:title" content="Trustless Payments — Honor through automation" />
+  <meta property="og:title" content="Trustless — Honor through automation" />
   <meta property="og:description" content="XRPL escrow bot + deflationary tokenomics. Build on honesty, not trust." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless" />
   <meta name="theme-color" content="#0ea5e9" />
-  <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .grid-bg{background-image:linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:24px 24px}
-    .glass{backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12)}
-    html{scroll-behavior:smooth}
-    .drawer{display:none}
+    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100">
-
-  <!-- NAV (desktop menu + mobile hamburger & drawer) -->
+  <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
+      <a href="#" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/30">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-cyan-300"><path d="M7 10a5 5 0 1 1 10 0v2h1a3 3 0 1 1 0 6H6a3 3 0 1 1 0-6h1v-2Z"/><circle cx="9" cy="7" r="1.5"/><circle cx="15" cy="7" r="1.5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-cyan-300"><path d="M7 10a5 5 0 1 1 10 0v2h1a3 3 0 1 1 0 6H6a3 3 0 1 1 0-6h1v-2Z"/><circle cx="9" cy="7" r="1.5" /><circle cx="15" cy="7" r="1.5" /></svg>
         </span>
-        <span class="font-semibold tracking-wide text-cyan-400">Trustless Payments</span>
+        <span class="font-semibold tracking-wide">Trustless</span>
       </a>
-
-      <!-- Desktop -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="#how" class="hover:text-white">How it works</a>
-        <a href="#links" class="hover:text-white">Quick links</a>
         <a href="#fees" class="hover:text-white">Fees & Burn</a>
         <a href="#roadmap" class="hover:text-white">Roadmap</a>
         <a href="#faq" class="hover:text-white">FAQ</a>
       </nav>
-
       <div class="flex items-center gap-2">
-        <a href="https://t.me/TrustlessBot" target="_blank" class="hidden sm:inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">Open Bot</a>
-        <!-- Mobile hamburger -->
-        <button id="hamburger" class="inline-flex md:hidden items-center justify-center h-10 w-10 rounded-xl border border-white/15 hover:bg-white/5">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile drawer -->
-    <div id="drawer" class="drawer md:hidden absolute right-4 top-16 w-56 glass rounded-2xl p-2">
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="#how">How it works</a>
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="#links">Quick links</a>
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="#fees">Fees & Burn</a>
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="#roadmap">Roadmap</a>
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="#faq">FAQ</a>
-      <div class="my-1 border-t border-white/10"></div>
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="whitepaper.html">Whitepaper</a>
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="tokenomics.html">Tokenomics</a>
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="nfts.html">NFTs</a>
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="book.html">Book of Kek</a>
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="team.html">Team</a>
-      <a class="block rounded-xl px-3 py-2 hover:bg-white/5" href="about.html">About</a>
-      <div class="mt-2">
-        <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex w-full items-center justify-center rounded-xl bg-cyan-500 px-3 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">Open Bot</a>
+        <a href="https://t.me/TrustlessBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-slate-900 font-semibold hover:bg-cyan-400 transition">Open Bot</a>
       </div>
     </div>
   </header>
@@ -96,15 +64,6 @@
     </div>
   </section>
 
-  <!-- PROOF BAR -->
-  <section class="py-4 border-y border-white/10 bg-slate-900/40">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-300 flex flex-wrap gap-6 items-center justify-between">
-      <div>✅ Live now on XRPL</div>
-      <div>🔥 Fee split: 50% dev / 50% buy+burn</div>
-      <div>🪙 NFT perks: holders pay 1% (coming soon)</div>
-    </div>
-  </section>
-
   <!-- HOW IT WORKS -->
   <section id="how" class="py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -122,31 +81,6 @@
           <div class="text-cyan-300 font-semibold">3. Automate</div>
           <p class="mt-2 text-slate-300">If goals are hit before the deadline, funds release. Otherwise, they refund. No middlemen. No drama.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUICK LINKS (cards to pro pages, no mafia lore) -->
-  <section id="links" class="py-16 bg-slate-900/40 border-y border-white/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold">Quick links</h2>
-      <div class="mt-8 grid md:grid-cols-4 gap-6">
-        <a href="whitepaper.html" class="glass rounded-2xl p-6 block hover:bg-white/5 transition">
-          <div class="text-cyan-300 font-semibold">Whitepaper</div>
-          <p class="mt-2 text-slate-300">Concepts, mechanics, and roadmap.</p>
-        </a>
-        <a href="tokenomics.html" class="glass rounded-2xl p-6 block hover:bg-white/5 transition">
-          <div class="text-cyan-300 font-semibold">Tokenomics</div>
-          <p class="mt-2 text-slate-300">100M fixed supply. Fee-driven burn.</p>
-        </a>
-        <a href="nfts.html" class="glass rounded-2xl p-6 block hover:bg-white/5 transition">
-          <div class="text-cyan-300 font-semibold">NFTs</div>
-          <p class="mt-2 text-slate-300">Trustless Toads & Enforcer Agents.</p>
-        </a>
-        <a href="about.html" class="glass rounded-2xl p-6 block hover:bg-white/5 transition">
-          <div class="text-cyan-300 font-semibold">About</div>
-          <p class="mt-2 text-slate-300">Why we replace trust with code.</p>
-        </a>
       </div>
     </div>
   </section>
@@ -215,8 +149,8 @@
           <p class="mt-2 text-slate-300">Never. The bot does not ask for or store your secrets. You fund escrows from your own wallet.</p>
         </details>
         <details class="glass rounded-2xl p-6">
-          <summary class="cursor-pointer font-semibold">Can I use a custom domain?</summary>
-          <p class="mt-2 text-slate-300">Yes. Start free, then attach a domain later with one click on most hosts.</p>
+          <summary class="cursor-pointer font-semibold">Wen moon? 🐸🚀</summary>
+          <p class="mt-2 text-slate-300">Moon is not on the roadmap. We build, burn fees, and let the market decide the altitude.</p>
         </details>
         <details class="glass rounded-2xl p-6">
           <summary class="cursor-pointer font-semibold">Where do fees go?</summary>
@@ -240,32 +174,18 @@
 
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p>© <span id="year"></span> Trustless Payments. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
+      <p>© <span id="year"></span> Trustless. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
       <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
     </div>
   </footer>
 
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile drawer
-    const hamburger = document.getElementById('hamburger');
-    const drawer = document.getElementById('drawer');
-    document.addEventListener('click', (e) => {
-      const inside = drawer.contains(e.target) || hamburger.contains(e.target);
-      if (!inside) drawer.style.display = 'none';
-    });
-    hamburger.addEventListener('click', () => {
-      drawer.style.display = drawer.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // Simple modal stub for legal link
-    const legal = `
-      <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
-      <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
-      <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
-      <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
+    document.getElementById('year').textContent = new Date().getFullYear()
+    const legal = `\
+    <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
+    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
+    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
+    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`
     document.getElementById('legal-link').addEventListener('click', (e) => {
       e.preventDefault();
       const modal = document.createElement('div');
@@ -277,10 +197,10 @@
           <div class='mt-6 text-right'>
             <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
           </div>
-        </div>`;
+        </div>`
       document.body.appendChild(modal);
       document.getElementById('close-legal').onclick = () => modal.remove();
-    });
+    })
   </script>
 </body>
 </html>
