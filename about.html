@@ -3,43 +3,65 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trustless Payments</title>
-  <meta name="description" content="Trustless Payments — Honor through automation. Code replaces trust with verifiable conditions." />
-  <meta name="theme-color" content="#0ea5e9" />
+  <title>About — Trustless Payments</title>
+  <link rel="icon" href="favicon.png" />
+  <meta name="description" content="Trustless Payments — Honor through automation. The Mafia of Automation: escrow, burns, NFTs, and a code of conduct that makes scams tap out." />
+  <meta property="og:title" content="About — Trustless Payments" />
+  <meta property="og:description" content="The Trustless Family: Bot Enforcers, burns, and utility-first NFTs. Honor through automation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+About" />
+  <meta name="theme-color" content="#00F000" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    :root{
+      --accent:#00F000;             /* site accent: green */
+      --accent-10: rgba(0,240,0,.10);
+      --accent-30: rgba(0,240,0,.30);
+      --sub:#FACC15;                /* bright yellow for sub-headlines */
+    }
     .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
     .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
     html { scroll-behavior: smooth; }
+    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); }
+    .icon-pill svg { color: var(--accent); }
+    .brand-accent  { color: var(--accent) !important; }
+    .subhead       { color: var(--sub) !important; }
   </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100">
+<body class="min-h-screen bg-slate-950 text-slate-100" id="top">
   <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/30">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-cyan-300" fill="currentColor">
+      <a href="index.html#top" class="flex items-center gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl icon-pill">
+          <!-- Frog shield -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
             <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
             <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
           </svg>
         </span>
-        <span class="font-semibold tracking-wide">Trustless Payments</span>
+        <span class="font-semibold tracking-wide brand-accent">Trustless Payments</span>
       </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="index.html#how" class="hover:text-white">How it works</a>
+        <a href="index.html#fees" class="hover:text-white">Fees & Burn</a>
+      </nav>
 
       <!-- Hamburger -->
       <div class="relative z-50">
         <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
-          class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
+                class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
           <span class="sr-only">Open menu</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
           </svg>
         </button>
+
         <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
           <nav class="py-2 text-slate-100 text-sm">
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="about.html">About</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
@@ -55,45 +77,163 @@
     </div>
   </header>
 
-  <!-- ABOUT CONTENT -->
+  <!-- HERO -->
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-20">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-cyan-400">Trustless Payments</h1>
-      <div class="glass mt-8 rounded-2xl p-6 text-slate-300 leading-relaxed">
-        <p><strong>Trust is a vulnerability. TRUSTLESS is the patch.</strong></p>
-        <p class="mt-4">
-          We don’t beg for honesty—we enforce it with code. Autonomous contracts. Immutable conditions.
-          Payments that execute <em>only</em> when the truth lines up with the ledger. No middlemen,
-          no sweet talk, no exit scams.
-        </p>
-        <p class="mt-4">
-          This is for the builders, the breakers, the ones who got rugged and came back sharper.
-          We’re not creating a system that needs to be trusted—we’re replacing the system entirely.
-        </p>
-        <p class="mt-4 font-semibold text-white">
-          The future is a level playing field. And we’re booting it up now.
-        </p>
-      </div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold">Trustless Payments</h1>
+      <p class="mt-3 text-slate-300 max-w-3xl">Honor through automation. We bind promises to verifiable conditions—so value only moves when the rules are met.</p>
     </div>
   </section>
+
+  <!-- CONTENT -->
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20 space-y-6">
+    <section class="glass rounded-2xl p-6">
+      <h2 class="subhead text-2xl font-extrabold">🐸 TRUSTLESS TOADS</h2>
+      <p class="mt-2 text-slate-300">The Mafia of Automation. Honor Through Escrow.</p>
+    </section>
+
+    <section class="glass rounded-2xl p-6">
+      <h2 class="subhead text-2xl font-extrabold">🍝 The Family Business</h2>
+      <p class="mt-2 text-slate-300">
+        Out here in the wild west of crypto, everyone’s trying to hustle you. Rug-pulls, ghost deals, fake promises.
+        The streets are crawling with clowns. But we ain’t clowns. We’re Toads in suits.
+      </p>
+      <p class="mt-2 text-slate-300">
+        And when the Trustless Family sits down at the table, every deal goes smooth. Why? Because our Bot Enforcers
+        make sure nobody skips the bill. Code is our muscle. Escrow is our baseball bat.
+      </p>
+    </section>
+
+    <section class="glass rounded-2xl p-6">
+      <h2 class="subhead text-2xl font-extrabold">🔐 The Enforcer Bot</h2>
+      <p class="mt-2 text-slate-300">Think of the Bot like a stone-faced collector:</p>
+      <ul class="mt-3 list-disc list-inside text-slate-300 space-y-1">
+        <li>It holds the cash in escrow.</li>
+        <li>It don’t move until the conditions are met.</li>
+        <li>You miss the deadline? Forget about it — funds go back.</li>
+      </ul>
+      <p class="mt-3 text-slate-300">No scams. No sweet-talk. No wiggle room. You deal with the Bot, you deal with the Family.</p>
+    </section>
+
+    <section class="glass rounded-2xl p-6">
+      <h2 class="subhead text-2xl font-extrabold">💸 The Cut</h2>
+      <p class="mt-2 text-slate-300">
+        Every deal, the house takes its slice — <strong>5.89%</strong>. That’s the Family’s tribute.
+        Half goes to the Don’s war chest (dev wallet, keep the lights on, buy the cigars).
+        Half goes to the Burn Pit: auto-buying $TRUSTLESS off the market and sending it to the graveyard.
+        Supply shrinks, price gets juiced. That’s deflation, capisce?
+      </p>
+    </section>
+
+    <section class="glass rounded-2xl p-6">
+      <h2 class="subhead text-2xl font-extrabold">🐸 Made Men (NFTs)</h2>
+      <div class="mt-2 text-slate-300 space-y-3">
+        <div>
+          <p class="font-semibold">Trustless Toads (123)</p>
+          <ul class="list-disc list-inside mt-1 space-y-1">
+            <li>Suits, cigars, briefcases.</li>
+            <li>They slash your fees down to 1%.</li>
+            <li>You’re family now.</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold">Escrow Enforcement Unit (33)</p>
+          <ul class="list-disc list-inside mt-1 space-y-1">
+            <li>These ain’t frogs, they’re chrome-plated robots.</li>
+            <li>Hold one and you sit at the roundtable.</li>
+            <li>Voting rights. Revenue cuts. A voice in the Family’s future.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass rounded-2xl p-6">
+      <h2 class="subhead text-2xl font-extrabold">🔥 Tokenomics</h2>
+      <p class="mt-2 text-slate-300">
+        $TRUSTLESS — the Family’s currency. Supply? Fixed. You don’t print more respect.
+        Every escrow burns it tighter. Utility: pay fees, get perks, feed the cult fire.
+      </p>
+    </section>
+
+    <section class="glass rounded-2xl p-6">
+      <h2 class="subhead text-2xl font-extrabold">📜 Roadmap (The Family Plan)</h2>
+      <ol class="mt-2 list-decimal list-inside text-slate-300 space-y-1">
+        <li>First Score — XRPL escrow bot live. Fees flowing. Burns starting.</li>
+        <li>Territory Expansion — Multi-chain operations. Bigger jobs, bigger scores.</li>
+        <li>Toads Minted — 123 Family portraits sold to the crew.</li>
+        <li>Enforcement Unit Drops — 33 Bot Enforcers hit the streets.</li>
+        <li>Council Activated — Governance, fee sharing, Family rule.</li>
+      </ol>
+    </section>
+
+    <section class="glass rounded-2xl p-6">
+      <h2 class="subhead text-2xl font-extrabold">🕶️ Lore</h2>
+      <p class="mt-2 text-slate-300">
+        Picture this: a smoky backroom, green felt on the table. Toads in pinstripe suits. Gold chains glinting.
+        A cigar smolders. At the door, the Bot Enforcers stand watch — red-eyed, chrome-skinned, incorruptible.
+      </p>
+      <p class="mt-2 text-slate-300">
+        The deal is struck. No scams, no lies, no “oops my bad.” Funds only move when the Bot says so.
+        The Family grows. The outsiders get burned. $TRUSTLESS gets scarcer. And the cult? Stronger every night.
+      </p>
+    </section>
+
+    <section class="glass rounded-2xl p-6">
+      <h2 class="subhead text-2xl font-extrabold">🎯 Conclusion</h2>
+      <p class="mt-2 text-slate-300">
+        This ain’t just another token. This is The Family’s Empire. Every escrow makes us stronger.
+        Every burn makes us richer. Every NFT makes you part of the Family.
+        Scammers had their turn. Now the Toad Mafia runs the block.
+      </p>
+      <p class="mt-3 text-slate-100 font-semibold">🚬🐸 TRUSTLESS — Honor Through Automation.</p>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p>© <span id="year"></span> Trustless. All rights reserved.</p>
+      <p>© <span id="year"></span> Trustless. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
+      <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
     </div>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear()
-    const menuBtn=document.getElementById('menuBtn'),menu=document.getElementById('mainMenu');
-    function closeMenu(){menu.classList.add('hidden');menuBtn.setAttribute('aria-expanded','false')}
-    function openMenu(){menu.classList.remove('hidden');menuBtn.setAttribute('aria-expanded','true')}
-    menuBtn.addEventListener('click',()=>{const open=menuBtn.getAttribute('aria-expanded')==='true';open?closeMenu():openMenu()});
-    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
-    document.addEventListener('click',e=>{if(!menu.contains(e.target)&&!menuBtn.contains(e.target))closeMenu()});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Legal modal
+    const legal = `\
+    <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
+    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
+    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
+    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
+    document.getElementById('legal-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
+      modal.innerHTML = `
+        <div class='absolute inset-0 bg-black/70'></div>
+        <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
+          <div>${legal}</div>
+          <div class='mt-6 text-right'>
+            <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+      document.getElementById('close-legal').onclick = () => modal.remove();
+
+    // Hamburger menu
+    const menuBtn = document.getElementById('menuBtn');
+    const menu    = document.getElementById('mainMenu');
+    function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
+    function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
+    menuBtn.addEventListener('click', () => {
+      (menuBtn.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('click', (e) => { if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
   </script>
 </body>
 </html>
