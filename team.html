@@ -24,24 +24,20 @@
       <!-- Logo: frog in shield + text -->
       <a href="index.html" aria-label="Trustless Payments — Home" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#00F000]/10 ring-1 ring-[#00F000]/30">
-          <!-- Simple Frog-in-Shield SVG (neutral expression) -->
+          <!-- Simple Frog-in-Shield SVG -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="h-5 w-5 text-[#00F000]" fill="currentColor" role="img" aria-hidden="true">
-            <!-- Shield -->
             <path d="M32 4l18 8v14c0 13.2-9.1 23.7-18 27-8.9-3.3-18-13.8-18-27V12l18-8z"/>
-            <!-- Frog eyes -->
             <circle cx="24.5" cy="26" r="2.1" fill="currentColor"/>
             <circle cx="39.5" cy="26" r="2.1" fill="currentColor"/>
-            <!-- Eye pupils -->
             <circle cx="24.5" cy="26" r="1" fill="#0b1324"/>
             <circle cx="39.5" cy="26" r="1" fill="#0b1324"/>
-            <!-- Neutral mouth -->
             <path d="M24 36h16" stroke="#0b1324" stroke-width="2" stroke-linecap="round" fill="none"/>
           </svg>
         </span>
         <span class="font-semibold tracking-wide text-[#00F000]">Trustless Payments</span>
       </a>
 
-      <!-- Desktop quick links (mirror index) -->
+      <!-- Desktop quick links -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="index.html#about" class="hover:text-[#00F000]">About</a>
         <a href="index.html#tokenomics" class="hover:text-[#00F000]">Tokenomics</a>
@@ -49,7 +45,7 @@
         <a href="index.html#faq" class="hover:text-[#00F000]">FAQ</a>
       </nav>
 
-      <!-- Right: Hamburger dropdown (same order as index) -->
+      <!-- Hamburger dropdown -->
       <div class="relative z-50">
         <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
                 class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
@@ -68,6 +64,7 @@
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#nfts">NFT's</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#buy">Buy $TRUSTLESS</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="whitepaper.html">Whitepaper</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="team.html">Team</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#faq">F.A.Q.</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#contact">Contact</a>
@@ -148,15 +145,13 @@
   </footer>
 
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear()
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Legal modal
     const legal = `\
     <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
     <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
     <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
-    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`
+    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
     document.getElementById('legal-link').addEventListener('click', (e) => {
       e.preventDefault();
       const modal = document.createElement('div');
@@ -173,19 +168,14 @@
       document.getElementById('close-legal').onclick = () => modal.remove();
     });
 
-    // Hamburger dropdown logic
     const menuBtn = document.getElementById('menuBtn');
     const menu    = document.getElementById('mainMenu');
-
     function closeMenu() { menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded', 'false'); }
     function openMenu()  { menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded', 'true'); }
-
     menuBtn.addEventListener('click', () => {
       const open = menuBtn.getAttribute('aria-expanded') === 'true';
       open ? closeMenu() : openMenu();
     });
-
-    // close on link click, outside click, or ESC
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
     document.addEventListener('click', (e) => {
       if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
