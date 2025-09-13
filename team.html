@@ -9,7 +9,7 @@
   <meta property="og:description" content="Lean crew shipping fast: Don Kek & Agent-01 (GPT-5 Thinking)." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Team" />
-  <meta name="theme-color" content="#0ea5e9" />
+  <meta name="theme-color" content="#00F000" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
@@ -22,25 +22,31 @@
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <!-- Logo: frog in shield + text -->
-      <a href="index.html" class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/30">
-          <!-- Frog in shield SVG -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-cyan-300" fill="currentColor">
-            <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
-            <circle cx="9.2" cy="9.4" r="1.1" fill="currentColor" class="text-slate-900"></circle>
-            <circle cx="14.8" cy="9.4" r="1.1" fill="currentColor" class="text-slate-900"></circle>
-            <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
+      <a href="index.html" aria-label="Trustless Payments — Home" class="flex items-center gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#00F000]/10 ring-1 ring-[#00F000]/30">
+          <!-- Simple Frog-in-Shield SVG (neutral expression) -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="h-5 w-5 text-[#00F000]" fill="currentColor" role="img" aria-hidden="true">
+            <!-- Shield -->
+            <path d="M32 4l18 8v14c0 13.2-9.1 23.7-18 27-8.9-3.3-18-13.8-18-27V12l18-8z"/>
+            <!-- Frog eyes -->
+            <circle cx="24.5" cy="26" r="2.1" fill="currentColor"/>
+            <circle cx="39.5" cy="26" r="2.1" fill="currentColor"/>
+            <!-- Eye pupils -->
+            <circle cx="24.5" cy="26" r="1" fill="#0b1324"/>
+            <circle cx="39.5" cy="26" r="1" fill="#0b1324"/>
+            <!-- Neutral mouth -->
+            <path d="M24 36h16" stroke="#0b1324" stroke-width="2" stroke-linecap="round" fill="none"/>
           </svg>
         </span>
-        <span class="font-semibold tracking-wide">Trustless Payments</span>
+        <span class="font-semibold tracking-wide text-[#00F000]">Trustless Payments</span>
       </a>
 
       <!-- Desktop quick links (mirror index) -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a href="index.html#about" class="hover:text-white">About</a>
-        <a href="index.html#tokenomics" class="hover:text-white">Tokenomics</a>
-        <a href="index.html#roadmap" class="hover:text-white">Roadmap</a>
-        <a href="index.html#faq" class="hover:text-white">FAQ</a>
+        <a href="index.html#about" class="hover:text-[#00F000]">About</a>
+        <a href="index.html#tokenomics" class="hover:text-[#00F000]">Tokenomics</a>
+        <a href="index.html#roadmap" class="hover:text-[#00F000]">Roadmap</a>
+        <a href="index.html#faq" class="hover:text-[#00F000]">FAQ</a>
       </nav>
 
       <!-- Right: Hamburger dropdown (same order as index) -->
@@ -76,7 +82,7 @@
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
       <p class="uppercase tracking-widest text-slate-400 text-xs">Team</p>
-      <h1 class="mt-2 text-4xl md:text-5xl font-extrabold">The builders behind <span class="text-cyan-400">“Honor through automation.”</span></h1>
+      <h1 class="mt-2 text-4xl md:text-5xl font-extrabold">The builders behind <span class="text-[#00F000]">“Honor through automation.”</span></h1>
       <p class="mt-4 text-slate-300 max-w-3xl">Lean by design—one human founder and one relentless AI collaborator—shipping fast, listening to users, and automating away trust failures on XRPL.</p>
     </div>
   </section>
@@ -89,7 +95,7 @@
         <img src="Kek.png" alt="Don Kek portrait" class="w-full md:w-64 aspect-square object-cover rounded-xl shadow-lg ring-1 ring-white/10">
         <div>
           <p class="text-slate-400 text-sm">Founder & Product Lead</p>
-          <h2 class="text-2xl md:text-3xl font-bold">Don Kek</h2>
+          <h2 class="text-2xl md:text-3xl font-bold text-[#00F000]">Don Kek</h2>
           <p class="mt-2 text-slate-300">
             Builder of Trustless Payments and steward of the <em>Honor through automation</em> ethos.
             Drives product vision, partnerships, and delivery—keeping focus on real utility:
@@ -105,12 +111,12 @@
         </div>
       </article>
 
-      <!-- Agent-01 (updated image) -->
+      <!-- Agent-01 -->
       <article class="grid md:grid-cols-[260px_1fr] gap-6 items-start glass rounded-2xl p-6">
         <img src="Agent01.png" alt="Agent-01 illustration" class="w-full md:w-64 aspect-square object-cover rounded-xl shadow-lg ring-1 ring-white/10">
         <div>
           <p class="text-slate-400 text-sm">AI Collaborator</p>
-          <h2 class="text-2xl md:text-3xl font-bold">Agent-01 (GPT-5 Thinking)</h2>
+          <h2 class="text-2xl md:text-3xl font-bold text-[#00F000]">Agent-01 (GPT-5 Thinking)</h2>
           <p class="mt-2 text-slate-300">
             An AI partner focused on sober, verifiable engineering: fast iteration on Telegram UX,
             escrow state machines, monitoring loops, and site content. No hype—just code, copy,
@@ -127,7 +133,7 @@
 
       <!-- CTA -->
       <div class="pt-4 text-center">
-        <a href="index.html#whitepaper" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 text-slate-900 font-semibold hover:bg-cyan-400 transition">Read the Whitepaper</a>
+        <a href="index.html#whitepaper" class="inline-flex items-center gap-2 rounded-xl bg-[#00F000] px-6 py-3 text-slate-900 font-semibold hover:bg-[#00d800] transition">Read the Whitepaper</a>
         <a href="index.html#contact" class="ml-3 inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Contact</a>
       </div>
     </div>
