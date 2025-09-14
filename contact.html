@@ -14,8 +14,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      /* Default accent; replaced by toggle if user already chose one (same as index) */
-      --accent:#21E9FF;
+      /* Default accent; user can change via toggle (persists in localStorage) */
+      --accent:#21E9FF;               /* Blue-Green */
       --accent-10: rgba(33,233,255,.10);
       --accent-30: rgba(33,233,255,.30);
     }
@@ -23,18 +23,28 @@
     .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
     html { scroll-behavior: smooth; }
 
-    /* Accent helpers (shared across site) */
+    /* Accent helpers */
     .accent        { color: var(--accent) !important; }
     .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); }
     .icon-pill svg { color: var(--accent); }
     .brand-accent  { color: var(--accent) !important; }
-    .btn-accent    { background: var(--accent); color:#05161a; font-weight:700; box-shadow: 0 0 0 0 rgba(0,0,0,0); transition: box-shadow .2s ease, transform .02s ease; }
+    .btn-accent    { background: var(--accent); color:#06241d; font-weight:700; transition: box-shadow .2s ease, transform .02s ease; }
     .btn-accent:hover { filter: brightness(1.06); box-shadow: 0 0 0 6px var(--accent-10), 0 8px 24px -6px var(--accent-30); }
     .btn-accent:active { transform: translateY(1px); }
 
-    /* Theme toggle (same placement/visual as index) */
-    .theme-toggle { position: fixed; right: 14px; bottom: 14px; z-index: 60; }
-    .theme-panel  { position: fixed; right: 14px; bottom: 70px; z-index: 60; }
+    /* Cozy/Compact support (matches index) */
+    .compact .rounded-2xl{ border-radius:.75rem !important; }
+    .compact .p-6{ padding:1rem !important; }
+    .compact .p-8{ padding:1.25rem !important; }
+    .compact .py-14{ padding-top:2.25rem !important; padding-bottom:2.25rem !important; }
+    @media (min-width:768px){
+      .compact .md\:py-20{ padding-top:3rem !important; padding-bottom:3rem !important; }
+    }
+    .compact .h-16{ height:3.25rem !important; }
+
+    /* Floating theme toggle placement */
+    .theme-toggle{ position:fixed; right:14px; bottom:14px; z-index:60; }
+    .theme-panel{ position:fixed; right:14px; bottom:70px; z-index:60; }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100">
@@ -52,18 +62,23 @@
         <span class="font-semibold tracking-wide brand-accent">Trustless Payments</span>
       </a>
 
+      <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="index.html#top" class="hover:text-white">Home</a>
+        <a href="philosophy.html" class="hover:text-white">Philosophy</a>
         <a href="about.html" class="hover:text-white">About</a>
-        <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
         <a href="roadmap.html" class="hover:text-white">Roadmap</a>
+        <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
         <a href="whitepaper.html" class="hover:text-white">Whitepaper</a>
         <a href="nfts.html" class="hover:text-white">NFT's</a>
+        <a href="buy.html" class="hover:text-white">Buy $TRUSTLESS</a>
         <a href="book.html" class="hover:text-white">Book of Kek</a>
         <a href="team.html" class="hover:text-white">Team</a>
         <a href="faq.html" class="hover:text-white">F.A.Q.</a>
         <a href="contact.html" class="hover:text-white font-semibold text-white">Contact</a>
       </nav>
 
+      <!-- Mobile menu -->
       <div class="relative z-50">
         <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
                 class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
@@ -76,9 +91,10 @@
         <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
           <nav class="py-2 text-slate-100 text-sm">
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="philosophy.html">Philosophy</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="whitepaper.html">Whitepaper</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFT's</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
@@ -108,38 +124,15 @@
     <div class="glass rounded-2xl p-8 text-center">
       <h2 class="text-2xl font-bold accent mb-4">Reach out on X</h2>
       <p class="text-slate-300 mb-6">Follow and message us on X (formerly Twitter) for quick updates and public announcements.</p>
-      <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent">Visit X</a>
+      <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Visit X</a>
     </div>
 
     <div class="glass rounded-2xl p-8 text-center">
       <h2 class="text-2xl font-bold accent mb-4">Join the Telegram Room</h2>
       <p class="text-slate-300 mb-6">Hang out with the builders, share ideas, and get real-time answers in our Telegram community.</p>
-      <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent">Open Telegram</a>
+      <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Open Telegram</a>
     </div>
   </main>
-
-  <!-- THEME TOGGLE (same markup/behavior as index) -->
-  <button id="themeFab" class="theme-toggle inline-flex items-center justify-center h-11 w-11 rounded-full icon-pill border border-white/10 hover:bg-white/5" title="Theme">
-    <!-- Palette icon -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-9.95 9.05A5 5 0 007 21h6a5 5 0 004.9-6.32 1.68 1.68 0 011.6-2.18A3.5 3.5 0 0017 5a4 4 0 00-3-3zM7 9.5A1.5 1.5 0 118.5 8 1.5 1.5 0 017 9.5zm4-2A1.5 1.5 0 1112.5 6 1.5 1.5 0 0111 7.5zm4 2A1.5 1.5 0 1116.5 8 1.5 1.5 0 0115 9.5z"/></svg>
-  </button>
-  <div id="themePanel" class="theme-panel hidden">
-    <div class="glass rounded-2xl p-3 w-64">
-      <p class="text-sm text-slate-300 mb-2">Accent color</p>
-      <div class="grid grid-cols-6 gap-2">
-        <button data-color="#21E9FF" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#21E9FF" title="Aurora Cyan"></button>
-        <button data-color="#32F5C8" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#32F5C8" title="Mint Cyan"></button>
-        <button data-color="#22D3EE" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#22D3EE" title="Electric Cyan"></button>
-        <button data-color="#00F000" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#00F000" title="Neon Green"></button>
-        <button data-color="#FFD700" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#FFD700" title="Gold"></button>
-        <button data-color="#9B8CFF" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#9B8CFF" title="Lavender"></button>
-      </div>
-      <div class="mt-3 flex items-center gap-2">
-        <input id="customColor" type="text" placeholder="#RRGGBB" class="flex-1 rounded-lg bg-white/5 border border-white/10 px-2 py-1 text-sm outline-none" />
-        <button id="applyCustom" class="rounded-lg border border-white/15 px-2 py-1 text-sm hover:bg-white/5">Apply</button>
-      </div>
-    </div>
-  </div>
 
   <!-- FOOTER -->
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
@@ -149,45 +142,32 @@
     </div>
   </footer>
 
+  <!-- THEME TOGGLE (same as index: Blue-Green, Gold, Lime + Cozy/Compact) -->
+  <button id="themeFab" class="theme-toggle inline-flex items-center justify-center h-11 w-11 rounded-full icon-pill border border-white/10 hover:bg-white/5" title="Theme">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2a10 10 0 00-9.95 9.05A5 5 0 007 21h6a5 5 0 004.9-6.32 1.68 1.68 0 011.6-2.18A3.5 3.5 0 0017 5a4 4 0 00-3-3z"/>
+    </svg>
+  </button>
+  <div id="themePanel" class="theme-panel hidden">
+    <div class="glass rounded-2xl p-3 w-64">
+      <p class="text-sm text-slate-300 mb-2">Accent color</p>
+      <div class="grid grid-cols-6 gap-2">
+        <button data-color="#21E9FF" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#21E9FF" title="Blue-Green"></button>
+        <button data-color="#FFD700" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#FFD700" title="Gold"></button>
+        <button data-color="#00F000" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#00F000" title="Lime Green"></button>
+      </div>
+      <div class="mt-4 border-t border-white/10 pt-3 flex items-center justify-between">
+        <span class="text-sm text-slate-300">Layout</span>
+        <label class="inline-flex items-center gap-2 text-sm">
+          <span class="text-slate-400">Cozy</span>
+          <input id="compactToggle" type="checkbox" class="h-4 w-4 accent-current">
+          <span class="text-slate-400">Compact</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // ---------- Theme loader (identical to index) ----------
-    const META_THEME = document.querySelector('meta[name="theme-color"]');
-    function hexToRGBA(hex, a){
-      const m = hex.replace('#','');
-      const r = parseInt(m.substring(0,2),16);
-      const g = parseInt(m.substring(2,4),16);
-      const b = parseInt(m.substring(4,6),16);
-      return `rgba(${r},${g},${b},${a})`;
-    }
-    function applyAccent(hex){
-      const root = document.documentElement;
-      root.style.setProperty('--accent', hex);
-      root.style.setProperty('--accent-10', hexToRGBA(hex, .10));
-      root.style.setProperty('--accent-30', hexToRGBA(hex, .30));
-      if (META_THEME) META_THEME.setAttribute('content', hex);
-    }
-    (function bootTheme(){
-      const saved = localStorage.getItem('trustless-accent');
-      if (saved) applyAccent(saved);
-    })();
-
-    // ---------- Theme UI (same handlers as index) ----------
-    const themeFab   = document.getElementById('themeFab');
-    const themePanel = document.getElementById('themePanel');
-    themeFab.addEventListener('click', ()=> themePanel.classList.toggle('hidden'));
-    themePanel.querySelectorAll('button[data-color]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const hex = btn.getAttribute('data-color');
-        localStorage.setItem('trustless-accent', hex);
-        applyAccent(hex);
-      });
-    });
-    document.getElementById('applyCustom').addEventListener('click', ()=>{
-      const v = document.getElementById('customColor').value.trim();
-      const ok = /^#([0-9a-fA-F]{6})$/.test(v);
-      if(ok){ localStorage.setItem('trustless-accent', v); applyAccent(v); }
-    });
-
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -224,6 +204,47 @@
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
     document.addEventListener('click', e => { if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    // ---------------- Theme (same as index) ----------------
+    const META_THEME = document.querySelector('meta[name="theme-color"]');
+    function hexToRGBA(hex, a){
+      const m = hex.replace('#','');
+      const r = parseInt(m.substring(0,2),16);
+      const g = parseInt(m.substring(2,4),16);
+      const b = parseInt(m.substring(4,6),16);
+      return `rgba(${r},${g},${b},${a})`;
+    }
+    function applyAccent(hex){
+      const root = document.documentElement;
+      root.style.setProperty('--accent', hex);
+      root.style.setProperty('--accent-10', hexToRGBA(hex, .10));
+      root.style.setProperty('--accent-30', hexToRGBA(hex, .30));
+      if (META_THEME) META_THEME.setAttribute('content', hex);
+    }
+    (function bootTheme(){
+      const saved = localStorage.getItem('trustless-accent');
+      if (saved) applyAccent(saved);
+      const compact = localStorage.getItem('trustless-compact') === '1';
+      document.documentElement.classList.toggle('compact', compact);
+      const box = document.getElementById('compactToggle');
+      if (box) box.checked = compact;
+    })();
+
+    const themeFab   = document.getElementById('themeFab');
+    const themePanel = document.getElementById('themePanel');
+    themeFab?.addEventListener('click', ()=> themePanel.classList.toggle('hidden'));
+    themePanel?.querySelectorAll('button[data-color]')?.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const hex = btn.getAttribute('data-color');
+        localStorage.setItem('trustless-accent', hex);
+        applyAccent(hex);
+      });
+    });
+    document.getElementById('compactToggle')?.addEventListener('change', (e)=>{
+      const on = e.target.checked;
+      document.documentElement.classList.toggle('compact', on);
+      localStorage.setItem('trustless-compact', on ? '1' : '0');
+    });
   </script>
 </body>
 </html>
