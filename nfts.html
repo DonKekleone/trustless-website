@@ -14,12 +14,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      /* Gradient accent system (site-wide) */
-      --accent-start:#00E0FF;   /* bluer cyan */
-      --accent-end:#00D5A5;     /* cooler green */
-      --accent-solid:#00DDEE;   /* fallback solid */
+      /* Gradient accent (site-wide) */
+      --accent-start:#00E0FF;
+      --accent-end:#00D5A5;
+      --accent-solid:#00DDEE;
       --accent-10: rgba(0,224,255,.10);
       --accent-30: rgba(0,224,255,.30);
+      /* Layout vars (overridden by theme panel) */
+      --pad-y: 20px;
+      --pad-x: 24px;
       --radius: 0.75rem;
     }
     .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
@@ -45,16 +48,22 @@
       transition: filter .2s ease, transform .02s ease;
       box-shadow: 0 6px 20px rgba(0,224,255,.15);
       border-radius: var(--radius);
+      padding: 12px 20px;
     }
     .btn-accent:hover { filter: brightness(1.08); }
     .btn-accent:active{ transform: translateY(1px); }
+
+    /* Theme panel */
+    .theme-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 60; }
+    .theme-card { width: 320px; }
+    .chip { border-radius: 9999px; padding: 4px 10px; font-size: 12px; }
   </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100">
-  <!-- NAV (same shell as index) -->
+<body class="min-h-screen bg-slate-950 text-slate-100" id="top">
+  <!-- NAV (standardized + working menu) -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
+      <a href="index.html#top" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
           <!-- Frog-in-shield -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
@@ -66,15 +75,10 @@
         <span class="font-semibold tracking-wide brand-accent">Trustless Payments</span>
       </a>
 
-      <!-- Desktop links -->
+      <!-- Desktop page-level anchors for this page -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a href="about.html" class="hover:text-white">About</a>
-        <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
-        <a href="roadmap.html" class="hover:text-white">Roadmap</a>
-        <a href="whitepaper.html" class="hover:text-white">Whitepaper</a>
-        <a href="book.html" class="hover:text-white">Book of Kek</a>
-        <a href="team.html" class="hover:text-white">Team</a>
-        <a href="faq.html" class="hover:text-white">FAQ</a>
+        <a href="#collections" class="hover:text-white">Collections</a>
+        <a href="#benefits" class="hover:text-white">Benefits</a>
       </nav>
 
       <!-- Hamburger -->
@@ -90,11 +94,11 @@
         <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
           <nav class="py-2 text-slate-100 text-sm">
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="philosophy.html">Philosophy</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="whitepaper.html">Whitepaper</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="nfts.html">NFT's</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="nfts.html">NFTs</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
@@ -117,7 +121,7 @@
   </section>
 
   <!-- CARDS -->
-  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
+  <main id="collections" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
     <div class="grid md:grid-cols-2 gap-6">
       <!-- Trustless Toads -->
       <article class="glass overflow-hidden">
@@ -127,7 +131,7 @@
         <div class="p-6">
           <h2 class="text-xl font-extrabold accent">Trustless Toads</h2>
           <p class="mt-1 text-slate-400">123 mafia-style toads in suits—the culture layer of Trustless.</p>
-          <ul class="mt-3 list-disc list-inside text-slate-300 space-y-1">
+          <ul class="mt-3 list-disc list-inside text-slate-300 space-y-1" id="benefits">
             <li><strong>Fee Perks:</strong> Reduce escrow fee (e.g., 5.89% → 1% while holding).</li>
             <li><strong>Staking:</strong> Earn $TRUSTLESS from a dedicated reward pool.</li>
             <li><strong>Access:</strong> Private updates, early experiments, and lore drops.</li>
@@ -169,16 +173,51 @@
     </div>
   </footer>
 
+  <!-- THEME, MENU & UTIL SCRIPTS -->
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear()
+    // Theme presets (match other pages)
+    const THEMES = {
+      BlueGreen: { start:'#00E0FF', end:'#00D5A5', solid:'#00DDEE', a10:'rgba(0,224,255,.10)', a30:'rgba(0,224,255,.30)' },
+      Gold:      { start:'#FFD700', end:'#FFEA7A', solid:'#FFD700', a10:'rgba(255,215,0,.10)', a30:'rgba(255,215,0,.30)' },
+      NeonGreen: { start:'#00F000', end:'#50FFA9', solid:'#16FF8F', a10:'rgba(0,240,0,.10)',  a30:'rgba(0,240,0,.30)' }
+    };
+    function applyTheme(name){
+      const t = THEMES[name] || THEMES.BlueGreen;
+      document.documentElement.style.setProperty('--accent-start', t.start);
+      document.documentElement.style.setProperty('--accent-end',   t.end);
+      document.documentElement.style.setProperty('--accent-solid', t.solid);
+      document.documentElement.style.setProperty('--accent-10',    t.a10);
+      document.documentElement.style.setProperty('--accent-30',    t.a30);
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', t.solid);
+      localStorage.setItem('trustlessTheme', JSON.stringify({ theme:name, layout:getLayout() }));
+    }
+    function applyLayout(mode){
+      if(mode==='Compact'){
+        document.documentElement.style.setProperty('--pad-y','16px');
+        document.documentElement.style.setProperty('--pad-x','18px');
+        document.documentElement.style.setProperty('--radius','0.65rem');
+      }else{
+        document.documentElement.style.setProperty('--pad-y','20px');
+        document.documentElement.style.setProperty('--pad-x','24px');
+        document.documentElement.style.setProperty('--radius','0.75rem');
+      }
+      localStorage.setItem('trustlessTheme', JSON.stringify({ theme:getTheme(), layout:mode }));
+    }
+    function getTheme(){ try { return JSON.parse(localStorage.getItem('trustlessTheme'))?.theme || 'BlueGreen'; } catch { return 'BlueGreen'; } }
+    function getLayout(){ try { return JSON.parse(localStorage.getItem('trustlessTheme'))?.layout || 'Cozy'; } catch { return 'Cozy'; } }
+
+    // Initial theme + year
+    applyTheme(getTheme());
+    applyLayout(getLayout());
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Legal modal
     const legal = `\
     <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
     <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
     <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
-    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`
+    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
     document.getElementById('legal-link').addEventListener('click', (e) => {
       e.preventDefault();
       const modal = document.createElement('div');
@@ -195,17 +234,69 @@
       document.getElementById('close-legal').onclick = () => modal.remove();
     });
 
-    // Hamburger menu
+    // Hamburger menu (hardened)
     const menuBtn = document.getElementById('menuBtn');
     const menu    = document.getElementById('mainMenu');
-    function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
-    function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
-    menuBtn.addEventListener('click', () => {
-      (menuBtn.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
-    });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-    document.addEventListener('click', (e) => { if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+    function closeMenu(){ if(!menu) return; menu.classList.add('hidden'); menuBtn?.setAttribute('aria-expanded','false'); }
+    function openMenu(){ if(!menu) return; menu.classList.remove('hidden'); menuBtn?.setAttribute('aria-expanded','true'); }
+    if (menuBtn && menu) {
+      menuBtn.addEventListener('click', () => {
+        (menuBtn.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
+      });
+      // Close on link click
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      // Outside click
+      document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
+      });
+      // ESC key
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+    }
+
+    // Theme panel mount (same as philosophy)
+    function mountThemePanel(){
+      const wrap = document.createElement('div');
+      wrap.className = 'theme-toggle';
+      wrap.innerHTML = `
+        <button id="gearBtn" class="btn-accent rounded-full px-3 py-3" title="Theme & layout">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94a7.07,7.07,0,0,0,0-1.88l2-1.55a.5.5,0,0,0,.12-.64l-1.9-3.29a.5.5,0,0,0-.6-.22l-2.35,1a7.13,7.13,0,0,0-1.63-.95l-.36-2.49A.5.5,0,0,0,13.93,1H10.07a.5.5,0,0,0-.5.42L9.21,3.91a7.13,7.13,0,0,0-1.63.95l-2.35-1a.5.5,0,0,0-.6.22L2.73,7.34a.5.5,0,0,0,.12.64l2,1.55a7.07,7.07,0,0,0,0,1.88l-2,1.55a.5.5,0,0,0-.12.64l1.9,3.29a.5.5,0,0,0,.6.22l2.35-1a7.13,7.13,0,0,0,1.63.95l.36,2.49a.5.5,0,0,0,.5.42h3.86a.5.5,0,0,0,.5-.42l.36-2.49a7.13,7.13,0,0,0,1.63-.95l2.35,1a.5.5,0,0,0,.6-.22l1.9-3.29a.5.5,0,0,0,.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+        </button>
+        <div id="themeCard" class="hidden mt-2 theme-card glass border border-white/10 shadow-2xl p-4">
+          <div class="text-sm text-slate-200 font-semibold mb-2 accent">Theme & Layout</div>
+          <div class="space-y-2 text-sm">
+            <div>
+              <div class="text-slate-400 mb-1">Color</div>
+              <div class="flex gap-2">
+                <button data-theme="BlueGreen" class="chip bg-white/10 hover:bg-white/15">BlueGreen</button>
+                <button data-theme="Gold" class="chip bg-white/10 hover:bg-white/15">Gold</button>
+                <button data-theme="NeonGreen" class="chip bg-white/10 hover:bg-white/15">NeonGreen</button>
+              </div>
+            </div>
+            <div class="mt-2">
+              <div class="text-slate-400 mb-1">Layout</div>
+              <div class="flex gap-2">
+                <button data-layout="Cozy" class="chip bg-white/10 hover:bg-white/15">Cozy</button>
+                <button data-layout="Compact" class="chip bg-white/10 hover:bg-white/15">Compact</button>
+              </div>
+            </div>
+            <div class="mt-3 text-right">
+              <button id="closeTheme" class="inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5">Close</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(wrap);
+      const card = document.getElementById('themeCard');
+      document.getElementById('gearBtn').onclick = () => card.classList.toggle('hidden');
+      document.getElementById('closeTheme').onclick = () => card.classList.add('hidden');
+      wrap.querySelectorAll('[data-theme]').forEach(btn=>{
+        btn.onclick = () => { applyTheme(btn.dataset.theme); };
+      });
+      wrap.querySelectorAll('[data-layout]').forEach(btn=>{
+        btn.onclick = () => { applyLayout(btn.dataset.layout); };
+      });
+    }
+    mountThemePanel();
   </script>
 </body>
 </html>
