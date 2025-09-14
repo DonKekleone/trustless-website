@@ -14,7 +14,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      /* Default accent (will be overridden by theme loader if user picked one) */
+      /* Default accent; replaced by toggle if user already chose one (same as index) */
       --accent:#21E9FF;
       --accent-10: rgba(33,233,255,.10);
       --accent-30: rgba(33,233,255,.30);
@@ -23,16 +23,16 @@
     .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
     html { scroll-behavior: smooth; }
 
-    /* Accent helpers */
+    /* Accent helpers (shared across site) */
     .accent        { color: var(--accent) !important; }
     .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); }
     .icon-pill svg { color: var(--accent); }
     .brand-accent  { color: var(--accent) !important; }
-    .btn-accent    { background: var(--accent); color:#05161a; font-weight:700; box-shadow: 0 0 0 0 rgba(33,233,255,.0); transition: box-shadow .2s ease, transform .02s ease; }
+    .btn-accent    { background: var(--accent); color:#05161a; font-weight:700; box-shadow: 0 0 0 0 rgba(0,0,0,0); transition: box-shadow .2s ease, transform .02s ease; }
     .btn-accent:hover { filter: brightness(1.06); box-shadow: 0 0 0 6px var(--accent-10), 0 8px 24px -6px var(--accent-30); }
     .btn-accent:active { transform: translateY(1px); }
 
-    /* Floating theme toggle */
+    /* Theme toggle (same placement/visual as index) */
     .theme-toggle { position: fixed; right: 14px; bottom: 14px; z-index: 60; }
     .theme-panel  { position: fixed; right: 14px; bottom: 70px; z-index: 60; }
   </style>
@@ -118,7 +118,7 @@
     </div>
   </main>
 
-  <!-- THEME TOGGLE (global) -->
+  <!-- THEME TOGGLE (same markup/behavior as index) -->
   <button id="themeFab" class="theme-toggle inline-flex items-center justify-center h-11 w-11 rounded-full icon-pill border border-white/10 hover:bg-white/5" title="Theme">
     <!-- Palette icon -->
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-9.95 9.05A5 5 0 007 21h6a5 5 0 004.9-6.32 1.68 1.68 0 011.6-2.18A3.5 3.5 0 0017 5a4 4 0 00-3-3zM7 9.5A1.5 1.5 0 118.5 8 1.5 1.5 0 017 9.5zm4-2A1.5 1.5 0 1112.5 6 1.5 1.5 0 0111 7.5zm4 2A1.5 1.5 0 1116.5 8 1.5 1.5 0 0115 9.5z"/></svg>
@@ -150,7 +150,7 @@
   </footer>
 
   <script>
-    // ---------- Theme loader (shared behavior across pages) ----------
+    // ---------- Theme loader (identical to index) ----------
     const META_THEME = document.querySelector('meta[name="theme-color"]');
     function hexToRGBA(hex, a){
       const m = hex.replace('#','');
@@ -171,7 +171,7 @@
       if (saved) applyAccent(saved);
     })();
 
-    // ---------- Theme UI ----------
+    // ---------- Theme UI (same handlers as index) ----------
     const themeFab   = document.getElementById('themeFab');
     const themePanel = document.getElementById('themePanel');
     themeFab.addEventListener('click', ()=> themePanel.classList.toggle('hidden'));
