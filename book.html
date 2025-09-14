@@ -9,12 +9,10 @@
   <meta property="og:description" content="Short chapters, heavy lessons. Stop trusting, start verifying. Honor through automation." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=The+Book+of+KEK" />
-  <!-- Gradient fallback for browser UI bars -->
   <meta name="theme-color" content="#00DDEE" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      /* Blue→Green site accent (matches index/buy/roadmap/faq) */
       --accent-start:#00E0FF;   /* bluer cyan */
       --accent-end:#00D5A5;     /* cooler green */
       --accent-solid:#00DDEE;   /* single-color fallback */
@@ -26,12 +24,15 @@
     .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); }
     html { scroll-behavior: smooth; }
 
-    /* Accent helpers */
+    /* Accent text — gradient only on text glyphs, not emojis */
     .accent{
       background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
       -webkit-background-clip:text; background-clip:text;
       -webkit-text-fill-color:transparent; color: transparent;
     }
+    /* Emojis keep normal color */
+    .emoji{ -webkit-text-fill-color: initial; color: inherit; }
+
     .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); border-radius: var(--radius); }
     .icon-pill svg { color: var(--accent-end); }
     .brand-accent  {
@@ -73,6 +74,7 @@
         <a href="about.html" class="hover:text-white">About</a>
         <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
         <a href="roadmap.html" class="hover:text-white">Roadmap</a>
+        <a href="whitepaper.html" class="hover:text-white">Whitepaper</a>
         <a href="team.html" class="hover:text-white">Team</a>
         <a href="faq.html" class="hover:text-white">FAQ</a>
       </nav>
@@ -93,6 +95,7 @@
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="whitepaper.html">Whitepaper</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFTs</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="book.html">Book of Kek</a>
@@ -112,7 +115,9 @@
       <div class="grid md:grid-cols-2 gap-10 items-center">
         <div>
           <p class="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">Trustless Mindset • Trustless System</p>
-          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight"><span class="accent">💥 THE BOOK OF KEK (FREE)</span></h1>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+            <span class="emoji">💥</span> <span class="accent">THE BOOK OF KEK (FREE)</span>
+          </h1>
           <p class="mt-4 italic text-slate-300">—from the desk of Don Kek & the Trustless Toad Mafia—</p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a href="BookOfKek.pdf" download class="inline-flex items-center gap-2 rounded-xl px-5 py-3 btn-accent transition">Download PDF</a>
@@ -133,7 +138,9 @@
 
       <div class="space-y-4">
         <p>Listen up. We’re done paying first and praying later. This ain’t church. This is business. In our swamp, promises get tested… or payments don’t move. Capisce? 😎</p>
-        <h2 class="text-2xl md:text-3xl font-bold accent">🧱 What you’re getting (no fluff, all steel)</h2>
+        <h2 class="text-2xl md:text-3xl font-bold">
+          <span class="emoji">🧱</span> <span class="accent">What you’re getting (no fluff, all steel)</span>
+        </h2>
         <p>The Book of KEK is the little black book the wise guys whisper about—short chapters, heavy lessons, and a Trustless Mindset + Trustless System that makes scams tap out before they waste your oxygen.</p>
         <ul class="list-disc list-inside space-y-2 text-slate-300">
           <li>🐸 <strong>Parables that punch:</strong> fast, unforgettable frog stories that sneak past the brain’s filters and settle deep in instinct. You don’t just read them—you <em>become</em> them.</li>
@@ -147,30 +154,28 @@
       </div>
 
       <div class="space-y-3">
-        <h2 class="text-2xl md:text-3xl font-bold accent">🐸 The Family Business (how the flywheel turns)</h2>
+        <h2 class="text-2xl md:text-3xl font-bold">
+          <span class="emoji">🐸</span> <span class="accent">The Family Business (how the flywheel turns)</span>
+        </h2>
         <ul class="list-disc list-inside space-y-3 text-slate-300">
           <li>
             <strong>Book</strong> — the little black manual of the empire. Street rules, sharp stories, and drills that turn
             “trust me, bro” into <em>muscle memory for proof</em>. You read it once; your reflexes enforce it forever.
           </li>
-
           <li>
             <strong>Bot</strong> — the escrow enforcer. Milestones, destination tags, and auto release/refund so nobody
             smooth-talks past the rules. <em>Conditions met → value moves. Conditions missed → value returns.</em>
             No begging. No drama.
           </li>
-
           <li>
             <strong>Tokens</strong> — the grease and the scoreboard. Utility access, incentives, and a culture that rewards
             builders who deliver. <em>Work speaks, not speeches.</em> Keeps the engine oiled and the reputation ledger public.
           </li>
-
           <li>
             <strong>Goodfellas Perks NFTs</strong> — membership cards of the Trustless empire that <em>reward</em> holders:
             lower bot fees, revenue sharing from escrow activity, a governance round-table seat, early access to new drops/tools,
             and surprise perks down the line. The inner circle, with receipts.
           </li>
-
           <li>
             <strong>You</strong> — the final piece. You stop leaking time to clowns and start operating like a capo with contracts—
             cleaner deals, tighter boundaries, and outcomes you can prove on-chain or in court.
@@ -179,18 +184,24 @@
       </div>
 
       <div class="space-y-3">
-        <h2 class="text-2xl md:text-3xl font-bold accent">🩸 A quick story from the streets</h2>
+        <h2 class="text-2xl md:text-3xl font-bold">
+          <span class="emoji">🩸</span> <span class="accent">A quick story from the streets</span>
+        </h2>
         <p>Kek paid first. The “king” vanished. Rent cried. Pride bled. Then he did the only thing that works: he rebuilt his operating system—how he thinks, what he tolerates, and the rails his work runs on.</p>
         <p>That OS is what you’re holding: The Book of KEK. Not a pep talk. Not a whitepaper. A weaponized philosophy that drops into your subconscious and rewires the reflexes you use when money, promises, and people collide.</p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-6">
         <div class="glass p-6">
-          <h3 class="text-xl font-semibold accent">🧭 Track 1 — Trustless Mindset (Personal OS)</h3>
+          <h3 class="text-xl font-semibold">
+            <span class="emoji">🧭</span> <span class="accent">Track 1 — Trustless Mindset (Personal OS)</span>
+          </h3>
           <p class="mt-2 text-slate-300">Build a spine you don’t have to defend. Boundaries, incentives, proof-then-pay habits baked into reflex.</p>
         </div>
         <div class="glass p-6">
-          <h3 class="text-xl font-semibold accent">🧭 Track 2 — Trustless System (Practical Rails)</h3>
+          <h3 class="text-xl font-semibold">
+            <span class="emoji">🧭</span> <span class="accent">Track 2 — Trustless System (Practical Rails)</span>
+          </h3>
           <p class="mt-2 text-slate-300">Run deals on rails—escrows, milestones, releases, refunds. No drama, no guesswork. Conditions met → value moves.</p>
         </div>
         <div class="md:col-span-2">
@@ -199,7 +210,9 @@
       </div>
 
       <div class="space-y-3">
-        <h2 class="text-2xl md:text-3xl font-bold accent">⚔️ Why this hits different</h2>
+        <h2 class="text-2xl md:text-3xl font-bold">
+          <span class="emoji">⚔️</span> <span class="accent">Why this hits different</span>
+        </h2>
         <ul class="list-disc list-inside space-y-2 text-slate-300">
           <li>Written to integrate, not to impress. Short stories + sharp rules that sink into the subconscious and run automatically under stress.</li>
           <li>Personal development with teeth. Confidence grounded in verifiable process, not slogans.</li>
@@ -209,7 +222,9 @@
       </div>
 
       <div class="space-y-3">
-        <h2 class="text-2xl md:text-3xl font-bold accent">👥 Who this book is for</h2>
+        <h2 class="text-2xl md:text-3xl font-bold">
+          <span class="emoji">👥</span> <span class="accent">Who this book is for</span>
+        </h2>
         <ul class="list-disc list-inside space-y-1 text-slate-300">
           <li>People who’ve been burned and refuse to grow bitter—they grow systems.</li>
           <li>Anyone who believes character matters—and that code can help enforce it.</li>
@@ -219,7 +234,9 @@
       </div>
 
       <div class="space-y-3">
-        <h2 class="text-2xl md:text-3xl font-bold accent">📜 The Don’s Orders</h2>
+        <h2 class="text-2xl md:text-3xl font-bold">
+          <span class="emoji">📜</span> <span class="accent">The Don’s Orders</span>
+        </h2>
         <ul class="list-disc list-inside space-y-1 text-slate-300">
           <li>Stop trusting. Start verifying.</li>
           <li>Stop apologizing for boundaries. They’re the gift.</li>
@@ -228,7 +245,9 @@
       </div>
 
       <div class="space-y-4 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold accent">🟩 Your move</h2>
+        <h2 class="text-2xl md:text-3xl font-bold">
+          <span class="emoji">🟩</span> <span class="accent">Your move</span>
+        </h2>
         <p class="text-slate-300">The book’s free. The upgrade isn’t. Read one chapter tonight, and tomorrow you’ll walk different.</p>
         <div class="mt-2 flex flex-wrap justify-center gap-3">
           <a href="BookOfKek.pdf" download class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Grab The Book of KEK (PDF)</a>
