@@ -10,50 +10,59 @@
   <meta property="og:description" content="Connect with us on X or Telegram." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Contact" />
-  <meta name="theme-color" content="#21E9FF" />
+  <meta name="theme-color" content="#0ea5e9" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root{
-      /* Default accent; user can change via toggle (persists in localStorage) */
-      --accent:#21E9FF;               /* Blue-Green */
-      --accent-10: rgba(33,233,255,.10);
-      --accent-30: rgba(33,233,255,.30);
-    }
-    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
-    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
+    /* Shared visual primitives (same spirit as index) */
     html { scroll-behavior: smooth; }
-
-    /* Accent helpers */
-    .accent        { color: var(--accent) !important; }
-    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); }
-    .icon-pill svg { color: var(--accent); }
-    .brand-accent  { color: var(--accent) !important; }
-    .btn-accent    { background: var(--accent); color:#06241d; font-weight:700; transition: box-shadow .2s ease, transform .02s ease; }
-    .btn-accent:hover { filter: brightness(1.06); box-shadow: 0 0 0 6px var(--accent-10), 0 8px 24px -6px var(--accent-30); }
-    .btn-accent:active { transform: translateY(1px); }
-
-    /* Cozy/Compact support (matches index) */
-    .compact .rounded-2xl{ border-radius:.75rem !important; }
-    .compact .p-6{ padding:1rem !important; }
-    .compact .p-8{ padding:1.25rem !important; }
-    .compact .py-14{ padding-top:2.25rem !important; padding-bottom:2.25rem !important; }
-    @media (min-width:768px){
-      .compact .md\:py-20{ padding-top:3rem !important; padding-bottom:3rem !important; }
+    .grid-bg { background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
     }
-    .compact .h-16{ height:3.25rem !important; }
+    .glass { backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.12);
+    }
 
-    /* Floating theme toggle placement */
-    .theme-toggle{ position:fixed; right:14px; bottom:14px; z-index:60; }
-    .theme-panel{ position:fixed; right:14px; bottom:70px; z-index:60; }
+    /* ---- THEME (matches index toggle) ----------------------------------- */
+    :root{
+      --accent: #22d3ee;   /* BlueGreen default */
+      --accent-ink: #0b1820;
+      --accent-10: rgba(34,211,238,.10);
+      --accent-30: rgba(34,211,238,.30);
+      --padY: 5rem;        /* Cozy layout baseline */
+      --cardPad: 1.5rem;
+      --radius: 1.0rem;
+    }
+    /* layout: Compact reduces paddings a bit */
+    body.compact :where(section){ --padY: 3.75rem; }
+    body.compact :where(.glass){ --cardPad: 1.0rem; --radius: .85rem; }
+
+    /* helpers that echo index */
+    .icon-pill { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); }
+    .icon-pill svg { color: var(--accent); }
+    .brand-accent, .accent { color: var(--accent) !important; }
+    .btn-accent { background: var(--accent); color: var(--accent-ink); font-weight: 700; }
+    .btn-accent:hover { filter: brightness(1.06); }
+
+    /* settings FAB + sheet (copied UX from index) */
+    .fab { position: fixed; right: 18px; bottom: 18px; z-index: 60; }
+    .sheet { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
+      z-index: 60; max-width: 680px; width: calc(100% - 24px);
+    }
+    .swatch { width: 40px; height: 36px; border-radius: .75rem; border: 1px solid rgba(255,255,255,.18); }
+    .chip { padding: .5rem .9rem; border-radius: .75rem; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); }
+    .chip.active, .swatch.active { outline: 2px solid var(--accent); outline-offset: 2px; }
   </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100">
+<body class="min-h-screen bg-slate-950 text-slate-100" id="top">
   <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
+      <a href="index.html#top" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl icon-pill">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
             <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
             <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
@@ -62,17 +71,16 @@
         <span class="font-semibold tracking-wide brand-accent">Trustless Payments</span>
       </a>
 
-      <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="index.html#top" class="hover:text-white">Home</a>
         <a href="philosophy.html" class="hover:text-white">Philosophy</a>
         <a href="about.html" class="hover:text-white">About</a>
-        <a href="roadmap.html" class="hover:text-white">Roadmap</a>
         <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
-        <a href="whitepaper.html" class="hover:text-white">Whitepaper</a>
+        <a href="roadmap.html" class="hover:text-white">Roadmap</a>
         <a href="nfts.html" class="hover:text-white">NFT's</a>
         <a href="buy.html" class="hover:text-white">Buy $TRUSTLESS</a>
         <a href="book.html" class="hover:text-white">Book of Kek</a>
+        <a href="whitepaper.html" class="hover:text-white">Whitepaper</a>
         <a href="team.html" class="hover:text-white">Team</a>
         <a href="faq.html" class="hover:text-white">F.A.Q.</a>
         <a href="contact.html" class="hover:text-white font-semibold text-white">Contact</a>
@@ -93,12 +101,12 @@
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="philosophy.html">Philosophy</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="whitepaper.html">Whitepaper</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFT's</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="whitepaper.html">Whitepaper</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="contact.html">Contact</a>
@@ -111,8 +119,8 @@
   <!-- HERO -->
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-      <h1 class="text-3xl md:text-5xl font-extrabold"><span class="accent">Contact</span></h1>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" style="padding-top: var(--padY); padding-bottom: calc(var(--padY) - 1rem);">
+      <h1 class="text-3xl md:text-5xl font-extrabold accent">Contact</h1>
       <p class="mt-3 text-slate-300 max-w-3xl">
         Questions, ideas, or partnerships? We’re easy to reach—choose the channel that fits your style.
       </p>
@@ -120,131 +128,145 @@
   </section>
 
   <!-- CONTACT OPTIONS -->
-  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20 space-y-6">
-    <div class="glass rounded-2xl p-8 text-center">
-      <h2 class="text-2xl font-bold accent mb-4">Reach out on X</h2>
-      <p class="text-slate-300 mb-6">Follow and message us on X (formerly Twitter) for quick updates and public announcements.</p>
-      <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Visit X</a>
-    </div>
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" style="padding-bottom: var(--padY);">
+    <div class="grid gap-6">
+      <div class="glass rounded-2xl p-8" style="padding: var(--cardPad); border-radius: var(--radius);">
+        <h2 class="text-2xl font-extrabold accent mb-4">Reach out on X</h2>
+        <p class="text-slate-300 mb-6">Follow and message us on X (formerly Twitter) for quick updates and public announcements.</p>
+        <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Visit X</a>
+      </div>
 
-    <div class="glass rounded-2xl p-8 text-center">
-      <h2 class="text-2xl font-bold accent mb-4">Join the Telegram Room</h2>
-      <p class="text-slate-300 mb-6">Hang out with the builders, share ideas, and get real-time answers in our Telegram community.</p>
-      <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Open Telegram</a>
+      <div class="glass rounded-2xl p-8" style="padding: var(--cardPad); border-radius: var(--radius);">
+        <h2 class="text-2xl font-extrabold accent mb-4">Join the Telegram Room</h2>
+        <p class="text-slate-300 mb-6">Hang out with the builders, share ideas, and get real-time answers in our Telegram community.</p>
+        <a href="https://t.me/TrustlessPaymentBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Open Telegram</a>
+      </div>
     </div>
   </main>
 
   <!-- FOOTER -->
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p>© <span id="year"></span> Trustless Payments. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
+      <p>© <span id="year"></span> Trustless Payments. All rights reserved. •
+        <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
       <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
     </div>
   </footer>
 
-  <!-- THEME TOGGLE (same as index: Blue-Green, Gold, Lime + Cozy/Compact) -->
-  <button id="themeFab" class="theme-toggle inline-flex items-center justify-center h-11 w-11 rounded-full icon-pill border border-white/10 hover:bg-white/5" title="Theme">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2a10 10 0 00-9.95 9.05A5 5 0 007 21h6a5 5 0 004.9-6.32 1.68 1.68 0 011.6-2.18A3.5 3.5 0 0017 5a4 4 0 00-3-3z"/>
-    </svg>
+  <!-- SETTINGS FAB (same UX as index) -->
+  <button id="fab" class="fab inline-flex items-center justify-center rounded-full btn-accent h-14 w-14 shadow-lg focus:outline-none" aria-haspopup="dialog" aria-controls="sheet">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8a4 4 0 100 8 4 4 0 000-8z"/><path d="M19.4 15a7.94 7.94 0 00.1-2l2.1-1.6-2-3.4-2.5.7a8.1 8.1 0 00-1.7-1l-.4-2.6H11l-.4 2.6a8.1 8.1 0 00-1.7 1l-2.5-.7-2 3.4L6.5 13a7.94 7.94 0 000 2l-2.1 1.6 2 3.4 2.5-.7a8.1 8.1 0 001.7 1l.4 2.6h4.2l.4-2.6a8.1 8.1 0 001.7-1l2.5.7 2-3.4L19.4 15z"/></svg>
   </button>
-  <div id="themePanel" class="theme-panel hidden">
-    <div class="glass rounded-2xl p-3 w-64">
-      <p class="text-sm text-slate-300 mb-2">Accent color</p>
-      <div class="grid grid-cols-6 gap-2">
-        <button data-color="#21E9FF" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#21E9FF" title="Blue-Green"></button>
-        <button data-color="#FFD700" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#FFD700" title="Gold"></button>
-        <button data-color="#00F000" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#00F000" title="Lime Green"></button>
+
+  <div id="sheet" class="sheet hidden">
+    <div class="glass rounded-2xl p-5 md:p-6 text-slate-200">
+      <h3 class="font-semibold text-lg accent">Theme & Layout</h3>
+
+      <div class="mt-4">
+        <div class="text-sm text-slate-400 mb-2">Color</div>
+        <div class="flex items-center gap-3">
+          <button class="swatch" data-theme="BlueGreen" style="background:#22d3ee"></button>
+          <button class="swatch" data-theme="Gold"      style="background:#ffd700"></button>
+          <button class="swatch" data-theme="NeonGreen" style="background:#00F000"></button>
+        </div>
       </div>
-      <div class="mt-4 border-t border-white/10 pt-3 flex items-center justify-between">
-        <span class="text-sm text-slate-300">Layout</span>
-        <label class="inline-flex items-center gap-2 text-sm">
-          <span class="text-slate-400">Cozy</span>
-          <input id="compactToggle" type="checkbox" class="h-4 w-4 accent-current">
-          <span class="text-slate-400">Compact</span>
-        </label>
+
+      <div class="mt-5">
+        <div class="text-sm text-slate-400 mb-2">Layout</div>
+        <div class="flex items-center gap-2">
+          <button class="chip" data-layout="cozy">Cozy</button>
+          <button class="chip" data-layout="compact">Compact</button>
+        </div>
+      </div>
+
+      <div class="mt-6 text-right">
+        <button id="closeSheet" class="inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5">Close</button>
       </div>
     </div>
   </div>
 
   <script>
-    // Year
+    // Year + legal modal
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Legal modal
     const legal = `\
     <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
     <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
     <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
     <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
-    document.getElementById('legal-link').addEventListener('click', (e) => {
+    document.getElementById('legal-link').addEventListener('click', (e)=>{
       e.preventDefault();
-      const modal = document.createElement('div');
-      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
-      modal.innerHTML = `
-        <div class='absolute inset-0 bg-black/70'></div>
-        <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
-          <div>${legal}</div>
-          <div class='mt-6 text-right'>
-            <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
-          </div>
-        </div>`;
-      document.body.appendChild(modal);
-      document.getElementById('close-legal').onclick = () => modal.remove();
+      const m = document.createElement('div');
+      m.className='fixed inset-0 z-50 flex items-center justify-center p-4';
+      m.innerHTML=`<div class='absolute inset-0 bg-black/70'></div>
+      <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
+        <div>${legal}</div>
+        <div class='mt-6 text-right'>
+          <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
+        </div>
+      </div>`;
+      document.body.appendChild(m);
+      document.getElementById('close-legal').onclick=()=>m.remove();
     });
 
-    // Hamburger menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mainMenu');
+    // Mobile menu
+    const menuBtn=document.getElementById('menuBtn');
+    const menu=document.getElementById('mainMenu');
     function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
     function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
-    menuBtn.addEventListener('click', () => {
-      menuBtn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
-    });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-    document.addEventListener('click', e => { if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    menuBtn.addEventListener('click',()=> menuBtn.getAttribute('aria-expanded')==='true'?closeMenu():openMenu());
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+    document.addEventListener('click',e=>{ if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
 
-    // ---------------- Theme (same as index) ----------------
-    const META_THEME = document.querySelector('meta[name="theme-color"]');
-    function hexToRGBA(hex, a){
-      const m = hex.replace('#','');
-      const r = parseInt(m.substring(0,2),16);
-      const g = parseInt(m.substring(2,4),16);
-      const b = parseInt(m.substring(4,6),16);
+    /* -------- Theme & Layout (cloned behavior from index) --------------- */
+    const THEMES = {
+      BlueGreen: { accent:'#22d3ee', ink:'#0b1820' },
+      Gold:      { accent:'#ffd700', ink:'#0a1a0a' },
+      NeonGreen: { accent:'#00F000', ink:'#0a1a0a' },
+    };
+    const LS_KEY_THEME='tp_theme';
+    const LS_KEY_LAYOUT='tp_layout';
+
+    function applyTheme(name){
+      const t = THEMES[name] || THEMES.BlueGreen;
+      document.documentElement.style.setProperty('--accent', t.accent);
+      document.documentElement.style.setProperty('--accent-ink', t.ink);
+      // soft shadows
+      document.documentElement.style.setProperty('--accent-10', hexToRgba(t.accent, .10));
+      document.documentElement.style.setProperty('--accent-30', hexToRgba(t.accent, .30));
+      localStorage.setItem(LS_KEY_THEME, name);
+      // update visual active state
+      document.querySelectorAll('.swatch').forEach(b => b.classList.toggle('active', b.dataset.theme===name));
+    }
+    function applyLayout(kind){
+      document.body.classList.toggle('compact', kind==='compact');
+      localStorage.setItem(LS_KEY_LAYOUT, kind);
+      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.layout===kind));
+    }
+    function hexToRgba(hex, a){
+      const h = hex.replace('#','');
+      const bigint = parseInt(h,16);
+      const r=(bigint>>16)&255, g=(bigint>>8)&255, b=bigint&255;
       return `rgba(${r},${g},${b},${a})`;
     }
-    function applyAccent(hex){
-      const root = document.documentElement;
-      root.style.setProperty('--accent', hex);
-      root.style.setProperty('--accent-10', hexToRGBA(hex, .10));
-      root.style.setProperty('--accent-30', hexToRGBA(hex, .30));
-      if (META_THEME) META_THEME.setAttribute('content', hex);
-    }
-    (function bootTheme(){
-      const saved = localStorage.getItem('trustless-accent');
-      if (saved) applyAccent(saved);
-      const compact = localStorage.getItem('trustless-compact') === '1';
-      document.documentElement.classList.toggle('compact', compact);
-      const box = document.getElementById('compactToggle');
-      if (box) box.checked = compact;
-    })();
 
-    const themeFab   = document.getElementById('themeFab');
-    const themePanel = document.getElementById('themePanel');
-    themeFab?.addEventListener('click', ()=> themePanel.classList.toggle('hidden'));
-    themePanel?.querySelectorAll('button[data-color]')?.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const hex = btn.getAttribute('data-color');
-        localStorage.setItem('trustless-accent', hex);
-        applyAccent(hex);
-      });
+    // wire controls
+    document.getElementById('fab').addEventListener('click', ()=>{
+      document.getElementById('sheet').classList.remove('hidden');
     });
-    document.getElementById('compactToggle')?.addEventListener('change', (e)=>{
-      const on = e.target.checked;
-      document.documentElement.classList.toggle('compact', on);
-      localStorage.setItem('trustless-compact', on ? '1' : '0');
+    document.getElementById('closeSheet').addEventListener('click', ()=>{
+      document.getElementById('sheet').classList.add('hidden');
     });
+    document.querySelectorAll('.swatch').forEach(b=>{
+      b.addEventListener('click',()=>applyTheme(b.dataset.theme));
+    });
+    document.querySelectorAll('.chip').forEach(c=>{
+      c.addEventListener('click',()=>applyLayout(c.dataset.layout));
+    });
+
+    // init from storage (same default as index)
+    applyTheme(localStorage.getItem(LS_KEY_THEME) || 'BlueGreen');
+    applyLayout(localStorage.getItem(LS_KEY_LAYOUT) || 'cozy');
   </script>
 </body>
 </html>
