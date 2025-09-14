@@ -10,43 +10,31 @@
   <meta property="og:description" content="Connect with us on X or Telegram." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Contact" />
-  <meta name="theme-color" content="#00DDEE" />
+  <meta name="theme-color" content="#21E9FF" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      /* Global accent (same system as index) */
-      --accent-start:#00E0FF;   /* bluer cyan */
-      --accent-end:#00D5A5;     /* cyan→green */
-      --accent-solid:#00DDEE;   /* solid fallback */
-      --accent-10: rgba(0,224,255,.10);
-      --accent-30: rgba(0,224,255,.30);
-      --radius: .75rem;
+      /* Default accent (will be overridden by theme loader if user picked one) */
+      --accent:#21E9FF;
+      --accent-10: rgba(33,233,255,.10);
+      --accent-30: rgba(33,233,255,.30);
     }
     .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
-    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
     html { scroll-behavior: smooth; }
 
-    /* Accent helpers (text-only: emojis remain native-colored) */
-    .accent{
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent; color: transparent;
-    }
-    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); border-radius: var(--radius); }
-    .icon-pill svg { color: var(--accent-end); }
-    .brand-accent  {
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent; color: transparent;
-    }
-    .btn-accent{
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      color:#061b1b; font-weight:700; border-radius: var(--radius);
-      transition: filter .2s ease, transform .02s ease;
-      box-shadow: 0 6px 20px rgba(0,224,255,.15);
-    }
-    .btn-accent:hover{ filter: brightness(1.06); }
-    .btn-accent:active{ transform: translateY(1px); }
+    /* Accent helpers */
+    .accent        { color: var(--accent) !important; }
+    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); }
+    .icon-pill svg { color: var(--accent); }
+    .brand-accent  { color: var(--accent) !important; }
+    .btn-accent    { background: var(--accent); color:#05161a; font-weight:700; box-shadow: 0 0 0 0 rgba(33,233,255,.0); transition: box-shadow .2s ease, transform .02s ease; }
+    .btn-accent:hover { filter: brightness(1.06); box-shadow: 0 0 0 6px var(--accent-10), 0 8px 24px -6px var(--accent-30); }
+    .btn-accent:active { transform: translateY(1px); }
+
+    /* Floating theme toggle */
+    .theme-toggle { position: fixed; right: 14px; bottom: 14px; z-index: 60; }
+    .theme-panel  { position: fixed; right: 14px; bottom: 70px; z-index: 60; }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100">
@@ -54,7 +42,7 @@
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl icon-pill">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
             <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
@@ -69,47 +57,36 @@
         <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
         <a href="roadmap.html" class="hover:text-white">Roadmap</a>
         <a href="whitepaper.html" class="hover:text-white">Whitepaper</a>
-        <a href="nfts.html" class="hover:text-white">NFTs</a>
+        <a href="nfts.html" class="hover:text-white">NFT's</a>
         <a href="book.html" class="hover:text-white">Book of Kek</a>
         <a href="team.html" class="hover:text-white">Team</a>
         <a href="faq.html" class="hover:text-white">F.A.Q.</a>
         <a href="contact.html" class="hover:text-white font-semibold text-white">Contact</a>
       </nav>
 
-      <div class="flex items-center gap-2">
-        <!-- Theme toggle (same behavior as index) -->
-        <button id="themeToggle" class="hidden md:inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none" title="Toggle site accent">
-          <!-- palette icon -->
+      <div class="relative z-50">
+        <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
+                class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
+          <span class="sr-only">Open menu</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3a9 9 0 00-9 9 5 5 0 005 5h1a2 2 0 012 2 2 2 0 002 2 9 9 0 000-18zM7 10h.01M12 7h.01M17 10h.01"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
           </svg>
         </button>
 
-        <!-- Hamburger -->
-        <div class="relative z-50">
-          <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
-                  class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
-            <span class="sr-only">Open menu</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
-            </svg>
-          </button>
-
-          <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
-            <nav class="py-2 text-slate-100 text-sm">
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="whitepaper.html">Whitepaper</a>
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFTs</a>
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
-              <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="contact.html">Contact</a>
-            </nav>
-          </div>
+        <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
+          <nav class="py-2 text-slate-100 text-sm">
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="whitepaper.html">Whitepaper</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFT's</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="contact.html">Contact</a>
+          </nav>
         </div>
       </div>
     </div>
@@ -128,18 +105,41 @@
 
   <!-- CONTACT OPTIONS -->
   <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20 space-y-6">
-    <div class="glass p-8 text-center">
-      <h2 class="text-2xl font-bold mb-4"><span class="accent">Reach out on X</span></h2>
+    <div class="glass rounded-2xl p-8 text-center">
+      <h2 class="text-2xl font-bold accent mb-4">Reach out on X</h2>
       <p class="text-slate-300 mb-6">Follow and message us on X (formerly Twitter) for quick updates and public announcements.</p>
-      <a href="#" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 btn-accent transition">Visit X</a>
+      <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent">Visit X</a>
     </div>
 
-    <div class="glass p-8 text-center">
-      <h2 class="text-2xl font-bold mb-4"><span class="accent">Join the Telegram Room</span></h2>
+    <div class="glass rounded-2xl p-8 text-center">
+      <h2 class="text-2xl font-bold accent mb-4">Join the Telegram Room</h2>
       <p class="text-slate-300 mb-6">Hang out with the builders, share ideas, and get real-time answers in our Telegram community.</p>
-      <a href="https://t.me/TrustlessPaymentBot" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 btn-accent transition">Open Telegram</a>
+      <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent">Open Telegram</a>
     </div>
   </main>
+
+  <!-- THEME TOGGLE (global) -->
+  <button id="themeFab" class="theme-toggle inline-flex items-center justify-center h-11 w-11 rounded-full icon-pill border border-white/10 hover:bg-white/5" title="Theme">
+    <!-- Palette icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-9.95 9.05A5 5 0 007 21h6a5 5 0 004.9-6.32 1.68 1.68 0 011.6-2.18A3.5 3.5 0 0017 5a4 4 0 00-3-3zM7 9.5A1.5 1.5 0 118.5 8 1.5 1.5 0 017 9.5zm4-2A1.5 1.5 0 1112.5 6 1.5 1.5 0 0111 7.5zm4 2A1.5 1.5 0 1116.5 8 1.5 1.5 0 0115 9.5z"/></svg>
+  </button>
+  <div id="themePanel" class="theme-panel hidden">
+    <div class="glass rounded-2xl p-3 w-64">
+      <p class="text-sm text-slate-300 mb-2">Accent color</p>
+      <div class="grid grid-cols-6 gap-2">
+        <button data-color="#21E9FF" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#21E9FF" title="Aurora Cyan"></button>
+        <button data-color="#32F5C8" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#32F5C8" title="Mint Cyan"></button>
+        <button data-color="#22D3EE" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#22D3EE" title="Electric Cyan"></button>
+        <button data-color="#00F000" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#00F000" title="Neon Green"></button>
+        <button data-color="#FFD700" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#FFD700" title="Gold"></button>
+        <button data-color="#9B8CFF" class="h-7 w-7 rounded-md ring-1 ring-white/20" style="background:#9B8CFF" title="Lavender"></button>
+      </div>
+      <div class="mt-3 flex items-center gap-2">
+        <input id="customColor" type="text" placeholder="#RRGGBB" class="flex-1 rounded-lg bg-white/5 border border-white/10 px-2 py-1 text-sm outline-none" />
+        <button id="applyCustom" class="rounded-lg border border-white/15 px-2 py-1 text-sm hover:bg-white/5">Apply</button>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
@@ -150,6 +150,44 @@
   </footer>
 
   <script>
+    // ---------- Theme loader (shared behavior across pages) ----------
+    const META_THEME = document.querySelector('meta[name="theme-color"]');
+    function hexToRGBA(hex, a){
+      const m = hex.replace('#','');
+      const r = parseInt(m.substring(0,2),16);
+      const g = parseInt(m.substring(2,4),16);
+      const b = parseInt(m.substring(4,6),16);
+      return `rgba(${r},${g},${b},${a})`;
+    }
+    function applyAccent(hex){
+      const root = document.documentElement;
+      root.style.setProperty('--accent', hex);
+      root.style.setProperty('--accent-10', hexToRGBA(hex, .10));
+      root.style.setProperty('--accent-30', hexToRGBA(hex, .30));
+      if (META_THEME) META_THEME.setAttribute('content', hex);
+    }
+    (function bootTheme(){
+      const saved = localStorage.getItem('trustless-accent');
+      if (saved) applyAccent(saved);
+    })();
+
+    // ---------- Theme UI ----------
+    const themeFab   = document.getElementById('themeFab');
+    const themePanel = document.getElementById('themePanel');
+    themeFab.addEventListener('click', ()=> themePanel.classList.toggle('hidden'));
+    themePanel.querySelectorAll('button[data-color]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const hex = btn.getAttribute('data-color');
+        localStorage.setItem('trustless-accent', hex);
+        applyAccent(hex);
+      });
+    });
+    document.getElementById('applyCustom').addEventListener('click', ()=>{
+      const v = document.getElementById('customColor').value.trim();
+      const ok = /^#([0-9a-fA-F]{6})$/.test(v);
+      if(ok){ localStorage.setItem('trustless-accent', v); applyAccent(v); }
+    });
+
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -165,7 +203,7 @@
       modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
       modal.innerHTML = `
         <div class='absolute inset-0 bg-black/70'></div>
-        <div class='relative max-w-xl w-full glass p-6'>
+        <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
           <div>${legal}</div>
           <div class='mt-6 text-right'>
             <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
@@ -175,58 +213,17 @@
       document.getElementById('close-legal').onclick = () => modal.remove();
     });
 
-    // Hamburger menu
+    // Hamburger menu toggle
     const menuBtn = document.getElementById('menuBtn');
-    const menu    = document.getElementById('mainMenu');
+    const menu = document.getElementById('mainMenu');
     function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
     function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
     menuBtn.addEventListener('click', () => {
-      (menuBtn.getAttribute('aria-expanded')==='true') ? closeMenu() : openMenu();
+      menuBtn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
     });
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-    document.addEventListener('click', (e) => { if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
-    document.addEventListener('keydown', (e) => { if(e.key==='Escape') closeMenu(); });
-
-    // THEME TOGGLE (portable: drop this block on any page)
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    const THEMES = [
-      {name:'CyanGreen', start:'#00E0FF', end:'#00D5A5', solid:'#00DDEE'},
-      {name:'Gold',      start:'#FFD700', end:'#FFB300', solid:'#FFC400'},
-      {name:'Neon',      start:'#22D3EE', end:'#22F3A8', solid:'#23E4C8'},
-      {name:'XRPL Blue', start:'#2323FF', end:'#3FA0FF', solid:'#3C8CFF'},
-    ];
-    function applyTheme(t){
-      const r = document.documentElement.style;
-      r.setProperty('--accent-start', t.start);
-      r.setProperty('--accent-end',   t.end);
-      r.setProperty('--accent-solid', t.solid);
-      r.setProperty('--accent-10', hexToRgba(t.start, .10));
-      r.setProperty('--accent-30', hexToRgba(t.start, .30));
-      if(metaTheme) metaTheme.setAttribute('content', t.solid);
-      localStorage.setItem('trustlessTheme', JSON.stringify(t));
-    }
-    function hexToRgba(hex, a){
-      const m = hex.replace('#','');
-      const bigint = parseInt(m,16);
-      const r = (bigint>>16)&255, g=(bigint>>8)&255, b=bigint&255;
-      return `rgba(${r},${g},${b},${a})`;
-    }
-    (function initTheme(){
-      const saved = localStorage.getItem('trustlessTheme');
-      if(saved){
-        try { applyTheme(JSON.parse(saved)); } catch(e){ /* noop */ }
-      }
-    })();
-    const themeBtn = document.getElementById('themeToggle');
-    if(themeBtn){
-      themeBtn.addEventListener('click', ()=>{
-        const saved = localStorage.getItem('trustlessTheme');
-        const current = saved ? JSON.parse(saved) : THEMES[0];
-        const idx = THEMES.findIndex(t=>t.name===current.name);
-        const next = THEMES[(idx+1)%THEMES.length] || THEMES[0];
-        applyTheme(next);
-      });
-    }
+    document.addEventListener('click', e => { if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
   </script>
 </body>
 </html>
