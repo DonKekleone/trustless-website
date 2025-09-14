@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Philosophy — Trustless Payments</title>
+  <meta name="description" content="Honor through automation. Code over trust. A level playing field for value-creators." />
+  <meta property="og:title" content="Philosophy — Trustless Payments" />
+  <meta property="og:description" content="Honor through automation. Code over trust. A level playing field for value-creators." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Philosophy" />
+  <link rel="icon" href="favicon.png" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Optional: tweak tailwind theme if needed
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#00F000', // site-wide accent (adjust to match index)
+              dark: '#0a0a0a'
+            }
+          },
+          backgroundImage: {
+            'brand-gradient': 'linear-gradient(90deg, #14F195 0%, #80ECFF 50%, #9945FF 100%)' // Solana-style blend
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Small polish to match index feel */
+    .glass {
+      backdrop-filter: saturate(180%) blur(10px);
+      background: rgba(10,10,10,0.6);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-zinc-950 text-zinc-100 selection:bg-brand/30 selection:text-white">
+  <!-- Header / Nav (cloned format) -->
+  <header class="sticky top-0 z-50 border-b border-zinc-800/60 bg-zinc-950/80 glass">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="flex h-16 items-center justify-between">
+        <!-- Left: Logo + Brand -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="logo.svg" onerror="this.src='logo.png'" alt="Trustless frog shield" class="h-8 w-8" />
+          <span class="text-lg font-semibold tracking-tight group-hover:text-brand transition-colors">Trustless Payments</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-brand transition-colors">Home</a>
+          <a href="philosophy.html" class="text-brand font-medium">Philosophy</a>
+          <a href="whitepaper.html" class="hover:text-brand transition-colors">Whitepaper</a>
+          <a href="team.html" class="hover:text-brand transition-colors">Team</a>
+          <a href="book.html" class="hover:text-brand transition-colors">Book of Kek</a>
+          <a href="contact.html" class="inline-flex items-center rounded-md border border-brand/30 px-3 py-1.5 hover:bg-brand/10 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-md border border-zinc-700/60 p-2 hover:border-brand/50 hover:text-brand transition-colors" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div id="mobileMenu" class="md:hidden hidden border-t border-zinc-800/60">
+        <div class="py-2 space-y-1 text-sm">
+          <a href="index.html" class="block px-2 py-2 hover:text-brand transition-colors">Home</a>
+          <a href="philosophy.html" class="block px-2 py-2 text-brand font-medium">Philosophy</a>
+          <a href="whitepaper.html" class="block px-2 py-2 hover:text-brand transition-colors">Whitepaper</a>
+          <a href="team.html" class="block px-2 py-2 hover:text-brand transition-colors">Team</a>
+          <a href="book.html" class="block px-2 py-2 hover:text-brand transition-colors">Book of Kek</a>
+          <a href="contact.html" class="block px-2 py-2 rounded-md border border-brand/30 mx-2 text-center hover:bg-brand/10 transition-colors">Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20 bg-brand-gradient pointer-events-none"></div>
+    <div class="relative mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
+      <div class="max-w-3xl">
+        <span class="inline-block text-xs tracking-widest uppercase text-zinc-300/70">Honor through automation</span>
+        <h1 class="mt-3 text-3xl sm:text-5xl font-semibold leading-tight">
+          Code over trust. <span class="text-brand">A level playing field</span> for value-creators.
+        </h1>
+        <p class="mt-5 text-zinc-300/90 leading-relaxed">
+          Payments fail when trust breaks. We replace trust with code—objective rules that settle fairly, every time. 
+          Trustless turns handshake risk into automated enforcement so honest builders can move faster with fewer scars.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="whitepaper.html" class="inline-flex items-center rounded-lg bg-brand px-4 py-2.5 font-medium text-zinc-900 hover:opacity-90 transition">Read the whitepaper</a>
+          <a href="book.html" class="inline-flex items-center rounded-lg border border-zinc-700 px-4 py-2.5 hover:border-brand/50 hover:text-brand transition">Explore the lore</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <main class="mx-auto max-w-6xl px-4 sm:px-6 pb-20">
+    <!-- Pillars -->
+    <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <article class="rounded-xl border border-zinc-800/60 p-6 bg-zinc-900/30">
+        <h3 class="text-lg font-semibold mb-2">Accountability by Design</h3>
+        <p class="text-zinc-300/90">
+          Rules are encoded upfront—no backroom deals, no selective enforcement. If conditions are met, funds move. If not, they don’t.
+        </p>
+      </article>
+      <article class="rounded-xl border border-zinc-800/60 p-6 bg-zinc-900/30">
+        <h3 class="text-lg font-semibold mb-2">Incentives > Intentions</h3>
+        <p class="text-zinc-300/90">
+          We align incentives so honest behavior is the easiest path. Bad actors lose leverage because there’s nothing left to exploit.
+        </p>
+      </article>
+      <article class="rounded-xl border border-zinc-800/60 p-6 bg-zinc-900/30">
+        <h3 class="text-lg font-semibold mb-2">Radical Simplicity</h3>
+        <p class="text-zinc-300/90">
+          Complex systems hide risk. We cut to essentials so anyone can verify the rules and outcomes without a lawyer on speed-dial.
+        </p>
+      </article>
+    </section>
+
+    <!-- Manifesto -->
+    <section class="mt-12 grid gap-6 lg:grid-cols-5">
+      <div class="lg:col-span-3 rounded-xl border border-zinc-800/60 p-6 bg-zinc-900/30">
+        <h2 class="text-xl font-semibold mb-3">What we believe</h2>
+        <ul class="list-disc pl-5 space-y-2 text-zinc-300/90">
+          <li>Honesty scales when enforcement is automated, not personal.</li>
+          <li>Markets function when the rules are transparent and final.</li>
+          <li>Creators deserve uptime on trust—24/7, zero excuses.</li>
+          <li>XRPL-first: fast settlement, low fees, global reach.</li>
+          <li>Community > custodians. Users should hold the keys to their outcomes.</li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2 rounded-xl border border-zinc-800/60 p-6 bg-zinc-900/30">
+        <h2 class="text-xl font-semibold mb-3">One-liner</h2>
+        <p class="text-zinc-300/90">
+          We remove trust from the transaction and replace it with code that keeps everyone honest, creating a <span class="text-brand font-medium">level playing field</span>.
+        </p>
+        <div class="mt-5">
+          <a href="team.html" class="inline-flex items-center rounded-lg border border-zinc-700 px-4 py-2.5 hover:border-brand/50 hover:text-brand transition">Meet the builders</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mt-12 rounded-2xl border border-zinc-800/60 p-8 bg-zinc-900/40">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <h3 class="text-2xl font-semibold">Honor through automation.</h3>
+          <p class="text-zinc-300/90 mt-1">Build without fear. Let code carry the weight.</p>
+        </div>
+        <div class="flex gap-3">
+          <a href="contact.html" class="inline-flex items-center rounded-lg bg-brand px-4 py-2.5 font-medium text-zinc-900 hover:opacity-90 transition">Get in touch</a>
+          <a href="index.html#faq" class="inline-flex items-center rounded-lg border border-zinc-700 px-4 py-2.5 hover:border-brand/50 hover:text-brand transition">Read the FAQ</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-zinc-800/60">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 py-8 text-sm text-zinc-400">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p>© <span id="y"></span> Trustless Payments. All rights reserved.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://x.com" target="_blank" class="hover:text-brand transition-colors">X (Twitter)</a>
+          <a href="https://t.me" target="_blank" class="hover:text-brand transition-colors">Telegram</a>
+          <a href="whitepaper.html" class="hover:text-brand transition-colors">Whitepaper</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const open = !menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+    }
+  </script>
+</body>
+</html>
