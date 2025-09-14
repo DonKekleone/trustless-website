@@ -10,17 +10,17 @@
   <meta property="og:description" content="Install Xaman, create a safe wallet, fund with XRP, and buy on XRPL DEX." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=How+to+Buy+%24TRUSTLESS" />
-  <!-- Solid fallback approximating the gradient for browser UI bars -->
-  <meta name="theme-color" content="#00F5E0" />
+  <!-- Slightly bluer gradient fallback for browser UI bars -->
+  <meta name="theme-color" content="#00DDEE" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      /* Fluorescent blue→green blend */
-      --accent-start:#00F5FF;     /* vivid cyan */
-      --accent-end:#00F000;       /* vivid green */
-      --accent-solid:#00F5E0;     /* fallback single color */
-      --accent-10: rgba(0,245,255,.10);
-      --accent-30: rgba(0,245,255,.30);
+      /* Fluorescent blue→green blend, now cooler & bluer */
+      --accent-start:#00E0FF;     /* bluer cyan */
+      --accent-end:#00D5A5;       /* cooler green */
+      --accent-solid:#00DDEE;     /* single-color fallback */
+      --accent-10: rgba(0,224,255,.10);
+      --accent-30: rgba(0,224,255,.30);
     }
     .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
     .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
@@ -41,13 +41,12 @@
     }
     .btn-accent{
       background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      color:#071b18; font-weight:600;
+      color:#061b1b; font-weight:600;
       transition: filter .2s ease, transform .02s ease;
-      box-shadow: 0 6px 20px rgba(0,245,255,.15);
+      box-shadow: 0 6px 20px rgba(0,224,255,.15);
     }
     .btn-accent:hover { filter: brightness(1.08); }
     .btn-accent:active{ transform: translateY(1px); }
-    .link-accent{ color: var(--accent-solid); }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100">
