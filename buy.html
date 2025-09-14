@@ -10,26 +10,44 @@
   <meta property="og:description" content="Install Xaman, create a safe wallet, fund with XRP, and buy on XRPL DEX." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=How+to+Buy+%24TRUSTLESS" />
-  <meta name="theme-color" content="#34D399" />
+  <!-- Solid fallback approximating the gradient for browser UI bars -->
+  <meta name="theme-color" content="#00F5E0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      /* Professional green from your screenshot vibe */
-      --accent:#34D399;                 /* emerald-400 */
-      --accent-10: rgba(52,211,153,.10);
-      --accent-30: rgba(52,211,153,.30);
+      /* Fluorescent blue→green blend */
+      --accent-start:#00F5FF;     /* vivid cyan */
+      --accent-end:#00F000;       /* vivid green */
+      --accent-solid:#00F5E0;     /* fallback single color */
+      --accent-10: rgba(0,245,255,.10);
+      --accent-30: rgba(0,245,255,.30);
     }
     .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
     .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
     html { scroll-behavior: smooth; }
 
     /* Accent helpers */
-    .accent        { color: var(--accent) !important; }
+    .accent{
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color: transparent;
+    }
     .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); }
-    .icon-pill svg { color: var(--accent); }
-    .brand-accent  { color: var(--accent) !important; }
-    .btn-accent    { background: var(--accent); color:#062a20; font-weight:600; }
-    .btn-accent:hover { filter: brightness(1.05); }
+    .icon-pill svg { color: var(--accent-end); }
+    .brand-accent  {
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color: transparent;
+    }
+    .btn-accent{
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      color:#071b18; font-weight:600;
+      transition: filter .2s ease, transform .02s ease;
+      box-shadow: 0 6px 20px rgba(0,245,255,.15);
+    }
+    .btn-accent:hover { filter: brightness(1.08); }
+    .btn-accent:active{ transform: translateY(1px); }
+    .link-accent{ color: var(--accent-solid); }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100">
@@ -139,7 +157,10 @@
     <section class="text-center">
       <p class="text-slate-300">Need help? Ping us in Telegram and we’ll walk you through it.</p>
       <div class="mt-4">
-        <a href="https://t.me/TrustlessPaymentBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Open @TrustlessPaymentBot</a>
+        <a href="https://t.me/TrustlessPaymentBot" target="_blank"
+           class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition shadow-lg">
+          Open @TrustlessPaymentBot
+        </a>
       </div>
     </section>
   </main>
