@@ -1,272 +1,333 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="neongreen" data-density="cozy">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact — Trustless Payments</title>
-  <link rel="icon" href="favicon.png" />
-  <meta name="description" content="Reach out to Trustless Payments on X or join the Telegram room." />
+  <meta name="description" content="Contact Trustless Payments — partnerships, questions, and support." />
   <meta property="og:title" content="Contact — Trustless Payments" />
-  <meta property="og:description" content="Connect with us on X or Telegram." />
+  <meta property="og:description" content="Questions, ideas, or partnerships? Reach out." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Contact" />
-  <meta name="theme-color" content="#0ea5e9" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="theme-color" content="#0a0f14" />
   <style>
-    /* Shared visual primitives (same spirit as index) */
-    html { scroll-behavior: smooth; }
-    .grid-bg { background-image:
-      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-      background-size: 24px 24px;
+    /* ---- Base / Theme Tokens ---- */
+    :root {
+      --bg: #0a0f14;
+      --panel: #0f1621;
+      --panel-2: #0b1118;
+      --grid: rgba(255,255,255,0.04);
+      --text: #cdd7e3;
+      --muted: #9bb0c0;
+      --ring: #1b2a3a;
+      --card: #111826;
+      --shadow: 0 10px 40px rgba(0,0,0,0.35);
+      --radius: 20px;
+      --brand:#00F000; /* fallback solid */
+      --grad: linear-gradient(135deg,#00F000,#00FFA0);
+      --btnText:#061006;
     }
-    .glass { backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border: 1px solid rgba(255,255,255,.12);
+    /* BlueGreen theme */
+    [data-theme="bluegreen"]{
+      --brand:#1dd3ff;
+      --grad: linear-gradient(135deg,#00C2FF 0%, #00F000 100%);
+    }
+    /* Gold theme */
+    [data-theme="gold"]{
+      --brand:#ffd36a;
+      --grad: linear-gradient(135deg,#FAD961 0%, #F76B1C 100%);
+      --btnText:#0e0a06;
+    }
+    /* NeonGreen theme */
+    [data-theme="neongreen"]{
+      --brand:#00F000;
+      --grad: linear-gradient(135deg,#00F000 0%, #00FFA0 100%);
+      --btnText:#041004;
     }
 
-    /* ---- THEME (matches index toggle) ----------------------------------- */
-    :root{
-      --accent: #22d3ee;   /* BlueGreen default */
-      --accent-ink: #0b1820;
-      --accent-10: rgba(34,211,238,.10);
-      --accent-30: rgba(34,211,238,.30);
-      --padY: 5rem;        /* Cozy layout baseline */
-      --cardPad: 1.5rem;
-      --radius: 1.0rem;
-    }
-    /* layout: Compact reduces paddings a bit */
-    body.compact :where(section){ --padY: 3.75rem; }
-    body.compact :where(.glass){ --cardPad: 1.0rem; --radius: .85rem; }
+    /* Density */
+    [data-density="cozy"]{ --pad: 18px; --gap: 16px; --text-size: 18px; --h1: 52px; }
+    [data-density="compact"]{ --pad: 12px; --gap: 12px; --text-size: 16px; --h1: 44px; }
 
-    /* helpers that echo index */
-    .icon-pill { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); }
-    .icon-pill svg { color: var(--accent); }
-    .brand-accent, .accent { color: var(--accent) !important; }
-    .btn-accent { background: var(--accent); color: var(--accent-ink); font-weight: 700; }
-    .btn-accent:hover { filter: brightness(1.06); }
-
-    /* settings FAB + sheet (copied UX from index) */
-    .fab { position: fixed; right: 18px; bottom: 18px; z-index: 60; }
-    .sheet { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
-      z-index: 60; max-width: 680px; width: calc(100% - 24px);
+    /* ---- Reset / Layout ---- */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 1200px at 10% -10%, rgba(0,255,160,0.08), transparent 40%),
+                  var(--bg);
+      color: var(--text);
+      line-height:1.6;
+      font-size: var(--text-size);
     }
-    .swatch { width: 40px; height: 36px; border-radius: .75rem; border: 1px solid rgba(255,255,255,.18); }
-    .chip { padding: .5rem .9rem; border-radius: .75rem; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); }
-    .chip.active, .swatch.active { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* Subtle grid background */
+    .grid{
+      position:fixed; inset:0; pointer-events:none; opacity:0.35;
+      background-image:
+        linear-gradient(to right, var(--grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(100% 60% at 50% 0%, #000 60%, transparent 100%);
+    }
+
+    /* ---- Header ---- */
+    .header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px);
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
+      border-bottom:1px solid var(--ring);
+    }
+    .bar{
+      max-width:1100px; margin:0 auto; padding: var(--pad);
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none; color: var(--text);
+      font-weight:700;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px; background: var(--grad);
+      display:grid; place-items:center; box-shadow: var(--shadow);
+    }
+    .logo svg{ width:22px; height:22px; fill:#001600; filter: drop-shadow(0 1px 0 rgba(255,255,255,.15)); }
+
+    nav{display:none}
+    .menu-btn{background:#0f1621;border:1px solid var(--ring); padding:10px 12px; border-radius:14px; color:var(--text)}
+    .menu.open nav{display:block; position:absolute; right:var(--pad); top:62px; background:#0f1621; border:1px solid var(--ring); border-radius:16px; box-shadow: var(--shadow); padding:10px; }
+    nav a{
+      display:block; padding:10px 14px; border-radius:10px; color:var(--text); text-decoration:none;
+    }
+    nav a:hover{ background:#101927; }
+
+    /* desktop */
+    @media(min-width:880px){
+      nav{display:flex !important; gap:6px; position:static; background:none; border:none; padding:0}
+      .menu-btn{display:none}
+      nav a{padding:10px 14px}
+    }
+
+    /* ---- Hero / Content ---- */
+    .wrap{ max-width:1100px; margin:0 auto; padding: calc(var(--pad) * 2) var(--pad); }
+    h1{ font-size: var(--h1); line-height:1.05; margin: 10px 0 14px; }
+    .accent{ color: var(--brand); }
+    .lead{ color: var(--muted); max-width:900px }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 60%),
+                  var(--panel);
+      border:1px solid var(--ring);
+      border-radius: var(--radius);
+      padding: calc(var(--pad) * 1.2);
+      box-shadow: var(--shadow);
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 18px; border-radius:16px; border:1px solid color-mix(in srgb, #000 30%, var(--brand));
+      background: var(--grad); color: var(--btnText); font-weight:700; text-decoration:none;
+      box-shadow: 0 8px 30px rgba(0, 255, 150, .18);
+      transition: transform .06s ease, box-shadow .2s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .row{ display:grid; gap: var(--gap); grid-template-columns: 1fr; }
+    @media(min-width:880px){ .row{ grid-template-columns: 1.2fr .8fr; } }
+
+    /* ---- Theme Modal (matches index) ---- */
+    .floating-gear{
+      position: fixed; left: 16px; bottom: 16px; z-index: 40;
+      width:56px; height:56px; border-radius:50%;
+      background: var(--grad); color: var(--btnText); display:grid; place-items:center;
+      border:1px solid color-mix(in srgb, var(--brand) 60%, #000);
+      box-shadow: var(--shadow); cursor:pointer;
+    }
+    .sheet{
+      position: fixed; inset: 0; display:none; align-items:end; justify-content:center; z-index: 60;
+    }
+    .sheet.show{ display:flex; }
+    .sheet .backdrop{position:absolute; inset:0; background: rgba(0,0,0,.45)}
+    .sheet .panel{
+      position:relative; width:min(680px, 94%); margin:0 0 16px; padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), transparent 70%), #0f1621;
+      border:1px solid var(--ring); border-radius: 22px; box-shadow: var(--shadow);
+    }
+    .sheet h3{ margin:2px 0 14px; color: var(--brand) }
+    .swatches{ display:flex; gap:10px; flex-wrap:wrap; }
+    .swatch{
+      border:1px solid var(--ring); width:84px; height:40px; border-radius:14px; cursor:pointer;
+      position:relative; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+    }
+    .swatch[data-theme="bluegreen"]{ background-image: linear-gradient(135deg,#00C2FF,#00F000); }
+    .swatch[data-theme="gold"]{ background-image: linear-gradient(135deg,#FAD961,#F76B1C); }
+    .swatch[data-theme="neongreen"]{ background-image: linear-gradient(135deg,#00F000,#00FFA0); }
+    .swatch.active{ outline:2px solid var(--brand); }
+
+    .density{ display:flex; gap:10px; margin-top:10px; }
+    .chip{
+      padding:10px 14px; border-radius:14px; border:1px solid var(--ring); cursor:pointer; background:#111a27; color:var(--text);
+    }
+    .chip.active{ border-color: color-mix(in srgb, var(--brand) 70%, #000); color:#eaffef; background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 70%); }
+    .close{
+      position:absolute; right:16px; bottom:16px; padding:10px 16px; border-radius:14px; border:1px solid var(--ring);
+      background:#101722; color:var(--text); cursor:pointer;
+    }
+
+    /* Links list */
+    .links a{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); padding:12px 0; }
+    .links a:hover{ color:#fff; }
+    .muted{ color: var(--muted); }
   </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100" id="top">
-  <!-- NAV -->
-  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html#top" class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl icon-pill">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
-            <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
-            <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
+<body>
+  <div class="grid" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="bar menu" id="menu">
+      <a class="brand" href="index.html" title="Home">
+        <span class="logo" aria-hidden="true">
+          <!-- frog-in-shield icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2l7 3v5c0 5.25-3.33 8.89-7 10-3.67-1.11-7-4.75-7-10V5l7-3zM8.9 10.4c1.04 0 1.88-.84 1.88-1.88S9.94 6.64 8.9 6.64s-1.88.84-1.88 1.88.84 1.88 1.88 1.88zm6.2 0c1.04 0 1.88-.84 1.88-1.88s-.84-1.88-1.88-1.88-1.88.84-1.88 1.88.84 1.88 1.88 1.88zM8.2 13.8c1.5 1 3.1 1.2 3.8 1.2.7 0 2.3-.2 3.8-1.2.4-.27.93.23.66.64-1.24 1.84-3.08 2.56-4.46 2.56s-3.22-.72-4.46-2.56c-.27-.41.26-.91.66-.64z"/>
           </svg>
         </span>
-        <span class="font-semibold tracking-wide brand-accent">Trustless Payments</span>
+        <span>Trustless Payments</span>
       </a>
 
-      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a href="index.html#top" class="hover:text-white">Home</a>
-        <a href="philosophy.html" class="hover:text-white">Philosophy</a>
-        <a href="about.html" class="hover:text-white">About</a>
-        <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
-        <a href="roadmap.html" class="hover:text-white">Roadmap</a>
-        <a href="nfts.html" class="hover:text-white">NFT's</a>
-        <a href="buy.html" class="hover:text-white">Buy $TRUSTLESS</a>
-        <a href="book.html" class="hover:text-white">Book of Kek</a>
-        <a href="whitepaper.html" class="hover:text-white">Whitepaper</a>
-        <a href="team.html" class="hover:text-white">Team</a>
-        <a href="faq.html" class="hover:text-white">F.A.Q.</a>
-        <a href="contact.html" class="hover:text-white font-semibold text-white">Contact</a>
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="book.html">Book of Kek</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html" aria-current="page">Contact</a>
       </nav>
-
-      <!-- Mobile menu -->
-      <div class="relative z-50">
-        <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
-                class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
-          <span class="sr-only">Open menu</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
-          </svg>
-        </button>
-
-        <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
-          <nav class="py-2 text-slate-100 text-sm">
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="philosophy.html">Philosophy</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFT's</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="whitepaper.html">Whitepaper</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="contact.html">Contact</a>
-          </nav>
-        </div>
-      </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" style="padding-top: var(--padY); padding-bottom: calc(var(--padY) - 1rem);">
-      <h1 class="text-3xl md:text-5xl font-extrabold accent">Contact</h1>
-      <p class="mt-3 text-slate-300 max-w-3xl">
-        Questions, ideas, or partnerships? We’re easy to reach—choose the channel that fits your style.
-      </p>
-    </div>
-  </section>
+  <main class="wrap">
+    <section class="row">
+      <div>
+        <h1>Contact <span class="accent">.</span></h1>
+        <p class="lead">Questions, ideas, or partnerships? We’re easy to reach—choose the channel that fits your style.</p>
 
-  <!-- CONTACT OPTIONS -->
-  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" style="padding-bottom: var(--padY);">
-    <div class="grid gap-6">
-      <div class="glass rounded-2xl p-8" style="padding: var(--cardPad); border-radius: var(--radius);">
-        <h2 class="text-2xl font-extrabold accent mb-4">Reach out on X</h2>
-        <p class="text-slate-300 mb-6">Follow and message us on X (formerly Twitter) for quick updates and public announcements.</p>
-        <a href="#" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Visit X</a>
+        <div class="card" style="margin-top:24px">
+          <h2 style="margin:0 0 8px">Reach out on X</h2>
+          <p class="muted" style="margin:0 0 16px">Follow and message us on X (formerly Twitter).</p>
+          <div class="links">
+            <a href="https://x.com" target="_blank" rel="noopener">
+              <span class="btn" style="padding:8px 14px; font-weight:600">Open X</span>
+              <span class="muted">— @TrustlessToads</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h2 style="margin:0 0 8px">Telegram</h2>
+          <p class="muted" style="margin:0 0 16px">Fastest way to chat with the builders.</p>
+          <div class="links">
+            <a href="https://t.me" target="_blank" rel="noopener">
+              <span class="btn" style="padding:8px 14px; font-weight:600">Join Telegram</span>
+              <span class="muted">— Trustless Escrow Bot &amp; community</span>
+            </a>
+          </div>
+        </div>
       </div>
 
-      <div class="glass rounded-2xl p-8" style="padding: var(--cardPad); border-radius: var(--radius);">
-        <h2 class="text-2xl font-extrabold accent mb-4">Join the Telegram Room</h2>
-        <p class="text-slate-300 mb-6">Hang out with the builders, share ideas, and get real-time answers in our Telegram community.</p>
-        <a href="https://t.me/TrustlessPaymentBot" target="_blank" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Open Telegram</a>
-      </div>
-    </div>
+      <aside>
+        <div class="card">
+          <h3 style="margin-top:0;margin-bottom:6px">Business</h3>
+          <p class="muted" style="margin-top:0">For partnerships, integrations, or press inquiries:</p>
+          <div class="links" style="margin-top:8px">
+            <a href="mailto:contact@trustless.to">
+              <strong>Email</strong>
+              <span class="muted">contact@trustless.to</span>
+            </a>
+            <a href="https://cal.com" target="_blank" rel="noopener">
+              <strong>Book a call</strong>
+              <span class="muted">15–30 minute intro</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+    </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p>© <span id="year"></span> Trustless Payments. All rights reserved. •
-        <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
-      <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
-    </div>
-  </footer>
-
-  <!-- SETTINGS FAB (same UX as index) -->
-  <button id="fab" class="fab inline-flex items-center justify-center rounded-full btn-accent h-14 w-14 shadow-lg focus:outline-none" aria-haspopup="dialog" aria-controls="sheet">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8a4 4 0 100 8 4 4 0 000-8z"/><path d="M19.4 15a7.94 7.94 0 00.1-2l2.1-1.6-2-3.4-2.5.7a8.1 8.1 0 00-1.7-1l-.4-2.6H11l-.4 2.6a8.1 8.1 0 00-1.7 1l-2.5-.7-2 3.4L6.5 13a7.94 7.94 0 000 2l-2.1 1.6 2 3.4 2.5-.7a8.1 8.1 0 001.7 1l.4 2.6h4.2l.4-2.6a8.1 8.1 0 001.7-1l2.5.7 2-3.4L19.4 15z"/></svg>
+  <!-- Floating gear (opens theme sheet) -->
+  <button class="floating-gear" id="gearBtn" title="Theme & Layout">
+    ⚙️
   </button>
 
-  <div id="sheet" class="sheet hidden">
-    <div class="glass rounded-2xl p-5 md:p-6 text-slate-200">
-      <h3 class="font-semibold text-lg accent">Theme & Layout</h3>
+  <!-- Theme & Layout Sheet -->
+  <div class="sheet" id="sheet">
+    <div class="backdrop" id="sheetBackdrop"></div>
+    <div class="panel">
+      <h3>Theme &amp; Layout</h3>
 
-      <div class="mt-4">
-        <div class="text-sm text-slate-400 mb-2">Color</div>
-        <div class="flex items-center gap-3">
-          <button class="swatch" data-theme="BlueGreen" style="background:#22d3ee"></button>
-          <button class="swatch" data-theme="Gold"      style="background:#ffd700"></button>
-          <button class="swatch" data-theme="NeonGreen" style="background:#00F000"></button>
-        </div>
+      <div style="margin:10px 0 8px">Color</div>
+      <div class="swatches" id="swatches">
+        <div class="swatch" role="button" tabindex="0" aria-label="BlueGreen theme" data-theme="bluegreen" title="BlueGreen"></div>
+        <div class="swatch" role="button" tabindex="0" aria-label="Gold theme" data-theme="gold" title="Gold"></div>
+        <div class="swatch" role="button" tabindex="0" aria-label="Neon Green theme" data-theme="neongreen" title="Neon Green"></div>
       </div>
 
-      <div class="mt-5">
-        <div class="text-sm text-slate-400 mb-2">Layout</div>
-        <div class="flex items-center gap-2">
-          <button class="chip" data-layout="cozy">Cozy</button>
-          <button class="chip" data-layout="compact">Compact</button>
-        </div>
+      <div style="margin:16px 0 8px">Layout</div>
+      <div class="density">
+        <button class="chip" data-density="cozy">Cozy</button>
+        <button class="chip" data-density="compact">Compact</button>
       </div>
 
-      <div class="mt-6 text-right">
-        <button id="closeSheet" class="inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5">Close</button>
-      </div>
+      <button class="close" id="closeSheet">Close</button>
     </div>
   </div>
 
   <script>
-    // Year + legal modal
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const legal = `\
-    <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
-    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
-    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
-    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
-    document.getElementById('legal-link').addEventListener('click', (e)=>{
-      e.preventDefault();
-      const m = document.createElement('div');
-      m.className='fixed inset-0 z-50 flex items-center justify-center p-4';
-      m.innerHTML=`<div class='absolute inset-0 bg-black/70'></div>
-      <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
-        <div>${legal}</div>
-        <div class='mt-6 text-right'>
-          <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
-        </div>
-      </div>`;
-      document.body.appendChild(m);
-      document.getElementById('close-legal').onclick=()=>m.remove();
-    });
+    /* ------ Persisted UI State ------ */
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'neongreen';
+    const savedDensity = localStorage.getItem('density') || 'cozy';
+    root.setAttribute('data-theme', savedTheme);
+    root.setAttribute('data-density', savedDensity);
 
-    // Mobile menu
-    const menuBtn=document.getElementById('menuBtn');
-    const menu=document.getElementById('mainMenu');
-    function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
-    function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
-    menuBtn.addEventListener('click',()=> menuBtn.getAttribute('aria-expanded')==='true'?closeMenu():openMenu());
-    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
-    document.addEventListener('click',e=>{ if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
+    // Header menu
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    menuBtn?.addEventListener('click', () => menu.classList.toggle('open'));
 
-    /* -------- Theme & Layout (cloned behavior from index) --------------- */
-    const THEMES = {
-      BlueGreen: { accent:'#22d3ee', ink:'#0b1820' },
-      Gold:      { accent:'#ffd700', ink:'#0a1a0a' },
-      NeonGreen: { accent:'#00F000', ink:'#0a1a0a' },
-    };
-    const LS_KEY_THEME='tp_theme';
-    const LS_KEY_LAYOUT='tp_layout';
+    // Theme sheet
+    const sheet = document.getElementById('sheet');
+    const gearBtn = document.getElementById('gearBtn');
+    const closeSheet = document.getElementById('closeSheet');
+    const sheetBackdrop = document.getElementById('sheetBackdrop');
+    const openSheet = () => sheet.classList.add('show');
+    const hideSheet = () => sheet.classList.remove('show');
+    gearBtn.addEventListener('click', openSheet);
+    closeSheet.addEventListener('click', hideSheet);
+    sheetBackdrop.addEventListener('click', hideSheet);
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hideSheet(); });
 
-    function applyTheme(name){
-      const t = THEMES[name] || THEMES.BlueGreen;
-      document.documentElement.style.setProperty('--accent', t.accent);
-      document.documentElement.style.setProperty('--accent-ink', t.ink);
-      // soft shadows
-      document.documentElement.style.setProperty('--accent-10', hexToRgba(t.accent, .10));
-      document.documentElement.style.setProperty('--accent-30', hexToRgba(t.accent, .30));
-      localStorage.setItem(LS_KEY_THEME, name);
-      // update visual active state
-      document.querySelectorAll('.swatch').forEach(b => b.classList.toggle('active', b.dataset.theme===name));
+    // Swatches (gradient like index)
+    const swatches = [...document.querySelectorAll('.swatch')];
+    function setTheme(name){
+      root.setAttribute('data-theme', name);
+      localStorage.setItem('theme', name);
+      swatches.forEach(w => w.classList.toggle('active', w.dataset.theme===name));
     }
-    function applyLayout(kind){
-      document.body.classList.toggle('compact', kind==='compact');
-      localStorage.setItem(LS_KEY_LAYOUT, kind);
-      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.layout===kind));
-    }
-    function hexToRgba(hex, a){
-      const h = hex.replace('#','');
-      const bigint = parseInt(h,16);
-      const r=(bigint>>16)&255, g=(bigint>>8)&255, b=bigint&255;
-      return `rgba(${r},${g},${b},${a})`;
-    }
+    swatches.forEach(w => {
+      w.addEventListener('click', ()=> setTheme(w.dataset.theme));
+      w.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); setTheme(w.dataset.theme); }});
+    });
+    setTheme(savedTheme); // reflect active state
 
-    // wire controls
-    document.getElementById('fab').addEventListener('click', ()=>{
-      document.getElementById('sheet').classList.remove('hidden');
-    });
-    document.getElementById('closeSheet').addEventListener('click', ()=>{
-      document.getElementById('sheet').classList.add('hidden');
-    });
-    document.querySelectorAll('.swatch').forEach(b=>{
-      b.addEventListener('click',()=>applyTheme(b.dataset.theme));
-    });
-    document.querySelectorAll('.chip').forEach(c=>{
-      c.addEventListener('click',()=>applyLayout(c.dataset.layout));
-    });
-
-    // init from storage (same default as index)
-    applyTheme(localStorage.getItem(LS_KEY_THEME) || 'BlueGreen');
-    applyLayout(localStorage.getItem(LS_KEY_LAYOUT) || 'cozy');
+    // Density chips
+    const chips = [...document.querySelectorAll('.chip')];
+    function setDensity(v){
+      root.setAttribute('data-density', v);
+      localStorage.setItem('density', v);
+      chips.forEach(c => c.classList.toggle('active', c.dataset.density===v));
+    }
+    chips.forEach(c => c.addEventListener('click', ()=> setDensity(c.dataset.density)));
+    setDensity(savedDensity);
   </script>
 </body>
 </html>
