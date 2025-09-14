@@ -9,24 +9,46 @@
   <meta property="og:description" content="Short chapters, heavy lessons. Stop trusting, start verifying. Honor through automation." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=The+Book+of+KEK" />
-  <meta name="theme-color" content="#FFD700" />
+  <!-- Gradient fallback for browser UI bars -->
+  <meta name="theme-color" content="#00DDEE" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      --accent:#FFD700; /* gold */
-      --accent-10: rgba(255,215,0,.10);
-      --accent-30: rgba(255,215,0,.30);
+      /* Blue→Green site accent (matches index/buy/roadmap/faq) */
+      --accent-start:#00E0FF;   /* bluer cyan */
+      --accent-end:#00D5A5;     /* cooler green */
+      --accent-solid:#00DDEE;   /* single-color fallback */
+      --accent-10: rgba(0,224,255,.10);
+      --accent-30: rgba(0,224,255,.30);
+      --radius: 0.75rem;
     }
     .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
-    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); }
     html { scroll-behavior: smooth; }
 
-    .accent        { color: var(--accent) !important; }
-    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); }
-    .icon-pill svg { color: var(--accent); }
-    .brand-accent  { color: var(--accent) !important; }
-    .btn-accent    { background: var(--accent); color:#0a1a0a; font-weight:600; }
-    .btn-accent:hover { filter: brightness(1.05); }
+    /* Accent helpers */
+    .accent{
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color: transparent;
+    }
+    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); border-radius: var(--radius); }
+    .icon-pill svg { color: var(--accent-end); }
+    .brand-accent  {
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color: transparent;
+    }
+    .btn-accent{
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      color:#061b1b; font-weight:600;
+      transition: filter .2s ease, transform .02s ease;
+      box-shadow: 0 6px 20px rgba(0,224,255,.15);
+      border-radius: var(--radius);
+      padding: 12px 20px;
+    }
+    .btn-accent:hover { filter: brightness(1.08); }
+    .btn-accent:active{ transform: translateY(1px); }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100">
@@ -35,7 +57,7 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <!-- Logo -->
       <a href="index.html" class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl icon-pill">
+        <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
           <!-- Frog shield -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
@@ -98,7 +120,7 @@
           </div>
           <p class="mt-3 text-xs text-slate-400">No promises, no price talk—just participation in a system that rewards delivery and punishes nonsense.</p>
         </div>
-        <div class="glass rounded-2xl p-3 md:p-4">
+        <div class="glass p-3 md:p-4">
           <img src="book-cover.png" alt="The Book of KEK cover" class="w-full h-auto rounded-xl ring-1 ring-white/10 object-cover" loading="lazy">
         </div>
       </div>
@@ -163,11 +185,11 @@
       </div>
 
       <div class="grid md:grid-cols-2 gap-6">
-        <div class="glass rounded-2xl p-6">
+        <div class="glass p-6">
           <h3 class="text-xl font-semibold accent">🧭 Track 1 — Trustless Mindset (Personal OS)</h3>
           <p class="mt-2 text-slate-300">Build a spine you don’t have to defend. Boundaries, incentives, proof-then-pay habits baked into reflex.</p>
         </div>
-        <div class="glass rounded-2xl p-6">
+        <div class="glass p-6">
           <h3 class="text-xl font-semibold accent">🧭 Track 2 — Trustless System (Practical Rails)</h3>
           <p class="mt-2 text-slate-300">Run deals on rails—escrows, milestones, releases, refunds. No drama, no guesswork. Conditions met → value moves.</p>
         </div>
@@ -212,7 +234,7 @@
           <a href="BookOfKek.pdf" download class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Grab The Book of KEK (PDF)</a>
           <a href="buy.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Use the bot when talk turns to terms</a>
         </div>
-        <p class="text-xs text-slate-400 mt-2">Make ’em earn it—or they don’t earn anything. 🐸💣🟡 — Honor through automation.</p>
+        <p class="text-xs text-slate-400 mt-2">Make ’em earn it—or they don’t earn anything. 🐸💣🟢 — Honor through automation.</p>
       </div>
 
     </div>

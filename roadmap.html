@@ -10,22 +10,49 @@
   <meta property="og:description" content="See what's shipped and what's next." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Roadmap" />
-  <meta name="theme-color" content="#00F000" />
+  <!-- Gradient fallback for browser UI bars -->
+  <meta name="theme-color" content="#00DDEE" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      --accent:#00F000;
-      --accent-10: rgba(0,240,0,.10);
-      --accent-30: rgba(0,240,0,.30);
+      /* Blue→Green site accent (matches index & buy) */
+      --accent-start:#00E0FF;   /* bluer cyan */
+      --accent-end:#00D5A5;     /* cooler green */
+      --accent-solid:#00DDEE;   /* single-color fallback */
+      --accent-10: rgba(0,224,255,.10);
+      --accent-30: rgba(0,224,255,.30);
+
+      /* Optional shared layout vars (future-proof) */
+      --radius: 0.75rem;
     }
+
     .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
-    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); }
     html { scroll-behavior: smooth; }
 
-    .accent        { color: var(--accent) !important; }
-    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); }
-    .icon-pill svg { color: var(--accent); }
-    .brand-accent  { color: var(--accent) !important; }
+    /* Accent helpers (gradient text/buttons) */
+    .accent{
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color: transparent;
+    }
+    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); border-radius: var(--radius); }
+    .icon-pill svg { color: var(--accent-end); }
+    .brand-accent  {
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color: transparent;
+    }
+    .btn-accent{
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      color:#061b1b; font-weight:600;
+      transition: filter .2s ease, transform .02s ease;
+      box-shadow: 0 6px 20px rgba(0,224,255,.15);
+      border-radius: var(--radius);
+      padding: 12px 20px;
+    }
+    .btn-accent:hover { filter: brightness(1.08); }
+    .btn-accent:active{ transform: translateY(1px); }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100">
@@ -33,7 +60,7 @@
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl icon-pill">
+        <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
           <!-- Frog shield -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
@@ -48,7 +75,7 @@
         <a href="about.html" class="hover:text-white">About</a>
         <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
         <a href="roadmap.html" class="hover:text-white font-semibold text-white">Roadmap</a>
-        <a href="nfts.html" class="hover:text-white">NFT's</a>
+        <a href="nfts.html" class="hover:text-white">NFTs</a>
         <a href="book.html" class="hover:text-white">Book of Kek</a>
         <a href="team.html" class="hover:text-white">Team</a>
         <a href="faq.html" class="hover:text-white">F.A.Q.</a>
@@ -69,7 +96,7 @@
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="roadmap.html">Roadmap</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFT's</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFTs</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
@@ -90,7 +117,7 @@
     </div>
   </section>
 
-  <!-- TIMELINE (no dots; green titles) -->
+  <!-- TIMELINE -->
   <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
     <ol class="relative border-l border-white/10 pl-6 space-y-10">
       <li>
@@ -139,7 +166,7 @@
       modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
       modal.innerHTML = `
         <div class='absolute inset-0 bg-black/70'></div>
-        <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
+        <div class='relative max-w-xl w-full glass p-6'>
           <div>${legal}</div>
           <div class='mt-6 text-right'>
             <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
