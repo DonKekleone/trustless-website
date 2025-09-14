@@ -46,14 +46,19 @@
     .btn-accent { background: var(--accent); color: var(--accent-ink); font-weight: 700; }
     .btn-accent:hover { filter: brightness(1.06); }
 
-    /* settings FAB + sheet (copied UX from index) */
+    /* settings FAB + sheet */
     .fab { position: fixed; right: 18px; bottom: 18px; z-index: 60; }
     .sheet { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
       z-index: 60; max-width: 680px; width: calc(100% - 24px);
     }
-    .swatch { width: 40px; height: 36px; border-radius: .75rem; border: 1px solid rgba(255,255,255,.18); }
+
+    /* Pills & chips (match index look) */
     .chip { padding: .5rem .9rem; border-radius: .75rem; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); }
-    .chip.active, .swatch.active { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .chip.active { outline: 2px solid var(--accent); outline-offset: 2px; background: var(--accent-10); border-color: var(--accent-30); }
+
+    /* (kept for future, but not used after update) */
+    .swatch { width: 40px; height: 36px; border-radius: .75rem; border: 1px solid rgba(255,255,255,.18); }
+    .swatch.active { outline: 2px solid var(--accent); outline-offset: 2px; }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100" id="top">
@@ -153,7 +158,7 @@
     </div>
   </footer>
 
-  <!-- SETTINGS FAB (same UX as index) -->
+  <!-- SETTINGS FAB -->
   <button id="fab" class="fab inline-flex items-center justify-center rounded-full btn-accent h-14 w-14 shadow-lg focus:outline-none" aria-haspopup="dialog" aria-controls="sheet">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8a4 4 0 100 8 4 4 0 000-8z"/><path d="M19.4 15a7.94 7.94 0 00.1-2l2.1-1.6-2-3.4-2.5.7a8.1 8.1 0 00-1.7-1l-.4-2.6H11l-.4 2.6a8.1 8.1 0 00-1.7 1l-2.5-.7-2 3.4L6.5 13a7.94 7.94 0 000 2l-2.1 1.6 2 3.4 2.5-.7a8.1 8.1 0 001.7 1l.4 2.6h4.2l.4-2.6a8.1 8.1 0 001.7-1l2.5.7 2-3.4L19.4 15z"/></svg>
   </button>
@@ -162,12 +167,13 @@
     <div class="glass rounded-2xl p-5 md:p-6 text-slate-200">
       <h3 class="font-semibold text-lg accent">Theme & Layout</h3>
 
+      <!-- UPDATED: match index pills for color -->
       <div class="mt-4">
         <div class="text-sm text-slate-400 mb-2">Color</div>
-        <div class="flex items-center gap-3">
-          <button class="swatch" data-theme="BlueGreen" style="background:#22d3ee"></button>
-          <button class="swatch" data-theme="Gold"      style="background:#ffd700"></button>
-          <button class="swatch" data-theme="NeonGreen" style="background:#00F000"></button>
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="chip" data-theme="BlueGreen">BlueGreen</button>
+          <button class="chip" data-theme="Gold">Gold</button>
+          <button class="chip" data-theme="NeonGreen">NeonGreen</button>
         </div>
       </div>
 
@@ -218,7 +224,7 @@
     document.addEventListener('click',e=>{ if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
     document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
 
-    /* -------- Theme & Layout (cloned behavior from index) --------------- */
+    /* -------- Theme & Layout (match index) --------------- */
     const THEMES = {
       BlueGreen: { accent:'#22d3ee', ink:'#0b1820' },
       Gold:      { accent:'#ffd700', ink:'#0a1a0a' },
@@ -231,17 +237,16 @@
       const t = THEMES[name] || THEMES.BlueGreen;
       document.documentElement.style.setProperty('--accent', t.accent);
       document.documentElement.style.setProperty('--accent-ink', t.ink);
-      // soft shadows
       document.documentElement.style.setProperty('--accent-10', hexToRgba(t.accent, .10));
       document.documentElement.style.setProperty('--accent-30', hexToRgba(t.accent, .30));
       localStorage.setItem(LS_KEY_THEME, name);
-      // update visual active state
-      document.querySelectorAll('.swatch').forEach(b => b.classList.toggle('active', b.dataset.theme===name));
+      // active state
+      document.querySelectorAll('[data-theme]').forEach(b => b.classList.toggle('active', b.dataset.theme===name));
     }
     function applyLayout(kind){
       document.body.classList.toggle('compact', kind==='compact');
       localStorage.setItem(LS_KEY_LAYOUT, kind);
-      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.layout===kind));
+      document.querySelectorAll('[data-layout]').forEach(c => c.classList.toggle('active', c.dataset.layout===kind));
     }
     function hexToRgba(hex, a){
       const h = hex.replace('#','');
@@ -250,21 +255,22 @@
       return `rgba(${r},${g},${b},${a})`;
     }
 
-    // wire controls
-    document.getElementById('fab').addEventListener('click', ()=>{
+    // sheet controls
+    document.getElementById('fab').addEventListener('click', ()=> {
       document.getElementById('sheet').classList.remove('hidden');
     });
-    document.getElementById('closeSheet').addEventListener('click', ()=>{
+    document.getElementById('closeSheet').addEventListener('click', ()=> {
       document.getElementById('sheet').classList.add('hidden');
     });
-    document.querySelectorAll('.swatch').forEach(b=>{
+
+    document.querySelectorAll('[data-theme]').forEach(b=>{
       b.addEventListener('click',()=>applyTheme(b.dataset.theme));
     });
-    document.querySelectorAll('.chip').forEach(c=>{
+    document.querySelectorAll('[data-layout]').forEach(c=>{
       c.addEventListener('click',()=>applyLayout(c.dataset.layout));
     });
 
-    // init from storage (same default as index)
+    // init from storage (same defaults as index)
     applyTheme(localStorage.getItem(LS_KEY_THEME) || 'BlueGreen');
     applyLayout(localStorage.getItem(LS_KEY_LAYOUT) || 'cozy');
   </script>
