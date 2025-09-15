@@ -14,17 +14,24 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      --accent-start:#00E0FF;   /* bluer cyan */
-      --accent-end:#00D5A5;     /* cooler green */
-      --accent-solid:#00DDEE;   /* single-color fallback */
+      /* Site accent system (Blue→Green; switchable via Theme panel) */
+      --accent-start:#00E0FF;
+      --accent-end:#00D5A5;
+      --accent-solid:#00DDEE;
       --accent-10: rgba(0,224,255,.10);
       --accent-30: rgba(0,224,255,.30);
+
+      /* Layout density (switchable) */
+      --pad-y: 20px;
+      --pad-x: 24px;
       --radius:.75rem;
     }
-    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
-    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); }
     html { scroll-behavior: smooth; }
-    /* Accent helpers */
+    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
+    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: var(--pad-y) var(--pad-x); }
+    .divider { height:1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent); }
+
+    /* Accent helpers (gradient text + pills + buttons) */
     .accent{
       background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
       -webkit-background-clip:text; background-clip:text;
@@ -39,21 +46,33 @@
     }
     .btn-accent{
       background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      color:#061b1b; font-weight:600;
+      color:#061b1b; font-weight:700;
       transition: filter .2s ease, transform .02s ease;
       box-shadow: 0 6px 20px rgba(0,224,255,.15);
       border-radius: var(--radius);
-      padding: 10px 16px;
+      padding: 12px 20px;
     }
     .btn-accent:hover { filter: brightness(1.08); }
     .btn-accent:active{ transform: translateY(1px); }
+
+    /* Theme toggle (gear) */
+    .theme-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 60; }
+    .theme-card { width: 320px; }
+    .chip { border-radius: 9999px; padding: 4px 10px; font-size: 12px; }
+
+    /* Prettier whitepaper body */
+    .wp { --tw-prose-bullets: rgba(226,232,240,.9); }
+    .wp h2 { letter-spacing:.2px; }
+    .wp h3 { letter-spacing:.2px; }
+    .callout { border-left: 3px solid var(--accent-solid); background: rgba(255,255,255,.03); }
+    .kpi { background: rgba(255,255,255,.06); border: 1px dashed rgba(255,255,255,.18); }
   </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100">
+<body class="min-h-screen bg-slate-950 text-slate-100" id="top">
   <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
+      <a href="index.html#top" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
           <!-- Frog-in-shield -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
@@ -66,13 +85,17 @@
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="philosophy.html" class="hover:text-white">Philosophy</a>
         <a href="about.html" class="hover:text-white">About</a>
         <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
         <a href="roadmap.html" class="hover:text-white">Roadmap</a>
         <a href="nfts.html" class="hover:text-white">NFTs</a>
+        <a href="buy.html" class="hover:text-white">Buy $TRUSTLESS</a>
         <a href="book.html" class="hover:text-white">Book of Kek</a>
+        <a href="whitepaper.html" class="hover:text-white font-semibold text-white">Whitepaper</a>
         <a href="team.html" class="hover:text-white">Team</a>
-        <a href="faq.html" class="hover:text-white">FAQ</a>
+        <a href="faq.html" class="hover:text-white">F.A.Q.</a>
+        <a href="contact.html" class="hover:text-white">Contact</a>
       </nav>
 
       <div class="relative z-50">
@@ -87,12 +110,14 @@
         <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
           <nav class="py-2 text-slate-100 text-sm">
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="philosophy.html">Philosophy</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFTs</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="whitepaper.html">Whitepaper</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="contact.html">Contact</a>
@@ -106,43 +131,102 @@
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-      <h1 class="text-3xl md:text-5xl font-extrabold accent">Trustless Payments Whitepaper</h1>
+      <h1 class="text-3xl md:text-5xl font-extrabold">Trustless Payments <span class="accent">Whitepaper</span></h1>
       <p class="mt-3 text-slate-300 max-w-3xl">Honor through automation. Escrowed payments that only unlock when objective conditions are met. This page hosts the latest PDF and an accessible HTML version for quick reading.</p>
     </div>
   </section>
 
-  <!-- PDF BOX -->
+  <!-- PDF CTA CARD -->
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="glass p-6">
+    <div class="glass">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-        <strong class="text-slate-200">trustless_whitepaper.pdf</strong>
+        <div>
+          <div class="text-sm uppercase tracking-widest text-slate-400">Download</div>
+          <strong class="text-slate-100">trustless_whitepaper.pdf</strong>
+        </div>
         <div class="flex flex-wrap gap-2">
-          <a class="btn-accent inline-flex items-center gap-2" href="trustless_whitepaper.pdf" target="_blank">View PDF</a>
+          <a class="btn-accent inline-flex items-center gap-2" href="trustless_whitepaper.pdf" target="_blank" rel="noopener">View PDF</a>
           <a class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5 transition" href="trustless_whitepaper.pdf" download>Download PDF</a>
         </div>
       </div>
-      <div class="mt-4 border-t border-white/10 pt-4">
-        <p class="text-slate-400"><em>Note:</em> This is a quick-read HTML version. The canonical source is the PDF above.</p>
-      </div>
+      <div class="mt-4 divider"></div>
+      <p class="mt-4 text-slate-400"><em>Note:</em> This is a quick-read HTML version. The canonical source is the PDF above.</p>
     </div>
   </section>
 
   <!-- WHITEPAPER CONTENT -->
-  <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12 md:py-16 prose prose-invert prose-slate">
-    <h2>Abstract</h2>
-    <p>Trustless Payments is an XRPL-native escrow framework that replaces subjective trust with deterministic code. Funds are locked, conditions are monitored, and value is released only when pre-agreed signals are satisfied.</p>
+  <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <!-- Quick nav -->
+    <nav class="glass mb-8 text-sm text-slate-300">
+      <div class="font-semibold accent">Contents</div>
+      <ul class="mt-2 list-disc list-inside space-y-1">
+        <li><a class="hover:underline" href="#abstract">Abstract</a></li>
+        <li><a class="hover:underline" href="#philosophy">Philosophy</a></li>
+        <li><a class="hover:underline" href="#mechanics">Mechanics</a></li>
+        <li><a class="hover:underline" href="#token-alignment">Token Alignment</a></li>
+        <li><a class="hover:underline" href="#roadmap">Roadmap</a></li>
+      </ul>
+    </nav>
 
-    <h2>Philosophy</h2>
-    <p>A payment fails if trust breaks. We level the playing field by binding promises to verifiable conditions—removing room for opportunism while preserving speed and simplicity.</p>
+    <article class="prose prose-invert prose-slate wp max-w-none">
+      <h2 id="abstract">Abstract</h2>
+      <p>Trustless Payments is an XRPL-native escrow framework that replaces subjective trust with deterministic code. Funds are locked, conditions are monitored, and value is released only when pre-agreed signals are satisfied.</p>
 
-    <h2>Mechanics</h2>
-    <p>Users define escrow amount, destination, target market cap, and expiry. Funding is detected on-ledger. Upon satisfaction or expiry, the system automates release or return. A 5.89% fee is applied: 50% to the developer wallet and 50% to automated token buy-and-burn.</p>
+      <div class="callout rounded-xl p-4 my-6">
+        <p class="m-0 text-slate-200"><strong>Design Goal:</strong> Make honest deals effortless and dishonest deals uneconomical.</p>
+      </div>
 
-    <h2>Token Alignment</h2>
-    <p>Fees drive scarcity through automated buy-and-burn, reinforcing Trustless Payments token value over time.</p>
+      <h2 id="philosophy">Philosophy</h2>
+      <p>A payment fails if trust breaks. We level the playing field <span class="text-white font-semibold">for value creators</span> by binding promises to verifiable conditions—removing room for opportunism while preserving speed and simplicity.</p>
 
-    <h2>Roadmap</h2>
-    <p>Planned upgrades include additional condition types, expanded analytics, and multi-chain adapters—while keeping the core mantra: simple, verifiable, trustless.</p>
+      <h2 id="mechanics">Mechanics</h2>
+      <p>Users define key parameters; the system automates the rest.</p>
+
+      <div class="grid md:grid-cols-2 gap-4 my-4">
+        <div class="kpi rounded-xl p-4">
+          <div class="text-xs uppercase tracking-wide text-slate-400">Fee</div>
+          <div class="text-2xl font-extrabold">5.89%</div>
+          <div class="text-sm text-slate-400">50% Dev • 50% Buy+Burn</div>
+        </div>
+        <div class="kpi rounded-xl p-4">
+          <div class="text-xs uppercase tracking-wide text-slate-400">Networks</div>
+          <div class="text-2xl font-extrabold">XRPL</div>
+          <div class="text-sm text-slate-400">Multi-chain expansion planned</div>
+        </div>
+      </div>
+
+      <h3>Parameters</h3>
+      <ul class="list-disc list-inside">
+        <li><strong>Escrow Amount</strong> — XRP locked in contract.</li>
+        <li><strong>Recipient &amp; Contract</strong> — Address and token of interest.</li>
+        <li><strong>Target Market Cap</strong> — Whole-number threshold to trigger release.</li>
+        <li><strong>Expiry</strong> — Deadline; on miss, refund is automated.</li>
+      </ul>
+
+      <h3>Lifecycle</h3>
+      <ol class="list-decimal list-inside">
+        <li><strong>Create:</strong> User sets parameters in the bot.</li>
+        <li><strong>Fund:</strong> On-ledger deposit with destination tag; funding auto-detected.</li>
+        <li><strong>Automate:</strong> On condition met → release; on expiry → refund.</li>
+      </ol>
+
+      <div class="callout rounded-xl p-4 my-6">
+        <p class="m-0 text-slate-200"><strong>Transparency:</strong> Every split and burn is on-chain; a level playing field <span class="text-white font-semibold">for value creators</span>.</p>
+      </div>
+
+      <h2 id="token-alignment">Token Alignment</h2>
+      <p>Protocol fees drive scarcity via automated buy-and-burn, aligning usage with long-term holder value.</p>
+
+      <h2 id="roadmap">Roadmap</h2>
+      <ul class="list-disc list-inside">
+        <li><strong>MVP Live on XRPL</strong> — Stable create → fund → release/refund flow.</li>
+        <li><strong>NFT: Trustless Toads</strong> — Fee reductions + community perks.</li>
+        <li><strong>Escrow Enforcement Unit (33)</strong> — Governance &amp; fee sharing.</li>
+        <li><strong>Multi-Chain Expansion</strong> — Adapters while preserving simplicity.</li>
+      </ul>
+
+      <p class="mt-8"><a href="trustless_whitepaper.pdf" class="btn-accent inline-flex items-center gap-2" target="_blank" rel="noopener">Read Full PDF</a></p>
+    </article>
   </main>
 
   <!-- FOOTER -->
@@ -153,23 +237,58 @@
     </div>
   </footer>
 
+  <!-- THEME & MENU SCRIPTS -->
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear()
+    // Theme presets (unified across site)
+    const THEMES = {
+      BlueGreen: { start:'#00E0FF', end:'#00D5A5', solid:'#00DDEE', a10:'rgba(0,224,255,.10)', a30:'rgba(0,224,255,.30)' },
+      Gold:      { start:'#FFD700', end:'#FFEA7A', solid:'#FFD700', a10:'rgba(255,215,0,.10)', a30:'rgba(255,215,0,.30)' },
+      NeonGreen: { start:'#00F000', end:'#50FFA9', solid:'#16FF8F', a10:'rgba(0,240,0,.10)',  a30:'rgba(0,240,0,.30)' }
+    };
+    function applyTheme(name){
+      const t = THEMES[name] || THEMES.BlueGreen;
+      document.documentElement.style.setProperty('--accent-start', t.start);
+      document.documentElement.style.setProperty('--accent-end',   t.end);
+      document.documentElement.style.setProperty('--accent-solid', t.solid);
+      document.documentElement.style.setProperty('--accent-10',    t.a10);
+      document.documentElement.style.setProperty('--accent-30',    t.a30);
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', t.solid);
+      localStorage.setItem('trustlessTheme', JSON.stringify({ theme:name, layout:getLayout() }));
+    }
+    function applyLayout(mode){
+      if(mode==='Compact'){
+        document.documentElement.style.setProperty('--pad-y','16px');
+        document.documentElement.style.setProperty('--pad-x','18px');
+        document.documentElement.style.setProperty('--radius','0.65rem');
+      }else{
+        document.documentElement.style.setProperty('--pad-y','20px');
+        document.documentElement.style.setProperty('--pad-x','24px');
+        document.documentElement.style.setProperty('--radius','0.75rem');
+      }
+      localStorage.setItem('trustlessTheme', JSON.stringify({ theme:getTheme(), layout:mode }));
+    }
+    function getTheme(){ try { return JSON.parse(localStorage.getItem('trustlessTheme'))?.theme || 'BlueGreen'; } catch { return 'BlueGreen'; } }
+    function getLayout(){ try { return JSON.parse(localStorage.getItem('trustlessTheme'))?.layout || 'Cozy'; } catch { return 'Cozy'; } }
+
+    // Initial load
+    applyTheme(getTheme());
+    applyLayout(getLayout());
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Legal modal
     const legal = `\
     <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
     <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
     <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
-    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`
+    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
     document.getElementById('legal-link').addEventListener('click', (e) => {
       e.preventDefault();
       const modal = document.createElement('div');
       modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
       modal.innerHTML = `
         <div class='absolute inset-0 bg-black/70'></div>
-        <div class='relative max-w-xl w-full glass p-6'>
+        <div class='relative max-w-xl w-full glass'>
           <div>${legal}</div>
           <div class='mt-6 text-right'>
             <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
@@ -190,6 +309,51 @@
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
     document.addEventListener('click', (e) => { if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
     document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+
+    // Theme panel (gear) — same component used site-wide
+    function mountThemePanel(){
+      const wrap = document.createElement('div');
+      wrap.className = 'theme-toggle';
+      wrap.innerHTML = `
+        <button id="gearBtn" class="btn-accent rounded-full px-3 py-3" title="Theme & layout">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94a7.07,7.07,0,0,0,0-1.88l2-1.55a.5.5,0,0,0,.12-.64l-1.9-3.29a.5.5,0,0,0-.6-.22l-2.35,1a7.13,7.13,0,0,0-1.63-.95l-.36-2.49A.5.5,0,0,0,13.93,1H10.07a.5.5,0,0,0-.5.42L9.21,3.91a7.13,7.13,0,0,0-1.63.95l-2.35-1a.5.5,0,0,0-.6.22L2.73,7.34a.5.5,0,0,0,.12.64l2,1.55a7.07,7.07,0,0,0,0,1.88l-2,1.55a.5.5,0,0,0-.12.64l1.9,3.29a.5.5,0,0,0,.6.22l2.35-1a7.13,7.13,0,0,0,1.63.95l.36,2.49a.5.5,0,0,0,.5.42h3.86a.5.5,0,0,0,.5-.42l.36-2.49a7.13,7.13,0,0,0,1.63-.95l2.35,1a.5.5,0,0,0,.6-.22l1.9-3.29a.5.5,0,0,0,.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+        </button>
+        <div id="themeCard" class="hidden mt-2 theme-card glass border border-white/10 shadow-2xl">
+          <div class="text-sm text-slate-200 font-semibold mb-2 accent">Theme & Layout</div>
+          <div class="space-y-2 text-sm">
+            <div>
+              <div class="text-slate-400 mb-1">Color</div>
+              <div class="flex gap-2">
+                <button data-theme="BlueGreen" class="chip bg-white/10 hover:bg-white/15">BlueGreen</button>
+                <button data-theme="Gold" class="chip bg-white/10 hover:bg-white/15">Gold</button>
+                <button data-theme="NeonGreen" class="chip bg-white/10 hover:bg-white/15">NeonGreen</button>
+              </div>
+            </div>
+            <div class="mt-2">
+              <div class="text-slate-400 mb-1">Layout</div>
+              <div class="flex gap-2">
+                <button data-layout="Cozy" class="chip bg-white/10 hover:bg-white/15">Cozy</button>
+                <button data-layout="Compact" class="chip bg-white/10 hover:bg-white/15">Compact</button>
+              </div>
+            </div>
+            <div class="mt-3 text-right">
+              <button id="closeTheme" class="inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5">Close</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(wrap);
+      const card = document.getElementById('themeCard');
+      document.getElementById('gearBtn').onclick = () => card.classList.toggle('hidden');
+      document.getElementById('closeTheme').onclick = () => card.classList.add('hidden');
+      wrap.querySelectorAll('[data-theme]').forEach(btn=>{
+        btn.onclick = () => { applyTheme(btn.dataset.theme); };
+      });
+      wrap.querySelectorAll('[data-layout]').forEach(btn=>{
+        btn.onclick = () => { applyLayout(btn.dataset.layout); };
+      });
+    }
+    mountThemePanel();
   </script>
 </body>
 </html>
