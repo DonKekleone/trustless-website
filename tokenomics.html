@@ -4,17 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tokenomics — Trustless Payments</title>
-  <meta name="description" content="Trustless $TRUSTLESS tokenomics: 35% presale, 10% locked liquidity, and 55% structured reserve for growth." />
+  <meta name="description" content="$TRUSTLESS tokenomics: 35% presale, 10% locked liquidity, 55% structured reserve with a 24-month vesting plan, dynamic fee burns, staking rewards, and milestone-gated unlocks." />
   <meta property="og:title" content="Tokenomics — Trustless Payments" />
-  <meta property="og:description" content="Clear supply map, locked liquidity, and transparent growth funding." />
+  <meta property="og:description" content="Transparent supply map, locked LP, dynamic burn, staking rewards, and a 24-month vesting schedule." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="images/tokenomics_pie_dark.png" />
+  <meta property="og:image" content="tokenomics_pie_dark.png" />
   <meta name="theme-color" content="#00F000" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --accent: #00F000; }
-    .accent { color: var(--accent); }
-    .ring-accent { --tw-ring-color: var(--accent); }
+    :root { --accent:#00F000; }
+    .accent{ color:var(--accent); }
+    .ring-accent{ --tw-ring-color:var(--accent); }
+    .chip{ display:inline-block; padding:.2rem .55rem; border:1px solid #262626; border-radius:9999px; font-size:.75rem; color:#cfcfcf; }
+    .progress { height:8px; border-radius:9999px; background:#171717; }
+    .progress > div { height:8px; border-radius:9999px; background:var(--accent); }
   </style>
 </head>
 <body class="bg-neutral-950 text-neutral-100 antialiased">
@@ -23,9 +26,7 @@
   <header class="sticky top-0 z-50 backdrop-blur bg-neutral-950/70 border-b border-neutral-800">
     <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
-        <a href="index.html" class="font-semibold tracking-tight text-lg accent hover:opacity-90 transition">
-          Trustless Payments
-        </a>
+        <a href="index.html" class="font-semibold tracking-tight text-lg accent hover:opacity-90 transition">Trustless Payments</a>
         <button id="navToggle" class="sm:hidden inline-flex items-center justify-center rounded-md p-2 text-neutral-300 hover:text-white hover:bg-neutral-800 focus:outline-none focus:ring-2 ring-accent" aria-expanded="false" aria-controls="mobileMenu">
           <span class="sr-only">Open main menu</span>
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -55,80 +56,202 @@
   </header>
 
   <!-- Hero -->
-  <section class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-10 pb-8 text-center">
-    <h1 class="text-3xl sm:text-4xl font-semibold leading-tight">
-      $TRUSTLESS Tokenomics
-    </h1>
-    <p class="mt-3 text-neutral-300">
-      Transparent supply map with locked liquidity and structured reserves to fuel growth and protect long-term value.
-    </p>
+  <section class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-10 pb-6 text-center">
+    <h1 class="text-3xl sm:text-4xl font-semibold leading-tight">$TRUSTLESS Tokenomics</h1>
+    <p class="mt-3 text-neutral-300">Clear supply at launch, locked liquidity, and a two-year, milestone-gated release for the remaining supply. Dynamic fee burns and staking rewards align incentives with real usage.</p>
+    <div class="mt-3 space-x-2">
+      <span class="chip">Locked LP</span>
+      <span class="chip">Dynamic Burn</span>
+      <span class="chip">Staking Rewards</span>
+      <span class="chip">24-Month Vesting</span>
+      <span class="chip">Milestone-Gated</span>
+    </div>
   </section>
 
-  <!-- Pie Chart -->
+  <!-- Pie Image -->
   <section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-    <img src="images/tokenomics_pie_dark.png" alt="Trustless Tokenomics Chart" class="mx-auto rounded-2xl shadow-lg border border-neutral-800">
+    <img src="tokenomics_pie_dark.png" alt="Trustless Tokenomics Chart" class="mx-auto rounded-2xl shadow-lg border border-neutral-800">
+    <p class="mt-2 text-center text-neutral-400 text-sm">Pie shows supply categories at launch. Vesting below explains how the 55% reserve enters circulation over 24 months.</p>
   </section>
 
-  <!-- Distribution Table -->
+  <!-- What We Need (Mechanics Checklist) -->
   <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-12">
-    <h2 class="text-2xl font-semibold text-center">Supply Breakdown</h2>
+    <h2 class="text-2xl font-semibold text-center">Mechanics We Implement</h2>
+    <div class="grid md:grid-cols-2 gap-4 mt-6">
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">A. Locked Liquidity</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Seed with ~15k XRP + 10% supply; lock proof published.</li>
+          <li>No internal LP expansion bucket; organic POL may form later from earned fees.</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">B. Dynamic Fee Burn</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Base fee 5.89% (NFT holders: 1%).</li>
+          <li><em>Dynamic burn:</em> burn share scales with on-chain volume bands (posted monthly).</li>
+          <li>50% of fee to dev wallet <span class="font-mono text-neutral-200">rNdipHhkQdgrc46TJTGeABZrQuES2QZfaM</span>; 50% buy+burn $XRK.</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">C. Staking & Usage Rewards</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Funded from the <strong>Community (10%)</strong> bucket.</li>
+          <li>Rewards tied to verified bot usage (avoid idle inflation).</li>
+          <li>NFT-holder boosts respected; parameters published per epoch.</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">D. Milestone-Gated Unlocks</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Marketing & Dev tranches release only when adoption KPIs are hit.</li>
+          <li>All unlocks pre-announced with reason codes and tx hashes.</li>
+          <li>Emergency pause (multi-sig) with public incident report.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Numbers (Supply Map) -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-12">
+    <h2 class="text-2xl font-semibold text-center">Supply Map at Launch</h2>
     <div class="mt-6 overflow-x-auto">
       <table class="min-w-full divide-y divide-neutral-800 text-neutral-300 text-sm">
         <thead class="bg-neutral-900 text-neutral-200">
           <tr>
             <th class="py-3 px-4 text-left">Category</th>
-            <th class="py-3 px-4 text-right">% of Total Supply</th>
-            <th class="py-3 px-4 text-left">Purpose</th>
+            <th class="py-3 px-4 text-right">% of Supply</th>
+            <th class="py-3 px-4 text-left">Notes</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-neutral-800">
           <tr>
-            <td class="py-3 px-4">Presale</td>
+            <td class="py-3 px-4">Presale (public)</td>
             <td class="py-3 px-4 text-right">35%</td>
-            <td class="py-3 px-4">Public sale. Unsold tokens burned.</td>
+            <td class="py-3 px-4">Unsold tokens burn at deadline.</td>
           </tr>
           <tr>
-            <td class="py-3 px-4">Liquidity Pool (Locked)</td>
+            <td class="py-3 px-4">Liquidity Pool (locked)</td>
             <td class="py-3 px-4 text-right">10%</td>
-            <td class="py-3 px-4">Paired with ≈15 k XRP and locked on XRPL DEX.</td>
+            <td class="py-3 px-4">≈15k XRP paired and locked on XRPL DEX.</td>
           </tr>
           <tr>
             <td class="py-3 px-4">Treasury</td>
             <td class="py-3 px-4 text-right">5%</td>
-            <td class="py-3 px-4">Operations and emergency reserves.</td>
+            <td class="py-3 px-4">Ops runway & emergency reserve.</td>
           </tr>
           <tr>
             <td class="py-3 px-4">Marketing</td>
             <td class="py-3 px-4 text-right">20%</td>
-            <td class="py-3 px-4">Advertising, partnerships, listings, and community growth.</td>
+            <td class="py-3 px-4">Listings, partnerships, campaigns. <span class="chip">Milestone-gated</span></td>
           </tr>
           <tr>
             <td class="py-3 px-4">Team</td>
             <td class="py-3 px-4 text-right">15%</td>
-            <td class="py-3 px-4">Founders and contributors (vesting schedule published).</td>
+            <td class="py-3 px-4">Cliff + linear vest (below).</td>
           </tr>
           <tr>
             <td class="py-3 px-4">Development</td>
             <td class="py-3 px-4 text-right">10%</td>
-            <td class="py-3 px-4">Continuous product R&D and audits.</td>
+            <td class="py-3 px-4">Product R&D, audits. <span class="chip">Milestone-gated</span></td>
           </tr>
           <tr>
-            <td class="py-3 px-4">Community</td>
+            <td class="py-3 px-4">Community (Staking & Rewards)</td>
             <td class="py-3 px-4 text-right">10%</td>
-            <td class="py-3 px-4">Airdrops, staking rewards, NFT-holder incentives.</td>
+            <td class="py-3 px-4">Staking / usage rewards; NFT boosts.</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <p class="mt-4 text-neutral-400 text-sm text-center">Target presale raise ≈ 35k XRP → ~15k XRP locked in LP, ~20k XRP retained for development & growth.</p>
   </section>
 
-  <!-- Capital Flow -->
-  <section class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-12 text-neutral-300">
-    <h2 class="text-2xl font-semibold text-center">Capital Flow</h2>
-    <p class="mt-4">
-      If the 35 % presale sells out at roughly 35 k XRP, approximately 15 k XRP will be locked in the liquidity pool
-      alongside the 10 % LP tokens, while about 20 k XRP will fund ongoing development, marketing, and ecosystem growth.
+  <!-- 24-Month Vesting Schedule -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-12">
+    <h2 class="text-2xl font-semibold text-center">24-Month Vesting Plan (55% Reserve)</h2>
+    <p class="mt-3 text-neutral-300 text-center">All reserve buckets unlock over 24 months. Team has a stricter cliff; Marketing & Development tranches are milestone-gated. Community rewards stream in epochs tied to real usage.</p>
+
+    <div class="grid lg:grid-cols-2 gap-5 mt-8">
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Team — 15%</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li><strong>6-month cliff</strong>, then <strong>18-month linear</strong> vest (monthly).</li>
+          <li>Emergency pause + public report if team member exits dishonorably.</li>
+        </ul>
+        <div class="mt-4">
+          <div class="flex justify-between text-xs text-neutral-400"><span>Cliff (0–6m)</span><span>0%</span></div>
+          <div class="progress mt-1"><div style="width:0%"></div></div>
+          <div class="flex justify-between text-xs text-neutral-400 mt-3"><span>Linear (6–24m)</span><span>100%</span></div>
+          <div class="progress mt-1"><div style="width:100%"></div></div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Marketing — 20%</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li><strong>No cliff</strong>; vests monthly over 24 months.</li>
+          <li><strong>Milestone gate:</strong> each monthly tranche requires KPI hit (users, tx volume) or carries over.</li>
+        </ul>
+        <div class="mt-4">
+          <div class="flex justify-between text-xs text-neutral-400"><span>Linear (0–24m)</span><span>100%</span></div>
+          <div class="progress mt-1"><div style="width:100%"></div></div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Development — 10%</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li><strong>3-month cliff</strong>, then monthly linear to 24m.</li>
+          <li><strong>Milestone gate:</strong> feature deliveries and audit checkpoints.</li>
+        </ul>
+        <div class="mt-4">
+          <div class="flex justify-between text-xs text-neutral-400"><span>Cliff (0–3m)</span><span>0%</span></div>
+          <div class="progress mt-1"><div style="width:0%"></div></div>
+          <div class="flex justify-between text-xs text-neutral-400 mt-3"><span>Linear (3–24m)</span><span>100%</span></div>
+          <div class="progress mt-1"><div style="width:100%"></div></div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Treasury — 5%</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Linear monthly vest over 24 months.</li>
+          <li>Emergency access multi-sig with public incident report.</li>
+        </ul>
+        <div class="mt-4">
+          <div class="flex justify-between text-xs text-neutral-400"><span>Linear (0–24m)</span><span>100%</span></div>
+          <div class="progress mt-1"><div style="width:100%"></div></div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-neutral-800 p-5 lg:col-span-2">
+        <h3 class="font-medium">Community (Staking & Rewards) — 10%</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Streams across 24 months in weekly or monthly epochs.</li>
+          <li>Distribution tied to verified bot usage and NFT boosts.</li>
+          <li>Unclaimed rewards roll forward; parameters posted per epoch.</li>
+        </ul>
+        <div class="mt-4">
+          <div class="flex justify-between text-xs text-neutral-400"><span>Epochs (0–24m)</span><span>100%</span></div>
+          <div class="progress mt-1"><div style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-6 text-neutral-400 text-sm text-center">
+      Total reserve released over 24 months ≈ <strong>55% of supply</strong>. Circulating at TGE ≈ <strong>45% (35% presale + 10% LP)</strong>.
     </p>
+  </section>
+
+  <!-- Disclosures -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-12">
+    <h2 class="text-2xl font-semibold text-center">Addresses & Disclosures</h2>
+    <div class="mt-4 rounded-2xl border border-neutral-800 p-5 text-sm text-neutral-300 space-y-2">
+      <p><span class="font-medium">Dev Wallet (50% of fee):</span> <span class="font-mono text-neutral-200">rNdipHhkQdgrc46TJTGeABZrQuES2QZfaM</span></p>
+      <p><span class="font-medium">$XRK Issuer (buy+burn):</span> <span class="font-mono text-neutral-200">r6CBWzsfQuDTwWk2NYzZk5MrQewoUqFoE</span></p>
+      <p><span class="font-medium">LP Lock Proof:</span> Posted at launch with hash and unlock date.</p>
+      <p class="text-neutral-400">Informational only; not financial advice. Our aim is a <em>level playing field</em> with code-enforced rules.</p>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -147,14 +270,10 @@
     // Mobile menu toggle
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
-    if (navToggle) {
-      navToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
-    // Year auto-update
+    if (navToggle) navToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
