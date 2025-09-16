@@ -3,133 +3,280 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trustless Payments — Tokenomics</title>
-  <link rel="icon" href="favicon.png" />
-  <meta name="description" content="Tokenomics for the $TRUSTLESS ecosystem. Details to be announced." />
-  <meta property="og:title" content="Trustless Payments — Tokenomics" />
-  <meta property="og:description" content="Tokenomics for the $TRUSTLESS ecosystem. Details to be announced." />
+  <title>Tokenomics — Trustless Payments</title>
+  <meta name="description" content="Clear, simple tokenomics for the Trustless ecosystem: allocation, fees, burns, presale plan, LP strategy, and an execution path to 50M market cap." />
+  <meta property="og:title" content="Tokenomics — Trustless Payments" />
+  <meta property="og:description" content="Allocation, fees, burns, presale, LP, vesting, and a practical path to 50M MC." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Tokenomics+TBA" />
-  <meta name="theme-color" content="#0ea5e9" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Tokenomics" />
+  <meta name="theme-color" content="#00F000" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
-    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); }
-    html { scroll-behavior: smooth; }
+    :root { --accent: #00F000; }
+    .accent { color: var(--accent); }
+    .bg-accent { background-color: var(--accent); }
+    .ring-accent { --tw-ring-color: var(--accent); }
   </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100">
-
-  <!-- NAV -->
-  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/30">
-          <!-- Frog shield icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-cyan-300" fill="currentColor">
-            <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
-            <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
-            <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
-          </svg>
-        </span>
-        <span class="font-semibold tracking-wide">Trustless Payments</span>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a href="index.html#about" class="hover:text-white">About</a>
-        <a href="tokenomics.html" class="hover:text-white font-semibold text-white">Tokenomics</a>
-        <a href="index.html#roadmap" class="hover:text-white">Roadmap</a>
-        <a href="nfts.html" class="hover:text-white">NFT's</a>
-        <a href="book.html" class="hover:text-white">Book of Kek</a>
-        <a href="team.html" class="hover:text-white">Team</a>
-        <a href="faq.html" class="hover:text-white">F.A.Q.</a>
-      </nav>
-
-      <!-- Hamburger -->
-      <div class="relative z-50">
-        <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
-                class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
-          <span class="sr-only">Open menu</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
-          </svg>
+<body class="bg-neutral-950 text-neutral-100 antialiased">
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-neutral-950/70 border-b border-neutral-800">
+    <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <a href="index.html" class="font-semibold tracking-tight text-lg accent hover:opacity-90 transition">
+          Trustless Payments
+        </a>
+        <button id="navToggle" class="sm:hidden inline-flex items-center justify-center rounded-md p-2 text-neutral-300 hover:text-white hover:bg-neutral-800 focus:outline-none focus:ring-2 ring-accent" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
-        <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
-          <nav class="py-2 text-slate-100 text-sm">
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#about">About</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="tokenomics.html">Tokenomics</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#roadmap">Roadmap</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFT's</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#contact">Contact</a>
-          </nav>
+        <div class="hidden sm:flex gap-6 text-sm">
+          <a class="hover:text-white text-neutral-300" href="index.html">Home</a>
+          <a class="hover:text-white text-neutral-300" href="philosophy.html">Philosophy</a>
+          <a class="hover:text-white text-neutral-300" href="whitepaper.html">Whitepaper</a>
+          <a class="hover:text-white text-neutral-300" href="book.html">Book of Kek</a>
+          <a class="hover:text-white text-neutral-300" href="team.html">Team</a>
+          <a class="hover:text-white text-neutral-300" href="contact.html">Contact</a>
+          <a class="text-white font-medium" href="tokenomics.html">Tokenomics</a>
         </div>
       </div>
-    </div>
+      <div id="mobileMenu" class="sm:hidden hidden pb-4">
+        <div class="flex flex-col gap-2 text-sm">
+          <a class="px-2 py-2 rounded hover:bg-neutral-800" href="index.html">Home</a>
+          <a class="px-2 py-2 rounded hover:bg-neutral-800" href="philosophy.html">Philosophy</a>
+          <a class="px-2 py-2 rounded hover:bg-neutral-800" href="whitepaper.html">Whitepaper</a>
+          <a class="px-2 py-2 rounded hover:bg-neutral-800" href="book.html">Book of Kek</a>
+          <a class="px-2 py-2 rounded hover:bg-neutral-800" href="team.html">Team</a>
+          <a class="px-2 py-2 rounded hover:bg-neutral-800" href="contact.html">Contact</a>
+          <a class="px-2 py-2 rounded hover:bg-neutral-800 font-medium text-white" href="tokenomics.html">Tokenomics</a>
+        </div>
+      </div>
+    </nav>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
-      <h1 class="text-4xl md:text-6xl font-extrabold text-cyan-400">To Be Announced</h1>
-      <p class="mt-6 text-slate-300 text-lg max-w-2xl mx-auto">
-        Detailed $TRUSTLESS tokenomics will be revealed closer to launch.  
-        Check back soon or follow our <a href="https://t.me/TrustlessBot" class="underline decoration-dotted">Telegram</a> for early updates.
+  <!-- Hero -->
+  <section class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-10 pb-8">
+    <h1 class="text-3xl sm:text-4xl font-semibold leading-tight">
+      Tokenomics built for <span class="accent">honor through automation</span>
+    </h1>
+    <p class="mt-3 text-neutral-300">
+      Clear allocation, transparent fees, and programmatic burns. The Trustless design rewards builders and honest users while aligning incentives for long-term growth.
+    </p>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-4">
+    <div class="rounded-2xl border border-neutral-800 p-5">
+      <div class="text-sm text-neutral-400">Total Supply</div>
+      <div class="mt-1 text-2xl font-semibold">1,000,000,000</div>
+      <p class="mt-2 text-neutral-400 text-sm">Fixed, no mint. Unsold presale tokens burn.</p>
+    </div>
+    <div class="rounded-2xl border border-neutral-800 p-5">
+      <div class="text-sm text-neutral-400">Core Fee</div>
+      <div class="mt-1 text-2xl font-semibold">5.89%</div>
+      <p class="mt-2 text-neutral-400 text-sm">50% dev wallet, 50% buy+burn ($XRK) mechanic.</p>
+    </div>
+    <div class="rounded-2xl border border-neutral-800 p-5">
+      <div class="text-sm text-neutral-400">NFT Holder Fee</div>
+      <div class="mt-1 text-2xl font-semibold">1.00%</div>
+      <p class="mt-2 text-neutral-400 text-sm">Active utility: Trustless Toads reduce fees.</p>
+    </div>
+  </section>
+
+  <!-- Allocation -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-10">
+    <h2 class="text-2xl font-semibold">Allocation</h2>
+    <div class="mt-4 grid md:grid-cols-2 gap-4">
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <div class="flex items-baseline justify-between">
+          <h3 class="font-medium">Presale</h3>
+          <span class="accent font-semibold">35%</span>
+        </div>
+        <p class="mt-2 text-neutral-300 text-sm">
+          Fair presale with a hard stop. Any unsold tokens are burned 🔥. Pricing targets a healthy initial liquidity ratio and sustainable upside.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <div class="flex items-baseline justify-between">
+          <h3 class="font-medium">Liquidity Pool</h3>
+          <span class="accent font-semibold">35%</span>
+        </div>
+        <p class="mt-2 text-neutral-300 text-sm">
+          Paired with XRP. LP tokens locked; policy published publicly. Supports deep, stable markets with minimal slippage.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <div class="flex items-baseline justify-between">
+          <h3 class="font-medium">Ecosystem & Growth</h3>
+          <span class="accent font-semibold">15%</span>
+        </div>
+        <p class="mt-2 text-neutral-300 text-sm">
+          Strategic partnerships, grants, integrations, audits, and bounties. Multisig with published policy and activity reports.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <div class="flex items-baseline justify-between">
+          <h3 class="font-medium">Team (Vested)</h3>
+          <span class="accent font-semibold">10%</span>
+        </div>
+        <p class="mt-2 text-neutral-300 text-sm">
+          Cliff + linear vesting to align with long-term value creation and product milestones. No unlocks at TGE.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <div class="flex items-baseline justify-between">
+          <h3 class="font-medium">Treasury Reserve</h3>
+          <span class="accent font-semibold">5%</span>
+        </div>
+        <p class="mt-2 text-neutral-300 text-sm">
+          Emergency runway and strategic optionality. Movements announced in advance with reason codes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fees & Burns -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-10">
+    <h2 class="text-2xl font-semibold">Fee Mechanics & Buy-Burn</h2>
+    <div class="mt-4 grid md:grid-cols-2 gap-4">
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Base Fee: 5.89%</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>50% to dev wallet: <span class="font-mono text-neutral-200">rNdipHhkQdgrc46TJTGeABZrQuES2QZfaM</span></li>
+          <li>50% auto-buy + burn of <span class="font-medium">$XRK</span> (DEX route) then sent to issuer for burn.</li>
+          <li>Transparent on-chain receipts and weekly summaries.</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">NFT Utility: 1% Fee</h3>
+        <p class="mt-2 text-neutral-300 text-sm">
+          Holders of <em>Trustless Toads</em> receive reduced fees (5.89% → 1%). Future staking/reward mechanics may apply without raising the base fee.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Burn Policy</h3>
+        <p class="mt-2 text-neutral-300 text-sm">
+          Presale unsold tokens are burned. Ongoing buy-and-burn (via fees) creates structural deflation that compounds with adoption.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Transparency</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Addresses published and pinned.</li>
+          <li>Monthly tokenomics report: fees, burns, treasury moves.</li>
+          <li>Third-party analytics dashboards linked on site.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Presale & Liquidity Plan -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-10">
+    <h2 class="text-2xl font-semibold">Presale & Liquidity Plan</h2>
+    <div class="mt-4 grid md:grid-cols-2 gap-4">
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Presale Parameters</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Allocation: 35% of total supply.</li>
+          <li>Hard stop date; unsold supply burned.</li>
+          <li>Goal: sufficient initial liquidity and broad holder base.</li>
+          <li>Accepted currency: XRP.</li>
+        </ul>
+        <p class="mt-3 text-neutral-300 text-sm">
+          Pricing will be published with a target liquidity ratio and post-launch volatility controls in mind.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Liquidity Deployment</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Match a portion of presale XRP to seed LP with 35% supply.</li>
+          <li>LP tokens locked with public proof and schedule.</li>
+          <li>Gradual depth increases based on volume and volatility.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vesting & Locks -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-10">
+    <h2 class="text-2xl font-semibold">Vesting & Locks</h2>
+    <div class="mt-4 rounded-2xl border border-neutral-800 p-5">
+      <ul class="list-disc list-inside text-neutral-300 text-sm space-y-1">
+        <li><span class="font-medium">Team (10%)</span>: 6-month cliff, then 18-month linear vesting.</li>
+        <li><span class="font-medium">Ecosystem (15%)</span>: streamed with milestone-based unlocks, published ahead of time.</li>
+        <li><span class="font-medium">LP Tokens</span>: locked; policy and links published on launch day.</li>
+        <li>All policies summarized in a one-page PDF and mirrored on-chain where feasible.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Execution Plan to 50M MC -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-10">
+    <h2 class="text-2xl font-semibold">Execution Plan to <span class="accent">50M MC</span></h2>
+    <div class="mt-4 grid md:grid-cols-3 gap-4">
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Phase I — Product Fit</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Stable escrow bot with market-cap conditions and timed release.</li>
+          <li>Fee capture live; buy-and-burn proofs posted weekly.</li>
+          <li>NFT fee-reduction utility activated; early partner pilots.</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Phase II — Liquidity & Growth</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Increase LP depth proportional to volume.</li>
+          <li>Listings on XRPL-native venues and analytics dashboards.</li>
+          <li>Merchant demos; case studies highlighting scam prevention.</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-5">
+        <h3 class="font-medium">Phase III — Network Effect</h3>
+        <ul class="mt-2 list-disc list-inside text-neutral-300 text-sm space-y-1">
+          <li>Cross-chain roadmap exploration for future bots.</li>
+          <li>Enterprise integrations and SDKs for devs.</li>
+          <li>Brand flywheel: Book of Kek, community lore, and creator grants.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Addresses & Disclosures -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-10">
+    <h2 class="text-2xl font-semibold">Addresses & Disclosures</h2>
+    <div class="mt-4 rounded-2xl border border-neutral-800 p-5 text-sm text-neutral-300 space-y-2">
+      <p><span class="font-medium">Dev Wallet (fees 50%):</span> <span class="font-mono text-neutral-200">rNdipHhkQdgrc46TJTGeABZrQuES2QZfaM</span></p>
+      <p><span class="font-medium">$XRK Issuer (buy+burn):</span> <span class="font-mono text-neutral-200">r6CBWzsfQuDTwWk2NYzZk5MrQewoUqFoE</span></p>
+      <p><span class="font-medium">LP Lock Proofs:</span> Posted after TGE.</p>
+      <p class="text-neutral-400">
+        This page is informational and not financial advice. The goal is a <em>level playing field</em> with transparent, code-enforced rules.
       </p>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p>© <span id="year"></span> Trustless Payments. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
-      <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
+  <!-- Footer -->
+  <footer class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-12 mb-10 text-sm text-neutral-400">
+    <div class="border-t border-neutral-800 pt-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+      <div>© <span id="year"></span> Trustless Payments</div>
+      <div class="flex gap-4">
+        <a class="hover:text-neutral-200" href="whitepaper.html">Whitepaper</a>
+        <a class="hover:text-neutral-200" href="book.html">Book of Kek</a>
+        <a class="hover:text-neutral-200" href="contact.html">Contact</a>
+      </div>
     </div>
   </footer>
 
   <script>
-    // dynamic year
+    // Mobile menu toggle
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // legal modal
-    const legal = `<h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
-    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing here is investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
-    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
-    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
-    document.getElementById('legal-link').addEventListener('click', e => {
-      e.preventDefault();
-      const modal = document.createElement('div');
-      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
-      modal.innerHTML = `
-        <div class='absolute inset-0 bg-black/70'></div>
-        <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
-          <div>${legal}</div>
-          <div class='mt-6 text-right'>
-            <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
-          </div>
-        </div>`;
-      document.body.appendChild(modal);
-      document.getElementById('close-legal').onclick = () => modal.remove();
-    });
-
-    // hamburger
-    const menuBtn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mainMenu');
-    function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
-    function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
-    menuBtn.addEventListener('click', ()=> {
-      const open = menuBtn.getAttribute('aria-expanded') === 'true';
-      open ? closeMenu() : openMenu();
-    });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-    document.addEventListener('click', e => { if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
   </script>
-
 </body>
 </html>
