@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tokenomics — Trustless Payments</title>
-  <meta name="description" content="$TRUSTLESS tokenomics: 100 M supply with clear allocation for presale, liquidity, marketing, team, development, staking rewards, and treasury." />
+  <meta name="description" content="100 M $TRUSTLESS tokenomics: 35% presale, 14% locked liquidity, 13% marketing, 12% team, 8% development, 12% staking & community rewards, 6% treasury." />
   <meta property="og:title" content="Tokenomics — Trustless Payments" />
-  <meta property="og:description" content="100 M $TRUSTLESS supply with transparent allocations and a 24-month vesting plan." />
+  <meta property="og:description" content="Clear and auditable supply map for $TRUSTLESS with 24-month vesting and community incentives." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="tokenomics_pie_dark.png" />
+  <meta property="og:image" content="tokenomics_100m_pie_dark.png" />
   <meta name="theme-color" content="#00F000" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -56,9 +56,14 @@
   <section class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-10 pb-8 text-center">
     <h1 class="text-3xl sm:text-4xl font-semibold leading-tight">$TRUSTLESS Tokenomics</h1>
     <p class="mt-3 text-neutral-300">
-      Total fixed supply: <strong>100 million $TRUSTLESS</strong>.  
-      Clear allocations for presale, liquidity, marketing, team, development, staking rewards, and treasury ensure transparent growth.
+      Fixed supply: <strong>100 million $TRUSTLESS</strong>.  
+      Clear allocations ensure transparent growth and long-term incentives.
     </p>
+  </section>
+
+  <!-- Pie Chart -->
+  <section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <img src="tokenomics_100m_pie_dark.png" alt="Trustless Tokenomics Chart" class="mx-auto rounded-2xl shadow-lg border border-neutral-800">
   </section>
 
   <!-- Supply Table -->
@@ -76,7 +81,7 @@
           <tr>
             <td class="py-3 px-4">Presale</td>
             <td class="py-3 px-4 text-right">35 %</td>
-            <td class="py-3 px-4">Public sale to seed early holders and market liquidity. Unsold tokens are burned.</td>
+            <td class="py-3 px-4">Community sale to seed early holders. Unsold tokens are burned.</td>
           </tr>
           <tr>
             <td class="py-3 px-4">Liquidity Pool (locked with XRP)</td>
@@ -101,7 +106,7 @@
           <tr>
             <td class="py-3 px-4">Staking & Community Rewards</td>
             <td class="py-3 px-4 text-right">12 %</td>
-            <td class="py-3 px-4">Flexible pool for staking incentives and community distributions over a 24-month schedule.</td>
+            <td class="py-3 px-4">Flexible pool for staking incentives and long-term community participation over a 24-month schedule.</td>
           </tr>
           <tr>
             <td class="py-3 px-4">Treasury / Reserve</td>
@@ -114,7 +119,7 @@
 
     <p class="mt-6 text-neutral-400 text-sm text-center">
       <strong>Launch float:</strong> ~49 % (35 % presale + 14 % locked liquidity).  
-      The remaining 51 % vests over roughly 24 months with milestone-based unlocks where appropriate.
+      The remaining 51 % vests gradually over ~24 months with milestone-based unlocks.
     </p>
   </section>
 
@@ -131,11 +136,9 @@
   </footer>
 
   <script>
-    // Mobile menu toggle
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     if (navToggle) navToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
