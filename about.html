@@ -90,10 +90,6 @@
           <p>When trust breaks, systems fail. This token replaces human discretion with code—transparent, verifiable, and automatic. It ensures outcomes without relying on reputation or authority.</p>
 
           <p>In doing so, it helps establish a <span class="text-white font-semibold">level playing field</span>, where honest actors are protected and agreements are enforced by design, not belief.</p>
-
-          <hr class="my-6 border-white/10" />
-
-          <p class="text-slate-200 font-semibold">Clean. Subtle. Powerful.</p>
         </div>
 
         <div class="mt-12 flex flex-wrap gap-3">
@@ -111,7 +107,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPTS (same behavior as index) -->
+  <!-- scripts same as index.html -->
   <script>
     const THEMES={BlueGreen:{start:'#00E0FF',end:'#00D5A5',solid:'#00DDEE',a10:'rgba(0,224,255,.10)',a30:'rgba(0,224,255,.30)'},Gold:{start:'#FFD700',end:'#FFEA7A',solid:'#FFD700',a10:'rgba(255,215,0,.10)',a30:'rgba(255,215,0,.30)'},NeonGreen:{start:'#00F000',end:'#50FFA9',solid:'#16FF8F',a10:'rgba(0,240,0,.10)',a30:'rgba(0,240,0,.30)'}};
     function setTheme(n){const t=THEMES[n]||THEMES.BlueGreen;for(const[k,v]of Object.entries({ '--accent-start':t.start,'--accent-end':t.end,'--accent-solid':t.solid,'--accent-10':t.a10,'--accent-30':t.a30}))document.documentElement.style.setProperty(k,v);(document.querySelector('meta[name=\"theme-color\"]')||{}).content=t.solid;localStorage.setItem('trustlessTheme',JSON.stringify({theme:n,layout:getLayout()}))}
@@ -129,8 +125,6 @@
     menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
     document.addEventListener('click',(e)=>{if(!menu.contains(e.target)&&!menuBtn.contains(e.target))closeMenu()});
     document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeMenu()});
-
-    // Optional theme panel (same as index). Omit if you don't need the floating gear.
   </script>
 </body>
 </html>
