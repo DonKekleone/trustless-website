@@ -10,45 +10,32 @@
   <meta property="og:description" content="Answers to common questions about our trustless escrow flows, fees, refunds, wallets, and roadmap." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+FAQ" />
-  <!-- Gradient fallback for browser UI bars -->
   <meta name="theme-color" content="#00DDEE" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      /* Blue→Green site accent (matches index/buy/roadmap) */
-      --accent-start:#00E0FF;   /* bluer cyan */
-      --accent-end:#00D5A5;     /* cooler green */
-      --accent-solid:#00DDEE;   /* single-color fallback */
-      --accent-10: rgba(0,224,255,.10);
-      --accent-30: rgba(0,224,255,.30);
-
-      --radius: 0.75rem;
+      --accent-start:#00E0FF; --accent-end:#00D5A5; --accent-solid:#00DDEE;
+      --accent-10: rgba(0,224,255,.10); --accent-30: rgba(0,224,255,.30);
+      --pad-y:20px; --pad-x:24px; --radius:.75rem;
     }
-    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
-    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); }
-    html { scroll-behavior: smooth; }
-    details[open] .chev { transform: rotate(180deg); }
-
-    /* Accent helpers */
-    .accent{
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent; color: transparent;
-    }
-    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); border-radius: var(--radius); }
-    .icon-pill svg { color: var(--accent-end); }
-    .brand-accent  {
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent; color: transparent;
-    }
+    .grid-bg{background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:24px 24px}
+    .glass{backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:var(--pad-y) var(--pad-x)}
+    html{scroll-behavior:smooth}
+    .accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+    .icon-pill{background:var(--accent-10);box-shadow:inset 0 0 0 1px var(--accent-30);border-radius:var(--radius)}
+    .icon-pill svg{color:var(--accent-end)}
+    .brand-accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+    .btn-accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#061b1b;font-weight:600;transition:filter .2s ease,transform .02s ease;box-shadow:0 6px 20px rgba(0,224,255,.15);border-radius:var(--radius);padding:12px 20px}
+    .btn-accent:hover{filter:brightness(1.08)} .btn-accent:active{transform:translateY(1px)}
+    .theme-toggle{position:fixed;right:16px;bottom:16px;z-index:60}.theme-card{width:320px}.chip{border-radius:9999px;padding:4px 10px;font-size:12px}
+    details[open] .chev{transform:rotate(180deg)}
   </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100">
+<body class="min-h-screen bg-slate-950 text-slate-100" id="top">
   <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
+      <a href="index.html#top" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
           <!-- Frog shield -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
@@ -61,13 +48,8 @@
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a href="about.html" class="hover:text-white">About</a>
-        <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
-        <a href="roadmap.html" class="hover:text-white">Roadmap</a>
-        <a href="nfts.html" class="hover:text-white">NFTs</a>
-        <a href="book.html" class="hover:text-white">Book of Kek</a>
-        <a href="team.html" class="hover:text-white">Team</a>
-        <a href="faq.html" class="hover:text-white font-semibold text-white">F.A.Q.</a>
+        <a href="index.html#how" class="hover:text-white">How it works</a>
+        <a href="index.html#fees" class="hover:text-white">Fees & Burn</a>
       </nav>
 
       <div class="relative z-50">
@@ -78,7 +60,6 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
           </svg>
         </button>
-
         <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
           <nav class="py-2 text-slate-100 text-sm">
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
@@ -101,7 +82,9 @@
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-      <h1 class="text-3xl md:text-5xl font-extrabold">Frequently Asked <span class="accent">Questions</span></h1>
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+        <span class="text-white">Frequently Asked</span><span class="accent"> Questions</span>
+      </h1>
       <p class="mt-3 text-slate-300 max-w-3xl">Quick answers about how Trustless works, safety, fees, refunds, token/NFT utilities, and where to get help.</p>
     </div>
   </section>
@@ -111,7 +94,7 @@
     <div class="grid md:grid-cols-2 gap-6">
       <!-- column 1 -->
       <div class="space-y-4">
-        <details class="glass p-6">
+        <details class="glass">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">
             Is this financial advice?
             <svg class="chev h-4 w-4 opacity-70 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.146l3.71-2.915a.75.75 0 11.94 1.166l-4.2 3.3a.75.75 0 01-.94 0l-4.2-3.3a.75.75 0 01-.02-1.06z"/></svg>
@@ -119,7 +102,7 @@
           <p class="mt-2 text-slate-300">No. Trustless is a utility for automated escrow on XRPL. Nothing here is investment advice or a promise of returns.</p>
         </details>
 
-        <details class="glass p-6">
+        <details class="glass">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">
             Do I share my secret keys with the bot?
             <svg class="chev h-4 w-4 opacity-70 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.146l3.71-2.915a.75.75 0 11.94 1.166l-4.2 3.3a.75.75 0 01-.94 0l-4.2-3.3a.75.75 0 01-.02-1.06z"/></svg>
@@ -127,7 +110,7 @@
           <p class="mt-2 text-slate-300">Never. You fund escrows from your own wallet. The bot does not ask for or store secrets.</p>
         </details>
 
-        <details class="glass p-6">
+        <details class="glass">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">
             How do fees work?
             <svg class="chev h-4 w-4 opacity-70 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.146l3.71-2.915a.75.75 0 11.94 1.166l-4.2 3.3a.75.75 0 01-.94 0l-4.2-3.3a.75.75 0 01-.02-1.06z"/></svg>
@@ -135,7 +118,7 @@
           <p class="mt-2 text-slate-300">Escrows include a <strong>5.89%</strong> fee. Split: <strong>50%</strong> to the dev wallet for continued development; <strong>50%</strong> buys and burns the associated token—fully on-chain.</p>
         </details>
 
-        <details class="glass p-6">
+        <details class="glass">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">
             What happens when goals are not met?
             <svg class="chev h-4 w-4 opacity-70 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.146l3.71-2.915a.75.75 0 11.94 1.166l-4.2 3.3a.75.75 0 01-.94 0l-4.2-3.3a.75.75 0 01-.02-1.06z"/></svg>
@@ -143,7 +126,7 @@
           <p class="mt-2 text-slate-300">Funds automatically refund to the original sender after expiry if objective conditions aren’t satisfied.</p>
         </details>
 
-        <details class="glass p-6">
+        <details class="glass">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">
             Do I need a trustline to trade?
             <svg class="chev h-4 w-4 opacity-70 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.146l3.71-2.915a.75.75 0 11.94 1.166l-4.2 3.3a.75.75 0 01-.94 0l-4.2-3.3a.75.75 0 01-.02-1.06z"/></svg>
@@ -154,7 +137,7 @@
 
       <!-- column 2 -->
       <div class="space-y-4">
-        <details class="glass p-6">
+        <details class="glass">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">
             Is the bot open-source?
             <svg class="chev h-4 w-4 opacity-70 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.146l3.71-2.915a.75.75 0 11.94 1.166l-4.2 3.3a.75.75 0 01-.94 0l-4.2-3.3a.75.75 0 01-.02-1.06z"/></svg>
@@ -162,7 +145,7 @@
           <p class="mt-2 text-slate-300">Core escrow logic is kept lean and auditable. We’ll publish more interfaces and monitors over time. Follow the <a class="underline decoration-dotted" href="roadmap.html">roadmap</a> for updates.</p>
         </details>
 
-        <details class="glass p-6">
+        <details class="glass">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">
             Where can I read the whitepaper?
             <svg class="chev h-4 w-4 opacity-70 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.146l3.71-2.915a.75.75 0 11.94 1.166l-4.2 3.3a.75.75 0 01-.94 0l-4.2-3.3a.75.75 0 01-.02-1.06z"/></svg>
@@ -170,7 +153,7 @@
           <p class="mt-2 text-slate-300">Right here: <a class="underline decoration-dotted" href="whitepaper.html">Whitepaper (PDF + HTML)</a>.</p>
         </details>
 
-        <details class="glass p-6">
+        <details class="glass">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">
             What utility do the NFTs provide?
             <svg class="chev h-4 w-4 opacity-70 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.146l3.71-2.915a.75.75 0 11.94 1.166l-4.2 3.3a.75.75 0 01-.94 0l-4.2-3.3a.75.75 0 01-.02-1.06z"/></svg>
@@ -178,7 +161,7 @@
           <p class="mt-2 text-slate-300">Fee reductions, governance and/or fee share (for select collections), private updates and early experiments. See <a class="underline decoration-dotted" href="nfts.html">NFTs</a> for details.</p>
         </details>
 
-        <details class="glass p-6">
+        <details class="glass">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">
             How do I buy $TRUSTLESS?
             <svg class="chev h-4 w-4 opacity-70 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.146l3.71-2.915a.75.75 0 11.94 1.166l-4.2 3.3a.75.75 0 01-.94 0l-4.2-3.3a.75.75 0 01-.02-1.06z"/></svg>
@@ -186,7 +169,7 @@
           <p class="mt-2 text-slate-300">Follow the 4-step guide: install Xaman, create a safe wallet, fund with XRP, and trade on XRPL DEX. See <a class="underline decoration-dotted" href="buy.html">How to Buy</a>.</p>
         </details>
 
-        <details class="glass p-6">
+        <details class="glass">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">
             Where can I get help?
             <svg class="chev h-4 w-4 opacity-70 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.146l3.71-2.915a.75.75 0 11.94 1.166l-4.2 3.3a.75.75 0 01-.94 0l-4.2-3.3a.75.75 0 01-.02-1.06z"/></svg>
@@ -205,43 +188,26 @@
     </div>
   </footer>
 
+  <!-- scripts same as about.html -->
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear()
+    const THEMES={BlueGreen:{start:'#00E0FF',end:'#00D5A5',solid:'#00DDEE',a10:'rgba(0,224,255,.10)',a30:'rgba(0,224,255,.30)'},Gold:{start:'#FFD700',end:'#FFEA7A',solid:'#FFD700',a10:'rgba(255,215,0,.10)',a30:'rgba(255,215,0,.30)'},NeonGreen:{start:'#00F000',end:'#50FFA9',solid:'#16FF8F',a10:'rgba(0,240,0,.10)',a30:'rgba(0,240,0,.30)'}};
+    function setTheme(n){const t=THEMES[n]||THEMES.BlueGreen;for(const[k,v]of Object.entries({'--accent-start':t.start,'--accent-end':t.end,'--accent-solid':t.solid,'--accent-10':t.a10,'--accent-30':t.a30}))document.documentElement.style.setProperty(k,v);(document.querySelector('meta[name="theme-color"]')||{}).content=t.solid;localStorage.setItem('trustlessTheme',JSON.stringify({theme:n,layout:getLayout()}))}
+    function setLayout(m){if(m==='Compact'){document.documentElement.style.setProperty('--pad-y','16px');document.documentElement.style.setProperty('--pad-x','18px');document.documentElement.style.setProperty('--radius','.65rem')}else{document.documentElement.style.setProperty('--pad-y','20px');document.documentElement.style.setProperty('--pad-x','24px');document.documentElement.style.setProperty('--radius','.75rem')}localStorage.setItem('trustlessTheme',JSON.stringify({theme:getTheme(),layout:m}))}
+    function getTheme(){try{return JSON.parse(localStorage.getItem('trustlessTheme'))?.theme||'BlueGreen'}catch{return'BlueGreen'}}
+    function getLayout(){try{return JSON.parse(localStorage.getItem('trustlessTheme'))?.layout||'Cozy'}catch{return'Cozy'}}
+    setTheme(getTheme()); setLayout(getLayout());
+    document.getElementById('year').textContent=new Date().getFullYear();
 
-    // Legal modal
-    const legal = `\
-    <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
-    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
-    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
-    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
-    document.getElementById('legal-link').addEventListener('click', (e) => {
-      e.preventDefault();
-      const modal = document.createElement('div');
-      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
-      modal.innerHTML = `
-        <div class='absolute inset-0 bg-black/70'></div>
-        <div class='relative max-w-xl w-full glass p-6'>
-          <div>${legal}</div>
-          <div class='mt-6 text-right'>
-            <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
-          </div>
-        </div>`;
-      document.body.appendChild(modal);
-      document.getElementById('close-legal').onclick = () => modal.remove();
-    });
+    const legal=`<h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3><p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p><p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p><p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
+    document.getElementById('legal-link').addEventListener('click',(e)=>{e.preventDefault();const m=document.createElement('div');m.className='fixed inset-0 z-50 flex items-center justify-center p-4';m.innerHTML=`<div class='absolute inset-0 bg-black/70'></div><div class='relative max-w-xl w-full glass'><div>${legal}</div><div class='mt-6 text-right'><button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button></div></div>`;document.body.appendChild(m);document.getElementById('close-legal').onclick=()=>m.remove();});
 
-    // Hamburger menu
-    const menuBtn = document.getElementById('menuBtn');
-    const menu    = document.getElementById('mainMenu');
-    function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
-    function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
-    menuBtn.addEventListener('click', () => {
-      (menuBtn.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
-    });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-    document.addEventListener('click', (e) => { if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+    const menuBtn=document.getElementById('menuBtn'); const menu=document.getElementById('mainMenu');
+    function closeMenu(){menu.classList.add('hidden');menuBtn.setAttribute('aria-expanded','false')}
+    function openMenu(){menu.classList.remove('hidden');menuBtn.setAttribute('aria-expanded','true')}
+    menuBtn.addEventListener('click',()=>{(menuBtn.getAttribute('aria-expanded')==='true')?closeMenu():openMenu()});
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+    document.addEventListener('click',(e)=>{if(!menu.contains(e.target)&&!menuBtn.contains(e.target))closeMenu()});
+    document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeMenu()});
   </script>
 </body>
 </html>
