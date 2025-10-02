@@ -3,14 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>$TRUSTLESS Tokenomics — Trustless Payments</title>
-  <meta name="description" content="Fixed supply: 100 million $TRUSTLESS. Clear allocations ensure transparent growth and long-term incentives." />
-  <meta property="og:title" content="$TRUSTLESS Tokenomics — Trustless Payments" />
-  <meta property="og:description" content="Fixed supply: 100 million $TRUSTLESS. Clear allocations ensure transparent growth and long-term incentives." />
+  <title>TRUSTLESS ($TRLS) Tokenomics — Trustless Payments</title>
+
+  <!-- Meta & Open Graph -->
+  <meta name="description" content="Fixed supply: 100 million $TRLS. Clear allocations ensure transparent growth and long-term incentives." />
+  <meta property="og:title" content="TRUSTLESS ($TRLS) Tokenomics — Trustless Payments" />
+  <meta property="og:description" content="Fixed supply: 100 million $TRLS. Clear allocations ensure transparent growth and long-term incentives." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless" />
   <meta name="theme-color" content="#00DDEE" />
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Styles -->
   <style>
     :root{
       --accent-start:#00E0FF;  /* cyan */
@@ -62,14 +68,25 @@
     .theme-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 60; }
     .theme-card { width: 320px; }
     .chip { border-radius: 9999px; padding: 4px 10px; font-size: 12px; }
+
+    /* Toast */
+    .toast{
+      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+      background: rgba(17,24,39,.9); color: #E5E7EB;
+      padding: 10px 14px; border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px; font-size: 14px; z-index: 70;
+      opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease;
+    }
+    .toast.show{ opacity: 1; transform: translateX(-50%) translateY(-4px); }
   </style>
 </head>
+
 <body class="min-h-screen bg-slate-950 text-slate-100" id="top">
   <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="index.html#top" class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
+        <span class="inline-flex h-9 w-9 items-center justify-center icon-pill" aria-hidden="true">
           <!-- Frog shield -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
@@ -83,9 +100,11 @@
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="index.html#how" class="hover:text-white">How it works</a>
         <a href="index.html#fees" class="hover:text-white">Fees & Burn</a>
+        <a href="buy.html" class="hover:text-white">Buy $TRLS</a>
       </nav>
 
-      <div class="relative z-50">
+      <!-- Mobile menu -->
+      <div class="relative z-50 md:hidden">
         <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
                 class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
           <span class="sr-only">Open menu</span>
@@ -100,7 +119,7 @@
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFTs</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRLS</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
@@ -116,11 +135,11 @@
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
       <h1 class="text-4xl md:text-6xl font-extrabold">
-        <span class="text-white">$TRUSTLESS</span>
+        <span class="text-white">TRUSTLESS ($TRLS)</span>
         <span class="accent"> Tokenomics</span>
       </h1>
       <p class="mt-5 text-lg md:text-xl text-slate-300">
-        Fixed supply: <span class="text-white font-semibold">100 million $TRUSTLESS.</span>
+        Fixed supply: <span class="text-white font-semibold">100 million $TRLS.</span>
         Clear allocations ensure transparent growth and long-term incentives.
       </p>
     </div>
@@ -129,34 +148,51 @@
   <!-- CHART + FLOAT -->
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
     <div class="grid gap-8 md:grid-cols-2 items-start">
+      <!-- Chart -->
       <div class="glass">
         <div class="relative">
           <canvas id="donut" class="w-full" width="540" height="360"></canvas>
           <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div class="text-center">
               <div class="text-xs uppercase tracking-wide text-slate-400">Total Supply</div>
-              <div class="text-xl md:text-2xl font-bold text-white">100,000,000</div>
+              <div class="text-xl md:text-2xl font-bold text-white">100,000,000 $TRLS</div>
             </div>
           </div>
         </div>
         <div id="legend" class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm"></div>
       </div>
 
-      <div class="glass">
-        <h3 class="font-semibold accent">Launch Float</h3>
-        <p class="mt-2 text-slate-300">
-          ~49% at launch (<span class="text-white font-semibold">35% presale</span> +
-          <span class="text-white font-semibold">14% locked liquidity</span>).
-          The remaining 51% vests over ~24 months with milestone-based unlocks.
-        </p>
-        <div class="mt-3 text-xs text-slate-400">
-          Notes: allocations and schedules aim to protect early supporters, fund development, and sustain long-term community incentives.
+      <!-- Float notes -->
+      <div class="space-y-6">
+        <div class="glass">
+          <h3 class="font-semibold accent">Launch Float</h3>
+          <p class="mt-2 text-slate-300">
+            ~49% at launch (<span class="text-white font-semibold">35% presale</span> +
+            <span class="text-white font-semibold">14% locked liquidity</span>).
+            The remaining 51% vests over ~24 months with milestone-based unlocks.
+          </p>
+          <div class="mt-3 text-xs text-slate-400">
+            Notes: allocations and schedules aim to protect early supporters, fund development,
+            and sustain long-term community incentives.
+          </div>
+        </div>
+
+        <!-- Liquidity Provision Note -->
+        <div class="glass">
+          <h3 class="font-semibold accent">Liquidity Provision Note</h3>
+          <p class="mt-2 text-slate-300">
+            Liquidity pool tokens are permanently locked. A portion of presale proceeds will be
+            paired with XRP to ensure deep, stable liquidity from day one.
+          </p>
+          <p class="mt-2 text-xs text-slate-400">
+            This guarantees a level playing field where trades remain fair and slippage is minimized.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TABLE -->
+  <!-- ALLOCATION TABLE -->
   <section class="pb-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="overflow-hidden rounded-2xl border border-white/10">
@@ -214,122 +250,60 @@
   </section>
 
   <!-- TRANSPARENCY & WALLET REGISTRY -->
-  <section class="pb-20">
+  <section class="pb-20" id="transparency">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="glass">
         <h3 class="font-semibold accent">Transparency & Wallet Registry</h3>
         <p class="mt-2 text-slate-300">
-          Official $TRUSTLESS XRPL accounts. Verify on-chain via XRPSCAN before sending.
+          Official $TRLS XRPL accounts. Verify on-chain via XRPSCAN before sending.
+          Only trust the addresses listed here.
         </p>
 
+        <!-- Wallet Table -->
         <div class="mt-5 overflow-hidden rounded-xl border border-white/10">
           <div class="hidden md:grid grid-cols-12 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-300">
             <div class="col-span-4">Label</div>
             <div class="col-span-6">Address</div>
             <div class="col-span-2 text-right">Copy</div>
           </div>
-
-          <div class="divide-y divide-white/10 text-sm">
-            <div class="grid grid-cols-12 gap-y-2 px-6 py-4">
-              <div class="col-span-12 md:col-span-4 font-medium">Contract Address</div>
-              <div class="col-span-12 md:col-span-6">
-                <a class="text-slate-200 hover:underline break-all" href="https://xrpscan.com/account/r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h" target="_blank">r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</a>
-              </div>
-              <div class="col-span-12 md:col-span-2 md:text-right">
-                <button class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-3 py-1.5 hover:bg-white/5"
-                        onclick="navigator.clipboard.writeText('r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h')">
-                  Copy
-                </button>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-12 gap-y-2 px-6 py-4">
-              <div class="col-span-12 md:col-span-4 font-medium">Dev Wallet</div>
-              <div class="col-span-12 md:col-span-6">
-                <a class="text-slate-200 hover:underline break-all" href="https://xrpscan.com/account/rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX" target="_blank">rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX</a>
-              </div>
-              <div class="col-span-12 md:col-span-2 md:text-right">
-                <button class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-3 py-1.5 hover:bg-white/5"
-                        onclick="navigator.clipboard.writeText('rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX')">
-                  Copy
-                </button>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-12 gap-y-2 px-6 py-4">
-              <div class="col-span-12 md:col-span-4 font-medium">Marketing</div>
-              <div class="col-span-12 md:col-span-6">
-                <a class="text-slate-200 hover:underline break-all" href="https://xrpscan.com/account/rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY" target="_blank">rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY</a>
-              </div>
-              <div class="col-span-12 md:col-span-2 md:text-right">
-                <button class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-3 py-1.5 hover:bg-white/5"
-                        onclick="navigator.clipboard.writeText('rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY')">
-                  Copy
-                </button>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-12 gap-y-2 px-6 py-4">
-              <div class="col-span-12 md:col-span-4 font-medium">Team</div>
-              <div class="col-span-12 md:col-span-6">
-                <a class="text-slate-200 hover:underline break-all" href="https://xrpscan.com/account/rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB" target="_blank">rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB</a>
-              </div>
-              <div class="col-span-12 md:col-span-2 md:text-right">
-                <button class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-3 py-1.5 hover:bg-white/5"
-                        onclick="navigator.clipboard.writeText('rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB')">
-                  Copy
-                </button>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-12 gap-y-2 px-6 py-4">
-              <div class="col-span-12 md:col-span-4 font-medium">Development</div>
-              <div class="col-span-12 md:col-span-6">
-                <a class="text-slate-200 hover:underline break-all" href="https://xrpscan.com/account/rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq" target="_blank">rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq</a>
-              </div>
-              <div class="col-span-12 md:col-span-2 md:text-right">
-                <button class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-3 py-1.5 hover:bg-white/5"
-                        onclick="navigator.clipboard.writeText('rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq')">
-                  Copy
-                </button>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-12 gap-y-2 px-6 py-4">
-              <div class="col-span-12 md:col-span-4 font-medium">Staking & Rewards</div>
-              <div class="col-span-12 md:col-span-6">
-                <a class="text-slate-200 hover:underline break-all" href="https://xrpscan.com/account/rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA" target="_blank">rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA</a>
-              </div>
-              <div class="col-span-12 md:col-span-2 md:text-right">
-                <button class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-3 py-1.5 hover:bg-white/5"
-                        onclick="navigator.clipboard.writeText('rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA')">
-                  Copy
-                </button>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-12 gap-y-2 px-6 py-4">
-              <div class="col-span-12 md:col-span-4 font-medium">Treasury</div>
-              <div class="col-span-12 md:col-span-6">
-                <a class="text-slate-200 hover:underline break-all" href="https://xrpscan.com/account/rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J" target="_blank">rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J</a>
-              </div>
-              <div class="col-span-12 md:col-span-2 md:text-right">
-                <button class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-3 py-1.5 hover:bg-white/5"
-                        onclick="navigator.clipboard.writeText('rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J')">
-                  Copy
-                </button>
-              </div>
-            </div>
+          <div id="walletRows" class="divide-y divide-white/10 text-sm">
+            <!-- Rows injected by JS -->
           </div>
         </div>
 
+        <!-- Change Log (collapsible) -->
+        <div class="mt-6">
+          <details class="glass">
+            <summary class="cursor-pointer list-none flex items-center justify-between">
+              <span class="font-semibold accent">Change Log (on-chain movements)</span>
+              <span class="text-slate-400 text-xs ml-4">Expand</span>
+            </summary>
+            <div class="mt-3 text-sm text-slate-300 space-y-2" id="changelog">
+              <!-- Example entries; replace with real tx hashes when ready -->
+              <div class="flex items-start gap-3">
+                <span class="chip bg-white/10">Planned</span>
+                <div>
+                  Initial LP lock & pair with XRP. TX hash to be posted here after execution.
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="chip bg-white/10">Planned</span>
+                <div>
+                  First staking reward top-up from Treasury → Staking & Rewards.
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+
         <p class="mt-3 text-xs text-slate-400">
-          Change log will be posted here for any movements (LP adds, burns, staking fund top-ups).
+          Tip: If a destination tag is ever required by an exchange, double-check it on the receiving platform before sending. XRPL transactions are irreversible.
         </p>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <p>© <span id="year"></span> Trustless Payments</p>
@@ -337,9 +311,12 @@
     </div>
   </footer>
 
-  <!-- THEME, MENU, LEGAL, THEME PANEL, DONUT -->
+  <!-- TOAST -->
+  <div id="toast" class="toast" role="status" aria-live="polite">Copied to clipboard</div>
+
+  <!-- SCRIPTS -->
   <script>
-    // ---------- Theme memory (same as index/about)
+    // ---------- Theme memory
     const THEMES = {
       BlueGreen: { start:'#00E0FF', end:'#00D5A5', solid:'#00DDEE', a10:'rgba(0,224,255,.10)', a30:'rgba(0,224,255,.30)' },
       Gold:      { start:'#FFD700', end:'#FFEA7A', solid:'#FFD700', a10:'rgba(255,215,0,.10)', a30:'rgba(255,215,0,.30)' },
@@ -375,22 +352,14 @@
     // ---------- Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ---------- Legal modal
-    const legal = `\
-    <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
-    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
-    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
-    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
-    // (link is in footer on other pages; add one here if needed)
-
     // ---------- Hamburger menu
     const menuBtn = document.getElementById('menuBtn');
     const menu    = document.getElementById('mainMenu');
-    function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
-    function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
-    menuBtn.addEventListener('click',()=>{ (menuBtn.getAttribute('aria-expanded')==='true') ? closeMenu() : openMenu(); });
-    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
-    document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
+    function closeMenu(){ menu.classList.add('hidden'); menuBtn?.setAttribute('aria-expanded','false'); }
+    function openMenu(){ menu.classList.remove('hidden'); menuBtn?.setAttribute('aria-expanded','true'); }
+    menuBtn?.addEventListener('click',()=>{ (menuBtn.getAttribute('aria-expanded')==='true') ? closeMenu() : openMenu(); });
+    menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+    document.addEventListener('click',(e)=>{ if(menu && !menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
     document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeMenu(); });
 
     // ---------- Optional floating theme panel (same as index)
@@ -398,8 +367,8 @@
       const wrap = document.createElement('div');
       wrap.className = 'theme-toggle';
       wrap.innerHTML = `
-        <button id="gearBtn" class="btn-accent rounded-full px-3 py-3" title="Theme & layout">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94a7.07,7.07,0,0,0,0-1.88l2-1.55a.5.5,0,0,0,.12-.64l-1.9-3.29a.5.5,0,0,0-.6-.22l-2.35,1a7.13,7.13,0,0,0-1.63-.95l-.36-2.49A.5.5,0,0,0,13.93,1H10.07a.5.5,0,0,0-.5.42L9.21,3.91a7.13,7.13,0,0,0-1.63.95l-2.35-1a.5.5,0,0,0-.6.22L2.73,7.34a.5.5,0,0,0,.12.64l2,1.55a7.07,7.07,0,0,0,0,1.88l-2,1.55a.5.5,0,0,0-.12.64l1.9,3.29a.5.5,0,0,0,.6.22l2.35-1a7.13,7.13,0,0,0,1.63.95l.36,2.49a.5.5,0,0,0,.5.42h3.86a.5.5,0,0,0,.5-.42l.36-2.49a7.13,7.13,0,0,0,1.63-.95l2.35,1a.5.5,0,0,0,.6-.22l1.9-3.29a.5.5,0,0,0-.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+        <button id="gearBtn" class="btn-accent rounded-full px-3 py-3" title="Theme & layout" aria-label="Theme and layout">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94a7.07,7.07,0,0,0,0-1.88l2-1.55a.5.5,0,0,0,.12-.64l-1.9-3.29a.5.5,0,0,0-.6-.22l-2.35,1a7.13,7.13,0,0,0-1.63-.95l-.36-2.49A.5.5,0,0,0,13.93,1H10.07a.5.5,0,0,0-.5.42L9.21,3.91a7.13,7.13,0,0,0-1.63.95l-2.35-1a.5.5,0,0,0-.6.22L2.73,7.34a.5.5,0,0,0,.12.64l2,1.55a7.07,7.07,0,0,0,0,1.88l-2,1.55a.5.5,0,0,0-.12.64l1.9,3.29a.5.5,0,0,0,.6.22l2.35-1a7.13,7.13,0,0,0,1.63.95l.36,2.49a.5.5,0,0,0,.5.42h3.86a.5.5,0,0,0,.5-.42l.36-2.49a7.13,7.13,0,0,0,1.63-.95l2.35,1a.5.5,0,0,0,.6-.22l1.9-3.29a.5.5,0,0,0,.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
         </button>
         <div id="themeCard" class="hidden mt-2 theme-card glass border border-white/10 shadow-2xl">
           <div class="text-sm text-slate-200 font-semibold mb-2 accent">Theme & Layout</div>
@@ -434,6 +403,53 @@
     }
     mountThemePanel();
 
+    // ---------- Explorer helper
+    function xrpscanLink(address){ return `https://xrpscan.com/account/${address}`; }
+
+    // ---------- Toast
+    const toast = document.getElementById('toast');
+    function showToast(msg='Copied to clipboard'){
+      if(!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 1400);
+    }
+
+    // ---------- Wallets (YOUR 7)
+    const WALLETS = [
+      { label: 'Contract Address',         addr: 'r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h' },
+      { label: 'Dev Wallet',               addr: 'rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX' },
+      { label: 'Marketing',                addr: 'rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY' },
+      { label: 'Team',                     addr: 'rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB' },
+      { label: 'Development',              addr: 'rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq' },
+      { label: 'Staking & Rewards',        addr: 'rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA' },
+      { label: 'Treasury',                 addr: 'rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J' },
+    ];
+
+    // ---------- Render wallet rows
+    const walletRows = document.getElementById('walletRows');
+    if(walletRows){
+      walletRows.innerHTML = '';
+      WALLETS.forEach(w => {
+        const row = document.createElement('div');
+        row.className = 'grid grid-cols-12 gap-y-2 px-6 py-4';
+        row.innerHTML = `
+          <div class="col-span-12 md:col-span-4 font-medium"><span class="accent">${w.label}</span></div>
+          <div class="col-span-12 md:col-span-6">
+            <a href="${xrpscanLink(w.addr)}" target="_blank" class="text-slate-200 hover:underline break-all">${w.addr}</a>
+          </div>
+          <div class="col-span-12 md:col-span-2 md:text-right">
+            <button class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-3 py-1.5 hover:bg-white/5"
+                    aria-label="Copy ${w.label} address"
+                    onclick="navigator.clipboard.writeText('${w.addr}').then(()=>showToast('Address copied'));">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v12h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              Copy
+            </button>
+          </div>`;
+        walletRows.appendChild(row);
+      });
+    }
+
     // ---------- Donut (no libs)
     const data = [
       { name:'Presale', pct:35, color:'#1FE29A' },
@@ -447,55 +463,66 @@
 
     // Legend (accent category names)
     const legend = document.getElementById('legend');
-    legend.innerHTML = '';
-    data.forEach(d=>{
-      const row = document.createElement('div');
-      row.className = 'flex items-center gap-3';
-      row.innerHTML = `
-        <span class="legend-swatch" style="background:${d.color}"></span>
-        <span class="accent">${d.name}</span>
-        <span class="ml-auto text-slate-300">${d.pct}%</span>`;
-      legend.appendChild(row);
-    });
+    if(legend){
+      legend.innerHTML = '';
+      data.forEach(d=>{
+        const row = document.createElement('div');
+        row.className = 'flex items-center gap-3';
+        row.innerHTML = `
+          <span class="legend-swatch" style="background:${d.color}"></span>
+          <span class="accent">${d.name}</span>
+          <span class="ml-auto text-slate-300">${d.pct}%</span>`;
+        legend.appendChild(row);
+      });
+    }
 
     // Draw donut & handle DPR
     const c = document.getElementById('donut');
-    const ctx = c.getContext('2d');
-    function draw(){
-      const rect = c.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      c.width = rect.width * dpr; c.height = rect.height * dpr;
-      ctx.setTransform(1,0,0,1,0,0);
-      ctx.scale(dpr, dpr);
+    if(c){
+      const ctx = c.getContext('2d');
+      function draw(){
+        const rect = c.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        c.width = rect.width * dpr; c.height = rect.height * dpr;
+        ctx.setTransform(1,0,0,1,0,0);
+        ctx.scale(dpr, dpr);
 
-      const w = rect.width, h = rect.height;
-      const cx = w/2, cy = h/2, r = Math.min(w,h)*0.40, inner = r*0.58;
+        const w = rect.width, h = rect.height;
+        const cx = w/2, cy = h/2, r = Math.min(w,h)*0.40, inner = r*0.58;
 
-      ctx.clearRect(0,0,w,h);
-      let start = -Math.PI/2;
-      data.forEach(d=>{
-        const ang = (d.pct/100) * Math.PI*2;
-        ctx.beginPath();
-        ctx.moveTo(cx,cy);
-        ctx.arc(cx,cy,r,start,start+ang);
-        ctx.closePath();
-        ctx.fillStyle = d.color;
-        ctx.fill();
+        ctx.clearRect(0,0,w,h);
+        let start = -Math.PI/2;
+        data.forEach(d=>{
+          const ang = (d.pct/100) * Math.PI*2;
+          ctx.beginPath();
+          ctx.moveTo(cx,cy);
+          ctx.arc(cx,cy,r,start,start+ang);
+          ctx.closePath();
+          ctx.fillStyle = d.color;
+          ctx.fill();
 
-        // inner cut
-        ctx.globalCompositeOperation = 'destination-out';
-        ctx.beginPath(); ctx.arc(cx,cy,inner,0,Math.PI*2); ctx.fill();
-        ctx.globalCompositeOperation = 'source-over';
+          // inner cut
+          ctx.globalCompositeOperation = 'destination-out';
+          ctx.beginPath(); ctx.arc(cx,cy,inner,0,Math.PI*2); ctx.fill();
+          ctx.globalCompositeOperation = 'source-over';
 
-        start += ang;
-      });
+          start += ang;
+        });
 
-      // subtle outer ring
-      ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
-      ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.stroke();
+        // subtle outer ring
+        ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
+        ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.stroke();
+      }
+      draw();
+      window.addEventListener('resize', draw);
     }
-    draw();
-    window.addEventListener('resize', draw);
+
+    // ---------- Legal modal content (placeholder for future hook)
+    const legal = `\
+    <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
+    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
+    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
+    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
   </script>
 </body>
 </html>
