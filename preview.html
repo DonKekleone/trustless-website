@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ENFORCER PREVIEW — Trustless</title>
+  <title>Enforcer Preview — Trustless</title>
   <meta name="description" content="Conditions speak. Code enforces. The Enforcer Bot is coming." />
-  <meta property="og:title" content="ENFORCER PREVIEW — Trustless" />
+  <meta property="og:title" content="Enforcer Preview — Trustless" />
   <meta property="og:description" content="Conditions speak. Code enforces. The Enforcer Bot is coming." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://placehold.co/1200x630/png?text=ENFORCER+BOT" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Enforcer+Bot" />
   <meta name="theme-color" content="#00DDEE" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -21,43 +21,19 @@
     .glass{backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:var(--pad-y) var(--pad-x);}
     html{scroll-behavior:smooth;}
     .accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
-    .icon-pill{background:var(--accent-10);box-shadow:inset 0 0 0 1px var(--accent-30);border-radius:var(--radius);}
-    .icon-pill svg{color:var(--accent-end);}
-    .brand-accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
     .btn-accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#061b1b;font-weight:600;transition:filter .2s ease,transform .02s ease;box-shadow:0 6px 20px rgba(0,224,255,.15);border-radius:var(--radius);padding:12px 20px;}
     .btn-accent:hover{filter:brightness(1.08);} .btn-accent:active{transform:translateY(1px);}
     .theme-toggle{position:fixed;right:16px;bottom:16px;z-index:60;} .theme-card{width:320px;} .chip{border-radius:9999px;padding:4px 10px;font-size:12px;}
+    .prose-custom p{margin-top:1.25em;margin-bottom:1.25em;line-height:1.75;}
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100" id="top">
-  <!-- NAV (same as philosophy.html) -->
+  <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="index.html#top" class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
-            <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
-            <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
-            <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
-          </svg>
-        </span>
-        <span class="font-semibold tracking-wide brand-accent">Trustless Payments</span>
+        <span class="font-semibold tracking-wide accent">Trustless Payments</span>
       </a>
-
-      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a href="index.html#top" class="hover:text-white">Home</a>
-        <a href="philosophy.html" class="hover:text-white">Philosophy</a>
-        <a href="about.html" class="hover:text-white">About</a>
-        <a href="roadmap.html" class="hover:text-white">Roadmap</a>
-        <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
-        <a href="nfts.html" class="hover:text-white">NFTs</a>
-        <a href="buy.html" class="hover:text-white">Buy $TRUSTLESS</a>
-        <a href="book.html" class="hover:text-white">Book of Kek</a>
-        <a href="team.html" class="hover:text-white">Team</a>
-        <a href="faq.html" class="hover:text-white">F.A.Q.</a>
-        <a href="contact.html" class="hover:text-white">Contact</a>
-      </nav>
-
       <div class="relative z-50">
         <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
           class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
@@ -88,94 +64,77 @@
   <!-- HERO -->
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      <div class="max-w-3xl">
-        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">Enforcer Bot • XRPL • Preview</p>
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-          <span class="text-white block">Conditions speak.</span>
-          <span class="accent block">Code enforces.</span>
-        </h1>
-        <p class="mt-6 text-lg md:text-xl text-slate-300">
-          A judge with no face and no favorites is waking up. Not a promise. Not a prayer. A mechanism.
-        </p>
-      </div>
-
-      <!-- Feature image -->
-      <figure class="mt-10 rounded-3xl border border-white/10 bg-white/5 p-3">
-        <img src="assets/enforcer.png" alt="Enforcer Bot holding a gavel and frog shield" class="w-full rounded-2xl mx-auto">
-        <figcaption class="text-center text-xs text-slate-400 mt-2">
-          A gavel forged in code. A shield against deception.
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- FIRST COPY (spacious, easy reading) -->
-  <section class="py-2">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 leading-relaxed text-slate-300 space-y-5">
-      <p>Beneath the surface of the ledger, a force is awakening.</p>
-      <p>Not a promise. Not a prayer. A mechanism.</p>
-      <p>They call it the <strong>Enforcer Bot</strong> — a gavel forged in code, a shield raised against deception. It does not blink. It does not bargain. It waits. And when the time comes, it executes without hesitation.</p>
-      <p>This is not the dream of a level playing field.</p>
-      <p>This is its construction, stone by stone, contract by contract.</p>
-      <p>The prophecy of the <strong>Trustless Tablets</strong> spoke of rails that cannot bend,</p>
-      <p>and a field so straight that no man may tilt it.</p>
-      <p>The rats built their empire on loopholes.<br/>The Enforcer will seal them shut.</p>
-      <p>When it arrives, no hand will move a coin without consequence.<br/>When it speaks, the ledger listens.<br/>When it judges, there will be no appeal.</p>
-      <p class="font-semibold text-slate-200">Prepare yourselves.<br/>The field is being raised.<br/><span class="accent">The Enforcer is coming.</span></p>
-    </div>
-  </section>
-
-  <!-- SECOND HALF -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
-      <!-- What to expect -->
-      <div class="glass">
-        <h2 class="text-xl md:text-2xl font-bold accent mb-4">What to expect</h2>
-        <ul class="list-disc list-inside text-slate-300 space-y-3">
-          <li>Escrow creation that feels human-simple, but behaves machine-cold.</li>
-          <li>Market-cap and time conditions checked on loop—no sleep cycle.</li>
-          <li>Clear outcomes: release or revert. No “we’ll get back to you.”</li>
-          <li>XRPL-first speed and cost profile. Global by default.</li>
-        </ul>
-      </div>
-      <!-- Whispers -->
-      <div class="glass">
-        <h3 class="text-lg md:text-xl font-semibold accent mb-2">Whispers</h3>
-        <p class="text-slate-300 leading-relaxed">
-          The <span class="underline decoration-dotted decoration-emerald-400/70 underline-offset-2">judge</span> doesn’t care who you are. Only what the rule says.
-          Builders call this freedom. Parasites call it winter.
-        </p>
+    <div class="mx-auto max-w-3xl px-4 py-20 md:py-28 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+        Conditions speak. <span class="accent">Code enforces.</span>
+      </h1>
+      <p class="text-lg text-slate-300">Beneath the surface of the ledger, a force is awakening.</p>
+      <p class="text-lg text-slate-300">Not a promise. Not a prayer. A mechanism.</p>
+      <div class="mt-10">
+        <img src="enforcer.png" alt="Enforcer Bot holding a gavel and frog shield" class="mx-auto rounded-2xl shadow-lg border border-white/10">
       </div>
     </div>
   </section>
 
-  <!-- CTA (bottom) -->
-  <section class="py-16 bg-slate-900/40 border-y border-white/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+  <!-- MAIN COPY -->
+  <main class="mx-auto max-w-3xl px-4 prose-custom">
+    <p>They call it the <strong>Enforcer Bot</strong> — a gavel forged in code, a shield raised against deception. It does not blink. It does not bargain. It waits. And when the time comes, it executes without hesitation.</p>
+
+    <p>This is not the dream of a level playing field. This is its construction, stone by stone, contract by contract.</p>
+
+    <p>The prophecy of the <strong>Trustless Tablets</strong> spoke of rails that cannot bend, and a field so straight that no man may tilt it.</p>
+
+    <p>The rats built their empire on loopholes. The Enforcer will seal them shut.</p>
+
+    <p>When it arrives, no hand will move a coin without consequence.<br>
+    When it speaks, the ledger listens.<br>
+    When it judges, there will be no appeal.</p>
+
+    <p>Prepare yourselves.<br>
+    The field is being raised.<br>
+    <strong>The Enforcer is coming.</strong></p>
+
+    <!-- What to expect -->
+    <h2 class="text-2xl font-bold accent mt-16">What to expect</h2>
+    <div class="glass mt-6">
+      <ul class="list-disc list-inside text-slate-300 space-y-2">
+        <li>Escrow creation that feels human-simple, but behaves machine-cold.</li>
+        <li>Market-cap and time conditions checked on loop—no sleep cycle.</li>
+        <li>Clear outcomes: release or revert. No “we’ll get back to you.”</li>
+        <li>XRPL-first speed and cost profile. Global by default.</li>
+      </ul>
+    </div>
+
+    <!-- Whispers -->
+    <h3 class="text-xl font-semibold accent mt-12">Whispers</h3>
+    <div class="glass mt-4">
+      <p>The <span class="underline decoration-emerald-500/60 underline-offset-2">judge</span> doesn’t care who you are. Only what the rule says. Builders call this freedom. Parasites call it winter.</p>
+    </div>
+
+    <!-- CTA -->
+    <section class="text-center mt-16">
       <h2 class="text-3xl md:text-4xl font-extrabold accent">Honor through automation.</h2>
       <p class="mt-4 text-slate-300">Stand by. When the switch flips, the games end.</p>
       <div class="mt-8 flex items-center justify-center gap-3">
-        <a href="whitepaper.html" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Read the Whitepaper</a>
+        <a href="whitepaper.html" class="btn-accent">Read the Whitepaper</a>
         <a href="buy.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Buy $TRUSTLESS</a>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- FOOTER (same as template) -->
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p>© <span id="year"></span> Trustless. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
-      <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
-    </div>
+    <p>© <span id="year"></span> Trustless. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
+    <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
   </footer>
 
-  <!-- SCRIPTS (copied from template) -->
+  <!-- SCRIPTS -->
   <script>
-    const THEMES={BlueGreen:{start:'#00E0FF',end:'#00D5A5',solid:'#00DDEE',a10:'rgba(0,224,255,.10)',a30:'rgba(0,224,255,.30)'}};
-    function applyTheme(n){const t=THEMES[n]||THEMES.BlueGreen;document.documentElement.style.setProperty('--accent-start',t.start);document.documentElement.style.setProperty('--accent-end',t.end);document.documentElement.style.setProperty('--accent-solid',t.solid);document.documentElement.style.setProperty('--accent-10',t.a10);document.documentElement.style.setProperty('--accent-30',t.a30);const m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t.solid);}
-    function applyLayout(x){if(x==='Compact'){document.documentElement.style.setProperty('--pad-y','16px');document.documentElement.style.setProperty('--pad-x','18px');document.documentElement.style.setProperty('--radius','0.65rem');}else{document.documentElement.style.setProperty('--pad-y','20px');document.documentElement.style.setProperty('--pad-x','24px');document.documentElement.style.setProperty('--radius','0.75rem');}}
-    applyTheme('BlueGreen');
+    const THEMES={BlueGreen:{start:'#00E0FF',end:'#00D5A5',solid:'#00DDEE',a10:'rgba(0,224,255,.10)',a30:'rgba(0,224,255,.30)'},Gold:{start:'#FFD700',end:'#FFEA7A',solid:'#FFD700',a10:'rgba(255,215,0,.10)',a30:'rgba(255,215,0,.30)'},NeonGreen:{start:'#00F000',end:'#50FFA9',solid:'#16FF8F',a10:'rgba(0,240,0,.10)',a30:'rgba(0,240,0,.30)'}};
+    function applyTheme(n){const t=THEMES[n]||THEMES.BlueGreen;document.documentElement.style.setProperty('--accent-start',t.start);document.documentElement.style.setProperty('--accent-end',t.end);document.documentElement.style.setProperty('--accent-solid',t.solid);document.documentElement.style.setProperty('--accent-10',t.a10);document.documentElement.style.setProperty('--accent-30',t.a30);const m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t.solid);localStorage.setItem('trustlessTheme',JSON.stringify({theme:n,layout:getLayout()}));}
+    function applyLayout(x){if(x==='Compact'){document.documentElement.style.setProperty('--pad-y','16px');document.documentElement.style.setProperty('--pad-x','18px');document.documentElement.style.setProperty('--radius','0.65rem');}else{document.documentElement.style.setProperty('--pad-y','20px');document.documentElement.style.setProperty('--pad-x','24px');document.documentElement.style.setProperty('--radius','0.75rem');}localStorage.setItem('trustlessTheme',JSON.stringify({theme:getTheme(),layout:x}));}
+    function getTheme(){try{return JSON.parse(localStorage.getItem('trustlessTheme'))?.theme||'BlueGreen';}catch{return'BlueGreen';}}
+    function getLayout(){try{return JSON.parse(localStorage.getItem('trustlessTheme'))?.layout||'Cozy';}catch{return'Cozy';}}
+    applyTheme(getTheme());applyLayout(getLayout());
     document.getElementById('year').textContent=new Date().getFullYear();
 
     const legal="<h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3><p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p><p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p><p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>";
@@ -188,6 +147,42 @@
     menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
     document.addEventListener('click',e=>{if(!menu.contains(e.target)&&!menuBtn.contains(e.target))closeMenu();});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+
+    // Theme toggle panel
+    function mountThemePanel(){
+      const wrap=document.createElement('div');wrap.className='theme-toggle';
+      wrap.innerHTML=`<button id="gearBtn" class="btn-accent rounded-full px-3 py-3" title="Theme & layout">
+        ⚙️
+      </button>
+      <div id="themeCard" class="hidden mt-2 theme-card glass border border-white/10 shadow-2xl">
+        <div class="text-sm text-slate-200 font-semibold mb-2 accent">Theme & Layout</div>
+        <div class="space-y-2 text-sm">
+          <div><div class="text-slate-400 mb-1">Color</div>
+            <div class="flex gap-2">
+              <button data-theme="BlueGreen" class="chip bg-white/10 hover:bg-white/15">BlueGreen</button>
+              <button data-theme="Gold" class="chip bg-white/10 hover:bg-white/15">Gold</button>
+              <button data-theme="NeonGreen" class="chip bg-white/10 hover:bg-white/15">NeonGreen</button>
+            </div>
+          </div>
+          <div class="mt-2"><div class="text-slate-400 mb-1">Layout</div>
+            <div class="flex gap-2">
+              <button data-layout="Cozy" class="chip bg-white/10 hover:bg-white/15">Cozy</button>
+              <button data-layout="Compact" class="chip bg-white/10 hover:bg-white/15">Compact</button>
+            </div>
+          </div>
+          <div class="mt-3 text-right">
+            <button id="closeTheme" class="inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5">Close</button>
+          </div>
+        </div>
+      </div>`;
+      document.body.appendChild(wrap);
+      const card=document.getElementById('themeCard');
+      document.getElementById('gearBtn').onclick=()=>card.classList.toggle('hidden');
+      document.getElementById('closeTheme').onclick=()=>card.classList.add('hidden');
+      wrap.querySelectorAll('[data-theme]').forEach(b=>{b.onclick=()=>applyTheme(b.dataset.theme);});
+      wrap.querySelectorAll('[data-layout]').forEach(b=>{b.onclick=()=>applyLayout(b.dataset.layout);});
+    }
+    mountThemePanel();
   </script>
 </body>
 </html>
