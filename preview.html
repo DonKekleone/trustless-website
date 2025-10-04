@@ -3,191 +3,191 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ENFORCER PREVIEW — Trustless Payments</title>
+  <title>ENFORCER PREVIEW — Trustless</title>
   <meta name="description" content="Conditions speak. Code enforces. The Enforcer Bot is coming." />
-  <meta property="og:title" content="ENFORCER PREVIEW — Trustless Payments" />
+  <meta property="og:title" content="ENFORCER PREVIEW — Trustless" />
   <meta property="og:description" content="Conditions speak. Code enforces. The Enforcer Bot is coming." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=ENFORCER+BOT" />
   <meta name="theme-color" content="#00DDEE" />
-  <link rel="icon" href="/assets/favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .menu-enter { transform: scaleY(0); transform-origin: top; opacity: 0; }
-    .menu-enter-active { transform: scaleY(1); opacity: 1; transition: transform .15s ease, opacity .15s ease; }
-    .menu-exit { transform: scaleY(1); opacity: 1; }
-    .menu-exit-active { transform: scaleY(0); opacity: 0; transition: transform .15s ease, opacity .15s ease; }
+    :root{
+      --accent-start:#00E0FF; --accent-end:#00D5A5; --accent-solid:#00DDEE;
+      --accent-10: rgba(0,224,255,.10); --accent-30: rgba(0,224,255,.30);
+      --pad-y:20px; --pad-x:24px; --radius:0.75rem;
+    }
+    .grid-bg{background-image:linear-gradient(rgba(255,255,255,0.06)1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.06)1px,transparent 1px);background-size:24px 24px;}
+    .glass{backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:var(--pad-y) var(--pad-x);}
+    html{scroll-behavior:smooth;}
+    .accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+    .icon-pill{background:var(--accent-10);box-shadow:inset 0 0 0 1px var(--accent-30);border-radius:var(--radius);}
+    .icon-pill svg{color:var(--accent-end);}
+    .brand-accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+    .btn-accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#061b1b;font-weight:600;transition:filter .2s ease,transform .02s ease;box-shadow:0 6px 20px rgba(0,224,255,.15);border-radius:var(--radius);padding:12px 20px;}
+    .btn-accent:hover{filter:brightness(1.08);} .btn-accent:active{transform:translateY(1px);}
+    .theme-toggle{position:fixed;right:16px;bottom:16px;z-index:60;} .theme-card{width:320px;} .chip{border-radius:9999px;padding:4px 10px;font-size:12px;}
   </style>
 </head>
-<body class="bg-zinc-950 text-white selection:bg-emerald-400 selection:text-zinc-900">
-  <!-- NAV (match philosophy.html layout) -->
-  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/60">
-    <div class="mx-auto max-w-6xl px-4">
-      <div class="flex items-center justify-between h-16">
-        <a href="index.html" class="flex items-center gap-2 group">
-          <img src="/assets/frog-shield.svg" alt="Trustless Payments" class="h-7 w-7 drop-shadow-[0_0_12px_rgba(0,255,128,.35)]">
-          <span class="font-semibold tracking-wide">Trustless&nbsp;Payments</span>
-        </a>
+<body class="min-h-screen bg-slate-950 text-slate-100" id="top">
+  <!-- NAV (same as philosophy.html) -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html#top" class="flex items-center gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
+            <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
+            <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
+            <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
+          </svg>
+        </span>
+        <span class="font-semibold tracking-wide brand-accent">Trustless Payments</span>
+      </a>
 
-        <!-- Desktop menu -->
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a class="hover:text-emerald-300 transition" href="index.html">Home</a>
-          <a class="hover:text-emerald-300 transition" href="tokenomics.html">$TRUSTLESS</a>
-          <a class="hover:text-emerald-300 transition" href="whitepaper.html">Whitepaper</a>
-          <a class="hover:text-emerald-300 transition" href="book.html">Book</a>
-          <a class="hover:text-emerald-300 transition" href="team.html">Team</a>
-          <a class="hover:text-emerald-300 transition" href="about.html">About</a>
-          <a class="hover:text-emerald-300 transition" href="contact.html">Contact</a>
-          <a class="hover:text-emerald-300 transition" href="philosophy.html">Philosophy</a>
-        </nav>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="index.html#top" class="hover:text-white">Home</a>
+        <a href="philosophy.html" class="hover:text-white">Philosophy</a>
+        <a href="about.html" class="hover:text-white">About</a>
+        <a href="roadmap.html" class="hover:text-white">Roadmap</a>
+        <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
+        <a href="nfts.html" class="hover:text-white">NFTs</a>
+        <a href="buy.html" class="hover:text-white">Buy $TRUSTLESS</a>
+        <a href="book.html" class="hover:text-white">Book of Kek</a>
+        <a href="team.html" class="hover:text-white">Team</a>
+        <a href="faq.html" class="hover:text-white">F.A.Q.</a>
+        <a href="contact.html" class="hover:text-white">Contact</a>
+      </nav>
 
-        <!-- Mobile hamburger -->
-        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-xl border border-zinc-800 px-3 py-2 hover:bg-zinc-900/60">
+      <div class="relative z-50">
+        <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
+          class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
           <span class="sr-only">Open menu</span>
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
           </svg>
         </button>
-      </div>
-    </div>
-
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="md:hidden menu-exit hidden">
-      <nav class="mx-auto max-w-6xl px-4 pb-4">
-        <div class="grid gap-2 rounded-2xl border border-zinc-800 bg-zinc-900/50 p-3">
-          <a class="rounded-xl px-3 py-2 hover:bg-zinc-800/70" href="index.html">Home</a>
-          <a class="rounded-xl px-3 py-2 hover:bg-zinc-800/70" href="tokenomics.html">$TRUSTLESS</a>
-          <a class="rounded-xl px-3 py-2 hover:bg-zinc-800/70" href="whitepaper.html">Whitepaper</a>
-          <a class="rounded-xl px-3 py-2 hover:bg-zinc-800/70" href="book.html">Book</a>
-          <a class="rounded-xl px-3 py-2 hover:bg-zinc-800/70" href="team.html">Team</a>
-          <a class="rounded-xl px-3 py-2 hover:bg-zinc-800/70" href="about.html">About</a>
-          <a class="rounded-xl px-3 py-2 hover:bg-zinc-800/70" href="contact.html">Contact</a>
-          <a class="rounded-xl px-3 py-2 hover:bg-zinc-800/70" href="philosophy.html">Philosophy</a>
+        <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
+          <nav class="py-2 text-slate-100 text-sm">
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="philosophy.html">Philosophy</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFTs</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="contact.html">Contact</a>
+          </nav>
         </div>
-      </nav>
+      </div>
     </div>
   </header>
 
-  <!-- MAIN -->
-  <main class="mx-auto max-w-4xl px-4 pt-10 pb-24">
-    <!-- Title (your requested headline) -->
-    <h1 class="text-center text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-      <span class="block">Conditions speak.</span>
-      <span class="block text-emerald-400">Code enforces.</span>
-    </h1>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="max-w-3xl">
+        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">Enforcer Bot • XRPL • Preview</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          <span class="text-white block">Conditions speak.</span>
+          <span class="accent block">Code enforces.</span>
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-slate-300">
+          A judge with no face and no favorites is waking up. Not a promise. Not a prayer. A mechanism.
+        </p>
+      </div>
 
-    <!-- Centered feature image -->
-    <div class="mt-6">
-      <figure class="rounded-3xl border border-zinc-800 bg-zinc-900/40 p-3">
-        <!-- swap src to your real image -->
-        <img src="assets/enforcer-bot.png" alt="Enforcer Bot holding a gavel and frog shield" class="w-full rounded-2xl mx-auto">
-        <figcaption class="text-center text-xs text-zinc-400 mt-2">A gavel forged in code. A shield against deception.</figcaption>
+      <!-- Feature image -->
+      <figure class="mt-10 rounded-3xl border border-white/10 bg-white/5 p-3">
+        <img src="assets/enforcer.png" alt="Enforcer Bot holding a gavel and frog shield" class="w-full rounded-2xl mx-auto">
+        <figcaption class="text-center text-xs text-slate-400 mt-2">
+          A gavel forged in code. A shield against deception.
+        </figcaption>
       </figure>
     </div>
+  </section>
 
-    <!-- FIRST COPY (exact, with last line edited) -->
-    <section class="prose prose-invert prose-zinc max-w-none mt-10">
+  <!-- FIRST COPY (spacious, easy reading) -->
+  <section class="py-2">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 leading-relaxed text-slate-300 space-y-5">
       <p>Beneath the surface of the ledger, a force is awakening.</p>
       <p>Not a promise. Not a prayer. A mechanism.</p>
       <p>They call it the <strong>Enforcer Bot</strong> — a gavel forged in code, a shield raised against deception. It does not blink. It does not bargain. It waits. And when the time comes, it executes without hesitation.</p>
-
       <p>This is not the dream of a level playing field.</p>
       <p>This is its construction, stone by stone, contract by contract.</p>
       <p>The prophecy of the <strong>Trustless Tablets</strong> spoke of rails that cannot bend,</p>
       <p>and a field so straight that no man may tilt it.</p>
-
       <p>The rats built their empire on loopholes.<br/>The Enforcer will seal them shut.</p>
+      <p>When it arrives, no hand will move a coin without consequence.<br/>When it speaks, the ledger listens.<br/>When it judges, there will be no appeal.</p>
+      <p class="font-semibold text-slate-200">Prepare yourselves.<br/>The field is being raised.<br/><span class="accent">The Enforcer is coming.</span></p>
+    </div>
+  </section>
 
-      <p>When it arrives, no hand will move a coin without consequence.<br/>
-      When it speaks, the ledger listens.<br/>
-      When it judges, there will be no appeal.</p>
-
-      <p>Prepare yourselves.<br/>
-      The field is being raised.<br/>
-      <strong>The Enforcer is coming.</strong></p>
-    </section>
-
-    <!-- SECOND-HALF CONTENT -->
-    <!-- What to expect -->
-    <section class="mt-16">
-      <h2 class="text-2xl font-bold text-emerald-400 mb-4">What to expect</h2>
-      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5 leading-relaxed">
-        <ul class="list-disc pl-5 space-y-3">
+  <!-- SECOND HALF -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
+      <!-- What to expect -->
+      <div class="glass">
+        <h2 class="text-xl md:text-2xl font-bold accent mb-4">What to expect</h2>
+        <ul class="list-disc list-inside text-slate-300 space-y-3">
           <li>Escrow creation that feels human-simple, but behaves machine-cold.</li>
           <li>Market-cap and time conditions checked on loop—no sleep cycle.</li>
           <li>Clear outcomes: release or revert. No “we’ll get back to you.”</li>
           <li>XRPL-first speed and cost profile. Global by default.</li>
         </ul>
       </div>
-    </section>
-
-    <!-- Whispers -->
-    <section class="mt-8">
-      <h3 class="text-xl font-semibold text-emerald-400 mb-2">Whispers</h3>
-      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
-        <p>
-          The <span class="underline decoration-emerald-500/60 underline-offset-2">judge</span> doesn’t care who you are. Only what the rule says.
+      <!-- Whispers -->
+      <div class="glass">
+        <h3 class="text-lg md:text-xl font-semibold accent mb-2">Whispers</h3>
+        <p class="text-slate-300 leading-relaxed">
+          The <span class="underline decoration-dotted decoration-emerald-400/70 underline-offset-2">judge</span> doesn’t care who you are. Only what the rule says.
           Builders call this freedom. Parasites call it winter.
         </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Bottom CTA block -->
-    <section class="mt-16 text-center">
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">Honor through<br class="sm:hidden"> automation.</h2>
-      <p class="text-zinc-300 mb-6">Stand by. When the switch flips, the games end.</p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href="whitepaper.html" class="inline-flex items-center justify-center rounded-2xl border border-emerald-500/70 bg-emerald-500/10 px-5 py-3 font-medium hover:bg-emerald-500/20 transition">
-          Read the Whitepaper
-        </a>
-        <a href="how-to-buy.html" class="inline-flex items-center justify-center rounded-2xl border border-zinc-700 bg-zinc-900 px-5 py-3 font-medium hover:bg-zinc-800 transition">
-          Buy $TRUSTLESS
-        </a>
+  <!-- CTA (bottom) -->
+  <section class="py-16 bg-slate-900/40 border-y border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Honor through automation.</h2>
+      <p class="mt-4 text-slate-300">Stand by. When the switch flips, the games end.</p>
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <a href="whitepaper.html" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Read the Whitepaper</a>
+        <a href="buy.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Buy $TRUSTLESS</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Meme-bait tagline -->
-    <p class="mt-6 text-center text-xs text-zinc-400 tracking-wide">
-      /dev_is_cooking — notifications will ring when the gavel does
-    </p>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-zinc-900/80">
-    <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-zinc-400">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p>&copy; <span id="y"></span> Trustless Payments. All rights reserved.</p>
-        <div class="flex items-center gap-4">
-          <a class="hover:text-emerald-300 transition" href="privacy.html">Privacy</a>
-          <a class="hover:text-emerald-300 transition" href="terms.html">Terms</a>
-        </div>
-      </div>
+  <!-- FOOTER (same as template) -->
+  <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p>© <span id="year"></span> Trustless. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
+      <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
     </div>
   </footer>
 
+  <!-- SCRIPTS (copied from template) -->
   <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
+    const THEMES={BlueGreen:{start:'#00E0FF',end:'#00D5A5',solid:'#00DDEE',a10:'rgba(0,224,255,.10)',a30:'rgba(0,224,255,.30)'}};
+    function applyTheme(n){const t=THEMES[n]||THEMES.BlueGreen;document.documentElement.style.setProperty('--accent-start',t.start);document.documentElement.style.setProperty('--accent-end',t.end);document.documentElement.style.setProperty('--accent-solid',t.solid);document.documentElement.style.setProperty('--accent-10',t.a10);document.documentElement.style.setProperty('--accent-30',t.a30);const m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t.solid);}
+    function applyLayout(x){if(x==='Compact'){document.documentElement.style.setProperty('--pad-y','16px');document.documentElement.style.setProperty('--pad-x','18px');document.documentElement.style.setProperty('--radius','0.65rem');}else{document.documentElement.style.setProperty('--pad-y','20px');document.documentElement.style.setProperty('--pad-x','24px');document.documentElement.style.setProperty('--radius','0.75rem');}}
+    applyTheme('BlueGreen');
+    document.getElementById('year').textContent=new Date().getFullYear();
 
-    // Mobile menu toggle
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-    let open = false;
-    btn.addEventListener('click', () => {
-      open = !open;
-      if (open) {
-        menu.classList.remove('hidden', 'menu-exit', 'menu-exit-active');
-        menu.classList.add('menu-enter');
-        requestAnimationFrame(() => { menu.classList.add('menu-enter-active'); });
-      } else {
-        menu.classList.remove('menu-enter', 'menu-enter-active');
-        menu.classList.add('menu-exit-active');
-        setTimeout(() => {
-          menu.classList.add('hidden', 'menu-exit');
-          menu.classList.remove('menu-exit-active');
-        }, 150);
-      }
-    });
+    const legal="<h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3><p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p><p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p><p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>";
+    document.getElementById('legal-link').addEventListener('click',e=>{e.preventDefault();const modal=document.createElement('div');modal.className='fixed inset-0 z-50 flex items-center justify-center p-4';modal.innerHTML=`<div class='absolute inset-0 bg-black/70'></div><div class='relative max-w-xl w-full glass'><div>${legal}</div><div class='mt-6 text-right'><button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button></div></div>`;document.body.appendChild(modal);document.getElementById('close-legal').onclick=()=>modal.remove();});
+
+    const menuBtn=document.getElementById('menuBtn');const menu=document.getElementById('mainMenu');
+    function closeMenu(){menu.classList.add('hidden');menuBtn.setAttribute('aria-expanded','false');}
+    function openMenu(){menu.classList.remove('hidden');menuBtn.setAttribute('aria-expanded','true');}
+    menuBtn.addEventListener('click',()=>{(menuBtn.getAttribute('aria-expanded')==='true')?closeMenu():openMenu();});
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+    document.addEventListener('click',e=>{if(!menu.contains(e.target)&&!menuBtn.contains(e.target))closeMenu();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
   </script>
 </body>
 </html>
