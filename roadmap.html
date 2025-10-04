@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Roadmap — Trustless Payments</title>
-  <meta name="description" content="Two years. Seven phases. No central authority. No hidden vaults. Only builders, code, and time." />
-  <meta property="og:title" content="Roadmap — Trustless Payments" />
-  <meta property="og:description" content="A reconstruction manual for dismantling promises and replacing them with proof." />
+  <title>Roadmap — Trustless</title>
+  <meta name="description" content="This isn’t a roadmap — it’s a reconstruction manual. Two years. Seven phases. Code replaces promises with proof." />
+  <meta property="og:title" content="Roadmap — Trustless" />
+  <meta property="og:description" content="This isn’t a roadmap — it’s a reconstruction manual. Two years. Seven phases. Code replaces promises with proof." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Roadmap" />
   <meta name="theme-color" content="#00DDEE" />
@@ -21,10 +21,14 @@
     .glass{backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:var(--pad-y) var(--pad-x);}
     html{scroll-behavior:smooth;}
     .accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+    .icon-pill{background:var(--accent-10);box-shadow:inset 0 0 0 1px var(--accent-30);border-radius:var(--radius);}
+    .icon-pill svg{color:var(--accent-end);}
+    .brand-accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
     .btn-accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#061b1b;font-weight:600;transition:filter .2s ease,transform .02s ease;box-shadow:0 6px 20px rgba(0,224,255,.15);border-radius:var(--radius);padding:12px 20px;}
     .btn-accent:hover{filter:brightness(1.08);} .btn-accent:active{transform:translateY(1px);}
-    .reading p{margin-top:1.15em;margin-bottom:1.15em;line-height:1.75;}
     .theme-toggle{position:fixed;right:16px;bottom:16px;z-index:60;} .theme-card{width:320px;} .chip{border-radius:9999px;padding:4px 10px;font-size:12px;}
+    /* Smooth reading */
+    .reading p{margin-top:1.15em;margin-bottom:1.15em;line-height:1.75;}
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100" id="top">
@@ -32,13 +36,19 @@
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="index.html#top" class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center bg-white/5 border border-white/10 rounded-xl">
+        <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
+            <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
+            <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
           </svg>
         </span>
-        <span class="font-semibold tracking-wide accent">Trustless Payments</span>
+        <span class="font-semibold tracking-wide brand-accent">Trustless Payments</span>
       </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#top" class="hover:text-white">Top</a>
+      </nav>
 
       <div class="relative z-50">
         <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
@@ -71,117 +81,91 @@
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight accent">Roadmap</h1>
-        <p class="mt-4 text-slate-300 text-lg">Two years. Seven phases. No central authority. No hidden vaults. Only builders, code, and time.</p>
+      <div class="max-w-4xl">
+        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">Two Years • Seven Phases • Reconstruction Manual</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          <span class="text-white">This isn’t a roadmap</span><br>
+          <span class="accent">it’s a reconstruction manual</span>
+        </h1>
+        <!-- Subheading block -->
+        <div class="mt-6 text-lg md:text-xl text-slate-300 reading max-w-3xl">
+          <p>A plan for dismantling the age of promises and replacing it with proof. Every milestone, every release, every line of code — a brick in the foundation of an incorruptible financial order.</p>
+          <p>We aren’t chasing hype. We’re building a machine that enforces truth — a world where honesty isn’t a virtue, it’s the default.</p>
+          <p><strong>Two years. Seven phases.</strong> No central authority. No hidden vaults. Only builders, code, and time.</p>
+          <p class="font-semibold">We are not launching a project. We are erecting a new standard for civilization.</p>
+          <p>Those who understand, build with us. Those who doubt, watch.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- MAIN COPY -->
-  <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 reading">
-    <!-- Manifesto -->
-    <p>This isn’t a roadmap — it’s a reconstruction manual.<br>
-    A plan for dismantling the age of promises and replacing it with proof.<br>
-    Every milestone, every release, every line of code — a brick in the foundation of an incorruptible financial order.</p>
-
-    <p>We aren’t chasing hype.<br>
-    We’re building a machine that enforces truth.<br>
-    A world where honesty isn’t a virtue — it’s the default.</p>
-
-    <p>Two years. Seven phases.<br>
-    No central authority. No hidden vaults.<br>
-    Only builders, code, and time.</p>
-
-    <p><strong>We are not launching a project. We are erecting a new standard for civilization.</strong><br>
-    Those who understand, build with us. Those who doubt, watch.</p>
-
-    <hr class="my-10 border-white/10">
-
+  <!-- PHASES -->
+  <main class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 reading pb-24">
     <!-- Phase 0 -->
-    <h2 class="text-2xl md:text-3xl font-bold accent">Phase 0 — The Awakening</h2>
-    <p>The concept takes form.<br>
-    The Trustless Bot is born — a mechanism to hold all parties accountable, no matter their reputation.<br>
-    Development begins on XRPL, the most battle-tested foundation for fast, final settlement.<br>
-    The rules are simple: if conditions are met, payment executes. If not, it doesn’t.</p>
-
-    <p>The early code is raw but alive.<br>
-    It will evolve, automate, and one day — judge.</p>
+    <section class="mt-2">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Phase 0 — The Awakening</h2>
+      <p>The concept takes form. The Trustless Bot is born — a mechanism to hold all parties accountable, no matter their reputation.</p>
+      <p>Development begins on XRPL, the most battle-tested foundation for fast, final settlement. The rules are simple: if conditions are met, payment executes. If not, it doesn’t.</p>
+      <p>The early code is raw but alive. It will evolve, automate, and one day — judge.</p>
+    </section>
 
     <!-- Phase 1 -->
-    <h2 class="text-2xl md:text-3xl font-bold accent mt-10">Phase 1 — Enforcer Bot (XRPL Core)</h2>
-    <p>Condition-based escrow logic comes online.<br>
-    Market cap or time-based releases. Immutable logic. No negotiation.<br>
-    The Enforcer doesn’t rely on reputation — only math.</p>
-
-    <p>This phase brings <strong>automated escrow creation</strong>, <strong>fund detection</strong>, and <strong>condition monitoring</strong> — built directly on XRPL rails.<br>
-    A transparent fee model funds development and token burn, with every transaction reinforcing the economic loop.<br>
-    The field is being leveled.</p>
+    <section class="mt-10">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Phase 1 — Enforcer Bot (XRPL Core)</h2>
+      <p>Condition-based escrow logic comes online. Market-cap or time-based releases. Immutable logic. No negotiation.</p>
+      <p>This phase brings <strong>automated escrow creation</strong>, <strong>fund detection</strong>, and <strong>condition monitoring</strong> — built directly on XRPL rails. The field is being leveled.</p>
+    </section>
 
     <!-- Phase 2 -->
-    <h2 class="text-2xl md:text-3xl font-bold accent mt-10">Phase 2 — Trustless Token ($TRLS) Expansion</h2>
-    <p>$TRLS becomes the backbone of the ecosystem — a utility, a signal, a vote of confidence.<br>
-    It powers escrow creation fees, community governance, and liquidity.</p>
-
-    <p><strong>All team, marketing, and development tokens unlock slowly</strong> over time — no sudden windfalls, no rug mechanics.<br>
-    Each month, only a small fraction of supply is released as progress continues.<br>
-    Unused allocations may be burned — permanently tightening supply.</p>
-
-    <p>This isn’t inflation. It’s proof of longevity.<br>
-    We’re building for <strong>two years minimum</strong> — and beyond that, for those who carry the torch.</p>
+    <section class="mt-10">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Phase 2 — Trustless Token ($TRLS) Expansion</h2>
+      <p>$TRLS becomes the backbone of the ecosystem — a utility, a signal, a vote of confidence. It powers escrow creation fees, community governance, and liquidity.</p>
+      <p><strong>All team, marketing, and development tokens unlock slowly over time</strong> — no sudden windfalls, no rug mechanics. Each month, only a small fraction of supply is released as progress continues. Unused allocations may be burned — permanently tightening supply.</p>
+      <p>This isn’t inflation. It’s proof of longevity. We’re building for <strong>two years minimum</strong> — and beyond that, for those who carry the torch.</p>
+    </section>
 
     <!-- Phase 3 -->
-    <h2 class="text-2xl md:text-3xl font-bold accent mt-10">Phase 3 — Trustless Toads (NFT Collection)</h2>
-    <p>123 toads in suits.<br>
-    Symbols of builders who refused corruption and coded their own order.<br>
-    Each NFT grants <strong>reduced escrow fees</strong>, <strong>community governance weight</strong>, and eventual staking privileges.</p>
-
-    <p>Some wear scars, others wear crowns — all carry purpose.<br>
-    The Trustless Toads are not art.<br>
-    They are <em>membership cards to the reconstruction.</em></p>
+    <section class="mt-10">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Phase 3 — Trustless Toads (NFT Collection)</h2>
+      <p>123 toads in suits. Symbols of builders who refused corruption and coded their own order.</p>
+      <p>Each NFT grants <strong>reduced escrow fees</strong>, <strong>community governance weight</strong>, and eventual staking privileges. Some wear scars, others wear crowns — all carry purpose.</p>
+      <p>The Trustless Toads are not art. They are <em>membership cards to the reconstruction</em>.</p>
+    </section>
 
     <!-- Phase 4 -->
-    <h2 class="text-2xl md:text-3xl font-bold accent mt-10">Phase 4 — Escrow Enforcement Unit (33)</h2>
-    <p>A council of 33 power users — the first <strong>Enforcement Unit.</strong><br>
-    They share a portion of protocol fees, vote on improvements, and represent the will of code.<br>
-    No founders. No kings. Just the network, executing by majority and recording by rule.</p>
-
-    <p>Governance will be trustless, weighted by verifiable activity and NFT holdings.<br>
-    The Enforcer’s judgment is final.</p>
+    <section class="mt-10">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Phase 4 — Escrow Enforcement Unit (33)</h2>
+      <p>A council of 33 power users — the first <strong>Enforcement Unit</strong>. They share a portion of protocol fees, vote on improvements, and represent the will of code.</p>
+      <p>No founders. No kings. Just the network, executing by majority and recording by rule. Governance is trustless, weighted by verifiable activity and NFT holdings. The Enforcer’s judgment is final.</p>
+    </section>
 
     <!-- Phase 5 -->
-    <h2 class="text-2xl md:text-3xl font-bold accent mt-10">Phase 5 — Multi-Chain Expansion</h2>
-    <p>After XRPL, the rails extend outward.<br>
-    Ethereum, Solana, and others — every network infected with loopholes becomes a new field to flatten.<br>
-    We will port the Enforcer logic across chains, creating <strong>unified trustless standards</strong>.</p>
-
-    <p>It’s not competition. It’s correction.<br>
-    The age of verbal promises ends everywhere.</p>
+    <section class="mt-10">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Phase 5 — Multi-Chain Expansion</h2>
+      <p>After XRPL, the rails extend outward. Ethereum, Solana, and others — every network infected with loopholes becomes a new field to flatten.</p>
+      <p>We will port the Enforcer logic across chains, creating <strong>unified trustless standards</strong>. It’s not competition. It’s correction. The age of verbal promises ends everywhere.</p>
+    </section>
 
     <!-- Phase 6 -->
-    <h2 class="text-2xl md:text-3xl font-bold accent mt-10">Phase 6 — The Network of Code</h2>
-    <p>Trustless becomes a movement.<br>
-    Developers build plugins, interfaces, and condition modules.<br>
-    Markets self-regulate through automated integrity.<br>
-    Value moves without permission, yet always within rule.</p>
-
-    <p>Every bot instance becomes a node in a greater machine — a decentralized network of truth.</p>
+    <section class="mt-10">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Phase 6 — The Network of Code</h2>
+      <p>Trustless becomes a movement. Developers build plugins, interfaces, and condition modules. Markets self-regulate through automated integrity.</p>
+      <p>Value moves without permission, yet always within rule. Every bot instance becomes a node in a greater machine — a decentralized network of truth.</p>
+    </section>
 
     <!-- Phase 7 -->
-    <h2 class="text-2xl md:text-3xl font-bold accent mt-10">Phase 7 — The Era of Builders</h2>
-    <p>The Enforcer Bot becomes fully autonomous.<br>
-    Governance complete, treasury decentralized, inflation near zero.<br>
-    The old world runs on influence.<br>
-    Ours runs on enforcement.</p>
-
-    <p><strong>We don’t recruit investors. We recruit builders.</strong><br>
-    If you’ve ever been betrayed, underpaid, or overlooked for being honest — this is your revolution.</p>
+    <section class="mt-10">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Phase 7 — The Era of Builders</h2>
+      <p>The Enforcer Bot becomes fully autonomous. Governance complete, treasury decentralized, inflation near zero.</p>
+      <p>The old world runs on influence. Ours runs on enforcement.</p>
+      <p><strong>We don’t recruit investors. We recruit builders.</strong> If you’ve ever been betrayed, underpaid, or overlooked for being honest — this is your revolution.</p>
+    </section>
 
     <!-- CTA -->
-    <section class="text-center mt-16">
-      <h2 class="text-3xl md:text-4xl font-extrabold accent">Build the new standard.</h2>
-      <p class="mt-4 text-slate-300">Read the doctrine. Join the pilots. Help raise the field.</p>
-      <div class="mt-8 flex items-center justify-center gap-3">
+    <section class="text-center mt-14">
+      <h3 class="text-2xl md:text-3xl font-extrabold accent">Build the new standard.</h3>
+      <p class="mt-3 text-slate-300">Read the doctrine. Join the pilots. Help raise the field.</p>
+      <div class="mt-6 flex items-center justify-center gap-3">
         <a href="whitepaper.html" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Read Whitepaper</a>
         <a href="buy.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Buy $TRLS</a>
       </div>
@@ -195,7 +179,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPTS (same behavior as preview.html) -->
+  <!-- SCRIPTS -->
   <script>
     const THEMES={BlueGreen:{start:'#00E0FF',end:'#00D5A5',solid:'#00DDEE',a10:'rgba(0,224,255,.10)',a30:'rgba(0,224,255,.30)'},
                   Gold:{start:'#FFD700',end:'#FFEA7A',solid:'#FFD700',a10:'rgba(255,215,0,.10)',a30:'rgba(255,215,0,.30)'},
@@ -230,10 +214,11 @@
     function closeMenu(){menu.classList.add('hidden');menuBtn.setAttribute('aria-expanded','false');}
     function openMenu(){menu.classList.remove('hidden');menuBtn.setAttribute('aria-expanded','true');}
     menuBtn.addEventListener('click',()=>{(menuBtn.getAttribute('aria-expanded')==='true')?closeMenu():openMenu();});
-    document.addEventListener('click',e=>{if(!menu.contains(e.target)&&!menuBtn.contains(e.target))closeMenu();});
+    menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+    document.addEventListener('click',e=>{if(menu && !menu.contains(e.target) && !menuBtn.contains(e.target))closeMenu();});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
 
-    // Theme & Layout toggle panel
+    // Theme & Layout toggle
     function mountThemePanel(){
       const wrap=document.createElement('div');wrap.className='theme-toggle';
       wrap.innerHTML=`<button id="gearBtn" class="btn-accent rounded-full px-3 py-3" title="Theme & layout">
