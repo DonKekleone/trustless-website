@@ -47,7 +47,7 @@
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="#beliefs" class="hover:text-white">Beliefs</a>
         <a href="#pillars" class="hover:text-white">Pillars</a>
-        <!-- About link intentionally omitted -->
+        <a href="#about" class="hover:text-white">About</a>
       </nav>
 
       <div class="relative z-50">
@@ -99,21 +99,22 @@
     </div>
   </section>
 
-  <!-- ABOUT (merged) -->
+  <!-- ABOUT (merged from About page) -->
   <section id="about" class="py-20 bg-slate-900/40 border-y border-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-extrabold leading-tight">
-        <span class="text-white">TRUSTLESS is a </span><span class="accent">mechanism, not a promise.</span>
-      </h2>
-      <div class="mt-6 grid md:grid-cols-3 gap-6">
+      <h2 class="text-2xl md:text-3xl font-bold accent">About</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
         <div class="glass md:col-span-2">
           <p class="text-slate-300">
-            When trust breaks, systems fail. This token replaces human discretion with code—transparent, verifiable, and automatic.
-            It ensures outcomes without relying on reputation or authority.
+            <span class="font-semibold">Trustless is a mechanism, not a promise.</span> We encode rules up front so outcomes
+            aren’t negotiable later. When conditions are met, funds move. When they aren’t, they don’t. No favors. No guesswork.
           </p>
           <p class="mt-4 text-slate-300">
-            In doing so, it helps establish a <span class="accent">level playing field</span>, where honest actors are protected
-            and agreements are enforced by design, not belief.
+            Our mission is simple: <span class="accent">honor through automation</span>. By removing discretionary control and enforcing
+            objective conditions, we create reliability builders can bank on—and a <span class="accent">level playing field</span> where value-creators win.
+          </p>
+          <p class="mt-4 text-slate-300">
+            We build on XRPL for speed, cost, and global reach. Community sovereignty matters: users should hold the keys to their outcomes.
           </p>
         </div>
         <div class="glass md:col-span-1">
@@ -224,7 +225,7 @@
     function mountThemePanel(){
       const wrap=document.createElement('div');wrap.className='theme-toggle';
       wrap.innerHTML=`<button id="gearBtn" class="btn-accent rounded-full px-3 py-3" title="Theme & layout">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94a7.07,7.07,0,0,0,0-1.88l2-1.55a.5.5,0,0,0,.12-.64l-1.9-3.29a.5.5,0,0,0-.6-.22l-2.35,1a7.13,7.13,0,0,0-1.63-.95l-.36-2.49A.5.5,0,0,0,13.93,1H10.07a.5.5,0,0,0-.5.42L9.21,3.91a7.13,7.13,0,0,0-1.63.95l-2.35-1a.5.5,0,0,0-.6.22L2.73,7.34a.5.5,0,0,0,.12.64l2,1.55a7.07,7.07,0,0,0,0,1.88l-2,1.55a.5.5,0,0,0,.12.64l1.9,3.29a.5.5,0,0,0,.6.22l2.35-1a7.13,7.13,0,0,0,1.63.95l.36,2.49a.5.5,0,0,0,.5.42h3.86a.5.5,0,0,0,.5-.42l.36-2.49a7.13,7.13,0,0,0,1.63-.95l2.35,1a.5.5,0,0,0,.6-.22l1.9-3.29a.5.5,0,0,0,.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94a7.07,7.07,0,0,0,0-1.88l2-1.55a.5.5,0,0,0,.12-.64l-1.9-3.29a.5.5,0,0,0-.6-.22l-2.35,1a7.13,7.13,0,0,0-1.63-.95l-.36-2.49A.5.5,0,0,0,13.93,1H10.07a.5.5,0,0,0-.5.42L9.21,3.91a7.13,7.13,0,0,0-1.63.95l-2.35-1a.5.5,0,0,0-.6.22L2.73,7.34a.5.5,0,0,0,.12.64l2,1.55a7.07,7.07,0,0,0,0,1.88l-2,1.55a.5.5,0,0,0-.12.64l1.9,3.29a.5.5,0,0,0,.6.22l2.35-1a7.13,7.13,0,0,0,1.63.95l.36,2.49a.5.5,0,0,0,.5.42h3.86a.5.5,0,0,0,.5-.42l.36-2.49a7.13,7.13,0,0,0,1.63-.95l2.35,1a.5.5,0,0,0,.6-.22l1.9-3.29a.5.5,0,0,0,.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
       </button>
       <div id="themeCard" class="hidden mt-2 theme-card glass border border-white/10 shadow-2xl">
         <div class="text-sm text-slate-200 font-semibold mb-2 accent">Theme & Layout</div>
