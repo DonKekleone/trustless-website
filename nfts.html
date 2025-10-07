@@ -3,69 +3,44 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trustless Payments — NFTs</title>
-  <link rel="icon" href="favicon.png" />
-  <meta name="description" content="Trustless Toads and Escrow Enforcement Agents — utility NFTs for fee discounts, governance and aligned incentives." />
-  <meta property="og:title" content="Trustless Payments — NFTs" />
-  <meta property="og:description" content="Utility-first NFTs for a trustless economy: fee reductions, staking, governance, and culture." />
+  <title>Trustless — NFTs with Teeth</title>
+  <meta name="description" content="Utility-first NFTs for the Trustless movement: fee reductions, governance, priority access, and culture that rallies honest builders." />
+  <meta property="og:title" content="Trustless — NFTs with Teeth" />
+  <meta property="og:description" content="Scarce, utility-packed collections that reward builders and enforcers of on-chain honor." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+NFTs" />
   <meta name="theme-color" content="#00DDEE" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      /* Gradient accent (site-wide) */
-      --accent-start:#00E0FF;
-      --accent-end:#00D5A5;
-      --accent-solid:#00DDEE;
-      --accent-10: rgba(0,224,255,.10);
-      --accent-30: rgba(0,224,255,.30);
-      /* Layout vars (overridden by theme panel) */
-      --pad-y: 20px;
-      --pad-x: 24px;
-      --radius: 0.75rem;
+      --accent-start:#00E0FF; --accent-end:#00D5A5; --accent-solid:#00DDEE;
+      --accent-10: rgba(0,224,255,.10); --accent-30: rgba(0,224,255,.30);
+      --pad-y: 20px; --pad-x: 24px; --radius: 0.75rem;
     }
-    .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
-    .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); }
-    html { scroll-behavior: smooth; }
-
-    /* Accent helpers */
-    .accent{
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent; color: transparent;
-    }
-    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); border-radius: var(--radius); }
-    .icon-pill svg { color: var(--accent-end); }
-    .brand-accent  {
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent; color: transparent;
-    }
-    .btn-accent{
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      color:#061b1b; font-weight:600;
-      transition: filter .2s ease, transform .02s ease;
-      box-shadow: 0 6px 20px rgba(0,224,255,.15);
-      border-radius: var(--radius);
-      padding: 12px 20px;
-    }
-    .btn-accent:hover { filter: brightness(1.08); }
-    .btn-accent:active{ transform: translateY(1px); }
-
-    /* Theme panel */
-    .theme-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 60; }
-    .theme-card { width: 320px; }
-    .chip { border-radius: 9999px; padding: 4px 10px; font-size: 12px; }
+    html{scroll-behavior:smooth;}
+    .grid-bg{background-image:linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size:24px 24px;}
+    .glass{backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:var(--pad-y) var(--pad-x);}
+    .accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+    .brand-accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+    .icon-pill{background:var(--accent-10);box-shadow:inset 0 0 0 1px var(--accent-30);border-radius:var(--radius);}
+    .icon-pill svg{color:var(--accent-end);}
+    .btn-accent{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#061b1b;font-weight:600;transition:filter .2s ease,transform .02s ease;box-shadow:0 6px 20px rgba(0,224,255,.15);border-radius:var(--radius);padding:12px 20px;}
+    .btn-accent:hover{filter:brightness(1.08);} .btn-accent:active{transform:translateY(1px);}
+    .btn-outline{border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:12px 20px;}
+    .kicker{letter-spacing:.12em;font-size:.8rem;color:#94a3b8}
+    .theme-toggle{position:fixed;right:16px;bottom:16px;z-index:60;}
+    .theme-card{width:320px;}
+    .chip{border-radius:9999px;padding:4px 10px;font-size:12px;}
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100" id="top">
-  <!-- NAV (standardized + working menu) -->
+
+  <!-- NAV -->
   <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="index.html#top" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
-          <!-- Frog-in-shield -->
+          <!-- Frog shield -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
             <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
@@ -75,31 +50,28 @@
         <span class="font-semibold tracking-wide brand-accent">Trustless Payments</span>
       </a>
 
-      <!-- Desktop page-level anchors for this page -->
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a href="#collections" class="hover:text-white">Collections</a>
-        <a href="#benefits" class="hover:text-white">Benefits</a>
+        <a href="index.html#how" class="hover:text-white">How it works</a>
+        <a href="index.html#fees" class="hover:text-white">Fees & Burn</a>
       </nav>
 
-      <!-- Hamburger -->
       <div class="relative z-50">
         <button id="menuBtn" aria-expanded="false" aria-controls="mainMenu"
-                class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
+          class="inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 hover:bg-white/5 focus:outline-none">
           <span class="sr-only">Open menu</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
           </svg>
         </button>
-
         <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
           <nav class="py-2 text-slate-100 text-sm">
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="philosophy.html">Philosophy</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
+            <!-- About removed -->
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="nfts.html">NFTs</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFTs</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRLS</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
@@ -113,57 +85,133 @@
   <!-- HERO -->
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-      <p class="uppercase tracking-widest text-slate-400 text-xs">NFT Collections</p>
-      <h1 class="mt-2 text-3xl md:text-5xl font-extrabold accent">Utility-first NFTs for a trustless economy</h1>
-      <p class="mt-3 text-slate-300 max-w-3xl">Art with purpose. Fee reductions, staking, governance, and culture that rallies honest builders.</p>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      <div class="max-w-4xl">
+        <p class="kicker">NFT COLLECTIONS</p>
+        <h1 class="mt-3 text-4xl md:text-6xl font-extrabold leading-tight">
+          Utility-first NFTs for a <span class="accent">trustless economy</span>.
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-slate-300">
+          Scarce art with purpose. Fees that drop, access that opens, culture that rallies honest builders.
+          These aren’t souvenirs—they’re keys.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="buy.html" class="btn-accent inline-flex items-center gap-2">Buy $TRLS</a>
+          <a href="https://t.me/TrustlessPayments" target="_blank" class="btn-outline inline-flex items-center gap-2 hover:bg-white/5">Join Telegram</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CARDS -->
-  <main id="collections" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
-    <div class="grid md:grid-cols-2 gap-6">
+  <!-- COLLECTIONS -->
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24">
+    <div class="grid gap-8">
+
       <!-- Trustless Toads -->
-      <article class="glass overflow-hidden">
-        <div class="bg-slate-900/50 border-b border-white/10">
-          <img src="trustless-toads.png" alt="Trustless Toads artwork" class="w-full aspect-square object-cover" loading="lazy">
-        </div>
-        <div class="p-6">
-          <h2 class="text-xl font-extrabold accent">Trustless Toads</h2>
-          <p class="mt-1 text-slate-400">123 mafia-style toads in suits—the culture layer of Trustless.</p>
-          <ul class="mt-3 list-disc list-inside text-slate-300 space-y-1" id="benefits">
-            <li><strong>Fee Perks:</strong> Reduce escrow fee (e.g., 5.89% → 1% while holding).</li>
-            <li><strong>Staking:</strong> Earn $TRUSTLESS from a dedicated reward pool.</li>
-            <li><strong>Access:</strong> Private updates, early experiments, and lore drops.</li>
-          </ul>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <a class="inline-flex items-center gap-2 rounded-xl px-4 py-2 btn-accent transition" href="#">Mint (soon)</a>
-            <a class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5 transition" href="#">View on XRPL Market</a>
+      <section class="glass">
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold accent">Trustless Toads</h2>
+            <p class="mt-3 text-slate-300">
+              <span class="text-white font-semibold">123 mafia-style toads in suits</span>—the culture layer of Trustless.
+              Meme power meets measurable utility. Holders are the signal in a market of noise.
+            </p>
+            <ul class="mt-5 space-y-2 text-slate-300 list-disc list-inside">
+              <li><span class="text-white font-semibold">Fee Perks:</span> reduce escrow fee (e.g., 5.89% → ~1% while holding).</li>
+              <li><span class="text-white font-semibold">Access:</span> private updates, early experiments, collab seats, and lore drops.</li>
+              <li><span class="text-white font-semibold">Culture Credits:</span> surprise mints, art derivatives, and on-chain badges for real contributors.</li>
+            </ul>
+            <div class="mt-6 flex gap-3">
+              <button class="btn-accent" disabled>Mint (soon)</button>
+              <button class="btn-outline" disabled>View on XRPL Market (soon)</button>
+            </div>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-[4/3] flex items-center justify-center">
+            <!-- Placeholder image area -->
+            <span class="text-slate-400 text-sm">Artwork preview</span>
           </div>
         </div>
-      </article>
+      </section>
 
       <!-- Escrow Enforcement Agent -->
-      <article class="glass overflow-hidden">
-        <div class="bg-slate-900/50 border-b border-white/10">
-          <img src="eea-bot.png" alt="Escrow Enforcement Agent artwork" class="w-full aspect-square object-cover" loading="lazy">
-        </div>
-        <div class="p-6">
-          <h2 class="text-xl font-extrabold accent">Escrow Enforcement Agent</h2>
-          <p class="mt-1 text-slate-400">Limited, high-utility bots—think roundtable operators and governors.</p>
-          <ul class="mt-3 list-disc list-inside text-slate-300 space-y-1">
-            <li><strong>Governance:</strong> Voting rights on roadmap &amp; treasury actions.</li>
-            <li><strong>Fee Share:</strong> Portion of protocol fees distributed to holders.</li>
-            <li><strong>Priority Access:</strong> Early integrations, beta tools, and collab seats.</li>
-          </ul>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <a class="inline-flex items-center gap-2 rounded-xl px-4 py-2 btn-accent transition" href="#">Allowlist (soon)</a>
-            <a class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5 transition" href="#">Marketplace (soon)</a>
+      <section class="glass">
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+          <div class="rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-[4/3] flex items-center justify-center">
+            <span class="text-slate-400 text-sm">Agent artwork preview</span>
+          </div>
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold accent">Escrow Enforcement Agent</h2>
+            <p class="mt-3 text-slate-300">
+              Limited, high-utility bots—think roundtable operators and governors. 
+              These are the people who set standards and flip switches.
+            </p>
+            <ul class="mt-5 space-y-2 text-slate-300 list-disc list-inside">
+              <li><span class="text-white font-semibold">Governance:</span> voting rights on roadmap & treasury actions.</li>
+              <li><span class="text-white font-semibold">Fee Share:</span> portion of protocol fees distributed to holders.</li>
+              <li><span class="text-white font-semibold">Priority Access:</span> early integrations, beta tools, private endpoints.</li>
+            </ul>
+            <div class="mt-6 flex gap-3">
+              <button class="btn-accent" disabled>Allowlist (soon)</button>
+              <button class="btn-outline" disabled>Marketplace (soon)</button>
+            </div>
           </div>
         </div>
-      </article>
+      </section>
+
+      <!-- Why NFTs exist section -->
+      <section class="glass">
+        <h3 class="text-xl md:text-2xl font-bold">Why do these exist?</h3>
+        <p class="mt-3 text-slate-300">
+          Because incentives build empires. Tokens align traders; NFTs align <span class="text-white font-semibold">builders, operators, and culture</span>.
+          We’re standardizing escrow rails that reward honesty and punish slop—on XRPL first, multi-chain next.
+        </p>
+        <div class="mt-4 grid md:grid-cols-3 gap-4 text-slate-300">
+          <div class="rounded-xl border border-white/10 p-4 bg-white/5">
+            <div class="text-white font-semibold">Proof of Skin</div>
+            <p class="mt-1 text-sm">Hold to signal commitment. Discounts & access track to what you do, not what you say.</p>
+          </div>
+          <div class="rounded-xl border border-white/10 p-4 bg-white/5">
+            <div class="text-white font-semibold">Revenue → Buy & Burn</div>
+            <p class="mt-1 text-sm">Protocol actions are visible on-chain. When rails move, markets watch.</p>
+          </div>
+          <div class="rounded-xl border border-white/10 p-4 bg-white/5">
+            <div class="text-white font-semibold">Movement > Project</div>
+            <p class="mt-1 text-sm">We’re reconstructing how coordination works online. These NFTs are passports.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Get in early -->
+      <section class="glass">
+        <div class="md:flex md:items-center md:justify-between">
+          <div class="max-w-2xl">
+            <h3 class="text-xl md:text-2xl font-bold">Get in position early.</h3>
+            <p class="mt-2 text-slate-300">
+              Supply is hard-capped and utility compounds. First movers shape policy, integrations, and culture. 
+              When the gates open, there won’t be enough to go around.
+            </p>
+          </div>
+          <div class="mt-4 md:mt-0 flex gap-3 shrink-0">
+            <a href="https://t.me/TrustlessPayments" target="_blank" class="btn-accent">Join Telegram</a>
+            <a href="buy.html" class="btn-outline hover:bg-white/5">Buy $TRLS</a>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
+
+  <!-- CTA -->
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Honor through automation. Culture through action.</h2>
+      <p class="mt-4 text-slate-300">Pick your role—Toad or Agent—and help lay the rails everyone else will have to use.</p>
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <a href="https://t.me/TrustlessPayments" target="_blank" class="btn-accent">Join Telegram</a>
+        <a href="whitepaper.html" class="btn-outline hover:bg-white/5">Read Whitepaper</a>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
@@ -173,95 +221,59 @@
     </div>
   </footer>
 
-  <!-- THEME, MENU & UTIL SCRIPTS -->
+  <!-- SCRIPTS (same wiring as index) -->
   <script>
-    // Theme presets (match other pages)
-    const THEMES = {
-      BlueGreen: { start:'#00E0FF', end:'#00D5A5', solid:'#00DDEE', a10:'rgba(0,224,255,.10)', a30:'rgba(0,224,255,.30)' },
-      Gold:      { start:'#FFD700', end:'#FFEA7A', solid:'#FFD700', a10:'rgba(255,215,0,.10)', a30:'rgba(255,215,0,.30)' },
-      NeonGreen: { start:'#00F000', end:'#50FFA9', solid:'#16FF8F', a10:'rgba(0,240,0,.10)',  a30:'rgba(0,240,0,.30)' }
+    const THEMES={
+      BlueGreen:{start:'#00E0FF',end:'#00D5A5',solid:'#00DDEE',a10:'rgba(0,224,255,.10)',a30:'rgba(0,224,255,.30)'},
+      Gold:{start:'#FFD700',end:'#FFEA7A',solid:'#FFD700',a10:'rgba(255,215,0,.10)',a30:'rgba(255,215,0,.30)'},
+      NeonGreen:{start:'#00F000',end:'#50FFA9',solid:'#16FF8F',a10:'rgba(0,240,0,.10)',a30:'rgba(0,240,0,.30)'}
     };
-    function applyTheme(name){
-      const t = THEMES[name] || THEMES.BlueGreen;
-      document.documentElement.style.setProperty('--accent-start', t.start);
-      document.documentElement.style.setProperty('--accent-end',   t.end);
-      document.documentElement.style.setProperty('--accent-solid', t.solid);
-      document.documentElement.style.setProperty('--accent-10',    t.a10);
-      document.documentElement.style.setProperty('--accent-30',    t.a30);
-      const meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', t.solid);
-      localStorage.setItem('trustlessTheme', JSON.stringify({ theme:name, layout:getLayout() }));
+    function applyTheme(n){const t=THEMES[n]||THEMES.BlueGreen;
+      document.documentElement.style.setProperty('--accent-start',t.start);
+      document.documentElement.style.setProperty('--accent-end',t.end);
+      document.documentElement.style.setProperty('--accent-solid',t.solid);
+      document.documentElement.style.setProperty('--accent-10',t.a10);
+      document.documentElement.style.setProperty('--accent-30',t.a30);
+      const m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t.solid);
+      localStorage.setItem('trustlessTheme',JSON.stringify({theme:n,layout:getLayout()}));
     }
-    function applyLayout(mode){
-      if(mode==='Compact'){
-        document.documentElement.style.setProperty('--pad-y','16px');
-        document.documentElement.style.setProperty('--pad-x','18px');
-        document.documentElement.style.setProperty('--radius','0.65rem');
-      }else{
-        document.documentElement.style.setProperty('--pad-y','20px');
-        document.documentElement.style.setProperty('--pad-x','24px');
-        document.documentElement.style.setProperty('--radius','0.75rem');
-      }
-      localStorage.setItem('trustlessTheme', JSON.stringify({ theme:getTheme(), layout:mode }));
+    function applyLayout(x){
+      if(x==='Compact'){document.documentElement.style.setProperty('--pad-y','16px');document.documentElement.style.setProperty('--pad-x','18px');document.documentElement.style.setProperty('--radius','0.65rem');}
+      else{document.documentElement.style.setProperty('--pad-y','20px');document.documentElement.style.setProperty('--pad-x','24px');document.documentElement.style.setProperty('--radius','0.75rem');}
+      localStorage.setItem('trustlessTheme',JSON.stringify({theme:getTheme(),layout:x}));
     }
-    function getTheme(){ try { return JSON.parse(localStorage.getItem('trustlessTheme'))?.theme || 'BlueGreen'; } catch { return 'BlueGreen'; } }
-    function getLayout(){ try { return JSON.parse(localStorage.getItem('trustlessTheme'))?.layout || 'Cozy'; } catch { return 'Cozy'; } }
+    function getTheme(){try{return JSON.parse(localStorage.getItem('trustlessTheme'))?.theme||'BlueGreen';}catch{return'BlueGreen';}}
+    function getLayout(){try{return JSON.parse(localStorage.getItem('trustlessTheme'))?.layout||'Cozy';}catch{return'Cozy';}}
+    applyTheme(getTheme());applyLayout(getLayout());
 
-    // Initial theme + year
-    applyTheme(getTheme());
-    applyLayout(getLayout());
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent=new Date().getFullYear();
 
-    // Legal modal
-    const legal = `\
-    <h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
-    <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
-    <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
-    <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
-    document.getElementById('legal-link').addEventListener('click', (e) => {
+    const legal="<h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3><p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p><p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p><p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>";
+    document.getElementById('legal-link').addEventListener('click', e => {
       e.preventDefault();
-      const modal = document.createElement('div');
-      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
-      modal.innerHTML = `
-        <div class='absolute inset-0 bg-black/70'></div>
-        <div class='relative max-w-xl w-full glass rounded-2xl p-6'>
-          <div>${legal}</div>
-          <div class='mt-6 text-right'>
-            <button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button>
-          </div>
-        </div>`;
+      const modal=document.createElement('div');modal.className='fixed inset-0 z-50 flex items-center justify-center p-4';
+      modal.innerHTML=`<div class='absolute inset-0 bg-black/70'></div><div class='relative max-w-xl w-full glass'><div>${legal}</div><div class='mt-6 text-right'><button id='close-legal' class='inline-flex items-center rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5'>Close</button></div></div>`;
       document.body.appendChild(modal);
-      document.getElementById('close-legal').onclick = () => modal.remove();
+      document.getElementById('close-legal').onclick=()=>modal.remove();
     });
 
-    // Hamburger menu (hardened)
-    const menuBtn = document.getElementById('menuBtn');
-    const menu    = document.getElementById('mainMenu');
-    function closeMenu(){ if(!menu) return; menu.classList.add('hidden'); menuBtn?.setAttribute('aria-expanded','false'); }
-    function openMenu(){ if(!menu) return; menu.classList.remove('hidden'); menuBtn?.setAttribute('aria-expanded','true'); }
-    if (menuBtn && menu) {
-      menuBtn.addEventListener('click', () => {
-        (menuBtn.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
-      });
-      // Close on link click
-      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-      // Outside click
-      document.addEventListener('click', (e) => {
-        if (!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
-      });
-      // ESC key
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
-    }
+    // Menu logic
+    const menuBtn=document.getElementById('menuBtn');const menu=document.getElementById('mainMenu');
+    function closeMenu(){menu.classList.add('hidden');menuBtn.setAttribute('aria-expanded','false');}
+    function openMenu(){menu.classList.remove('hidden');menuBtn.setAttribute('aria-expanded','true');}
+    menuBtn.addEventListener('click',()=>{(menuBtn.getAttribute('aria-expanded')==='true')?closeMenu():openMenu();});
+    menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+    document.addEventListener('click',e=>{if(menu && !menu.contains(e.target) && !menuBtn.contains(e.target))closeMenu();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
 
-    // Theme panel mount (same as philosophy)
+    // Floating Theme Panel
     function mountThemePanel(){
-      const wrap = document.createElement('div');
-      wrap.className = 'theme-toggle';
-      wrap.innerHTML = `
+      const wrap=document.createElement('div');wrap.className='theme-toggle';
+      wrap.innerHTML=`
         <button id="gearBtn" class="btn-accent rounded-full px-3 py-3" title="Theme & layout">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94a7.07,7.07,0,0,0,0-1.88l2-1.55a.5.5,0,0,0,.12-.64l-1.9-3.29a.5.5,0,0,0-.6-.22l-2.35,1a7.13,7.13,0,0,0-1.63-.95l-.36-2.49A.5.5,0,0,0,13.93,1H10.07a.5.5,0,0,0-.5.42L9.21,3.91a7.13,7.13,0,0,0-1.63.95l-2.35-1a.5.5,0,0,0-.6.22L2.73,7.34a.5.5,0,0,0,.12.64l2,1.55a7.07,7.07,0,0,0,0,1.88l-2,1.55a.5.5,0,0,0-.12.64l1.9,3.29a.5.5,0,0,0,.6.22l2.35-1a7.13,7.13,0,0,0,1.63.95l.36,2.49a.5.5,0,0,0,.5.42h3.86a.5.5,0,0,0,.5-.42l.36-2.49a7.13,7.13,0,0,0,1.63-.95l2.35,1a.5.5,0,0,0,.6-.22l1.9-3.29a.5.5,0,0,0,.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94a7.07,7.07,0,0,0,0-1.88l2-1.55a.5.5,0,0,0,.12-.64l-1.9-3.29a.5.5,0,0,0-.6-.22l-2.35,1a7.13,7.13,0,0,0-1.63-.95l-.36-2.49a.5.5,0,0,0,.5.42h3.86a.5.5,0,0,0,.5-.42l.36-2.49a7.13,7.13,0,0,0,1.63-.95l2.35,1a.5.5,0,0,0,.6-.22l1.9-3.29a.5.5,0,0,0,.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
         </button>
-        <div id="themeCard" class="hidden mt-2 theme-card glass border border-white/10 shadow-2xl p-4">
+        <div id="themeCard" class="hidden mt-2 theme-card glass border border-white/10 shadow-2xl">
           <div class="text-sm text-slate-200 font-semibold mb-2 accent">Theme & Layout</div>
           <div class="space-y-2 text-sm">
             <div>
@@ -283,18 +295,13 @@
               <button id="closeTheme" class="inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5">Close</button>
             </div>
           </div>
-        </div>
-      `;
+        </div>`;
       document.body.appendChild(wrap);
-      const card = document.getElementById('themeCard');
-      document.getElementById('gearBtn').onclick = () => card.classList.toggle('hidden');
-      document.getElementById('closeTheme').onclick = () => card.classList.add('hidden');
-      wrap.querySelectorAll('[data-theme]').forEach(btn=>{
-        btn.onclick = () => { applyTheme(btn.dataset.theme); };
-      });
-      wrap.querySelectorAll('[data-layout]').forEach(btn=>{
-        btn.onclick = () => { applyLayout(btn.dataset.layout); };
-      });
+      const card=document.getElementById('themeCard');
+      document.getElementById('gearBtn').onclick=()=>card.classList.toggle('hidden');
+      document.getElementById('closeTheme').onclick=()=>card.classList.add('hidden');
+      wrap.querySelectorAll('[data-theme]').forEach(btn=>btn.onclick=()=>applyTheme(btn.dataset.theme));
+      wrap.querySelectorAll('[data-layout]').forEach(btn=>btn.onclick=()=>applyLayout(btn.dataset.layout));
     }
     mountThemePanel();
   </script>
