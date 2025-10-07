@@ -128,32 +128,36 @@
     <!-- Step 4 -->
     <section class="glass mb-6">
       <h2 class="text-2xl md:text-3xl font-extrabold accent">Step 4 — Add the $TRLS Trustline</h2>
-      <p class="mt-3 text-slate-300">Choose one of the options below. If a link doesn’t open on your device, use the manual method.</p>
-      <div class="mt-5 space-y-3">
-        <!-- OPTION A: xrpl.to add-asset (often best on mobile/Xaman) -->
-        <a href="https://xrpl.to/add/TRLS.r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h"
-           target="_blank" class="btn-accent inline-flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l4 4-8 8-4-4 8-8Zm6.6 2.2a1 1 0 0 1 0 1.4L17 8.2 13.8 5l1.6-1.6a1 1 0 0 1 1.4 0l1.8 1.8Z"/></svg>
-          Add via Xaman (xrpl.to)
+      <p class="mt-3 text-slate-300">Add it directly inside Xaman. If you’re on your phone, this button just opens the app for you.</p>
+
+      <div class="mt-5 space-y-4">
+        <!-- OPEN XAMAN (no web helper, avoids 404) -->
+        <a href="xumm://"
+           class="btn-accent inline-flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 12h8l-3.5 3.5 1.4 1.4L16.8 12 9.9 5.1 8.5 6.5 12 10H4v2z"/></svg>
+          Open Xaman
         </a>
 
-        <!-- OPTION B: Sologenic helper (backup) -->
-        <a href="https://sologenic.org/trustline?issuer=r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h&currency=TRLS&limit=100000000"
-           target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-4 py-3 hover:bg-white/5 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12a5 5 0 0 1 5-5h3v2h-3a3 3 0 0 0 0 6h3v2h-3a5 5 0 0 1-5-5Zm7.1 1h2v-2h-2v2Zm4-6h3a5 5 0 0 1 0 10h-3v-2h3a3 3 0 0 0 0-6h-3V7Z"/></svg>
-          Add via Sologenic (backup)
-        </a>
-
-        <!-- MANUAL FALLBACK -->
+        <!-- Copyable fields -->
         <div class="text-xs text-slate-400">
           <div class="flex flex-wrap gap-2 items-center">
             <span class="kbd copy" data-copy="r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h" title="Tap to copy">Issuer: r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</span>
             <span class="kbd copy" data-copy="TRLS" title="Tap to copy">Currency: TRLS</span>
             <span class="kbd copy" data-copy="100000000" title="Tap to copy">Limit: 100000000</span>
           </div>
-          <p class="mt-2">Manual: Open Xaman → <em>Settings → Manage assets</em> (or <em>Add asset</em>) → paste the <strong>Issuer</strong> & <strong>Currency</strong>, set <strong>Limit</strong> → Approve.</p>
+          <p class="mt-2">In Xaman: <em>Settings → Manage assets</em> (or <em>Add asset</em>) → choose <em>Custom token</em> → paste <strong>Issuer</strong> & <strong>Currency</strong>, set <strong>Limit</strong> → Approve.</p>
           <p id="copyMsg" class="mt-2 text-[11px] text-emerald-400 hidden">Copied to clipboard ✓</p>
         </div>
+
+        <!-- Troubleshooting -->
+        <details class="text-xs text-slate-400">
+          <summary class="cursor-pointer text-slate-300">Having trouble?</summary>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Make sure your wallet is <strong>activated</strong> with at least 10 XRP reserve.</li>
+            <li>If “Open Xaman” doesn’t switch apps, just open Xaman manually and follow the steps above.</li>
+            <li>Still stuck? Ping us in <a class="underline decoration-dotted" href="https://t.me/TrustlessPayments" target="_blank">Telegram</a>.</li>
+          </ul>
+        </details>
       </div>
     </section>
 
@@ -176,7 +180,7 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl md:text-4xl font-extrabold accent">Questions? We’ll walk you through it.</h2>
       <div class="mt-6 flex items-center justify-center gap-3">
-        <a href="YOUR_TELEGRAM_ROOM_LINK" class="btn-accent inline-flex items-center gap-2">Join us on Telegram</a>
+        <a href="https://t.me/TrustlessPayments" class="btn-accent inline-flex items-center gap-2">Join us on Telegram</a>
         <a href="whitepaper.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">View Whitepaper</a>
       </div>
     </div>
@@ -228,7 +232,6 @@
     function closeMenu(){menu.classList.add('hidden');menuBtn.setAttribute('aria-expanded','false');}
     function openMenu(){menu.classList.remove('hidden');menuBtn.setAttribute('aria-expanded','true');}
     menuBtn.addEventListener('click',()=>{(menuBtn.getAttribute('aria-expanded')==='true')?closeMenu():openMenu();});
-    menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
     document.addEventListener('click',e=>{if(menu && !menu.contains(e.target) && !menuBtn.contains(e.target))closeMenu();});
 
     // Copy helpers
