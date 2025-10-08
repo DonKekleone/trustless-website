@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>$TRLS Tokenomics — Trustless</title>
-  <meta name="description" content="100,000,000 fixed supply for $TRLS. Transparent allocations, conditional LP, and on-chain wallet links." />
+  <meta name="description" content="$TRLS tokenomics: 100,000,000 supply. Presale 35%, LP 14% (conditional on sellout), Marketing 13%, Team 12%, Development 8%, Rewards 12%, Treasury 6%." />
   <meta property="og:title" content="$TRLS Tokenomics — Trustless" />
-  <meta property="og:description" content="100,000,000 fixed supply for $TRLS. Transparent allocations, conditional LP, and on-chain wallet links." />
+  <meta property="og:description" content="Transparent allocations, on-chain addresses, and conditional LP plan tied to presale completion." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=TRLS+Tokenomics" />
   <!-- Fallback bar color approximating gradient -->
@@ -15,9 +15,9 @@
   <style>
     :root{
       /* DEFAULT (Blue→Green) */
-      --accent-start:#00E0FF;  /* bluer cyan */
-      --accent-end:#00D5A5;    /* cooler green */
-      --accent-solid:#00DDEE;  /* single-color fallback */
+      --accent-start:#00E0FF;
+      --accent-end:#00D5A5;
+      --accent-solid:#00DDEE;
       --accent-10: rgba(0,224,255,.10);
       --accent-30: rgba(0,224,255,.30);
 
@@ -30,7 +30,7 @@
     .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: var(--pad-y) var(--pad-x); }
     html { scroll-behavior: smooth; }
 
-    /* Accent helpers (gradient text + buttons) */
+    /* Accent helpers */
     .accent{
       background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
       -webkit-background-clip:text; background-clip:text;
@@ -54,14 +54,12 @@
     .btn-accent:hover { filter: brightness(1.08); }
     .btn-accent:active{ transform: translateY(1px); }
 
-    /* Allocation bar */
-    .bar-wrap { height: 10px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 9999px; overflow: hidden; }
-    .bar { height: 100%; background: linear-gradient(90deg,var(--accent-start),var(--accent-end)); }
-
     /* Theme panel */
     .theme-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 60; }
     .theme-card { width: 320px; }
     .chip { border-radius: 9999px; padding: 4px 10px; font-size: 12px; }
+
+    .kbd { font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100" id="top">
@@ -77,13 +75,14 @@
             <path d="M8.8 12.2H15.2" stroke="currentColor" stroke-width="1.2" fill="none" />
           </svg>
         </span>
-        <span class="font-semibold tracking-wide brand-accent">$TRLS Tokenomics</span>
+        <span class="font-semibold tracking-wide brand-accent">Trustless Payments</span>
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="#allocations" class="hover:text-white">Allocations</a>
         <a href="#wallets" class="hover:text-white">Wallets</a>
-        <a href="#trade" class="hover:text-white">Trade</a>
+        <a href="#fees" class="hover:text-white">Fees & Burn</a>
+        <a href="#notes" class="hover:text-white">Notes</a>
       </nav>
 
       <div class="relative z-50">
@@ -115,43 +114,41 @@
   <!-- HERO -->
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
       <div class="max-w-3xl">
-        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">Token • XRPL • Transparency</p>
+        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">Transparent. On-chain. Verifiable.</p>
         <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
           <span class="text-white">$TRLS</span> <span class="accent">Tokenomics</span>
         </h1>
         <p class="mt-6 text-lg md:text-xl text-slate-300">
-          Fixed supply designed for clarity and longevity. Code over trust. A level playing field for builders.
+          Fixed supply, clear allocations, and a conditional LP plan tied to presale completion. Everything is designed for a <span class="font-semibold text-white">level playing field</span>.
         </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#allocations" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-3 hover:bg-white/5 transition">View Allocations</a>
-          <a href="#wallets" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-3 hover:bg-white/5 transition">On-chain Wallets</a>
-          <!-- CHANGED: was Trade on SoloDEX -->
+        <div class="mt-10 flex flex-wrap gap-3">
           <a href="buy.html" class="inline-flex items-center gap-2 rounded-xl px-5 py-3 btn-accent transition">Buy $TRLS</a>
+          <a href="whitepaper.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-3 hover:bg-white/5 transition">Read Whitepaper</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STATS -->
-  <section class="py-10">
+  <!-- SUPPLY -->
+  <section class="py-12">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-3 gap-6">
         <div class="glass">
-          <div class="text-xs tracking-widest text-slate-300/80 uppercase">Total Supply</div>
-          <div class="mt-2 text-2xl font-bold text-white">100,000,000</div>
-          <div class="text-slate-400 text-sm">$TRLS</div>
+          <div class="text-sm text-slate-400">Total Supply</div>
+          <div class="mt-1 text-3xl font-extrabold">100,000,000</div>
+          <div class="text-slate-400">$TRLS</div>
         </div>
         <div class="glass">
-          <div class="text-xs tracking-widest text-slate-300/80 uppercase">Ticker</div>
-          <div class="mt-2 text-2xl font-bold text-white">$TRLS</div>
-          <div class="text-slate-400 text-sm">Trustless</div>
+          <div class="text-sm text-slate-400">Ticker</div>
+          <div class="mt-1 text-3xl font-extrabold">$TRLS</div>
+          <div class="text-slate-400">XRPL-issued token</div>
         </div>
         <div class="glass">
-          <div class="text-xs tracking-widest text-slate-300/80 uppercase">Chain</div>
-          <div class="mt-2 text-2xl font-bold text-white">XRPL</div>
-          <div class="text-slate-400 text-sm">Sologenic trading</div>
+          <div class="text-sm text-slate-400">Issuer Account</div>
+          <div class="mt-1 font-mono break-all text-slate-200 kbd" id="issuer">r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</div>
+          <button class="mt-3 inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5 text-sm" data-copy="#issuer">Copy</button>
         </div>
       </div>
     </div>
@@ -160,80 +157,71 @@
   <!-- ALLOCATIONS -->
   <section id="allocations" class="py-20 bg-slate-900/40 border-y border-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold accent">Allocations</h2>
-      <p class="mt-3 text-slate-300">Clear splits with on-chain destinations. LP note below applies.</p>
+      <h2 class="text-2xl md:text-3xl font-bold accent">Allocation Breakdown</h2>
+      <p class="mt-3 text-slate-300">Percentages below are of the fixed 100,000,000 supply.</p>
 
-      <div class="mt-10 grid md:grid-cols-2 gap-6">
+      <div class="mt-8 grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+        <!-- Presale -->
         <div class="glass">
-          <!-- Left column: bars -->
-          <div class="flex items-center justify-between mb-2 text-sm">
-            <span class="font-semibold text-white">Presale</span><span class="text-slate-300">35%</span>
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Presale</h3>
+            <span class="accent font-semibold">35%</span>
           </div>
-          <div class="bar-wrap"><div class="bar" style="width:35%"></div></div>
-
-          <div class="flex items-center justify-between mt-5 mb-2 text-sm">
-            <span class="font-semibold text-white">Liquidity Pool</span><span class="text-slate-300">Up to 14%*</span>
-          </div>
-          <div class="bar-wrap"><div class="bar" style="width:14%"></div></div>
-
-          <div class="flex items-center justify-between mt-5 mb-2 text-sm">
-            <span class="font-semibold text-white">Marketing</span><span class="text-slate-300">13%</span>
-          </div>
-          <div class="bar-wrap"><div class="bar" style="width:13%"></div></div>
-
-          <div class="flex items-center justify-between mt-5 mb-2 text-sm">
-            <span class="font-semibold text-white">Team</span><span class="text-slate-300">12%</span>
-          </div>
-          <div class="bar-wrap"><div class="bar" style="width:12%"></div></div>
-
-          <div class="flex items-center justify-between mt-5 mb-2 text-sm">
-            <span class="font-semibold text-white">Development</span><span class="text-slate-300">8%</span>
-          </div>
-          <div class="bar-wrap"><div class="bar" style="width:8%"></div></div>
-
-          <div class="flex items-center justify-between mt-5 mb-2 text-sm">
-            <span class="font-semibold text-white">Rewards</span><span class="text-slate-300">12%</span>
-          </div>
-          <div class="bar-wrap"><div class="bar" style="width:12%"></div></div>
-
-          <div class="flex items-center justify-between mt-5 mb-2 text-sm">
-            <span class="font-semibold text-white">Treasury</span><span class="text-slate-300">6%</span>
-          </div>
-          <div class="bar-wrap"><div class="bar" style="width:6%"></div></div>
+          <p class="mt-2 text-slate-300">Up to 35,000,000 $TRLS distributed to early participants.</p>
         </div>
-
+        <!-- LP (conditional) -->
         <div class="glass">
-          <!-- Right column: notes -->
-          <h3 class="font-semibold accent">Locked Liquidity. Rising Scarcity.</h3>
-          <p class="mt-3 text-slate-300">
-            We <span class="font-semibold text-white">lock LP</span> by pairing
-            <span class="font-semibold text-white">40% of funds raised</span> with
-            <span class="font-semibold text-white">up to 14% of tokens</span>. Any tokens not needed for pairing go
-            <span class="font-semibold text-white">straight to the burn pile</span>—reducing circulating supply and
-            rewarding early conviction.
-          </p>
-
-          <div class="mt-6">
-            <h4 class="font-semibold accent">Trade / Trustline</h4>
-            <div class="mt-3 flex flex-wrap gap-3">
-              <!-- CHANGED: was Open SoloDEX -->
-              <a id="trade" href="buy.html"
-                 class="inline-flex items-center gap-2 rounded-xl px-4 py-2 btn-accent transition">Buy $TRLS</a>
-              <!-- CHANGED: was Add Trustline (soon) -->
-              <a href="whitepaper.html"
-                 class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5 transition">Read Whitepaper</a>
-            </div>
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Liquidity (LP)</h3>
+            <span class="accent font-semibold">14%</span>
           </div>
-
-          <div class="mt-6">
-            <h4 class="font-semibold accent">Notes</h4>
-            <ul class="mt-2 text-slate-300 list-disc list-inside space-y-1">
-              <li>100,000,000 fixed supply</li>
-              <li>Addresses published for transparency</li>
-              <li>Verify on-chain via XRPSCAN</li>
-            </ul>
-          </div>
+          <p class="mt-2 text-slate-300">Allocated to liquidity <span class="font-semibold text-white">only if presale sells out</span>. Otherwise scaled proportionally.</p>
         </div>
+        <!-- Marketing -->
+        <div class="glass">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Marketing</h3>
+            <span class="accent font-semibold">13%</span>
+          </div>
+          <p class="mt-2 text-slate-300">Campaigns, partnerships, awareness.</p>
+        </div>
+        <!-- Team -->
+        <div class="glass">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Team</h3>
+            <span class="accent font-semibold">12%</span>
+          </div>
+          <p class="mt-2 text-slate-300">Long-term alignment. Subject to internal vesting schedules.</p>
+        </div>
+        <!-- Development -->
+        <div class="glass">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Development</h3>
+            <span class="accent font-semibold">8%</span>
+          </div>
+          <p class="mt-2 text-slate-300">Product R&D, audits, infrastructure.</p>
+        </div>
+        <!-- Rewards -->
+        <div class="glass">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Rewards</h3>
+            <span class="accent font-semibold">12%</span>
+          </div>
+          <p class="mt-2 text-slate-300">Ecosystem incentives, community and staking plans.</p>
+        </div>
+        <!-- Treasury -->
+        <div class="glass">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Treasury</h3>
+            <span class="accent font-semibold">6%</span>
+          </div>
+          <p class="mt-2 text-slate-300">Strategic reserves and future-proofing.</p>
+        </div>
+      </div>
+
+      <!-- Tiny legend -->
+      <div class="mt-6 text-sm text-slate-400">
+        <p>LP % is conditional on a full presale sellout; otherwise LP is reduced proportionally to maintain balance.</p>
       </div>
     </div>
   </section>
@@ -242,71 +230,94 @@
   <section id="wallets" class="py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl md:text-3xl font-bold accent">Allocation Wallets (XRPL)</h2>
-      <p class="mt-3 text-slate-300">Click any address to open XRPSCAN.</p>
-
-      <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
         <div class="glass">
           <div class="text-sm text-slate-400">Issuer</div>
-          <a class="mt-1 block font-mono text-sm break-all underline decoration-dotted text-white hover:opacity-90"
-             target="_blank" rel="noopener"
-             href="https://xrpscan.com/account/r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h">r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</a>
+          <div class="mt-1 font-mono break-all" id="w-issuer">r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</div>
+          <button class="mt-3 inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5 text-sm" data-copy="#w-issuer">Copy</button>
         </div>
         <div class="glass">
           <div class="text-sm text-slate-400">Dev</div>
-          <a class="mt-1 block font-mono text-sm break-all underline decoration-dotted text-white hover:opacity-90"
-             target="_blank" rel="noopener"
-             href="https://xrpscan.com/account/rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX">rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX</a>
+          <div class="mt-1 font-mono break-all" id="w-dev">rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX</div>
+          <button class="mt-3 inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5 text-sm" data-copy="#w-dev">Copy</button>
         </div>
         <div class="glass">
           <div class="text-sm text-slate-400">Marketing</div>
-          <a class="mt-1 block font-mono text-sm break-all underline decoration-dotted text-white hover:opacity-90"
-             target="_blank" rel="noopener"
-             href="https://xrpscan.com/account/rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY">rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY</a>
+          <div class="mt-1 font-mono break-all" id="w-mkt">rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY</div>
+          <button class="mt-3 inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5 text-sm" data-copy="#w-mkt">Copy</button>
         </div>
         <div class="glass">
           <div class="text-sm text-slate-400">Team</div>
-          <a class="mt-1 block font-mono text-sm break-all underline decoration-dotted text-white hover:opacity-90"
-             target="_blank" rel="noopener"
-             href="https://xrpscan.com/account/rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB">rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB</a>
+          <div class="mt-1 font-mono break-all" id="w-team">rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB</div>
+          <button class="mt-3 inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5 text-sm" data-copy="#w-team">Copy</button>
         </div>
         <div class="glass">
           <div class="text-sm text-slate-400">Development</div>
-          <a class="mt-1 block font-mono text-sm break-all underline decoration-dotted text-white hover:opacity-90"
-             target="_blank" rel="noopener"
-             href="https://xrpscan.com/account/rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq">rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq</a>
+          <div class="mt-1 font-mono break-all" id="w-dev2">rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq</div>
+          <button class="mt-3 inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5 text-sm" data-copy="#w-dev2">Copy</button>
         </div>
         <div class="glass">
           <div class="text-sm text-slate-400">Rewards</div>
-          <a class="mt-1 block font-mono text-sm break-all underline decoration-dotted text-white hover:opacity-90"
-             target="_blank" rel="noopener"
-             href="https://xrpscan.com/account/rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA">rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA</a>
+          <div class="mt-1 font-mono break-all" id="w-rew">rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA</div>
+          <button class="mt-3 inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5 text-sm" data-copy="#w-rew">Copy</button>
         </div>
         <div class="glass">
           <div class="text-sm text-slate-400">Treasury</div>
-          <a class="mt-1 block font-mono text-sm break-all underline decoration-dotted text-white hover:opacity-90"
-             target="_blank" rel="noopener"
-             href="https://xrpscan.com/account/rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J">rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J</a>
+          <div class="mt-1 font-mono break-all" id="w-tres">rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J</div>
+          <button class="mt-3 inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5 text-sm" data-copy="#w-tres">Copy</button>
         </div>
       </div>
 
-      <p class="mt-4 text-xs text-slate-400">
-        Tip: Right-click → “Open link in new tab” to keep this page handy while browsing transactions.
-      </p>
+      <div class="mt-6 text-sm text-slate-400">
+        <p>Addresses are provided for transparency. Movements can be observed on-chain.</p>
+      </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold accent">Ready to participate?</h2>
-      <p class="mt-4 text-slate-300">Pick your path: buy tokens or read the whitepaper.</p>
-      <div class="mt-8 flex items-center justify-center gap-3">
-        <!-- CHANGED: was Open SoloDEX -->
-        <a href="buy.html"
-           class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Buy $TRLS</a>
-        <!-- CHANGED: was Add Trustline (soon) -->
-        <a href="whitepaper.html"
-           class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Read Whitepaper</a>
+  <!-- FEES & BURN -->
+  <section id="fees" class="py-20 bg-slate-900/40 border-y border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold accent">Fees & Buy-Burn Mechanics</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6 items-start">
+        <div class="glass">
+          <h3 class="font-semibold accent">5.89% Escrow Fee (Bot)</h3>
+          <ul class="mt-3 list-disc list-inside text-slate-300 space-y-1">
+            <li>50% → Dev wallet (ops & growth)</li>
+            <li>50% → Market-buy & burn associated token</li>
+            <li>NFT holders: target 1% fee (planned discount)</li>
+          </ul>
+        </div>
+        <div class="glass">
+          <h3 class="font-semibold accent">Fee Split Wallets</h3>
+          <p class="mt-2 text-slate-300">Operational Dev wallet used for fee split:</p>
+          <div class="mt-2 text-sm">
+            <div class="text-slate-400">Dev (fees)</div>
+            <div class="font-mono break-all" id="w-devfees">rNdipHhkQdgrc46TJTGeABZrQuES2QZfaM</div>
+            <button class="mt-2 inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5 text-sm" data-copy="#w-devfees">Copy</button>
+          </div>
+          <div class="mt-4 text-sm">
+            <div class="text-slate-400">XRK Contract (buy & burn loop)</div>
+            <div class="font-mono break-all" id="w-xrk">r6CBWzsfQuDTwWk2NYzZk5MrQewoUqFoE</div>
+            <button class="mt-2 inline-flex items-center rounded-xl border border-white/15 px-3 py-1.5 hover:bg-white/5 text-sm" data-copy="#w-xrk">Copy</button>
+          </div>
+        </div>
+      </div>
+      <p class="mt-6 text-slate-300">All burns & splits are visible on-chain. The goal is mechanical fairness—<span class="text-white font-semibold">code over trust</span>.</p>
+    </div>
+  </section>
+
+  <!-- NOTES -->
+  <section id="notes" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold accent">Notes & Assumptions</h2>
+      <ul class="mt-6 text-slate-300 space-y-2 list-disc list-inside">
+        <li><span class="text-white font-semibold">LP 14%</span> is a target when presale sells out; otherwise LP is scaled to match actual raise while preserving allocation intent.</li>
+        <li>Team and strategic allocations may observe internal vesting/lockups to align long-term execution.</li>
+        <li>Protocol, addresses, and mechanics are XRPL-native; we are not affiliated with Ripple.</li>
+      </ul>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="buy.html" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 btn-accent transition">Buy $TRLS</a>
+        <a href="whitepaper.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5 transition">Read Whitepaper</a>
       </div>
     </div>
   </section>
@@ -318,7 +329,7 @@
     </div>
   </footer>
 
-  <!-- THEME & MENU SCRIPTS -->
+  <!-- THEME, MENU & HELPERS -->
   <script>
     // Persisted theme/layout
     const THEMES = {
@@ -333,7 +344,6 @@
       document.documentElement.style.setProperty('--accent-solid', t.solid);
       document.documentElement.style.setProperty('--accent-10',    t.a10);
       document.documentElement.style.setProperty('--accent-30',    t.a30);
-      // Try to keep browser UI in sync (best-effort)
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute('content', t.solid);
       localStorage.setItem('trustlessTheme', JSON.stringify({ theme:name, layout:getLayout() }));
@@ -431,11 +441,31 @@
       wrap.querySelectorAll('[data-theme]').forEach(btn=>{
         btn.onclick = () => { applyTheme(btn.dataset.theme); };
       });
-      wrap.querySelectorAll('[data-layout]').forEach	btn=>{
+      wrap.querySelectorAll('[data-layout]').forEach(btn=>{
         btn.onclick = () => { applyLayout(btn.dataset.layout); };
       });
     }
     mountThemePanel();
+
+    // Copy buttons
+    function wireCopyButtons(){
+      document.querySelectorAll('[data-copy]').forEach(btn=>{
+        btn.addEventListener('click', async ()=>{
+          const sel = btn.getAttribute('data-copy');
+          const el  = document.querySelector(sel);
+          const text = el?.textContent?.trim();
+          try{
+            await navigator.clipboard.writeText(text);
+            btn.textContent = 'Copied!';
+            setTimeout(()=>{ btn.textContent = 'Copy'; }, 1200);
+          }catch{
+            btn.textContent = 'Failed';
+            setTimeout(()=>{ btn.textContent = 'Copy'; }, 1200);
+          }
+        });
+      });
+    }
+    wireCopyButtons();
   </script>
 </body>
 </html>
