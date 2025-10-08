@@ -3,69 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trustless Payments — Whitepaper</title>
-  <link rel="icon" href="favicon.png" />
-  <meta name="description" content="Honor through automation. Escrowed payments that only unlock when objective conditions are met. Read the Trustless Payments whitepaper (PDF + HTML)." />
-  <meta property="og:title" content="Trustless Payments — Whitepaper" />
-  <meta property="og:description" content="XRPL-native escrow that replaces subjective trust with deterministic code." />
+  <title>Whitepaper — Trustless</title>
+  <meta name="description" content="Trustless Payments: XRPL escrow automation. Code over trust. Fees, buy-burn, and a level playing field for value creators." />
+  <meta property="og:title" content="Whitepaper — Trustless" />
+  <meta property="og:description" content="Trustless Payments: XRPL escrow automation. Code over trust. Fees, buy-burn, and a level playing field for value creators." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://placehold.co/1200x630/png?text=Trustless+Whitepaper" />
   <meta name="theme-color" content="#00DDEE" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      /* Site accent system (Blue→Green; switchable via Theme panel) */
-      --accent-start:#00E0FF;
-      --accent-end:#00D5A5;
-      --accent-solid:#00DDEE;
+      /* DEFAULT (Blue→Green) */
+      --accent-start:#00E0FF;  /* bluer cyan */
+      --accent-end:#00D5A5;    /* cooler green */
+      --accent-solid:#00DDEE;  /* single-color fallback */
       --accent-10: rgba(0,224,255,.10);
       --accent-30: rgba(0,224,255,.30);
 
-      /* Layout density (switchable) */
+      /* Layout density */
       --pad-y: 20px;
       --pad-x: 24px;
-      --radius:.75rem;
+      --radius: 0.75rem;
     }
-    html { scroll-behavior: smooth; }
     .grid-bg { background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
     .glass { backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: var(--pad-y) var(--pad-x); }
-    .divider { height:1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent); }
+    html { scroll-behavior: smooth; }
 
-    /* Accent helpers (gradient text + pills + buttons) */
-    .accent{
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent; color: transparent;
-    }
-    .icon-pill     { background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); border-radius: var(--radius); }
-    .icon-pill svg { color: var(--accent-end); }
-    .brand-accent  {
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent; color: transparent;
-    }
-    .btn-accent{
-      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
-      color:#061b1b; font-weight:700;
-      transition: filter .2s ease, transform .02s ease;
-      box-shadow: 0 6px 20px rgba(0,224,255,.15);
-      border-radius: var(--radius);
-      padding: 12px 20px;
-    }
-    .btn-accent:hover { filter: brightness(1.08); }
+    .accent{ background: linear-gradient(90deg,var(--accent-start),var(--accent-end)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color: transparent; }
+    .icon-pill{ background: var(--accent-10); box-shadow: inset 0 0 0 1px var(--accent-30); border-radius: var(--radius); }
+    .icon-pill svg{ color: var(--accent-end); }
+    .brand-accent{ background: linear-gradient(90deg,var(--accent-start),var(--accent-end)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color: transparent; }
+    .btn-accent{ background: linear-gradient(90deg,var(--accent-start),var(--accent-end)); color:#061b1b; font-weight:600; transition: filter .2s ease, transform .02s ease; box-shadow: 0 6px 20px rgba(0,224,255,.15); border-radius: var(--radius); padding: 12px 20px; }
+    .btn-accent:hover{ filter: brightness(1.08); }
     .btn-accent:active{ transform: translateY(1px); }
-
-    /* Theme toggle (gear) */
+    .mono{ font-variant-ligatures:none; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .prose-wrap p{ margin: .75rem 0; }
+    .toc a[aria-current="true"]{ color: white; }
+    .callout{ border-left: 3px solid var(--accent-solid); padding-left: 12px; }
+    .chip { border-radius: 9999px; padding: 4px 10px; font-size: 12px; }
     .theme-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 60; }
     .theme-card { width: 320px; }
-    .chip { border-radius: 9999px; padding: 4px 10px; font-size: 12px; }
-
-    /* Prettier whitepaper body */
-    .wp { --tw-prose-bullets: rgba(226,232,240,.9); }
-    .wp h2 { letter-spacing:.2px; }
-    .wp h3 { letter-spacing:.2px; }
-    .callout { border-left: 3px solid var(--accent-solid); background: rgba(255,255,255,.03); }
-    .kpi { background: rgba(255,255,255,.06); border: 1px dashed rgba(255,255,255,.18); }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100" id="top">
@@ -74,7 +51,6 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="index.html#top" class="flex items-center gap-3">
         <span class="inline-flex h-9 w-9 items-center justify-center icon-pill">
-          <!-- Frog-in-shield -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
             <path d="M12 2l7 3v6c0 5.25-3.75 8.6-7 9.9C8.75 19.6 5 16.25 5 11V5l7-3z"/>
             <circle cx="9.2" cy="9.4" r="1.1"/><circle cx="14.8" cy="9.4" r="1.1"/>
@@ -85,17 +61,10 @@
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a href="philosophy.html" class="hover:text-white">Philosophy</a>
-        <a href="about.html" class="hover:text-white">About</a>
+        <a href="index.html#how" class="hover:text-white">How it works</a>
         <a href="tokenomics.html" class="hover:text-white">Tokenomics</a>
         <a href="roadmap.html" class="hover:text-white">Roadmap</a>
-        <a href="nfts.html" class="hover:text-white">NFTs</a>
-        <a href="buy.html" class="hover:text-white">Buy $TRUSTLESS</a>
-        <a href="book.html" class="hover:text-white">Book of Kek</a>
-        <a href="whitepaper.html" class="hover:text-white font-semibold text-white">Whitepaper</a>
-        <a href="team.html" class="hover:text-white">Team</a>
-        <a href="faq.html" class="hover:text-white">F.A.Q.</a>
-        <a href="contact.html" class="hover:text-white">Contact</a>
+        <a href="buy.html" class="hover:text-white">Buy $TRLS</a>
       </nav>
 
       <div class="relative z-50">
@@ -106,18 +75,15 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/>
           </svg>
         </button>
-
         <div id="mainMenu" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-slate-900 border border-white/10 shadow-2xl">
           <nav class="py-2 text-slate-100 text-sm">
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="index.html#top">Home</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="philosophy.html">Philosophy</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="about.html">About</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="roadmap.html">Roadmap</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="tokenomics.html">Tokenomics</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="nfts.html">NFTs</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRUSTLESS</a>
+            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="buy.html">Buy $TRLS</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="book.html">Book of Kek</a>
-            <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg font-semibold text-white" href="whitepaper.html">Whitepaper</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="team.html">Team</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="faq.html">F.A.Q.</a>
             <a class="block px-3 py-2 hover:bg-slate-800 rounded-lg" href="contact.html">Contact</a>
@@ -128,118 +94,197 @@
   </header>
 
   <!-- HERO -->
-  <section class="relative overflow-hidden">
+  <section class="relative overflow-hidden border-b border-white/10">
     <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-      <h1 class="text-3xl md:text-5xl font-extrabold">Trustless Payments <span class="accent">Whitepaper</span></h1>
-      <p class="mt-3 text-slate-300 max-w-3xl">Honor through automation. Escrowed payments that only unlock when objective conditions are met. This page hosts the latest PDF and an accessible HTML version for quick reading.</p>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="max-w-3xl">
+        <p class="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white">Whitepaper • v0.9 • Updated Oct 7, 2025</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          <span class="text-white">The Trustless Framework:</span> <span class="accent">Codifying Accountability in Digital Payments</span>
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-slate-300 max-w-2xl">Honor through automation. Code over trust. Trustless Payments enforces outcomes on XRPL using escrow conditions, transparent fees, and a deflationary loop that rewards builders over rent-seekers.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/whitepaper.pdf" class="btn-accent inline-flex items-center gap-2 rounded-xl px-5 py-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5v2zm7-18L5.33 9h3.67v4h6V9h3.67L12 2z"/></svg>
+            Download PDF
+          </a>
+          <a href="#abstract" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-3 hover:bg-white/5">Read online</a>
+          <a href="buy.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-3 hover:bg-white/5">Buy $TRLS</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- PDF CTA CARD -->
-  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="glass">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-        <div>
-          <div class="text-sm uppercase tracking-widest text-slate-400">Download</div>
-          <strong class="text-slate-100">trustless_whitepaper.pdf</strong>
+  <!-- BODY -->
+  <section class="py-10 md:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8">
+      <!-- TOC -->
+      <aside class="md:col-span-3 md:sticky md:top-24 h-max">
+        <div class="glass toc text-sm text-slate-300 space-y-2">
+          <div class="text-slate-200 font-semibold accent">Contents</div>
+          <nav class="space-y-1">
+            <a href="#abstract" class="block hover:text-white">Abstract</a>
+            <a href="#problem" class="block hover:text-white">1. Problem</a>
+            <a href="#solution" class="block hover:text-white">2. Solution: Enforced Escrow</a>
+            <a href="#mechanics" class="block hover:text-white">3. Mechanics</a>
+            <a href="#fees" class="block hover:text-white">4. Fees & Buy-Burn</a>
+            <a href="#token" class="block hover:text-white">5. Token ($TRLS)</a>
+            <a href="#security" class="block hover:text-white">6. Security & Risks</a>
+            <a href="#governance" class="block hover:text-white">7. Governance & NFTs</a>
+            <a href="#roadmap" class="block hover:text-white">8. Roadmap</a>
+            <a href="#appendix" class="block hover:text-white">Appendix</a>
+            <a href="#disclaimers" class="block hover:text-white">Legal & Disclaimers</a>
+          </nav>
         </div>
-        <div class="flex flex-wrap gap-2">
-          <a class="btn-accent inline-flex items-center gap-2" href="trustless_whitepaper.pdf" target="_blank" rel="noopener">View PDF</a>
-          <a class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5 transition" href="trustless_whitepaper.pdf" download>Download PDF</a>
-        </div>
-      </div>
-      <div class="mt-4 divider"></div>
-      <p class="mt-4 text-slate-400"><em>Note:</em> This is a quick-read HTML version. The canonical source is the PDF above.</p>
+      </aside>
+
+      <!-- PAPER -->
+      <article class="md:col-span-9 space-y-10 prose-wrap">
+        <section id="abstract" class="glass">
+          <h2 class="text-2xl font-bold accent">Abstract</h2>
+          <p>Trustless Payments is an escrow automation system for XRPL. Creators define objective conditions (e.g., market‑cap target within a deadline). Funds are held until conditions are met. If satisfied, funds release; if not, they refund. No middlemen, no negotiation—just code enforcing outcomes.</p>
+          <p>Economically, the system funds development through a <span class="font-semibold">5.89%</span> escrow fee, split <span class="font-semibold">50%</span> to development operations and <span class="font-semibold">50%</span> to automatic market buy‑and‑burn of the associated token, reinforcing a level playing field.</p>
+        </section>
+
+        <section id="problem" class="glass">
+          <h2 class="text-2xl font-bold accent">1. Problem</h2>
+          <ul class="list-disc list-inside text-slate-300">
+            <li><span class="text-white font-medium">Trust failure:</span> Hand‑shake promises, subjective milestones, and social pressure produce fraud and drama.</li>
+            <li><span class="text-white font-medium">Coordination tax:</span> Human arbitration adds delays, bias, and costs.</li>
+            <li><span class="text-white font-medium">Perverse incentives:</span> Rent‑seekers thrive; honest builders bear risk.</li>
+          </ul>
+        </section>
+
+        <section id="solution" class="glass">
+          <h2 class="text-2xl font-bold accent">2. Solution: Enforced Escrow</h2>
+          <p>Replace trust with verifiable conditions and machine enforcement. The Trustless Telegram bot walks users through escrow creation, funding, and automated resolution. Conditions can reference measurable on‑chain or off‑chain data (e.g., token market cap from reputable sources) and are evaluated on a schedule until expiry.</p>
+          <div class="grid md:grid-cols-3 gap-4 mt-4 text-slate-300">
+            <div class="callout"><span class="text-white font-medium">Create:</span> Amount, recipient, contract address, target market cap, expiry (days).</div>
+            <div class="callout"><span class="text-white font-medium">Fund:</span> Send exact XRP with bot‑provided memo/tag. Post TX hash; the bot detects funding.</div>
+            <div class="callout"><span class="text-white font-medium">Resolve:</span> If target met before deadline → release; else → refund.</div>
+          </div>
+        </section>
+
+        <section id="mechanics" class="glass">
+          <h2 class="text-2xl font-bold accent">3. Mechanics</h2>
+          <ul class="list-disc list-inside text-slate-300">
+            <li><span class="text-white font-medium">Escrow records:</span> Stored with unique memo/tag, status timeline, and immutable audit fields.</li>
+            <li><span class="text-white font-medium">Condition checks:</span> A scheduler evaluates goals against data sources at intervals until resolution.</li>
+            <li><span class="text-white font-medium">Determinism:</span> State transitions are rule‑based and logged.</li>
+            <li><span class="text-white font-medium">Compatibility:</span> Built for XRPL; architecture permits multi‑chain expansion.</li>
+          </ul>
+          <p class="mt-2 text-slate-400 text-sm">Implementation note: for MVP we standardize deadlines as <span class="mono">N</span> days and use market‑cap whole numbers. Advanced condition templates are planned.</p>
+        </section>
+
+        <section id="fees" class="glass">
+          <h2 class="text-2xl font-bold accent">4. Fees & Buy‑Burn</h2>
+          <ul class="list-disc list-inside text-slate-300">
+            <li>Escrow creation fee: <span class="text-white font-semibold">5.89%</span></li>
+            <li>Split: <span class="text-white font-semibold">50%</span> to dev operations / <span class="text-white font-semibold">50%</span> to automated market buy‑and‑burn of the associated token.</li>
+            <li>NFT holder target fee: <span class="text-white font-semibold">~1%</span> (planned mechanics).</li>
+          </ul>
+          <p class="mt-2 text-slate-300">Every split and burn is observable on‑chain. No private ledgers. No hidden allocations.</p>
+        </section>
+
+        <section id="token" class="glass">
+          <h2 class="text-2xl font-bold accent">5. Token ($TRLS)</h2>
+          <p>$TRLS aligns incentives with product usage. Demand from fees → buy‑and‑burn loop reduces circulating supply over time while funding continued development.</p>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <a href="tokenomics.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-2.5 hover:bg-white/5">Read Tokenomics</a>
+            <a href="buy.html" class="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 btn-accent">Buy $TRLS</a>
+          </div>
+        </section>
+
+        <section id="security" class="glass">
+          <h2 class="text-2xl font-bold accent">6. Security & Risks</h2>
+          <ul class="list-disc list-inside text-slate-300">
+            <li><span class="text-white font-medium">Key handling:</span> Users never share private keys with the bot. All transfers are user‑signed on XRPL interfaces of their choice.</li>
+            <li><span class="text-white font-medium">Data integrity:</span> Market‑cap feeds are validated and sanity‑checked; failures trigger safe fallback behavior.</li>
+            <li><span class="text-white font-medium">Irreversibility:</span> On‑chain actions cannot be reversed. Users must verify addresses, tags, and amounts.</li>
+            <li><span class="text-white font-medium">Known limitations (MVP):</span> Condition templates intentionally simplified (days, whole‑number caps) to minimize complexity and attack surface.</li>
+          </ul>
+        </section>
+
+        <section id="governance" class="glass">
+          <h2 class="text-2xl font-bold accent">7. Governance & NFTs</h2>
+          <p>Governance begins utility‑first: ship core enforcement, then expand influence. The planned <span class="text-white font-medium">Trustless Toads</span> NFT collection provides fee reductions and community signaling. Token‑weighted and NFT‑gated proposals may be introduced after security reviews.</p>
+        </section>
+
+        <section id="roadmap" class="glass">
+          <h2 class="text-2xl font-bold accent">8. Roadmap</h2>
+          <ul class="list-disc list-inside text-slate-300">
+            <li><span class="text-white font-medium">MVP:</span> Telegram flow, escrow creation, funding detection, periodic condition checks, release/refund, fee split + buy‑burn.</li>
+            <li><span class="text-white font-medium">Hardening:</span> Monitoring loop reliability, data source redundancy, incident logging.</li>
+            <li><span class="text-white font-medium">Expansion:</span> Advanced condition templates, multi‑chain support, permissionless developer extensions.</li>
+          </ul>
+          <a href="roadmap.html" class="mt-3 inline-block rounded-xl border border-white/15 px-5 py-2.5 hover:bg-white/5">Open detailed roadmap</a>
+        </section>
+
+        <section id="appendix" class="glass">
+          <h2 class="text-2xl font-bold accent">Appendix: References</h2>
+          <div class="grid md:grid-cols-2 gap-4 text-sm">
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="text-slate-200 font-semibold mb-1">Core Links</div>
+              <ul class="list-disc list-inside">
+                <li><a class="underline decoration-dotted" href="enforcer.html">Launch Bot</a></li>
+                <li><a class="underline decoration-dotted" href="tokenomics.html">Tokenomics</a></li>
+                <li><a class="underline decoration-dotted" href="buy.html">Buy $TRLS</a></li>
+                <li><a class="underline decoration-dotted" href="/whitepaper.pdf">Whitepaper PDF</a></li>
+              </ul>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div class="text-slate-200 font-semibold mb-1">XRPL Addresses</div>
+              <ul class="mono space-y-1">
+                <li>Issuer: <span class="text-slate-300">r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</span></li>
+                <li>Dev: <span class="text-slate-300">rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX</span></li>
+                <li>Marketing: <span class="text-slate-300">rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY</span></li>
+                <li>Team: <span class="text-slate-300">rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB</span></li>
+                <li>Development: <span class="text-slate-300">rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq</span></li>
+                <li>Rewards: <span class="text-slate-300">rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA</span></li>
+                <li>Treasury: <span class="text-slate-300">rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="disclaimers" class="glass">
+          <h2 class="text-2xl font-bold accent">Legal & Disclaimers</h2>
+          <p class="text-slate-300">This document is for information and entertainment. Nothing herein constitutes investment advice, a guarantee of results, or a solicitation. Users must comply with local laws and understand on‑chain transactions are irreversible. Do not share private keys. Always verify addresses, tags, and amounts before submitting transactions.</p>
+        </section>
+
+        <!-- Changelog -->
+        <section class="glass">
+          <h2 class="text-2xl font-bold accent">Changelog</h2>
+          <ul class="list-disc list-inside text-slate-300">
+            <li><span class="text-white font-medium">v0.9 (2025‑10‑07):</span> First public online version; simplified condition templates; added addresses appendix; aligned styling with site theme panel.</li>
+          </ul>
+        </section>
+      </article>
     </div>
   </section>
 
-  <!-- WHITEPAPER CONTENT -->
-  <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-    <!-- Quick nav -->
-    <nav class="glass mb-8 text-sm text-slate-300">
-      <div class="font-semibold accent">Contents</div>
-      <ul class="mt-2 list-disc list-inside space-y-1">
-        <li><a class="hover:underline" href="#abstract">Abstract</a></li>
-        <li><a class="hover:underline" href="#philosophy">Philosophy</a></li>
-        <li><a class="hover:underline" href="#mechanics">Mechanics</a></li>
-        <li><a class="hover:underline" href="#token-alignment">Token Alignment</a></li>
-        <li><a class="hover:underline" href="#roadmap">Roadmap</a></li>
-      </ul>
-    </nav>
-
-    <article class="prose prose-invert prose-slate wp max-w-none">
-      <h2 id="abstract">Abstract</h2>
-      <p>Trustless Payments is an XRPL-native escrow framework that replaces subjective trust with deterministic code. Funds are locked, conditions are monitored, and value is released only when pre-agreed signals are satisfied.</p>
-
-      <div class="callout rounded-xl p-4 my-6">
-        <p class="m-0 text-slate-200"><strong>Design Goal:</strong> Make honest deals effortless and dishonest deals uneconomical.</p>
+  <!-- CTA -->
+  <section class="py-16 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold accent">Honor through automation.</h2>
+      <p class="mt-4 text-slate-300">Ready to create your first escrow?</p>
+      <div class="mt-6 flex items-center justify-center gap-3">
+        <a href="enforcer.html" class="btn-accent inline-flex items-center gap-2 rounded-xl px-6 py-3">Launch Bot</a>
+        <a href="buy.html" class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 hover:bg-white/5">Buy $TRLS</a>
       </div>
+    </div>
+  </section>
 
-      <h2 id="philosophy">Philosophy</h2>
-      <p>A payment fails if trust breaks. We level the playing field <span class="text-white font-semibold">for value creators</span> by binding promises to verifiable conditions—removing room for opportunism while preserving speed and simplicity.</p>
-
-      <h2 id="mechanics">Mechanics</h2>
-      <p>Users define key parameters; the system automates the rest.</p>
-
-      <div class="grid md:grid-cols-2 gap-4 my-4">
-        <div class="kpi rounded-xl p-4">
-          <div class="text-xs uppercase tracking-wide text-slate-400">Fee</div>
-          <div class="text-2xl font-extrabold">5.89%</div>
-          <div class="text-sm text-slate-400">50% Dev • 50% Buy+Burn</div>
-        </div>
-        <div class="kpi rounded-xl p-4">
-          <div class="text-xs uppercase tracking-wide text-slate-400">Networks</div>
-          <div class="text-2xl font-extrabold">XRPL</div>
-          <div class="text-sm text-slate-400">Multi-chain expansion planned</div>
-        </div>
-      </div>
-
-      <h3>Parameters</h3>
-      <ul class="list-disc list-inside">
-        <li><strong>Escrow Amount</strong> — XRP locked in contract.</li>
-        <li><strong>Recipient &amp; Contract</strong> — Address and token of interest.</li>
-        <li><strong>Target Market Cap</strong> — Whole-number threshold to trigger release.</li>
-        <li><strong>Expiry</strong> — Deadline; on miss, refund is automated.</li>
-      </ul>
-
-      <h3>Lifecycle</h3>
-      <ol class="list-decimal list-inside">
-        <li><strong>Create:</strong> User sets parameters in the bot.</li>
-        <li><strong>Fund:</strong> On-ledger deposit with destination tag; funding auto-detected.</li>
-        <li><strong>Automate:</strong> On condition met → release; on expiry → refund.</li>
-      </ol>
-
-      <div class="callout rounded-xl p-4 my-6">
-        <p class="m-0 text-slate-200"><strong>Transparency:</strong> Every split and burn is on-chain; a level playing field <span class="text-white font-semibold">for value creators</span>.</p>
-      </div>
-
-      <h2 id="token-alignment">Token Alignment</h2>
-      <p>Protocol fees drive scarcity via automated buy-and-burn, aligning usage with long-term holder value.</p>
-
-      <h2 id="roadmap">Roadmap</h2>
-      <ul class="list-disc list-inside">
-        <li><strong>MVP Live on XRPL</strong> — Stable create → fund → release/refund flow.</li>
-        <li><strong>NFT: Trustless Toads</strong> — Fee reductions + community perks.</li>
-        <li><strong>Escrow Enforcement Unit (33)</strong> — Governance &amp; fee sharing.</li>
-        <li><strong>Multi-Chain Expansion</strong> — Adapters while preserving simplicity.</li>
-      </ul>
-
-      <p class="mt-8"><a href="trustless_whitepaper.pdf" class="btn-accent inline-flex items-center gap-2" target="_blank" rel="noopener">Read Full PDF</a></p>
-    </article>
-  </main>
-
-  <!-- FOOTER -->
   <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p>© <span id="year"></span> Trustless Payments. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
+      <p>© <span id="year"></span> Trustless. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
       <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
     </div>
   </footer>
 
-  <!-- THEME & MENU SCRIPTS -->
+  <!-- SCRIPTS -->
   <script>
-    // Theme presets (unified across site)
+    // Persisted theme/layout (shared with index.html)
     const THEMES = {
       BlueGreen: { start:'#00E0FF', end:'#00D5A5', solid:'#00DDEE', a10:'rgba(0,224,255,.10)', a30:'rgba(0,224,255,.30)' },
       Gold:      { start:'#FFD700', end:'#FFEA7A', solid:'#FFD700', a10:'rgba(255,215,0,.10)', a30:'rgba(255,215,0,.30)' },
@@ -274,7 +319,19 @@
     // Initial load
     applyTheme(getTheme());
     applyLayout(getLayout());
+
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Hamburger menu
+    const menuBtn = document.getElementById('menuBtn');
+    const menu    = document.getElementById('mainMenu');
+    function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
+    function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
+    menuBtn.addEventListener('click',()=>{ (menuBtn.getAttribute('aria-expanded')==='true') ? closeMenu() : openMenu(); });
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+    document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
+    document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeMenu(); });
 
     // Legal modal
     const legal = `\
@@ -298,25 +355,13 @@
       document.getElementById('close-legal').onclick = () => modal.remove();
     });
 
-    // Hamburger menu
-    const menuBtn = document.getElementById('menuBtn');
-    const menu    = document.getElementById('mainMenu');
-    function closeMenu(){ menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }
-    function openMenu(){ menu.classList.remove('hidden'); menuBtn.setAttribute('aria-expanded','true'); }
-    menuBtn.addEventListener('click', () => {
-      (menuBtn.getAttribute('aria-expanded') === 'true') ? closeMenu() : openMenu();
-    });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-    document.addEventListener('click', (e) => { if(!menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
-
-    // Theme panel (gear) — same component used site-wide
+    // Theme panel (same UX as index.html)
     function mountThemePanel(){
       const wrap = document.createElement('div');
       wrap.className = 'theme-toggle';
       wrap.innerHTML = `
         <button id="gearBtn" class="btn-accent rounded-full px-3 py-3" title="Theme & layout">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94a7.07,7.07,0,0,0,0-1.88l2-1.55a.5.5,0,0,0,.12-.64l-1.9-3.29a.5.5,0,0,0-.6-.22l-2.35,1a7.13,7.13,0,0,0-1.63-.95l-.36-2.49A.5.5,0,0,0,13.93,1H10.07a.5.5,0,0,0-.5.42L9.21,3.91a7.13,7.13,0,0,0-1.63.95l-2.35-1a.5.5,0,0,0-.6.22L2.73,7.34a.5.5,0,0,0,.12.64l2,1.55a7.07,7.07,0,0,0,0,1.88l-2,1.55a.5.5,0,0,0-.12.64l1.9,3.29a.5.5,0,0,0,.6.22l2.35-1a7.13,7.13,0,0,0,1.63.95l.36,2.49a.5.5,0,0,0,.5.42h3.86a.5.5,0,0,0,.5-.42l.36-2.49a7.13,7.13,0,0,0,1.63-.95l2.35,1a.5.5,0,0,0,.6-.22l1.9-3.29a.5.5,0,0,0,.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94a7.07,7.07,0,0,0,0-1.88l2-1.55a.5.5,0,0,0,.12-.64l-1.9-3.29a.5.5,0,0,0-.6-.22l-2.35,1a7.13,7.13,0,0,0-1.63-.95l-.36-2.49A.5.5,0,0,0,13.93,1H10.07a.5.5,0,0,0-.5.42L9.21,3.91a7.13,7.13,0,0,0-1.63.95l-2.35-1a.5.5,0,0,0-.6.22L2.73,7.34a.5.5,0,0,0,.12.64l2,1.55a7.07,7.07,0,0,0,0,1.88l-2,1.55a.5.5,0,0,0,.12.64l1.9,3.29a.5.5,0,0,0,.6.22l2.35-1a7.13,7.13,0,0,0,1.63.95l.36,2.49a.5.5,0,0,0,.5.42h3.86a.5.5,0,0,0,.5-.42l.36-2.49a7.13,7.13,0,0,0,1.63-.95l2.35,1a.5.5,0,0,0,.6-.22l1.9-3.29a.5.5,0,0,0,.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
         </button>
         <div id="themeCard" class="hidden mt-2 theme-card glass border border-white/10 shadow-2xl">
           <div class="text-sm text-slate-200 font-semibold mb-2 accent">Theme & Layout</div>
@@ -346,14 +391,25 @@
       const card = document.getElementById('themeCard');
       document.getElementById('gearBtn').onclick = () => card.classList.toggle('hidden');
       document.getElementById('closeTheme').onclick = () => card.classList.add('hidden');
-      wrap.querySelectorAll('[data-theme]').forEach(btn=>{
-        btn.onclick = () => { applyTheme(btn.dataset.theme); };
-      });
-      wrap.querySelectorAll('[data-layout]').forEach(btn=>{
-        btn.onclick = () => { applyLayout(btn.dataset.layout); };
-      });
+      wrap.querySelectorAll('[data-theme]').forEach(btn=>{ btn.onclick = () => { applyTheme(btn.dataset.theme); }; });
+      wrap.querySelectorAll('[data-layout]').forEach(btn=>{ btn.onclick = () => { applyLayout(btn.dataset.layout); }; });
     }
     mountThemePanel();
+
+    // Simple TOC highlighting
+    const sections = Array.from(document.querySelectorAll('article section[id]'));
+    const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const id = e.target.getAttribute('id');
+          tocLinks.forEach(a=>a.removeAttribute('aria-current'));
+          const active = document.querySelector('.toc a[href="#'+id+'"]');
+          if(active) active.setAttribute('aria-current','true');
+        }
+      });
+    },{ rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+    sections.forEach(s=>obs.observe(s));
   </script>
 </body>
 </html>
