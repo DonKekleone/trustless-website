@@ -31,7 +31,6 @@
     .bar{height:10px;border-radius:9999px;background:rgba(255,255,255,.08);overflow:hidden}
     .fill{height:100%;background:linear-gradient(90deg,var(--accent-start),var(--accent-end))}
     .kbd{font-variant-numeric:tabular-nums}
-    /* Donut chart helpers */
     .donut text{font-size:12px;fill:#cbd5e1}
   </style>
 </head>
@@ -134,73 +133,34 @@
       <div class="mt-8 grid lg:grid-cols-2 gap-8 items-start">
         <!-- Bars -->
         <div class="space-y-5">
-          <div class="glass">
-            <div class="flex items-center justify-between"><span>Presale</span><span class="text-slate-300">35%</span></div>
-            <div class="mt-3 bar"><div class="fill" style="width:35%"></div></div>
-          </div>
-          <div class="glass">
-            <div class="flex items-center justify-between"><span>Liquidity Pool</span><span class="text-slate-300">Up to 14%*</span></div>
-            <div class="mt-3 bar"><div class="fill" style="width:14%"></div></div>
-          </div>
-          <div class="glass">
-            <div class="flex items-center justify-between"><span>Marketing</span><span class="text-slate-300">13%</span></div>
-            <div class="mt-3 bar"><div class="fill" style="width:13%"></div></div>
-          </div>
-          <div class="glass">
-            <div class="flex items-center justify-between"><span>Team</span><span class="text-slate-300">12%</span></div>
-            <div class="mt-3 bar"><div class="fill" style="width:12%"></div></div>
-          </div>
-          <div class="glass">
-            <div class="flex items-center justify-between"><span>Development</span><span class="text-slate-300">8%</span></div>
-            <div class="mt-3 bar"><div class="fill" style="width:8%"></div></div>
-          </div>
-          <div class="glass">
-            <div class="flex items-center justify-between"><span>Rewards</span><span class="text-slate-300">12%</span></div>
-            <div class="mt-3 bar"><div class="fill" style="width:12%"></div></div>
-          </div>
-          <div class="glass">
-            <div class="flex items-center justify-between"><span>Treasury</span><span class="text-slate-300">6%</span></div>
-            <div class="mt-3 bar"><div class="fill" style="width:6%"></div></div>
-          </div>
+          <div class="glass"><div class="flex items-center justify-between"><span>Presale</span><span class="text-slate-300">35%</span></div><div class="mt-3 bar"><div class="fill" style="width:35%"></div></div></div>
+          <div class="glass"><div class="flex items-center justify-between"><span>Liquidity Pool</span><span class="text-slate-300">Up to 14%*</span></div><div class="mt-3 bar"><div class="fill" style="width:14%"></div></div></div>
+          <div class="glass"><div class="flex items-center justify-between"><span>Marketing</span><span class="text-slate-300">13%</span></div><div class="mt-3 bar"><div class="fill" style="width:13%"></div></div></div>
+          <div class="glass"><div class="flex items-center justify-between"><span>Team</span><span class="text-slate-300">12%</span></div><div class="mt-3 bar"><div class="fill" style="width:12%"></div></div></div>
+          <div class="glass"><div class="flex items-center justify-between"><span>Development</span><span class="text-slate-300">8%</span></div><div class="mt-3 bar"><div class="fill" style="width:8%"></div></div></div>
+          <div class="glass"><div class="flex items-center justify-between"><span>Rewards</span><span class="text-slate-300">12%</span></div><div class="mt-3 bar"><div class="fill" style="width:12%"></div></div></div>
+          <div class="glass"><div class="flex items-center justify-between"><span>Treasury</span><span class="text-slate-300">6%</span></div><div class="mt-3 bar"><div class="fill" style="width:6%"></div></div></div>
         </div>
 
-        <!-- Donut chart (pure SVG) -->
+        <!-- Donut chart -->
         <div class="glass">
           <h3 class="font-semibold accent mb-4">Allocation Donut</h3>
           <svg class="donut block mx-auto" viewBox="0 0 220 220" width="100%" height="220" role="img" aria-label="Allocation donut">
-            <!-- Track -->
             <circle cx="110" cy="110" r="80" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="24"/>
-            <!-- Slices (circumference ~ 2πr = 502.65) -->
-            <!-- We draw each arc as a stroke segment with dasharray and dashoffset -->
             <g transform="rotate(-90 110 110)">
-              <!-- Presale 35% -->
-              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24"
-                      stroke-dasharray="175.93 326.72" stroke-dashoffset="0"/>
-              <!-- LP 14% -->
-              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24"
-                      stroke-dasharray="70.37 432.28" stroke-dashoffset="-175.93"/>
-              <!-- Marketing 13% -->
-              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24"
-                      stroke-dasharray="65.34 437.31" stroke-dashoffset="-246.30"/>
-              <!-- Team 12% -->
-              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24"
-                      stroke-dasharray="60.32 442.33" stroke-dashoffset="-311.64"/>
-              <!-- Development 8% -->
-              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24"
-                      stroke-dasharray="40.21 462.44" stroke-dashoffset="-371.96"/>
-              <!-- Rewards 12% -->
-              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24"
-                      stroke-dasharray="60.32 442.33" stroke-dashoffset="-412.17"/>
-              <!-- Treasury 6% -->
-              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24"
-                      stroke-dasharray="30.16 472.49" stroke-dashoffset="-472.49"/>
+              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24" stroke-dasharray="175.93 326.72" stroke-dashoffset="0"/>
+              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24" stroke-dasharray="70.37 432.28" stroke-dashoffset="-175.93"/>
+              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24" stroke-dasharray="65.34 437.31" stroke-dashoffset="-246.30"/>
+              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24" stroke-dasharray="60.32 442.33" stroke-dashoffset="-311.64"/>
+              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24" stroke-dasharray="40.21 462.44" stroke-dashoffset="-371.96"/>
+              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24" stroke-dasharray="60.32 442.33" stroke-dashoffset="-412.17"/>
+              <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g1)" stroke-width="24" stroke-dasharray="30.16 472.49" stroke-dashoffset="-472.49"/>
             </g>
             <defs>
               <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="var(--accent-start)"/><stop offset="100%" stop-color="var(--accent-end)"/>
               </linearGradient>
             </defs>
-            <!-- Center label -->
             <circle cx="110" cy="110" r="60" fill="rgba(2,6,23,.7)" stroke="rgba(255,255,255,.06)"/>
             <text x="110" y="105" text-anchor="middle" class="font-semibold">Total</text>
             <text x="110" y="127" text-anchor="middle" class="font-bold" style="font-size:16px;fill:#fff">100,000,000</text>
@@ -255,34 +215,13 @@
       <h2 class="text-2xl md:text-3xl font-bold accent">Allocation Wallets (XRPL)</h2>
       <p class="mt-2 text-slate-400 text-sm">Tap to open in XRPSCAN • Tip: long-press to copy</p>
       <div class="mt-8 grid md:grid-cols-2 gap-6">
-        <a class="glass block" href="https://xrpscan.com/account/r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h" target="_blank" rel="noopener">
-          <div class="text-sm text-slate-400">Issuer</div>
-          <div class="mt-1 font-mono break-all kbd">r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</div>
-        </a>
-        <a class="glass block" href="https://xrpscan.com/account/rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX" target="_blank" rel="noopener">
-          <div class="text-sm text-slate-400">Dev</div>
-          <div class="mt-1 font-mono break-all kbd">rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX</div>
-        </a>
-        <a class="glass block" href="https://xrpscan.com/account/rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY" target="_blank" rel="noopener">
-          <div class="text-sm text-slate-400">Marketing</div>
-          <div class="mt-1 font-mono break-all kbd">rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY</div>
-        </a>
-        <a class="glass block" href="https://xrpscan.com/account/rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB" target="_blank" rel="noopener">
-          <div class="text-sm text-slate-400">Team</div>
-          <div class="mt-1 font-mono break-all kbd">rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB</div>
-        </a>
-        <a class="glass block" href="https://xrpscan.com/account/rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq" target="_blank" rel="noopener">
-          <div class="text-sm text-slate-400">Development</div>
-          <div class="mt-1 font-mono break-all kbd">rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq</div>
-        </a>
-        <a class="glass block" href="https://xrpscan.com/account/rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA" target="_blank" rel="noopener">
-          <div class="text-sm text-slate-400">Rewards</div>
-          <div class="mt-1 font-mono break-all kbd">rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA</div>
-        </a>
-        <a class="glass block" href="https://xrpscan.com/account/rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J" target="_blank" rel="noopener">
-          <div class="text-sm text-slate-400">Treasury</div>
-          <div class="mt-1 font-mono break-all kbd">rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J</div>
-        </a>
+        <a class="glass block" href="https://xrpscan.com/account/r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h" target="_blank" rel="noopener"><div class="text-sm text-slate-400">Issuer</div><div class="mt-1 font-mono break-all kbd">r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</div></a>
+        <a class="glass block" href="https://xrpscan.com/account/rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX" target="_blank" rel="noopener"><div class="text-sm text-slate-400">Dev</div><div class="mt-1 font-mono break-all kbd">rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX</div></a>
+        <a class="glass block" href="https://xrpscan.com/account/rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY" target="_blank" rel="noopener"><div class="text-sm text-slate-400">Marketing</div><div class="mt-1 font-mono break-all kbd">rfhY7VruzVzuGJCa7KCJXvkeUecors6RtY</div></a>
+        <a class="glass block" href="https://xrpscan.com/account/rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB" target="_blank" rel="noopener"><div class="text-sm text-slate-400">Team</div><div class="mt-1 font-mono break-all kbd">rKTVbobshZ7qkja7sWf9dKTZBJkWyriytB</div></a>
+        <a class="glass block" href="https://xrpscan.com/account/rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq" target="_blank" rel="noopener"><div class="text-sm text-slate-400">Development</div><div class="mt-1 font-mono break-all kbd">rLqDnqQSBNRS4YtSrLyuMDhZ22aLptmyTq</div></a>
+        <a class="glass block" href="https://xrpscan.com/account/rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA" target="_blank" rel="noopener"><div class="text-sm text-slate-400">Rewards</div><div class="mt-1 font-mono break-all kbd">rGEA1mJwRosGY8zH3W394f4oFhERrxAhMA</div></a>
+        <a class="glass block" href="https://xrpscan.com/account/rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J" target="_blank" rel="noopener"><div class="text-sm text-slate-400">Treasury</div><div class="mt-1 font-mono break-all kbd">rBrT1sVMt6Hn5YVo5F8XgyjwuzE9JP1q1J</div></a>
       </div>
       <p class="mt-6 text-sm text-slate-400">Tip: On mobile, open links in a new tab to keep this page handy while browsing transactions.</p>
     </div>
@@ -297,21 +236,13 @@
           <h3 class="font-semibold accent">5.89% escrow fee (bot)</h3>
           <ul class="mt-3 list-disc list-inside text-slate-300 space-y-1">
             <li>50% → Dev wallet (ops & growth)</li>
-            <li>50% → Market-buy & burn associated token</li>
+            <li>50% → Market-buy & burn <span class="text-white font-semibold">$TRLS</span></li>
             <li>NFT holders: target 1% fee (planned discount)</li>
           </ul>
         </div>
         <div class="glass">
-          <h3 class="font-semibold accent">Fee Split Wallets</h3>
-          <div class="mt-2 text-sm">
-            <div class="text-slate-400">Dev (fees)</div>
-            <div class="font-mono break-all kbd">rso5tMdqV9jRT6XNM4nrgkZcpFna2YzgVX</div>
-          </div>
-          <div class="mt-4 text-sm">
-            <div class="text-slate-400">XRK Contract (buy & burn loop)</div>
-            <div class="font-mono break-all kbd">r6CBWzsfQuDTwWk2NYzZk5MrQewoUqFoE</div>
-          </div>
-          <p class="mt-4 text-slate-400 text-sm">All burns & splits are visible on-chain. Mechanical fairness—code over trust.</p>
+          <h3 class="font-semibold accent">Transparency</h3>
+          <p class="mt-3 text-slate-300">All burns & splits are visible on-chain. Mechanical fairness—<span class="text-white font-semibold">code over trust</span>.</p>
         </div>
       </div>
     </div>
@@ -338,7 +269,6 @@
 
   <!-- THEME, MENU & HELPERS -->
   <script>
-    // Persisted theme/layout
     const THEMES = {
       BlueGreen:{start:'#00E0FF',end:'#00D5A5',solid:'#00DDEE',a10:'rgba(0,224,255,.10)',a30:'rgba(0,224,255,.30)'},
       Gold:{start:'#FFD700',end:'#FFEA7A',solid:'#FFD700',a10:'rgba(255,215,0,.10)',a30:'rgba(255,215,0,.30)'},
@@ -363,11 +293,8 @@
     function getLayout(){try{return JSON.parse(localStorage.getItem('trustlessTheme'))?.layout||'Cozy'}catch{return'Cozy'}}
 
     applyTheme(getTheme()); applyLayout(getLayout());
-
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Legal modal
     const legal = `<h3 class='text-lg font-semibold mb-2'>Entertainment & Use Disclaimer</h3>
     <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
     <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
@@ -382,7 +309,6 @@
       document.body.appendChild(modal); document.getElementById('close-legal').onclick=()=>modal.remove();
     });
 
-    // Hamburger menu
     const menuBtn=document.getElementById('menuBtn'); const menu=document.getElementById('mainMenu');
     function closeMenu(){menu.classList.add('hidden');menuBtn.setAttribute('aria-expanded','false')}
     function openMenu(){menu.classList.remove('hidden');menuBtn.setAttribute('aria-expanded','true')}
@@ -391,7 +317,6 @@
     document.addEventListener('click',(e)=>{if(!menu.contains(e.target)&&!menuBtn.contains(e.target))closeMenu()});
     document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeMenu()});
 
-    // Theme panel
     function mountThemePanel(){
       const wrap=document.createElement('div'); wrap.className='theme-toggle';
       wrap.innerHTML=`<button id="gearBtn" class="btn-accent rounded-full px-3 py-3" title="Theme & layout">
