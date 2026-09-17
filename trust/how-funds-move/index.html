@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>How Funds Move | Trustless Payments</title>
+  <meta name="description" content="Understand how funding, verification, contract state, release and refunds move through Trustless Payments infrastructure on the XRP Ledger.">
+
+  <link rel="canonical" href="https://trustlesspayments.io/trust/how-funds-move/">
+  <meta name="theme-color" content="#05080d">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+
+    <a class="brand" href="/">
+      <span class="brand-mark">T</span>
+      <span>Trustless Payments</span>
+    </a>
+
+    <nav class="main-nav" data-main-nav>
+      <a href="/products/trustless-network/">Products</a>
+      <a href="/solutions/crypto-escrow/">Solutions</a>
+      <a href="/developers/overview/">Developers</a>
+      <a href="/economics/trls/">Economics</a>
+      <a href="/resources/">Resources</a>
+      <a href="/trust/security/">Trust</a>
+      <a href="/company/about/">Company</a>
+    </nav>
+
+    <a class="nav-cta desktop-cta"
+       href="https://trustlessnetwork.app/"
+       target="_blank"
+       rel="noopener">
+      Launch Network →
+    </a>
+
+    <button class="menu-btn"
+            data-menu-button
+            aria-expanded="false"
+            aria-label="Open navigation">
+      ☰
+    </button>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-inner">
+
+    <div class="eyebrow">Trust & Transparency</div>
+
+    <h1>
+      How funds
+      <span class="gradient-text">move.</span>
+    </h1>
+
+    <p class="hero-copy">
+      Trustless Payments is designed so funding, contract state and settlement
+      can be understood before money moves.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="#lifecycle">View lifecycle</a>
+      <a class="btn-secondary" href="/trust/risks/">Review risks</a>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="trust-strip">
+  <div class="container trust-strip-inner">
+    <span>Ledger verification</span>
+    <span>Defined contract state</span>
+    <span>Rule-based settlement</span>
+    <span>Visible transaction history</span>
+  </div>
+</div>
+
+
+<section class="section" id="lifecycle">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Lifecycle</div>
+      <h2>From agreement to settlement.</h2>
+      <p>
+        The exact flow depends on the product, but the core model remains the
+        same: define rules, verify funding, track state and settle according to
+        the agreement.
+      </p>
+    </div>
+
+    <div class="grid-3 process">
+
+      <article class="card">
+        <h3>Agreement created</h3>
+        <p>
+          Payment terms, participants, deadlines, milestones and review rules
+          are established before settlement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Payment instructions issued</h3>
+        <p>
+          The payer receives the destination information required for the
+          specific contract or payment workflow.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Funding verified</h3>
+        <p>
+          The system checks XRP Ledger activity to confirm that the expected
+          payment was received.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Contract becomes active</h3>
+        <p>
+          Once funding is verified, the agreement proceeds through its defined
+          work, review or conditional state.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Rules are applied</h3>
+        <p>
+          Approvals, deadlines, review windows and other recorded actions
+          determine the next valid contract state.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Settlement occurs</h3>
+        <p>
+          Funds are released, refunded or otherwise routed according to the
+          agreement and product-specific logic.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section section-muted">
+  <div class="container">
+
+    <div class="grid-2">
+
+      <div>
+        <div class="eyebrow">Verification</div>
+        <h2>The ledger is part of the evidence layer.</h2>
+
+        <p class="copy-muted">
+          Trustless products use XRP Ledger transaction data to help verify
+          funding and settlement rather than relying only on off-platform claims.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>What can be verified</h3>
+
+        <p>
+          Transaction hashes, sending and receiving addresses, amounts,
+          destination tags where applicable and ledger settlement history can
+          provide independently reviewable payment evidence.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Contract State</div>
+      <h2>Money movement depends on state.</h2>
+    </div>
+
+    <div class="grid-2">
+
+      <article class="card">
+        <h3>Before funding</h3>
+        <p>
+          A draft or awaiting-funding agreement does not represent an active
+          funded contract until the required ledger activity is verified.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>During active work</h3>
+        <p>
+          Payment remains governed by the applicable contract rules while work,
+          review, revision or other defined conditions are in progress.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>On approval</h3>
+        <p>
+          Eligible funds can be released according to the milestone or contract
+          settlement logic.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>On refund conditions</h3>
+        <p>
+          Where the agreement permits a refund, remaining funds can be returned
+          according to the applicable contract state and rules.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section section-muted">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Important</div>
+      <h2>Payment instructions matter.</h2>
+
+      <p>
+        Users should follow the exact payment instructions shown for a contract.
+        Incorrect amounts, destination information, tags or memos can interfere
+        with automated payment identification.
+      </p>
+    </div>
+
+    <div class="grid-3">
+
+      <article class="card">
+        <h3>Correct destination</h3>
+        <p>
+          Verify the receiving address before sending XRP.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Correct tag or memo</h3>
+        <p>
+          Where a workflow requires a destination tag or memo, include it
+          exactly as instructed.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Correct amount</h3>
+        <p>
+          Send the amount required by the agreement or funding instruction.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+
+    <div class="grid-2">
+
+      <div>
+        <div class="eyebrow">Different Products</div>
+        <h2>One principle, different workflows.</h2>
+      </div>
+
+      <div class="grid-2">
+
+        <article class="card">
+          <h3>Trustless Network</h3>
+          <p>
+            Milestone-based agreements for freelancers, operators and clients.
+          </p>
+          <a class="card-link" href="/products/trustless-network/">
+            Explore Network →
+          </a>
+        </article>
+
+        <article class="card">
+          <h3>Enforcer</h3>
+          <p>
+            Conditional XRP escrow with automated release or refund logic.
+          </p>
+          <a class="card-link" href="/products/enforcer/">
+            Explore Enforcer →
+          </a>
+        </article>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section section-muted">
+  <div class="container">
+
+    <div class="cta-panel">
+
+      <div class="eyebrow">Before You Transact</div>
+
+      <h2>Understand the rules first.</h2>
+
+      <p class="hero-copy">
+        Review contract rules, security practices and known risks before using
+        Trustless payment infrastructure.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn-primary" href="/trust/security/">Security →</a>
+        <a class="btn-secondary" href="/trust/risks/">Risks</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="brand">
+          <span class="brand-mark">T</span>
+          <span>Trustless Payments</span>
+        </div>
+        <p class="copy-muted">Payment infrastructure for internet business.</p>
+      </div>
+
+      <div>
+        <div class="footer-title">Products</div>
+        <div class="footer-links">
+          <a href="/products/trustless-network/">Trustless Network</a>
+          <a href="/products/enforcer/">Enforcer</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Trust</div>
+        <div class="footer-links">
+          <a href="/trust/how-funds-move/">How Funds Move</a>
+          <a href="/trust/security/">Security</a>
+          <a href="/trust/risks/">Risks</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Developers</div>
+        <div class="footer-links">
+          <a href="/developers/overview/">Overview</a>
+          <a href="/developers/contract-lifecycle/">Contract Lifecycle</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Company</div>
+        <div class="footer-links">
+          <a href="/company/about/">About</a>
+          <a href="/company/contact/">Contact</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © <span data-year></span> Trustless Payments.
+      Trustless Payments is not affiliated with Ripple.
+    </div>
+
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+</body>
+</html>
