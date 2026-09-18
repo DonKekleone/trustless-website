@@ -255,9 +255,6 @@ h3 {
   color: var(--green);
 }
 
-.trust-strip span:first-child::before {
-  display: none;
-}
 
 .section {
   padding: 100px 0;
