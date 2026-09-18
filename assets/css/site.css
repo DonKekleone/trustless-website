@@ -249,8 +249,9 @@ h3 {
   letter-spacing: .04em;
 }
 
-.trust-strip span::before {
+.trust-strip-inner > span::before {
   content: "•";
+  display: inline-block;
   margin-right: 12px;
   color: var(--green);
 }
