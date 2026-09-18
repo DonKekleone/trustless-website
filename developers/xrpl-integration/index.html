@@ -60,6 +60,81 @@
   </div>
 </section>
 
+<section class="section section-muted">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Integration Model</div>
+      <h2>Application state and ledger state solve different problems.</h2>
+      <p>
+        The XRP Ledger provides transaction evidence. Trustless application
+        logic provides agreement context. A payment workflow becomes useful
+        when the system can connect an expected action in the application
+        with the corresponding activity on the ledger.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <article class="card">
+        <h3>Expected payment</h3>
+        <p>
+          The application knows which agreement is awaiting funding, the
+          expected amount and the payment instructions issued for that
+          workflow.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Observed transaction</h3>
+        <p>
+          Ledger activity provides evidence that can be compared against those
+          expectations before application state changes.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Verification</h3>
+        <p>
+          Address, amount and required transaction metadata can be checked
+          before a payment is associated with an agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>State transition</h3>
+        <p>
+          Once the expected payment is verified, the application can advance
+          the agreement into the appropriate funded or active state.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Why Explicit State Matters</div>
+      <h2>A transaction proves movement. It does not explain the entire agreement.</h2>
+      <p>
+        Payment infrastructure still needs to understand which contract the
+        transaction belongs to, which actions are now valid and which
+        settlement rules apply next. That separation keeps ledger evidence
+        and application logic understandable.
+      </p>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="/products/xrpl-payment-infrastructure/">Explore XRPL Infrastructure →</a>
+      <a class="btn-secondary" href="/developers/contract-lifecycle/">Contract Lifecycle</a>
+    </div>
+
+  </div>
+</section>
+
 </main>
 
 <footer class="site-footer">

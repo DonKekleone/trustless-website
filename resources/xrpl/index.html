@@ -98,6 +98,111 @@
   </div>
 </section>
 
+<section class="section section-muted">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Ledger Evidence</div>
+      <h2>The ledger records transactions. The application interprets the workflow.</h2>
+      <p>
+        Trustless Payments uses XRP Ledger transaction activity as evidence
+        inside payment workflows. The ledger records what happened on-chain,
+        while application logic tracks the agreement, expected payment and
+        current contract state.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <article class="card">
+        <h3>What XRPL records</h3>
+        <p>
+          Transactions can provide durable evidence of addresses, amounts,
+          transaction hashes and associated transaction data.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>What the application tracks</h3>
+        <p>
+          Contract state, deadlines, participant roles and valid next actions
+          belong to the payment workflow built around that ledger activity.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Payment Identification</div>
+      <h2>Correct transaction details matter.</h2>
+      <p>
+        A valid XRP transaction is not automatically the correct payment for
+        a specific agreement. Systems may also need to match destination
+        addresses, expected amounts, destination tags, memos or other
+        workflow-specific data.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <article class="card">
+        <h3>Matching payments to the right workflow</h3>
+        <p>
+          When a workflow requires a destination tag, that value helps the
+          receiving system associate funds with the intended account or
+          agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Adding transaction context</h3>
+        <p>
+          Memos can provide additional transaction context when a workflow
+          uses them to identify or describe a payment.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Reviewing a specific ledger event</h3>
+        <p>
+          A transaction hash provides a reference for independently reviewing
+          a specific ledger transaction.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Comparing expected and observed payment data</h3>
+        <p>
+          Payment verification should compare the expected transaction with
+          the transaction that actually appeared on the ledger.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Go Deeper</div>
+      <h2>Follow the transaction from ledger activity to contract state.</h2>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="/products/xrpl-payment-infrastructure/">XRPL Payment Infrastructure →</a>
+      <a class="btn-secondary" href="/developers/xrpl-integration/">XRPL Integration</a>
+    </div>
+
+  </div>
+</section>
+
 </main>
 
 <footer class="site-footer">

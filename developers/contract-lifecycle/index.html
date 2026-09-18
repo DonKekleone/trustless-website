@@ -62,6 +62,96 @@
   </div>
 </section>
 
+<section class="section section-muted">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">State Machine</div>
+      <h2>Each state determines what can happen next.</h2>
+      <p>
+        A structured agreement is easier to reason about when valid actions
+        depend on explicit state. Funding should not behave like review.
+        Review should not behave like settlement. Each phase has its own
+        purpose and permitted transitions.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <article class="card">
+        <h3>Created → Awaiting Funding</h3>
+        <p>
+          Agreement terms exist, but the workflow has not yet verified the
+          expected payment.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Awaiting Funding → Funded</h3>
+        <p>
+          Expected ledger activity is verified and associated with the
+          agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Funded → Active</h3>
+        <p>
+          Work begins under the deadlines, milestones and rules defined by the
+          agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Active → Review</h3>
+        <p>
+          Submitted work can move into a review period where the applicable
+          approval or revision rules become relevant.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Review → Revision</h3>
+        <p>
+          When revision rights apply, the agreement can return to a defined
+          correction period rather than becoming an open-ended negotiation.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Settlement → Resolved</h3>
+        <p>
+          Release, refund or another terminal outcome closes the active
+          agreement and records the final state.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Why State Matters</div>
+      <h2>Clear state reduces ambiguity.</h2>
+      <p>
+        When participants can see where an agreement stands, they can also
+        understand which actions are available and what conditions move the
+        workflow forward. The system does not need to improvise the rules at
+        the moment money moves.
+      </p>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="/products/trustless-network/">Trustless Network →</a>
+      <a class="btn-secondary" href="/trust/contract-rules/">Contract Rules</a>
+    </div>
+
+  </div>
+</section>
+
 </main>
 
 <footer class="site-footer">
