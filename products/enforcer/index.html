@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>Enforcer | Automated XRPL Escrow | Trustless Payments</title>
-  <meta name="description" content="Enforcer is automated XRPL escrow infrastructure for conditional payments, deadlines, release logic and refunds.">
+  <title>Trustless Escrow Enforcer | Conditional XRP Escrow | Trustless Payments</title>
+  <meta name="description" content="Trustless Escrow Enforcer is a Telegram-based XRPL escrow bot for conditional XRP payments tied to token launch market-cap targets, expiry, release and refund logic.">
 
   <link rel="canonical" href="https://trustlesspayments.io/products/enforcer/">
   <meta name="theme-color" content="#05080d">
@@ -48,147 +48,44 @@
 <section class="hero">
   <div class="container hero-inner">
 
-    <div class="eyebrow">Automated XRPL Escrow</div>
+    <div class="eyebrow">Trustless Escrow Enforcer</div>
 
     <h1>
-      Automated XRPL escrow.
-      <span class="gradient-text">Conditions in. Settlement out.</span>
+      Conditional XRP escrow
+      <span class="gradient-text">for launch promises.</span>
     </h1>
 
     <p class="hero-copy">
-      Enforcer is conditional payment infrastructure for XRP Ledger workflows.
-      Define settlement conditions, fund escrow and allow automated logic to
-      determine release or refund outcomes.
+      Enforcer is a Telegram-based XRPL escrow bot for deals where payout depends
+      on a measurable token launch outcome. Define the XRP amount, recipient,
+      token issuer, target market cap and expiry before funding. If the target is
+      reached in time, the contract can release. If not, the contract can refund.
     </p>
 
     <div class="hero-actions">
-      <a class="btn-primary" href="#how-it-works">How Enforcer Works</a>
-      <a class="btn-secondary" href="/trust/how-funds-move/">How Funds Move</a>
+      <a class="btn-primary"
+         href="https://t.me/TrustlessPaymentsBot"
+         target="_blank"
+         rel="noopener">
+        Open Enforcer on Telegram →
+      </a>
+
+      <a class="btn-secondary" href="#how-enforcer-works">
+        How Enforcer Works
+      </a>
     </div>
 
   </div>
 </section>
-
 
 <div class="trust-strip">
   <div class="container trust-strip-inner">
-    <span>XRPL escrow</span>
-    <span>Conditional settlement</span>
-    <span>Deadline enforcement</span>
-    <span>On-chain verification</span>
+    <span>Conditional XRP escrow</span>
+    <span>Market-cap milestones</span>
+    <span>Expiry enforcement</span>
+    <span>XRPL verification</span>
   </div>
 </div>
-
-
-<section class="section" id="how-it-works">
-  <div class="container">
-
-    <div class="section-head">
-      <div class="eyebrow">Workflow</div>
-      <h2>Automated settlement around defined escrow conditions.</h2>
-      <p>
-        Enforcer reduces dependency on manual intervention by turning payment
-        terms into a structured lifecycle.
-      </p>
-    </div>
-
-    <div class="grid-3 process">
-
-      <article class="card">
-        <h3>Define</h3>
-        <p>
-          Set payment amount, recipient, conditions, deadlines and settlement
-          parameters before funding begins.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Fund</h3>
-        <p>
-          Send XRP to the designated escrow workflow using the required payment
-          details.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Verify</h3>
-        <p>
-          Funding activity is checked against the XRP Ledger before the
-          agreement becomes active.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Monitor</h3>
-        <p>
-          The system evaluates the conditions and deadline associated with the
-          escrow.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Release</h3>
-        <p>
-          When settlement conditions are satisfied, funds can move according to
-          the configured release logic.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Refund</h3>
-        <p>
-          If required conditions are not satisfied before expiry, the workflow
-          can return funds according to the escrow rules.
-        </p>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section class="section section-muted">
-  <div class="container">
-
-    <div class="section-head">
-      <div class="eyebrow">Why Enforcer</div>
-      <h2>Remove negotiation from the settlement moment.</h2>
-    </div>
-
-    <div class="grid-3">
-
-      <article class="card">
-        <div class="card-kicker">Rules</div>
-        <h3>Defined before funding</h3>
-        <p>
-          Conditions are established before capital enters the workflow.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-kicker">Verification</div>
-        <h3>Ledger-based funding</h3>
-        <p>
-          XRP Ledger transactions provide independently reviewable funding and
-          settlement evidence.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-kicker">Automation</div>
-        <h3>Deterministic outcomes</h3>
-        <p>
-          Release and refund paths are governed by workflow state rather than
-          last-minute persuasion.
-        </p>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
 
 <section class="section">
   <div class="container">
@@ -196,25 +93,120 @@
     <div class="grid-2">
 
       <div>
-        <div class="eyebrow">Infrastructure</div>
-        <h2>Built for verifiable payment workflows.</h2>
+        <div class="eyebrow">Trustless Escrow Enforcer</div>
+        <h2>Turn the promise into something the workflow can enforce.</h2>
 
-        <p class="copy-muted">
-          Enforcer combines escrow state, ledger verification, deadlines and
-          payout routing into a single payment lifecycle.
+        <p>
+          Enforcer is built for launch agreements where the payout depends on a
+          measurable result.
         </p>
+
+        <p>
+          Instead of relying on reputation, screenshots or a second negotiation
+          after funding, the parties define the XRP amount, token issuer,
+          market-cap target and expiry before the workflow begins.
+        </p>
+
+        <p>
+          Once funded, Enforcer verifies the payment, watches the condition and
+          resolves the agreement according to the rules already in place.
+        </p>
+
+        <p>
+          <strong>
+            The promise stays human. The settlement becomes mechanical.
+          </strong>
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary"
+             href="https://t.me/TrustlessPaymentsBot"
+             target="_blank"
+             rel="noopener">
+            Open @TrustlessPaymentsBot →
+          </a>
+
+          <a class="btn-secondary" href="#how-enforcer-works">
+            See the Mechanism
+          </a>
+        </div>
       </div>
 
       <div class="card">
-        <h3>Core capabilities</h3>
+        <img
+          src="/assets/images/trustless-enforcer.png"
+          alt="Trustless Escrow Enforcer, the Trustless Payments Telegram XRPL escrow bot"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:16px;"
+        >
+      </div>
 
-        <p>
-          Funding verification, conditional release, expiry handling, refunds,
-          fee routing and transaction receipts.
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">The Problem</div>
+      <h2>Promises are easy before the money moves.</h2>
+      <p>
+        Launch deals often sound simple. Someone promises a target. Someone puts
+        XRP behind the deal. Then the money moves and the meaning of success starts
+        getting softer.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <div>
+        <p class="copy-muted">
+          “We’ll get it to this market cap.”
         </p>
 
-        <a class="card-link" href="/developers/contract-lifecycle/">
-          Explore contract lifecycle →
+        <p class="copy-muted">
+          “We’ll hit the target.”
+        </p>
+
+        <p class="copy-muted">
+          “Give us a few days.”
+        </p>
+
+        <p>
+          Then deadlines stretch. Targets get reinterpreted. Screenshots become
+          evidence. Everybody remembers the agreement a little differently.
+        </p>
+
+        <p>
+          Enforcer moves the important decisions to the beginning.
+        </p>
+
+        <p>
+          Before funding, the participants define what success means, how much XRP
+          is at stake and how long the agreement has to reach its target.
+        </p>
+
+        <p>
+          After funding, the rules do not need another sales pitch.
+        </p>
+
+        <p><strong>They need an outcome.</strong></p>
+      </div>
+
+      <div class="card">
+        <div class="card-kicker">Trustless Escrow</div>
+        <h3>Define the condition before XRP changes hands.</h3>
+
+        <p>
+          Enforcer turns a launch promise into a structured escrow workflow:
+          measurable target, defined expiry, verified funding and explicit
+          release or refund paths.
+        </p>
+
+        <a class="card-link" href="/trust/contract-rules/">
+          Review contract rules →
         </a>
       </div>
 
@@ -223,23 +215,521 @@
   </div>
 </section>
 
+<section class="section section-muted" id="how-enforcer-works">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">How Enforcer Works</div>
+      <h2>Define the deal before funding.</h2>
+      <p>
+        An Enforcer workflow begins with explicit parameters. The purpose is
+        simple: take a vague launch promise and turn it into a condition the
+        payment workflow can actually evaluate.
+      </p>
+    </div>
+
+    <div class="grid-3">
+
+      <article class="card">
+        <div class="card-kicker">Amount</div>
+        <h3>XRP amount</h3>
+        <p>
+          The amount of XRP placed behind the agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Recipient</div>
+        <h3>XRPL recipient</h3>
+        <p>
+          The XRP Ledger address designated to receive payout if the required
+          condition is satisfied.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Asset</div>
+        <h3>Token issuer</h3>
+        <p>
+          The XRPL issuer address identifying the token tied to the market-cap
+          condition.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Target</div>
+        <h3>Market-cap milestone</h3>
+        <p>
+          The USD market-cap threshold the agreement is built around.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Clock</div>
+        <h3>Expiry window</h3>
+        <p>
+          The period in which the configured target must be reached.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Outcome</div>
+        <h3>Settlement path</h3>
+        <p>
+          Release when the condition is satisfied. Refund when the expiry path
+          resolves first.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Funding</div>
+      <h2>Fund it on the XRP Ledger.</h2>
+      <p>
+        Once the agreement is defined, Enforcer provides the payment instructions
+        required to fund the workflow.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <div>
+        <p>
+          Funding is not accepted because someone says they sent it.
+        </p>
+
+        <p>
+          Enforcer verifies the expected XRP Ledger activity before the agreement
+          becomes active.
+        </p>
+
+        <p>
+          That gives the workflow independently reviewable payment evidence from
+          the beginning.
+        </p>
+
+        <a class="card-link" href="/trust/how-funds-move/">
+          Learn how funds move →
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="card-kicker">XRPL Verification</div>
+        <h3>Ledger activity becomes part of the workflow.</h3>
+        <p>
+          The escrow state is tied to verifiable XRP Ledger transactions rather
+          than off-platform screenshots or informal payment claims.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 <section class="section section-muted">
   <div class="container">
 
-    <div class="cta-panel">
-      <div class="eyebrow">Trustless Payments</div>
+    <div class="section-head">
+      <div class="eyebrow">Monitoring</div>
+      <h2>Then Enforcer watches.</h2>
+      <p>
+        Once active, the bot has three jobs.
+      </p>
+    </div>
 
-      <h2>Payment logic should be explicit.</h2>
+    <div class="grid-3">
+
+      <article class="card">
+        <div class="card-kicker">Watcher 01</div>
+        <h3>Funding</h3>
+        <p>
+          Confirm the expected XRP entered the workflow before the agreement moves
+          forward.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Watcher 02</div>
+        <h3>Market-cap condition</h3>
+        <p>
+          Monitor whether the configured XRPL token reaches the target defined
+          when the agreement was created.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Watcher 03</div>
+        <h3>Expiry</h3>
+        <p>
+          Track whether the required condition is reached before the contract
+          window runs out.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="section-head" style="margin-top:3rem;">
+      <p>
+        Enforcer is not trying to decide whether somebody tried hard enough.
+        It is not evaluating charisma. It is not reading Telegram arguments at
+        2:00 AM.
+      </p>
+
+      <p>
+        It watches the condition. It watches the clock.
+      </p>
+
+      <p><strong>Then the workflow resolves.</strong></p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Settlement</div>
+      <h2>Two possible outcomes. No improvisation at settlement.</h2>
+    </div>
+
+    <div class="grid-2">
+
+      <article class="card">
+        <div class="card-kicker">Target Reached</div>
+        <h3>Release</h3>
+
+        <p>
+          If the configured market-cap milestone is reached before expiry,
+          Enforcer can move the agreement toward release according to the defined
+          payout logic.
+        </p>
+
+        <p>
+          The recipient does not need to convince the payer that the milestone
+          “basically counts.”
+        </p>
+
+        <p>
+          The condition was defined before the XRP was funded.
+        </p>
+
+        <p><strong>The target was reached. The workflow has its answer.</strong></p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Clock Expired</div>
+        <h3>Refund</h3>
+
+        <p>
+          If the required market-cap condition is not satisfied before expiry,
+          Enforcer can move the workflow toward refund according to the escrow
+          rules.
+        </p>
+
+        <p>
+          Failure has a defined path too.
+        </p>
+
+        <p>
+          An escrow system is not useful only when everything goes according to
+          plan.
+        </p>
+
+        <p><strong>It becomes useful when it does not.</strong></p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Use Case</div>
+      <h2>Built for deals where the result can be measured.</h2>
+      <p>
+        Enforcer is designed for conditional XRPL agreements where payout depends
+        on a defined launch outcome.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <article class="card">
+        <h3>Market-cap promotion deal</h3>
+        <p>
+          A promoter says they can move an XRPL token toward a defined market-cap
+          target. Instead of paying entirely on confidence, the XRP payout stays
+          tied to the result written into the agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Token launch milestone</h3>
+        <p>
+          A launch operator accepts payment against a specific post-launch target.
+          The market-cap condition and expiry are established before the XRP is
+          funded.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Performance-backed campaign</h3>
+        <p>
+          A project commits XRP to a campaign while keeping settlement connected
+          to the measurable outcome promised at the start.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Conditional payout agreement</h3>
+        <p>
+          Capital can be committed to the deal without turning the payment into an
+          unconditional transfer before the agreed milestone exists.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="grid-2">
+
+      <div>
+        <div class="eyebrow">What Enforcer Does Not Decide</div>
+        <h2>Software should enforce the rule, not invent one.</h2>
+
+        <p>
+          Enforcer does not decide whether a token is good.
+        </p>
+
+        <p>
+          It does not decide whether a promoter is trustworthy.
+        </p>
+
+        <p>
+          It does not decide whether a launch “felt successful.”
+        </p>
+
+        <p>
+          Those are human judgments.
+        </p>
+
+        <p>
+          Enforcer handles a narrower job:
+        </p>
+
+        <p>
+          <strong>
+            Was the defined condition reached before the defined expiry?
+          </strong>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-kicker">Trustless Principle</div>
+        <h3>Objective conditions beat subjective settlement.</h3>
+
+        <p>
+          Trustless payment infrastructure works best when software is asked to
+          enforce something measurable rather than pretend to understand something
+          subjective.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Why Enforcer</div>
+      <h2>Settlement without the last-minute sales pitch.</h2>
+      <p>
+        The worst time to define a deal is when the outcome is already known and
+        the money is ready to move. By then, both sides have incentives to explain
+        the agreement in whatever way benefits them most.
+      </p>
+
+      <p>
+        Enforcer pushes that negotiation backward — before funding, before the
+        deadline and before anyone knows which outcome will win.
+      </p>
+    </div>
+
+    <div class="grid-3">
+
+      <article class="card">
+        <h3>Define the condition</h3>
+        <p>
+          Put the measurable outcome into the agreement before funding.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Define the deadline</h3>
+        <p>
+          Give the promise a real expiry instead of an open-ended extension.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Let settlement follow</h3>
+        <p>
+          Verify what happened and resolve according to the rules already in
+          place.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="grid-2">
+
+      <div>
+        <div class="eyebrow">Interface + Infrastructure</div>
+        <h2>XRPL underneath. Telegram in front.</h2>
+
+        <p>
+          Enforcer uses Telegram as the operating interface and the XRP Ledger as
+          part of the payment and verification layer.
+        </p>
+
+        <p>
+          That keeps the workflow familiar while giving conditional escrow
+          ledger-based funding evidence and explicit settlement logic.
+        </p>
+
+        <p>
+          The interface stays simple because the mechanism carries the weight.
+          Telegram is where the agreement is created. XRPL is where the payment
+          evidence lives. Enforcer sits between the promise and the settlement.
+        </p>
+
+        <p><strong>Open the bot. Define the deal. Fund it. Let Enforcer enforce it.</strong></p>
+      </div>
+
+      <div class="card">
+        <div class="card-kicker">Launch Enforcer</div>
+        <h3>@TrustlessPaymentsBot</h3>
+
+        <p>
+          Create a conditional XRP escrow workflow directly in Telegram.
+        </p>
+
+        <a class="btn-primary"
+           href="https://t.me/TrustlessPaymentsBot"
+           target="_blank"
+           rel="noopener">
+          Open Enforcer on Telegram →
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+
+    <div class="grid-2">
+
+      <div>
+        <div class="eyebrow">Fees</div>
+        <h2>The product should fund the product.</h2>
+
+        <p>
+          Applicable Enforcer workflows include a platform fee.
+        </p>
+
+        <p>
+          That revenue supports Trustless Payments infrastructure, continued
+          development and the broader ecosystem around the products.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-kicker">Broader Stack</div>
+        <h3>Different products. Same operating principle.</h3>
+
+        <p>
+          Enforcer applies Trustless Payments infrastructure to conditional XRP
+          escrow and measurable launch outcomes.
+        </p>
+
+        <p>
+          Trustless Network applies the same principle to freelance work,
+          milestone agreements and internet business.
+        </p>
+
+        <p>
+          The use cases change. The rule does not: define the agreement before
+          funding, verify what happened and let settlement follow the conditions
+          already in place.
+        </p>
+
+        <a class="card-link" href="/products/trustless-network/">
+          Explore Trustless Network →
+        </a>
+
+        <br><br>
+
+        <a class="card-link" href="/products/xrpl-payment-infrastructure/">
+          Explore XRPL Infrastructure →
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="cta-panel">
+      <div class="eyebrow">Trustless Escrow Enforcer</div>
+
+      <h2>Put the promise on rails.</h2>
 
       <p class="hero-copy">
-        Enforcer is one component of the broader Trustless Payments
-        infrastructure stack.
+        If the deal depends on a measurable launch target, do not leave settlement
+        to memory, screenshots or whoever argues hardest when the deadline arrives.
+        Define the target before XRP changes hands. Fund the agreement. Let
+        Enforcer watch the condition and the clock. Then let the rules decide what
+        happens next.
       </p>
 
       <div class="hero-actions">
-        <a class="btn-primary" href="/products/xrpl-payment-infrastructure/">
-          Explore Infrastructure →
+        <a class="btn-primary"
+           href="https://t.me/TrustlessPaymentsBot"
+           target="_blank"
+           rel="noopener">
+          Open Trustless Escrow Enforcer →
         </a>
 
         <a class="btn-secondary" href="/trust/contract-rules/">
