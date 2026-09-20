@@ -1,0 +1,90 @@
+/*
+ * Canonical Trustless Payments footer styles for legacy Tailwind pages.
+ * Scoped beneath .site-footer to avoid changing the existing page layouts.
+ */
+
+.site-footer {
+  padding: 64px 0 34px;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  background: #03060a;
+  color: #e6edf3;
+}
+
+.site-footer,
+.site-footer * {
+  box-sizing: border-box;
+}
+
+.site-footer .container {
+  width: min(calc(100% - 40px), 1200px);
+  margin-inline: auto;
+}
+
+.site-footer .footer-grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  gap: 30px;
+}
+
+.site-footer .brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.site-footer .brand-mark {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(0, 224, 255, 0.35);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 224, 255, 0.08);
+  color: #00e0ff;
+}
+
+.site-footer .copy-muted {
+  margin-top: 16px;
+  color: #8b98a7;
+}
+
+.site-footer .footer-title {
+  margin-bottom: 14px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.site-footer .footer-links {
+  display: grid;
+  gap: 10px;
+  color: #7e8a98;
+  font-size: 13px;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer .footer-links a:hover {
+  color: #fff;
+}
+
+.site-footer .footer-bottom {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  color: #687482;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .site-footer .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

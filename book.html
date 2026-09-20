@@ -63,6 +63,7 @@
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/css/legacy-footer.css">
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100" id="top">
   <!-- NAV -->
@@ -276,12 +277,71 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p>© <span id="year"></span> Trustless. All rights reserved. • <a href="#" id="legal-link" class="underline decoration-dotted">Legal & Disclaimers</a></p>
-      <p class="mt-2">Not affiliated with Ripple. XRPL is an open-source protocol.</p>
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="brand">
+          <span class="brand-mark">T</span>
+          <span>Trustless Payments</span>
+        </div>
+
+        <p class="copy-muted">
+          Escrow infrastructure for internet business.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-title">Products</div>
+        <div class="footer-links">
+          <a href="/products/trustless-network/">Trustless Network</a>
+          <a href="/products/enforcer/">Enforcer</a>
+          <a href="/products/xrpl-payment-infrastructure/">Infrastructure</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Resources</div>
+        <div class="footer-links">
+          <a href="/resources/guides/">Guides</a>
+          <a href="/developers/overview/">Developers</a>
+          <a href="/resources/trustless-times/">Trustless Times</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Trust</div>
+        <div class="footer-links">
+          <a href="/trust/security/">Security</a>
+          <a href="/trust/how-funds-move/">How Funds Move</a>
+          <a href="/trust/risks/">Risks</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Company</div>
+        <div class="footer-links">
+          <a href="/company/about/">About</a>
+          <a href="/company/principles/">Principles</a>
+          <a href="/partners/">Partners</a>
+          <a href="/company/contact/">Contact</a>
+          <a href="/company/terms/">Terms</a>
+          <a href="/company/privacy/">Privacy</a>
+        </div>
+      </div>
+
     </div>
-  </footer>
+
+    <div class="footer-bottom">
+      © <span data-year></span> Trustless Payments.
+      Trustless Payments is not affiliated with Ripple.
+      XRP Ledger is an open-source decentralized blockchain technology.
+    </div>
+
+  </div>
+</footer>
 
   <!-- THEME, MENU & UTIL SCRIPTS -->
   <script>
@@ -320,7 +380,7 @@
     // Initial theme + year
     applyTheme(getTheme());
     applyLayout(getLayout());
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
 
     // Legal modal
     const legal = `\
@@ -328,7 +388,7 @@
     <p class='mb-2'>Trustless is a utility for automating escrow conditions on XRPL. Nothing on this site constitutes investment advice, a solicitation, or a guarantee of outcomes. Use at your own risk.</p>
     <p class='mb-2'>Users are responsible for verifying recipient addresses, destination tags, amounts, and understanding on-chain transactions are irreversible.</p>
     <p class='mb-2'>By using the bot you agree to comply with your local laws and regulations.</p>`;
-    document.getElementById('legal-link').addEventListener('click', (e) => {
+    document.getElementById('legal-link')?.addEventListener('click', (e) => {
       e.preventDefault();
       const modal = document.createElement('div');
       modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
