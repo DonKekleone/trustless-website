@@ -344,7 +344,7 @@ h3 {
   content: "0" counter(process);
   display: block;
   margin-bottom: 28px;
-  color: #576574;
+  color: #00e0ff;
   font-size: 13px;
   font-weight: 800;
 }
