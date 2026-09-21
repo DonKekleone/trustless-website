@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>XRPL Escrow Security | Trustless Payments</title>
-  <meta name="description" content="Learn XRPL escrow security practices, payment verification principles and operational safeguards used across Trustless Payments.">
+  <meta name="description" content="Understand XRPL escrow security, wallet custody boundaries, payment verification, contract-state protections and user responsibilities across Trustless Payments.">
   <link rel="canonical" href="https://trustlesspayments.io/trust/security/">
   <meta name="theme-color" content="#05080d">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260917-2">
@@ -49,135 +49,536 @@
 
 <section class="hero">
   <div class="container hero-inner">
-    <div class="eyebrow">Trust & Security</div>
+    <div class="eyebrow">XRPL Escrow Security</div>
 
     <h1>
-      XRPL escrow security starts with
-      <span class="gradient-text">verifiable behavior.</span>
+      Security begins where
+      <span class="gradient-text">blind trust ends.</span>
     </h1>
 
     <p class="hero-copy">
-      Trustless Payments is designed to reduce ambiguity around funding,
-      contract state and settlement while making critical payment activity
-      independently reviewable.
-      Learn how <a href="/products/enforcer/">automated XRPL escrow</a> applies defined conditions to release and refund outcomes.
+      Trustless Payments reduces unnecessary trust through explicit contract
+      state, exact payment instructions, XRP Ledger verification and defined
+      settlement rules.
     </p>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="/trust/how-funds-move/">
+        See How Funds Move →
+      </a>
+
+      <a class="btn-secondary" href="/trust/risks/">
+        Review Known Risks
+      </a>
+    </div>
   </div>
 </section>
 
 <div class="trust-strip">
   <div class="container trust-strip-inner">
+    <span>User-controlled wallets</span>
     <span>Ledger verification</span>
-    <span>Explicit payment instructions</span>
-    <span>Defined contract state</span>
+    <span>Explicit contract state</span>
     <span>Visible settlement history</span>
   </div>
 </div>
 
 <section class="section">
   <div class="container">
-
     <div class="section-head">
-      <div class="eyebrow">Principles</div>
-      <h2>Reduce trust assumptions wherever possible.</h2>
+      <div class="eyebrow">Security Model</div>
+
+      <h2>Do not trust one layer to prove what belongs to another.</h2>
+
+      <p>
+        Security begins by separating wallet authority, ledger evidence,
+        application state and real-world performance. Each layer answers a
+        different question.
+      </p>
     </div>
 
     <div class="grid-3">
-
       <article class="card">
-        <h3>Verify funding</h3>
+        <div class="card-kicker">Wallet Layer</div>
+        <h3>Who authorized the transaction?</h3>
         <p>
-          Payment state should be tied to ledger activity rather than screenshots,
-          messages or unsupported claims.
+          Wallet software controls signing authority. Users should authorize
+          transactions without surrendering seed phrases or private keys.
         </p>
       </article>
 
       <article class="card">
-        <h3>Make rules visible</h3>
+        <div class="card-kicker">Ledger Layer</div>
+        <h3>What moved on XRPL?</h3>
         <p>
-          Contract terms, deadlines and valid actions should remain understandable
-          throughout the agreement lifecycle.
+          XRP Ledger data can provide evidence of addresses, amounts, tags,
+          memos, transaction results and settlement history.
         </p>
       </article>
 
       <article class="card">
-        <h3>Separate identity and payment state</h3>
+        <div class="card-kicker">Application Layer</div>
+        <h3>Why was the movement expected?</h3>
         <p>
-          Application identity and ledger transactions are related but distinct
-          parts of the system.
+          Contract state connects ledger activity with parties, milestones,
+          deadlines and available settlement actions.
         </p>
       </article>
 
+      <article class="card">
+        <div class="card-kicker">Evidence Layer</div>
+        <h3>What happened during the agreement?</h3>
+        <p>
+          Terms, submitted actions, bulletin activity and resolution history
+          provide context beyond the payment transaction itself.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Automation Layer</div>
+        <h3>Which transition is valid?</h3>
+        <p>
+          Product logic evaluates state, timers and recorded actions before
+          exposing release, refund or other resolution paths.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Human Layer</div>
+        <h3>Was the agreement wise?</h3>
+        <p>
+          No blockchain or application can guarantee that scope was clear,
+          expectations were realistic or subjective work will be excellent.
+        </p>
+      </article>
     </div>
-
   </div>
 </section>
 
 <section class="section section-muted">
   <div class="container">
-
-    <div class="section-head">
-      <div class="eyebrow">Operational Safety</div>
-      <h2>Users still have responsibilities.</h2>
-      <p>
-        Automation reduces some forms of risk, but it does not eliminate the need
-        to verify addresses, payment instructions and contract terms.
-      </p>
-    </div>
-
     <div class="grid-2">
+      <div>
+        <div class="eyebrow">Wallet Boundary</div>
 
-      <article class="card">
-        <h3>Check destination details</h3>
-        <p>
-          Confirm the destination address, amount, destination tag and memo
-          requirements before sending funds.
+        <h2>Your signing authority stays with your wallet.</h2>
+
+        <p class="copy-muted">
+          A legitimate payment workflow should tell you what transaction is
+          expected. It should not require you to hand over the secret material
+          that controls your wallet.
         </p>
-      </article>
 
-      <article class="card">
-        <h3>Review contract terms</h3>
-        <p>
-          Understand deadlines, review windows, revision rules and settlement
-          behavior before funding an agreement.
+        <p class="copy-muted">
+          Review transaction details inside the wallet interface before approving
+          them. A connected wallet is not permission to stop reading.
         </p>
-      </article>
+      </div>
 
-      <article class="card">
-        <h3>Protect wallet credentials</h3>
+      <div class="card">
+        <div class="card-kicker">Never Share</div>
+        <h3>Seed phrases, private keys or recovery credentials.</h3>
         <p>
-          Never share seed phrases, private keys or wallet recovery credentials
-          with Trustless Payments or another participant.
+          Trustless Payments does not need those secrets to verify a public
+          transaction or associate a wallet address with an agreement.
         </p>
-      </article>
-
-      <article class="card">
-        <h3>Verify on-chain activity</h3>
-        <p>
-          Where appropriate, independently review the relevant transaction on the
-          XRP Ledger.
-        </p>
-      </article>
-
+      </div>
     </div>
-
   </div>
 </section>
 
 <section class="section">
   <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Payment Verification</div>
 
-    <div class="cta-panel">
-      <div class="eyebrow">Transparency</div>
+      <h2>A transaction must match the expected funding context.</h2>
 
-      <h2>Understand the system before moving funds.</h2>
-
-      <div class="hero-actions">
-        <a class="btn-primary" href="/trust/how-funds-move/">How Funds Move →</a>
-        <a class="btn-secondary" href="/trust/risks/">Review Risks</a>
-      </div>
+      <p>
+        The existence of an XRP transaction does not prove that the correct
+        agreement was funded. Payment details must be checked together.
+      </p>
     </div>
 
+    <div class="grid-2">
+      <article class="card">
+        <h3>Destination address</h3>
+        <p>
+          Confirm that funds are being sent to the address displayed by the
+          actual contract funding workflow.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>XRP amount</h3>
+        <p>
+          Compare the transaction amount with the exact value expected by
+          the agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Destination tag</h3>
+        <p>
+          Include the required tag exactly. A missing or incorrect tag can
+          prevent reliable payment association.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Memo context</h3>
+        <p>
+          Where required, the memo helps connect ledger activity with the
+          intended contract or workflow.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Transaction result</h3>
+        <p>
+          A submitted transaction is not necessarily a successful transaction.
+          Confirm its validated ledger result.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Independent review</h3>
+        <p>
+          Transaction hashes and addresses can be reviewed using an independent
+          XRP Ledger explorer.
+        </p>
+      </article>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="/developers/xrpl-integration/">
+        Explore XRPL Integration →
+      </a>
+
+      <a class="btn-secondary" href="/trust/how-funds-move/">
+        Follow the XRP
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Contract Protections</div>
+
+      <h2>Security includes controlling what the system allows next.</h2>
+
+      <p>
+        A secure payment rail is not enough if the application lets participants
+        skip required states or improvise settlement after funding.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <h3>Explicit state</h3>
+        <p>
+          Draft, funded, active, review and resolved agreements expose different
+          actions because they represent different conditions.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Role-aware actions</h3>
+        <p>
+          Client and provider responsibilities differ. Available actions should
+          reflect the participant's role in the agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Defined timers</h3>
+        <p>
+          Delivery, review, revision and expiry windows limit how long selected
+          actions remain valid.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Recorded decisions</h3>
+        <p>
+          Approvals, revision requests, extension decisions and resolution
+          actions should remain connected to contract history.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Terminal outcomes</h3>
+        <p>
+          Completed, refunded, cancelled and expired agreements should close
+          rather than remaining indefinitely actionable.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Defined settlement paths</h3>
+        <p>
+          Release and refund actions should follow contract state rather than
+          an improvised off-platform demand.
+        </p>
+      </article>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-secondary" href="/trust/contract-rules/">
+        Contract Rules
+      </a>
+
+      <a class="btn-secondary" href="/developers/contract-lifecycle/">
+        Contract Lifecycle
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">User Security</div>
+
+      <h2>The system can enforce rules. It cannot think on your behalf.</h2>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <h3>Enter through the correct domain</h3>
+        <p>
+          Confirm the website address before connecting a wallet or following
+          transaction instructions.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Read before signing</h3>
+        <p>
+          Inspect transaction type, destination, amount and other details inside
+          the wallet interface.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Ignore credential requests</h3>
+        <p>
+          Do not send seed phrases, private keys, recovery phrases or authentication
+          codes to support personnel or counterparties.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Verify the agreement</h3>
+        <p>
+          Review scope, milestones, deadlines, revision rights and settlement
+          paths before funding.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Preserve evidence</h3>
+        <p>
+          Keep important deliverables and decisions connected to the contract
+          rather than relying entirely on disappearing off-platform messages.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Stop when details change</h3>
+        <p>
+          Treat unexpected address, amount, tag, memo or signing changes as a
+          reason to pause and verify.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Security Limits</div>
+
+      <h2>No honest security page promises perfect safety.</h2>
+
+      <p>
+        Software, infrastructure, users, wallets and blockchain networks can fail
+        in different ways. Trust minimization reduces selected dependencies; it
+        does not eliminate every attack, mistake or dispute.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>What automation can reduce</h3>
+        <p>
+          Reliance on screenshots, informal payment promises, undefined deadlines
+          and unilateral control over settlement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>What automation cannot guarantee</h3>
+        <p>
+          Product uptime, flawless software, correct user behavior, recoverable
+          transactions, work quality, token value or legal outcomes.
+        </p>
+      </article>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="/trust/risks/">
+        Review the Full Risk Disclosure →
+      </a>
+
+      <a class="btn-secondary" href="/company/principles/">
+        Operating Principles
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Product Security Context</div>
+
+      <h2>Different products expose different conditions.</h2>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <div class="card-kicker">Social Escrow Platform</div>
+        <h3>Trustless Network</h3>
+        <p>
+          Uses funded agreements, milestones, workrooms, review state and recorded
+          participant actions for internet work.
+        </p>
+
+        <a class="card-link" href="/products/trustless-network/">
+          Explore Trustless Network →
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Conditional XRPL Escrow</div>
+        <h3>Enforcer</h3>
+        <p>
+          Uses predefined conditions and expiry logic to govern conditional
+          release or refund workflows.
+        </p>
+
+        <a class="card-link" href="/products/enforcer/">
+          Explore Enforcer →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Security Documentation</div>
+
+      <h2>Follow the complete trust architecture.</h2>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <h3>Contract Rules</h3>
+        <p>Understand what governs participant actions and settlement.</p>
+        <a class="card-link" href="/trust/contract-rules/">Review Rules →</a>
+      </article>
+
+      <article class="card">
+        <h3>Contract Lifecycle</h3>
+        <p>Follow state transitions from creation through terminal resolution.</p>
+        <a class="card-link" href="/developers/contract-lifecycle/">View Lifecycle →</a>
+      </article>
+
+      <article class="card">
+        <h3>How Funds Move</h3>
+        <p>Follow XRP from funding instructions to release, refund and fee routing.</p>
+        <a class="card-link" href="/trust/how-funds-move/">Follow the XRP →</a>
+      </article>
+
+      <article class="card">
+        <h3>Known Risks</h3>
+        <p>Review transaction, software, blockchain, counterparty and market risks.</p>
+        <a class="card-link" href="/trust/risks/">Review Risks →</a>
+      </article>
+
+      <article class="card">
+        <h3>Developer Architecture</h3>
+        <p>See the boundaries between wallet, ledger, application and evidence layers.</p>
+        <a class="card-link" href="/developers/overview/">Developer Overview →</a>
+      </article>
+
+      <article class="card">
+        <h3>Economic Transparency</h3>
+        <p>Inspect the issuer, designated wallets, token supply and economic documentation.</p>
+        <a class="card-link" href="/economics/transparency/">Explore Transparency →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <div class="eyebrow">Report A Concern</div>
+
+        <h2>Unexpected behavior should be reported—not worked around.</h2>
+
+        <p class="copy-muted">
+          If a page, transaction instruction or product action appears inconsistent,
+          stop before signing or sending funds. Preserve the relevant URL,
+          transaction hash, contract reference and screenshots.
+        </p>
+      </div>
+
+      <article class="card">
+        <h3>Provide evidence without providing secrets.</h3>
+        <p>
+          Public addresses, transaction hashes and contract references can help
+          investigate an issue. Seed phrases and private keys should never be included.
+        </p>
+
+        <a class="card-link" href="/company/contact/">
+          Contact Trustless Payments →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-panel">
+      <div class="eyebrow">Before You Fund</div>
+
+      <h2>Verify the contract. Verify the transaction. Protect the keys.</h2>
+
+      <p class="hero-copy">
+        Security is not one feature. It is the combination of clear rules,
+        controlled signing, ledger evidence, explicit state and informed users.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn-primary" href="/trust/how-funds-move/">
+          See How Funds Move →
+        </a>
+
+        <a class="btn-secondary" href="/trust/risks/">
+          Review Risks
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
