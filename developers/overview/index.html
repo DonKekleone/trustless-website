@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>XRPL Payment Infrastructure for Developers | Trustless Payments</title>
-  <meta name="description" content="Explore Trustless Payments architecture, contract lifecycles, XRP Ledger integration and automated settlement infrastructure.">
+  <meta name="description" content="Explore XRPL payment infrastructure, explicit contract state, funding verification, destination tags, memos, settlement logic and escrow architecture.">
   <link rel="canonical" href="https://trustlesspayments.io/developers/overview/">
   <meta name="theme-color" content="#05080d">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260917-2">
@@ -49,51 +49,520 @@
 
 <section class="hero">
   <div class="container hero-inner">
-    <div class="eyebrow">Developers</div>
-    <h1>XRPL payment infrastructure with <span class="gradient-text">explicit state.</span></h1>
+    <div class="eyebrow">Developer Overview</div>
+
+    <h1>
+      XRPL payment infrastructure developers can
+      <span class="gradient-text">inspect before users depend on it.</span>
+    </h1>
+
     <p class="hero-copy">
-      Trustless Payments combines contract state, XRP Ledger verification,
-      settlement rules and automation into reusable payment workflows.
+      Trustless Payments connects explicit contract state to XRP Ledger
+      verification, settlement rules, timers and product-level automation.
     </p>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="/developers/contract-lifecycle/">
+        Explore the Contract Lifecycle →
+      </a>
+
+      <a class="btn-secondary" href="/developers/xrpl-integration/">
+        XRPL Integration
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="container trust-strip-inner">
+    <span>Explicit contract state</span>
+    <span>XRPL verification</span>
+    <span>Rule-based settlement</span>
+    <span>Visible trust boundaries</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">System Model</div>
+
+      <h2>The ledger moves value. The application explains why.</h2>
+
+      <p>
+        An XRP transaction proves that value moved between ledger addresses.
+        It does not automatically explain which agreement it funded, which
+        milestone it belongs to, what must happen next or whether a release
+        or refund is valid.
+      </p>
+
+      <p>
+        Trustless Payments supplies that application layer by connecting
+        transaction evidence to participants, contract state, deadlines and
+        settlement rules.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <div class="card-kicker">01</div>
+        <h3>Identity</h3>
+        <p>
+          XRPL wallet addresses provide portable identifiers for parties,
+          profiles, agreements and payment activity.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">02</div>
+        <h3>Agreement</h3>
+        <p>
+          A contract defines the parties, XRP amount, deliverables, milestones,
+          deadlines, review windows and available settlement paths.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">03</div>
+        <h3>Funding instructions</h3>
+        <p>
+          The application prepares the expected destination, amount,
+          destination tag and memo context for the agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">04</div>
+        <h3>Ledger verification</h3>
+        <p>
+          Transaction activity is compared with the payment details expected
+          by the contract before funding state is accepted.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">05</div>
+        <h3>Contract state</h3>
+        <p>
+          Funding, work, review, revision and resolution states determine which
+          actions are valid at a given point in the agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">06</div>
+        <h3>Settlement</h3>
+        <p>
+          Release, refund and applicable fee-routing actions follow the product's
+          contract rules and current agreement state.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Architecture</div>
+      <h2>Six layers. Different responsibilities.</h2>
+      <p>
+        Keeping responsibilities separate makes it easier to understand what
+        each layer can verify—and what it cannot.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <h3>Interface layer</h3>
+        <p>
+          Collects contract terms, displays agreement state and exposes actions
+          available to each participant.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Identity layer</h3>
+        <p>
+          Associates wallet addresses with profiles, roles, referrals and
+          contract participation.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Contract engine</h3>
+        <p>
+          Evaluates agreement state, milestone progression, timers, revisions,
+          releases, refunds and terminal outcomes.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Verification layer</h3>
+        <p>
+          Matches submitted payment evidence with XRP Ledger transaction data
+          and expected funding instructions.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Settlement layer</h3>
+        <p>
+          Connects valid contract decisions to XRP releases, refunds and
+          documented fee-routing activity.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Evidence layer</h3>
+        <p>
+          Preserves contract terms, bulletin activity, transaction references
+          and resolution history for later review.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <div class="eyebrow">State Machine</div>
+
+        <h2>Valid actions depend on current state.</h2>
+
+        <p class="copy-muted">
+          A newly created agreement should not expose the same actions as a
+          funded contract under review. State controls what each party can do
+          and which transitions are valid.
+        </p>
+
+        <p class="copy-muted">
+          The exact lifecycle depends on product configuration, but the general
+          path moves from creation and funding through performance, review and
+          terminal settlement.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="/developers/contract-lifecycle/">
+            View the Full Lifecycle →
+          </a>
+
+          <a class="btn-secondary" href="/trust/contract-rules/">
+            Contract Rules
+          </a>
+        </div>
+      </div>
+
+      <article class="card">
+        <div class="card-kicker">Simplified Flow</div>
+        <h3>Created → Funded → Active → Resolved</h3>
+        <p>
+          Inside the active period, milestone state can move through work,
+          review, revision and settlement-ready phases.
+        </p>
+        <p>
+          Completed, refunded, cancelled and expired agreements become
+          terminal records rather than remaining active indefinitely.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Funding Verification</div>
+
+      <h2>A transaction must match the agreement—not merely exist.</h2>
+
+      <p>
+        Reliable payment verification requires more context than a transaction
+        hash pasted into a form.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Destination</h3>
+        <p>
+          Confirm that value reached the address specified by the funding workflow.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Amount</h3>
+        <p>
+          Compare the delivered XRP amount with the value expected by the agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Destination tag</h3>
+        <p>
+          Use the required tag to route and associate funding correctly where applicable.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Memo context</h3>
+        <p>
+          Use expected memo data to help connect the ledger transaction with
+          the intended contract.
+        </p>
+      </article>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="/developers/xrpl-integration/">
+        Explore XRPL Integration →
+      </a>
+
+      <a class="btn-secondary" href="/trust/how-funds-move/">
+        See How Funds Move
+      </a>
+    </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow">Architecture</div>
-      <h2>Understand the system in layers.</h2>
+      <div class="eyebrow">Timers & Enforcement</div>
+
+      <h2>Time changes which actions remain valid.</h2>
+
+      <p>
+        Delivery periods, review windows, revision windows and expiry conditions
+        are part of contract logic—not decorative timestamps.
+      </p>
     </div>
 
     <div class="grid-3">
       <article class="card">
-        <h3>Identity</h3>
-        <p>Wallet addresses provide ledger-native identifiers for participants.</p>
+        <h3>Delivery window</h3>
+        <p>
+          Defines the period in which the current work or condition is expected
+          to be completed.
+        </p>
       </article>
 
       <article class="card">
-        <h3>Contract State</h3>
-        <p>Agreements move through defined funding, work, review and settlement states.</p>
+        <h3>Review window</h3>
+        <p>
+          Defines how long the reviewing party has to approve or invoke an
+          available revision path.
+        </p>
       </article>
 
       <article class="card">
-        <h3>Ledger Verification</h3>
-        <p>XRP Ledger transactions provide independently reviewable payment evidence.</p>
+        <h3>Revision window</h3>
+        <p>
+          Defines the time available to respond when revisions are valid under
+          the agreement.
+        </p>
       </article>
 
       <article class="card">
-        <h3>Settlement</h3>
-        <p>Release and refund paths follow product-specific contract rules.</p>
+        <h3>Expiry</h3>
+        <p>
+          Prevents unfunded or unresolved agreements from remaining open without
+          a defined endpoint.
+        </p>
       </article>
 
       <article class="card">
-        <h3>Timers</h3>
-        <p>Delivery, review and revision windows can affect valid state transitions.</p>
+        <h3>Extensions</h3>
+        <p>
+          Product rules can expose limited extension requests without turning
+          deadlines into permanently moving targets.
+        </p>
       </article>
 
       <article class="card">
-        <h3>Automation</h3>
-        <p>Workflow logic reduces dependency on manual coordination.</p>
+        <h3>Automated consequences</h3>
+        <p>
+          Time-dependent transitions can enable release, refund or expiration
+          paths according to the configured workflow.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Trust Boundaries</div>
+
+      <h2>Know what each layer can actually prove.</h2>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <div class="card-kicker">XRPL Can Prove</div>
+        <h3>Transaction state</h3>
+        <p>
+          The ledger can provide evidence of addresses, amounts, tags, memos,
+          transaction results and settlement history.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Application Can Record</div>
+        <h3>Agreement state</h3>
+        <p>
+          The product can record terms, roles, milestone state, submitted
+          actions, bulletin activity and resolution history.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Neither Can Guarantee</div>
+        <h3>Real-world quality</h3>
+        <p>
+          Code cannot guarantee that subjective work is excellent, scope was
+          wise or every participant interpreted the deliverable identically.
+        </p>
+      </article>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-secondary" href="/trust/security/">Security</a>
+      <a class="btn-secondary" href="/trust/risks/">Known Risks</a>
+      <a class="btn-secondary" href="/economics/transparency/">Transparency</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Product Implementations</div>
+
+      <h2>One infrastructure philosophy. Two contract models.</h2>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <div class="card-kicker">Social Escrow Platform</div>
+        <h3>Trustless Network</h3>
+        <p>
+          Combines wallet identity, contract creation, milestone payments,
+          workrooms, bulletin evidence, review flows and participant history
+          for internet work.
+        </p>
+
+        <a class="card-link" href="/products/trustless-network/">
+          Explore Trustless Network →
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="card-kicker">Conditional XRPL Escrow</div>
+        <h3>Enforcer</h3>
+        <p>
+          Automates agreements where release or refund depends on predefined
+          conditions, target outcomes and expiry logic.
+        </p>
+
+        <a class="card-link" href="/products/enforcer/">
+          Explore Enforcer →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Solution Patterns</div>
+
+      <h2>Follow the architecture into real payment problems.</h2>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Freelancer Payments</h3>
+        <p>
+          Fund internet work through deliverables, review periods and structured settlement.
+        </p>
+        <a class="card-link" href="/solutions/freelancer-payments/">
+          Explore Freelancer Payments →
+        </a>
+      </article>
+
+      <article class="card">
+        <h3>Crypto Escrow</h3>
+        <p>
+          Reduce counterparty risk with verified funding and defined release or refund paths.
+        </p>
+        <a class="card-link" href="/solutions/crypto-escrow/">
+          Explore Crypto Escrow →
+        </a>
+      </article>
+
+      <article class="card">
+        <h3>XRP Payments</h3>
+        <p>
+          Connect ledger payments to application state and commercial context.
+        </p>
+        <a class="card-link" href="/solutions/xrp-payments/">
+          Explore XRP Payments →
+        </a>
+      </article>
+
+      <article class="card">
+        <h3>Milestone Payments</h3>
+        <p>
+          Divide larger agreements into independently reviewable and payable stages.
+        </p>
+        <a class="card-link" href="/solutions/milestone-payments/">
+          Explore Milestone Payments →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <div class="eyebrow">Economic Routing</div>
+
+        <h2>Settlement logic includes the business model.</h2>
+
+        <p class="copy-muted">
+          Applicable Trustless Network payments include a disclosed 5.89%
+          platform fee. Collected fees are divided into four equal economic
+          buckets supporting distribution, liquidity, LP participation and operations.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="/economics/fees/">
+            Review Fee Routing →
+          </a>
+
+          <a class="btn-secondary" href="/economics/transparency/">
+            Economic Transparency
+          </a>
+        </div>
+      </div>
+
+      <article class="card">
+        <h3>Ledger-visible economics</h3>
+        <p>
+          The economic layer includes published token allocations, issuer and
+          operational wallets, fee documentation and direct ledger-explorer links.
+        </p>
+
+        <a class="card-link" href="/economics/tokenomics/">
+          Review Tokenomics & Wallets →
+        </a>
       </article>
     </div>
   </div>
@@ -102,17 +571,63 @@
 <section class="section section-muted">
   <div class="container">
     <div class="grid-2">
-      <article class="card">
-        <h3>Contract Lifecycle</h3>
-        <p>Explore how agreements move from creation through settlement.</p>
-        <a class="card-link" href="/developers/contract-lifecycle/">Contract Lifecycle →</a>
-      </article>
+      <div>
+        <div class="eyebrow">Current Scope</div>
+
+        <h2>Architecture documentation is not an API promise.</h2>
+
+        <p class="copy-muted">
+          These pages document how Trustless payment workflows are designed and
+          how the current products interact with XRPL.
+        </p>
+
+        <p class="copy-muted">
+          Internal routes, schemas and implementation details can change as the
+          products develop. An interface should not be treated as public, stable
+          or supported unless it is explicitly documented that way.
+        </p>
+      </div>
 
       <article class="card">
-        <h3>XRPL Integration</h3>
-        <p>Understand how ledger transactions interact with Trustless payment workflows.</p>
-        <a class="card-link" href="/developers/xrpl-integration/">XRPL Integration →</a>
+        <h3>Build from published guarantees.</h3>
+        <p>
+          Developers should distinguish ledger guarantees, documented product
+          behavior and implementation details that remain subject to change.
+        </p>
+
+        <a class="card-link" href="/company/principles/">
+          Read the Operating Principles →
+        </a>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-panel">
+      <div class="eyebrow">Continue Through The System</div>
+
+      <h2>Start with state. Follow the value.</h2>
+
+      <p class="hero-copy">
+        Review the contract lifecycle, then follow XRP from funding instructions
+        through verification, release, refund and fee routing.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn-primary" href="/developers/contract-lifecycle/">
+          Contract Lifecycle →
+        </a>
+
+        <a class="btn-secondary" href="/developers/xrpl-integration/">
+          XRPL Integration
+        </a>
+
+        <a class="btn-secondary" href="/trust/how-funds-move/">
+          How Funds Move
+        </a>
+      </div>
     </div>
   </div>
 </section>
