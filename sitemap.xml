@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://trustlesspayments.io/company/about/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
   <url>
     <loc>https://trustlesspayments.io/company/contact/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
   <url>
     <loc>https://trustlesspayments.io/company/ecosystem/</loc>
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://trustlesspayments.io/developers/overview/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
   <url>
     <loc>https://trustlesspayments.io/developers/xrpl-integration/</loc>
@@ -62,15 +62,15 @@
   </url>
   <url>
     <loc>https://trustlesspayments.io/products/enforcer/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
   <url>
     <loc>https://trustlesspayments.io/products/trustless-network/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
   <url>
     <loc>https://trustlesspayments.io/products/xrpl-payment-infrastructure/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
   <url>
     <loc>https://trustlesspayments.io/resources/escrow/</loc>
@@ -134,7 +134,7 @@
   </url>
   <url>
     <loc>https://trustlesspayments.io/partners/</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
