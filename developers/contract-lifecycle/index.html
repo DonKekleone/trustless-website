@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Escrow Contract Lifecycle | Trustless Payments</title>
-  <meta name="description" content="Understand the escrow contract lifecycle from creation and funding through review, revision, settlement and resolution.">
+  <meta name="description" content="Follow the escrow contract lifecycle from creation and XRPL funding through work, review, revision, settlement and terminal resolution.">
   <link rel="canonical" href="https://trustlesspayments.io/developers/contract-lifecycle/">
   <meta name="theme-color" content="#05080d">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260917-2">
@@ -41,117 +41,255 @@
 </header>
 
 <main>
+
 <section class="hero">
   <div class="container hero-inner">
     <div class="eyebrow">Developer Documentation</div>
-    <h1>Contract state from <span class="gradient-text">creation to settlement.</span></h1>
-    <p class="hero-copy">
-      Trustless agreements move through explicit states that determine which actions are valid.
-      See the lifecycle in practice through <a href="/products/trustless-network/">Trustless Network escrow agreements</a>.
-    </p>
+
+    <h1>
+      Every contract state
+      <span class="gradient-text">has a job.</span>
+    </h1>
+
+    <p class="hero-copy">Explicit state determines which actions are valid, which timers are running and which settlement paths are available.</p>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="/developers/overview/">Developer Overview →</a>
+      <a class="btn-secondary" href="/trust/contract-rules/">Contract Rules</a>
+    </div>
   </div>
 </section>
 
+<div class="trust-strip">
+  <div class="container trust-strip-inner">
+    <span>Explicit states</span><span>Controlled transitions</span><span>Timer-aware actions</span><span>Terminal outcomes</span>
+  </div>
+</div>
+
 <section class="section">
   <div class="container">
-    <div class="grid-3 process">
-      <article class="card"><h3>Created</h3><p>Agreement parameters are defined.</p></article>
-      <article class="card"><h3>Awaiting Funding</h3><p>Payment instructions are issued.</p></article>
-      <article class="card"><h3>Funded</h3><p>Expected ledger activity is verified.</p></article>
-      <article class="card"><h3>Active</h3><p>Work and contract timers are in progress.</p></article>
-      <article class="card"><h3>Review / Revision</h3><p>Deliverables move through applicable review rules.</p></article>
-      <article class="card"><h3>Resolved</h3><p>The agreement reaches release, refund or another terminal state.</p></article>
+    <div class="section-head">
+      <div class="eyebrow">Primary Lifecycle</div>
+      <h2>From definition to resolution.</h2>
+      <p>Product implementations can add detail, but the core lifecycle separates agreement creation, funding, active performance and terminal resolution.</p>
+    </div>
+
+    <div class="grid-3">
+
+      <article class="card">
+        <h3>Created</h3>
+        <p>The parties, payment amount, milestones, deadlines and other parameters are defined.</p>
+      </article>
+
+      <article class="card">
+        <h3>Awaiting funding</h3>
+        <p>The system prepares payment instructions, but the agreement is not yet treated as funded.</p>
+      </article>
+
+      <article class="card">
+        <h3>Funded</h3>
+        <p>Expected XRP Ledger activity has been verified and associated with the agreement.</p>
+      </article>
+
+      <article class="card">
+        <h3>Active</h3>
+        <p>Work, milestone timers and recorded participant actions are in progress.</p>
+      </article>
+
+      <article class="card">
+        <h3>Review or revision</h3>
+        <p>Delivered work moves through the approval and correction rules available to the current milestone.</p>
+      </article>
+
+      <article class="card">
+        <h3>Resolved</h3>
+        <p>Release, refund, cancellation or expiry produces a terminal contract outcome.</p>
+      </article>
     </div>
   </div>
 </section>
 
 <section class="section section-muted">
   <div class="container">
-
     <div class="section-head">
-      <div class="eyebrow">State Machine</div>
-      <h2>Each state determines what can happen next.</h2>
-      <p>
-        A structured agreement is easier to reason about when valid actions
-        depend on explicit state. Funding should not behave like review.
-        Review should not behave like settlement. Each phase has its own
-        purpose and permitted transitions.
-      </p>
+      <div class="eyebrow">Milestone State</div>
+      <h2>A contract can contain smaller state machines.</h2>
+      <p>Each milestone can progress independently while remaining part of the larger agreement.</p>
     </div>
 
-    <div class="grid-2">
+    <div class="grid-3">
 
       <article class="card">
-        <h3>Created → Awaiting Funding</h3>
-        <p>
-          Agreement terms exist, but the workflow has not yet verified the
-          expected payment.
-        </p>
+        <h3>Work</h3>
+        <p>The provider operates under the milestone scope and delivery window.</p>
       </article>
 
       <article class="card">
-        <h3>Awaiting Funding → Funded</h3>
-        <p>
-          Expected ledger activity is verified and associated with the
-          agreement.
-        </p>
+        <h3>Review</h3>
+        <p>Submitted work enters a defined period for approval or an available revision request.</p>
       </article>
 
       <article class="card">
-        <h3>Funded → Active</h3>
-        <p>
-          Work begins under the deadlines, <a href="/solutions/milestone-payments/">milestone payment rules</a>
-          and other conditions defined by the agreement.
-        </p>
+        <h3>Revision</h3>
+        <p>Corrections occur inside a bounded revision period when the agreement permits them.</p>
       </article>
 
       <article class="card">
-        <h3>Active → Review</h3>
-        <p>
-          Submitted work can move into a review period where the applicable
-          approval or revision rules become relevant.
-        </p>
+        <h3>Ready</h3>
+        <p>The milestone reaches a state where the applicable settlement action can proceed.</p>
       </article>
 
       <article class="card">
-        <h3>Review → Revision</h3>
-        <p>
-          When revision rights apply, the agreement can return to a defined
-          correction period rather than becoming an open-ended negotiation.
-        </p>
+        <h3>Complete</h3>
+        <p>The milestone payment has been released and its active workflow is closed.</p>
       </article>
 
       <article class="card">
-        <h3>Settlement → Resolved</h3>
-        <p>
-          Release, refund or another terminal outcome closes the active
-          agreement and records the final state.
-        </p>
+        <h3>Refunded or cancelled</h3>
+        <p>Eligible value returns or the remaining stage closes according to the contract rules.</p>
       </article>
-
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-
     <div class="section-head">
-      <div class="eyebrow">Why State Matters</div>
-      <h2>Clear state reduces ambiguity.</h2>
+      <div class="eyebrow">Transition Discipline</div>
+      <h2>A transition needs a valid cause.</h2>
+    </div>
+
+    <div class="grid-2">
+
+      <article class="card">
+        <h3>User action</h3>
+        <p>Approval, revision requests, extension decisions and cancellations can trigger permitted transitions.</p>
+      </article>
+
+      <article class="card">
+        <h3>Verified ledger activity</h3>
+        <p>Funding or settlement evidence can move the application into the corresponding payment state.</p>
+      </article>
+
+      <article class="card">
+        <h3>Timer event</h3>
+        <p>Expiry or elapsed review and revision windows can change available actions.</p>
+      </article>
+
+      <article class="card">
+        <h3>Product rule</h3>
+        <p>Trustless Network and Enforcer use different conditions while preserving explicit state and defined outcomes.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Trust Sequence</div>
+      <h2>Read the complete operating model.</h2>
       <p>
-        When participants can see where an agreement stands, they can also
-        understand which actions are available and what conditions move the
-        workflow forward. The system does not need to improvise the rules at
-        the moment money moves.
+        Rules define the agreement. State controls valid actions. Ledger activity
+        records value movement. Risk disclosure explains the remaining limits.
       </p>
     </div>
 
-    <div class="hero-actions">
-      <a class="btn-primary" href="/products/trustless-network/">Trustless Network →</a>
-      <a class="btn-secondary" href="/trust/contract-rules/">Contract Rules</a>
+    <div class="grid-2">
+
+      <article class="card">
+        <h3>Contract Rules</h3>
+        <p>What governs the agreement.</p>
+        <a class="card-link" href="/trust/contract-rules/">Explore Contract Rules →</a>
+      </article>
+
+      <article class="card">
+        <h3>Contract Lifecycle</h3>
+        <p>How state changes over time.</p>
+        <a class="card-link" href="/developers/contract-lifecycle/">Explore Contract Lifecycle →</a>
+      </article>
+
+      <article class="card">
+        <h3>How Funds Move</h3>
+        <p>Where XRP goes and why.</p>
+        <a class="card-link" href="/trust/how-funds-move/">Explore How Funds Move →</a>
+      </article>
+
+      <article class="card">
+        <h3>Risks</h3>
+        <p>What the system cannot guarantee.</p>
+        <a class="card-link" href="/trust/risks/">Explore Risks →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Connected System</div>
+      <h2>Continue into the products, architecture and evidence.</h2>
     </div>
 
+    <div class="grid-3">
+      <article class="card">
+        <h3>Developer Architecture</h3>
+        <p>See how identity, verification, contract state and settlement fit together.</p>
+        <a class="card-link" href="/developers/overview/">Developer Overview →</a>
+      </article>
+
+      <article class="card">
+        <h3>Trustless Network</h3>
+        <p>Use milestone agreements, workrooms and structured settlement for internet work.</p>
+        <a class="card-link" href="/products/trustless-network/">Explore Trustless Network →</a>
+      </article>
+
+      <article class="card">
+        <h3>Enforcer</h3>
+        <p>Use conditional XRPL escrow with defined outcomes and expiry logic.</p>
+        <a class="card-link" href="/products/enforcer/">Explore Enforcer →</a>
+      </article>
+
+      <article class="card">
+        <h3>Security</h3>
+        <p>Review operational protections and user security responsibilities.</p>
+        <a class="card-link" href="/trust/security/">Review Security →</a>
+      </article>
+
+      <article class="card">
+        <h3>Fees & Economics</h3>
+        <p>Understand the 5.89% platform fee and its four equal economic buckets.</p>
+        <a class="card-link" href="/economics/fees/">Review Fees →</a>
+      </article>
+
+      <article class="card">
+        <h3>Proof & Transparency</h3>
+        <p>Inspect the token supply, issuer, wallets, escrows and documented evidence.</p>
+        <a class="card-link" href="/economics/transparency/">Explore Transparency →</a>
+      </article>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-secondary" href="/company/principles/">Operating Principles</a>
+      <a class="btn-secondary" href="/company/ecosystem/">Ecosystem Map</a>
+      <a class="btn-secondary" href="/solutions/crypto-escrow/">Crypto Escrow</a>
+      <a class="btn-secondary" href="/solutions/milestone-payments/">Milestone Payments</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-panel">
+      <div class="eyebrow">Continue</div>
+      <h2>State first. Settlement second.</h2>
+      <p class="hero-copy">Follow the payment path to see how ledger activity connects to lifecycle transitions.</p>
+
+      <div class="hero-actions">
+        <a class="btn-primary" href="/developers/overview/">Developer Overview →</a>
+        <a class="btn-secondary" href="/trust/contract-rules/">Contract Rules</a>
+      </div>
+    </div>
   </div>
 </section>
 

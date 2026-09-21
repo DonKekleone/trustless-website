@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>Risks | Trustless Payments</title>
-  <meta name="description" content="Understand the operational, technical and transaction risks associated with using Trustless Payments infrastructure.">
+  <title>Crypto Escrow Risks | Trustless Payments</title>
+  <meta name="description" content="Understand crypto escrow risks including transaction mistakes, unclear scope, software failures, counterparty behavior, market volatility and regulation.">
 
   <link rel="canonical" href="https://trustlesspayments.io/trust/risks/">
   <meta name="theme-color" content="#05080d">
@@ -54,141 +54,267 @@
 
 <section class="hero">
   <div class="container hero-inner">
-
     <div class="eyebrow">Risk Disclosure</div>
 
     <h1>
-      Understand the risks
-      <span class="gradient-text">before funding.</span>
+      Trustless does not mean
+      <span class="gradient-text">riskless.</span>
     </h1>
 
-    <p class="hero-copy">
-      Trustless Payments uses automation and ledger verification to reduce some
-      forms of payment uncertainty, but no software or blockchain workflow
-      eliminates all risk.
-    </p>
+    <p class="hero-copy">Automation can reduce selected forms of payment uncertainty. It cannot eliminate bad instructions, unclear scope, software failures, market volatility or human error.</p>
 
+    <div class="hero-actions">
+      <a class="btn-primary" href="/trust/how-funds-move/">See How Funds Move →</a>
+      <a class="btn-secondary" href="/trust/security/">Security</a>
+    </div>
   </div>
 </section>
 
+<div class="trust-strip">
+  <div class="container trust-strip-inner">
+    <span>No guaranteed outcomes</span><span>No guaranteed recovery</span><span>No guaranteed value</span><span>User verification required</span>
+  </div>
+</div>
 
 <section class="section">
   <div class="container">
-
     <div class="section-head">
-      <div class="eyebrow">Key Risks</div>
+      <div class="eyebrow">Risk Model</div>
       <h2>Automation changes risk. It does not remove it.</h2>
-    </div>
-
-    <div class="grid-2">
-
-      <article class="card">
-        <h3>Transaction mistakes</h3>
-        <p>
-          Sending funds to the wrong address, using the wrong amount, or omitting
-          required tags or memos may cause payment identification or recovery problems.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Software risk</h3>
-        <p>
-          Bugs, outages, integration failures or unexpected behavior can affect
-          contract workflows and settlement.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Blockchain risk</h3>
-        <p>
-          Network congestion, validator behavior, protocol changes or third-party
-          infrastructure issues may affect transaction processing or availability.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Counterparty risk</h3>
-        <p>
-          Escrow rules can reduce payment uncertainty, but they cannot guarantee
-          quality, identity, honesty or performance outside the defined contract logic.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Market risk</h3>
-        <p>
-          XRP, TRLS and other digital assets can fluctuate materially in value.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Regulatory risk</h3>
-        <p>
-          Laws, regulations and tax treatment may vary by jurisdiction and may change.
-        </p>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section class="section section-muted">
-  <div class="container">
-
-    <div class="section-head">
-      <div class="eyebrow">User Responsibility</div>
-      <h2>Verify before you transact.</h2>
+      <p>Understand what remains outside the protection of contract state and ledger verification before funding an agreement.</p>
     </div>
 
     <div class="grid-3">
 
       <article class="card">
-        <h3>Read the agreement</h3>
-        <p>
-          Understand milestones, deadlines, review windows, revision rules and
-          settlement conditions before funding.
-        </p>
+        <h3>Transaction risk</h3>
+        <p>Wrong addresses, amounts, tags or memos can interfere with identification, settlement or recovery.</p>
       </article>
 
       <article class="card">
-        <h3>Verify payment details</h3>
-        <p>
-          Confirm destination addresses, amounts, destination tags and memo
-          requirements before submitting a transaction.
-        </p>
+        <h3>Scope risk</h3>
+        <p>Vague deliverables can produce legitimate disagreement even when payment logic works correctly.</p>
+      </article>
+
+      <article class="card">
+        <h3>Performance risk</h3>
+        <p>Escrow cannot guarantee that work will be excellent, useful, timely or commercially successful.</p>
+      </article>
+
+      <article class="card">
+        <h3>Software risk</h3>
+        <p>Bugs, outages, integration failures and unexpected state behavior can affect a workflow.</p>
+      </article>
+
+      <article class="card">
+        <h3>Blockchain risk</h3>
+        <p>Protocol changes, validator behavior or third-party infrastructure failures can affect availability.</p>
+      </article>
+
+      <article class="card">
+        <h3>Counterparty risk</h3>
+        <p>Automation reduces dependency but cannot prove every identity, statement or off-chain action.</p>
+      </article>
+
+      <article class="card">
+        <h3>Market risk</h3>
+        <p>XRP, TRLS and other digital assets can change materially in price.</p>
+      </article>
+
+      <article class="card">
+        <h3>Regulatory risk</h3>
+        <p>Legal, tax and regulatory treatment differs by jurisdiction and can change.</p>
+      </article>
+
+      <article class="card">
+        <h3>Security risk</h3>
+        <p>Compromised devices, exposed credentials, phishing and malicious links can defeat otherwise valid workflows.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Before Funding</div>
+      <h2>The strongest protection is careful preparation.</h2>
+      <p>Users remain responsible for understanding the agreement, protecting credentials and verifying payment instructions.</p>
+    </div>
+
+    <div class="grid-3">
+
+      <article class="card">
+        <h3>Read every term</h3>
+        <p>Review scope, milestones, deadlines, revision rights, extensions and settlement paths.</p>
+      </article>
+
+      <article class="card">
+        <h3>Verify the wallet</h3>
+        <p>Confirm addresses through the actual product interface rather than an unsolicited message.</p>
+      </article>
+
+      <article class="card">
+        <h3>Verify tag and memo</h3>
+        <p>Include required payment context exactly as displayed by the funding workflow.</p>
       </article>
 
       <article class="card">
         <h3>Protect credentials</h3>
-        <p>
-          Never disclose wallet seed phrases, private keys or recovery credentials.
-        </p>
+        <p>Never disclose seed phrases, private keys, recovery phrases or signing credentials.</p>
       </article>
 
-    </div>
+      <article class="card">
+        <h3>Preserve evidence</h3>
+        <p>Keep deliverables, approvals and relevant communication associated with the agreement.</p>
+      </article>
 
+      <article class="card">
+        <h3>Use realistic scope</h3>
+        <p>Choose deliverables that can be evaluated inside the available review process.</p>
+      </article>
+    </div>
   </div>
 </section>
 
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Limits</div>
+      <h2>Know what the system does not promise.</h2>
+    </div>
+
+    <div class="grid-2">
+
+      <article class="card">
+        <h3>No quality guarantee</h3>
+        <p>Contract automation cannot make subjective work objectively satisfactory.</p>
+      </article>
+
+      <article class="card">
+        <h3>No investment guarantee</h3>
+        <p>Token supply, liquidity or utility does not guarantee appreciation, yield or profit.</p>
+      </article>
+
+      <article class="card">
+        <h3>No universal recovery</h3>
+        <p>Incorrect or irreversible blockchain transactions may not be recoverable.</p>
+      </article>
+
+      <article class="card">
+        <h3>No legal substitute</h3>
+        <p>Product documentation is not individualized legal, tax or financial advice.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Trust Sequence</div>
+      <h2>Read the complete operating model.</h2>
+      <p>
+        Rules define the agreement. State controls valid actions. Ledger activity
+        records value movement. Risk disclosure explains the remaining limits.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <article class="card">
+        <h3>Contract Rules</h3>
+        <p>What governs the agreement.</p>
+        <a class="card-link" href="/trust/contract-rules/">Explore Contract Rules →</a>
+      </article>
+
+      <article class="card">
+        <h3>Contract Lifecycle</h3>
+        <p>How state changes over time.</p>
+        <a class="card-link" href="/developers/contract-lifecycle/">Explore Contract Lifecycle →</a>
+      </article>
+
+      <article class="card">
+        <h3>How Funds Move</h3>
+        <p>Where XRP goes and why.</p>
+        <a class="card-link" href="/trust/how-funds-move/">Explore How Funds Move →</a>
+      </article>
+
+      <article class="card">
+        <h3>Risks</h3>
+        <p>What the system cannot guarantee.</p>
+        <a class="card-link" href="/trust/risks/">Explore Risks →</a>
+      </article>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container">
-
-    <div class="cta-panel">
-
-      <div class="eyebrow">Learn Before Funding</div>
-
-      <h2>Understand how the payment lifecycle works.</h2>
-
-      <div class="hero-actions">
-        <a class="btn-primary" href="/trust/how-funds-move/">How Funds Move →</a>
-        <a class="btn-secondary" href="/trust/security/">Security</a>
-      </div>
-
+    <div class="section-head">
+      <div class="eyebrow">Connected System</div>
+      <h2>Continue into the products, architecture and evidence.</h2>
     </div>
 
+    <div class="grid-3">
+      <article class="card">
+        <h3>Developer Architecture</h3>
+        <p>See how identity, verification, contract state and settlement fit together.</p>
+        <a class="card-link" href="/developers/overview/">Developer Overview →</a>
+      </article>
+
+      <article class="card">
+        <h3>Trustless Network</h3>
+        <p>Use milestone agreements, workrooms and structured settlement for internet work.</p>
+        <a class="card-link" href="/products/trustless-network/">Explore Trustless Network →</a>
+      </article>
+
+      <article class="card">
+        <h3>Enforcer</h3>
+        <p>Use conditional XRPL escrow with defined outcomes and expiry logic.</p>
+        <a class="card-link" href="/products/enforcer/">Explore Enforcer →</a>
+      </article>
+
+      <article class="card">
+        <h3>Security</h3>
+        <p>Review operational protections and user security responsibilities.</p>
+        <a class="card-link" href="/trust/security/">Review Security →</a>
+      </article>
+
+      <article class="card">
+        <h3>Fees & Economics</h3>
+        <p>Understand the 5.89% platform fee and its four equal economic buckets.</p>
+        <a class="card-link" href="/economics/fees/">Review Fees →</a>
+      </article>
+
+      <article class="card">
+        <h3>Proof & Transparency</h3>
+        <p>Inspect the token supply, issuer, wallets, escrows and documented evidence.</p>
+        <a class="card-link" href="/economics/transparency/">Explore Transparency →</a>
+      </article>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-secondary" href="/company/principles/">Operating Principles</a>
+      <a class="btn-secondary" href="/company/ecosystem/">Ecosystem Map</a>
+      <a class="btn-secondary" href="/solutions/crypto-escrow/">Crypto Escrow</a>
+      <a class="btn-secondary" href="/solutions/milestone-payments/">Milestone Payments</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-panel">
+      <div class="eyebrow">Continue</div>
+      <h2>Understand the downside before funding.</h2>
+      <p class="hero-copy">Then review the rules, lifecycle and fund movement as one connected system.</p>
+
+      <div class="hero-actions">
+        <a class="btn-primary" href="/trust/how-funds-move/">See How Funds Move →</a>
+        <a class="btn-secondary" href="/trust/security/">Security</a>
+      </div>
+    </div>
   </div>
 </section>
 
