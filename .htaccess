@@ -1,2 +1,9 @@
 # Retire legacy user guide and preserve its search authority
 Redirect 301 /guide.html https://trustlesspayments.io/resources/guides/
+
+# Consolidate replaced legacy pages
+Redirect 301 /contact.html https://trustlesspayments.io/company/contact/
+Redirect 301 /enforcer.html https://trustlesspayments.io/products/enforcer/
+Redirect 301 /philosophy.html https://trustlesspayments.io/company/principles/
+Redirect 301 /team.html https://trustlesspayments.io/company/about/
+Redirect 301 /tokenomics.html https://trustlesspayments.io/economics/tokenomics/
