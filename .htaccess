@@ -15,3 +15,7 @@ Redirect 301 /whitepaper.html https://trustlesspayments.io/developers/overview/
 
 # Consolidate legacy TRLS acquisition guide
 Redirect 301 /buy.html https://trustlesspayments.io/resources/guides/how-to-buy-trls/
+
+# Consolidate final legacy resource pages
+Redirect 301 /faq.html https://trustlesspayments.io/resources/guides/
+Redirect 301 /book.html https://trustlesspayments.io/resources/trustless-tablets/
