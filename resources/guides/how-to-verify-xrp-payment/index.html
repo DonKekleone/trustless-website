@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>How to Verify an XRP Payment | Trustless Payments</title>
+  <meta name="description" content="Learn how to verify an XRP payment using its transaction hash, validated ledger status, result code, delivered amount, destination, tag and memo.">
+  <link rel="canonical" href="https://trustlesspayments.io/resources/guides/how-to-verify-xrp-payment/">
+  <meta name="theme-color" content="#05080d">
+  <link rel="stylesheet" href="/assets/css/site.css?v=20260917-2">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <meta property="og:title" content="How to Verify an XRP Payment">
+  <meta property="og:description" content="Verify XRP payments using validated ledger results, delivered amounts, destination addresses, tags, memos and transaction hashes.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://trustlesspayments.io/resources/guides/how-to-verify-xrp-payment/">
+  <meta property="og:image" content="https://trustlesspayments.io/assets/img/trustless-network-workroom.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    .guide-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .guide-btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:10px;font-weight:800;text-decoration:none;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg,#0de0bd,#10bde7);color:#02100f}
+    .guide-btn.secondary{background:rgba(255,255,255,.035);color:#eef5f5}
+    .guide-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .guide-nav a{padding:9px 12px;border:1px solid rgba(255,255,255,.1);border-radius:999px;color:#b9c6cb;text-decoration:none;font-size:.88rem;background:rgba(255,255,255,.025)}
+    .guide-nav a:hover{color:#fff;border-color:#11d6bd}
+    .guide-kicker{color:#16d4be;text-transform:uppercase;letter-spacing:.12em;font-size:.77rem;font-weight:900;margin-bottom:10px}
+    .guide-heading{max-width:820px;margin-bottom:28px}
+    .guide-heading h2{margin:0 0 12px;font-size:clamp(1.8rem,4vw,3rem)}
+    .guide-heading p{color:#aeb9bf;line-height:1.75}
+    .guide-card-link{display:block;color:inherit;text-decoration:none;height:100%}
+    .guide-card-link:hover{transform:translateY(-2px)}
+    .guide-card-link strong{color:#13d8bd}
+    .guide-list{display:grid;gap:14px;margin:0;padding:0;list-style:none;counter-reset:guide-step}
+    .guide-list li{counter-increment:guide-step;position:relative;padding:20px 20px 20px 68px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.025);line-height:1.65;color:#b9c3c8}
+    .guide-list li:before{content:counter(guide-step);position:absolute;left:20px;top:19px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#10d8bd;color:#03100e;font-weight:900}
+    .guide-list h3{margin:0 0 5px;color:#f3f7f8;font-size:1rem}
+    .guide-table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.08);border-radius:14px}
+    .guide-table{width:100%;border-collapse:collapse;min-width:680px}
+    .guide-table th,.guide-table td{padding:16px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.07)}
+    .guide-table th{color:#ecf4f4;background:rgba(255,255,255,.035)}
+    .guide-table td{color:#aeb9bf;line-height:1.55}
+    .guide-table tr:last-child td{border-bottom:0}
+    .guide-note{padding:20px;border-left:3px solid #10d8bd;border-radius:0 12px 12px 0;background:rgba(16,216,189,.07);color:#c4d0d3;line-height:1.65}
+    .guide-warning{border-left-color:#e7bd50;background:rgba(231,189,80,.07)}
+    .guide-section{scroll-margin-top:90px}
+    .guide-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .guide-links a{display:block;padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:13px;text-decoration:none;color:#eef4f5;background:rgba(255,255,255,.025)}
+    .guide-links a span{display:block;margin-top:6px;color:#98a6ac;font-size:.9rem;line-height:1.55}
+    .guide-links a:hover{border-color:#10d8bd}
+    .guide-faq details{border-bottom:1px solid rgba(255,255,255,.08);padding:18px 0}
+    .guide-faq summary{cursor:pointer;color:#f1f6f6;font-weight:800}
+    .guide-faq details p{color:#abb7bc;line-height:1.7;margin:12px 0 0}
+    .guide-cta{text-align:center;padding:clamp(28px,6vw,58px);border:1px solid rgba(16,216,189,.24);border-radius:20px;background:radial-gradient(circle at top,rgba(16,216,189,.12),transparent 62%)}
+    .guide-cta h2{margin-top:0}
+    @media(max-width:780px){
+      .guide-links{grid-template-columns:1fr}
+      .guide-actions .guide-btn{width:100%}
+    }
+  </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Verify an XRP Payment",
+  "description": "Learn how to verify an XRP payment using its transaction hash, validated ledger status, result code, delivered amount, destination, tag and memo.",
+  "datePublished": "2026-09-22",
+  "dateModified": "2026-09-22",
+  "mainEntityOfPage": "https://trustlesspayments.io/resources/guides/how-to-verify-xrp-payment/",
+  "author": {
+    "@type": "Organization",
+    "name": "Trustless Payments",
+    "url": "https://trustlesspayments.io/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Trustless Payments",
+    "url": "https://trustlesspayments.io/"
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "XRP payment verification"
+    },
+    {
+      "@type": "Thing",
+      "name": "XRP Ledger transactions"
+    },
+    {
+      "@type": "Thing",
+      "name": "Destination Tags"
+    },
+    {
+      "@type": "Thing",
+      "name": "Transaction finality"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://trustlesspayments.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Resources",
+      "item": "https://trustlesspayments.io/resources/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Guides",
+      "item": "https://trustlesspayments.io/resources/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Verify an XRP Payment",
+      "item": "https://trustlesspayments.io/resources/guides/how-to-verify-xrp-payment/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How can I verify an XRP payment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Look up the transaction hash using an XRP Ledger explorer or API. Confirm that the transaction is validated, its result is tesSUCCESS and its destination, delivered amount, tag and memo match the payment instructions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does tesSUCCESS prove the correct XRP payment was received?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It proves that the transaction succeeded in a validated ledger. You must still verify that the destination, delivered amount and required payment context match the intended agreement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I verify Amount or delivered_amount?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the delivered_amount field from transaction metadata to determine what value actually reached the destination. Do not rely only on the Amount field from the transaction instructions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does an XRP Destination Tag matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Destination Tag can identify a specific customer, agreement or purpose when one XRPL address receives payments for multiple uses. The correct address with the wrong tag may not satisfy the intended off-ledger payment instructions."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="/">
+      <span class="brand-mark">T</span>
+      <span>Trustless Payments</span>
+    </a>
+
+    <nav class="main-nav" data-main-nav>
+      <a href="/products/trustless-network/">Products</a>
+      <a href="/solutions/crypto-escrow/">Solutions</a>
+      <a href="/developers/overview/">Developers</a>
+      <a href="/economics/trls/">Economics</a>
+      <a href="/resources/">Resources</a>
+      <a href="/trust/security/">Trust</a>
+      <a href="/company/about/">About</a>
+    </nav>
+
+    <a class="nav-cta desktop-cta"
+       href="https://trustlessnetwork.app/"
+       target="_blank"
+       rel="noopener">
+      Launch Network →
+    </a>
+
+    <button class="menu-btn"
+            data-menu-button
+            aria-expanded="false"
+            aria-label="Open navigation">☰</button>
+  </div>
+</header>
+
+
+<main>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow">XRP Payment Verification Guide</div>
+
+    <h1>
+      How to verify an XRP payment
+      <span class="gradient-text">without trusting a screenshot.</span>
+    </h1>
+
+    <p class="hero-copy">
+      A payment claim is not proof. Verify the transaction hash, final ledger
+      status, result code, destination, delivered amount, Destination Tag and
+      memo against the actual payment instructions.
+    </p>
+
+    <div class="guide-actions">
+      <a class="guide-btn"
+         href="/trust/how-funds-move/">
+        Follow How XRP Funds Move →
+      </a>
+
+      <a class="guide-btn secondary"
+         href="/resources/xrpl/">
+        Explore XRP Ledger Payments
+      </a>
+    </div>
+
+    <nav class="guide-nav" aria-label="Guide sections">
+      <a href="#checklist">Verification checklist</a>
+      <a href="#hash">Transaction hash</a>
+      <a href="#finality">Finality</a>
+      <a href="#amount">Delivered amount</a>
+      <a href="#context">Tag & memo</a>
+      <a href="#mistakes">Common mistakes</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section guide-section" id="checklist">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Verification checklist</div>
+      <h2>A valid-looking transaction may still be the wrong payment.</h2>
+      <p>
+        Verification means matching public ledger evidence to one expected
+        payment. Success, destination and amount must all be correct—and some
+        workflows also require a specific tag or memo.
+      </p>
+    </div>
+
+    <ol class="guide-list">
+      <li>
+        <h3>Obtain the transaction hash</h3>
+        Use the unique transaction identifier rather than a screenshot, copied
+        balance or unverified wallet notification.
+      </li>
+
+      <li>
+        <h3>Confirm validated status</h3>
+        Make sure the result belongs to a validated ledger. Proposed or
+        provisional results are not final.
+      </li>
+
+      <li>
+        <h3>Confirm tesSUCCESS</h3>
+        Check the transaction metadata result. A failed transaction did not
+        deliver the intended value.
+      </li>
+
+      <li>
+        <h3>Match the destination</h3>
+        Compare the complete destination address with the address in the
+        original payment instructions.
+      </li>
+
+      <li>
+        <h3>Verify the delivered amount</h3>
+        Determine what actually reached the destination instead of relying only
+        on the amount requested by the transaction.
+      </li>
+
+      <li>
+        <h3>Match the payment context</h3>
+        Confirm any required Destination Tag, memo or agreement identifier
+        before crediting the payment.
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section guide-section" id="hash">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Start with the ledger record</div>
+      <h2>The transaction hash identifies the exact event.</h2>
+      <p>
+        Every XRPL transaction has a unique hash. Paste that hash into a trusted
+        XRP Ledger explorer or query it through an XRPL API to inspect the
+        transaction and its metadata.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>What the hash solves</h3>
+        <p>
+          It points to one specific transaction instead of a wallet’s general
+          activity, a cropped image or an unrelated incoming payment.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>What the hash does not prove</h3>
+        <p>
+          Finding a real transaction does not automatically prove it matches
+          your agreement. Its result and payment fields still need inspection.
+        </p>
+      </article>
+    </div>
+
+    <div class="guide-note guide-warning" style="margin-top:20px">
+      <strong>Never verify from an image alone.</strong>
+      Screenshots can be altered, reused or taken from a different transaction.
+      Public ledger data is the evidence.
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="finality">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Finality and result</div>
+      <h2>Validated and successful are separate checks.</h2>
+      <p>
+        First confirm that the ledger result is final. Then verify that the
+        transaction succeeded. Neither check replaces inspection of the actual
+        payment fields.
+      </p>
+    </div>
+
+    <div class="guide-table-wrap">
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th>Field or status</th>
+            <th>What it tells you</th>
+            <th>What it does not tell you</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>validated: true</code></td>
+            <td>The result belongs to a finalized ledger.</td>
+            <td>Whether the transaction succeeded or matched your agreement.</td>
+          </tr>
+          <tr>
+            <td><code>tesSUCCESS</code></td>
+            <td>The transaction was successfully applied.</td>
+            <td>Whether it used the correct destination, amount, tag or memo.</td>
+          </tr>
+          <tr>
+            <td><code>TransactionType: Payment</code></td>
+            <td>The transaction used the Payment transaction type.</td>
+            <td>Whether the payment satisfied your expected instructions.</td>
+          </tr>
+          <tr>
+            <td>Transaction hash</td>
+            <td>The unique ledger transaction being inspected.</td>
+            <td>Whether the sender’s interpretation of it is accurate.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="guide-note" style="margin-top:20px">
+      <strong>The rule:</strong> a finalized success is necessary, but you must
+      still confirm that the successful transaction is the payment you expected.
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="amount">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Verify value received</div>
+      <h2>Check the delivered amount—not merely the requested amount.</h2>
+      <p>
+        Transaction instructions can describe an intended amount. Transaction
+        metadata records the outcome. When determining what reached the
+        destination, inspect the delivered amount from the metadata.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Destination</h3>
+        <p>
+          Match the entire receiving address. A transaction sent somewhere else
+          cannot satisfy the expected payment merely because the amount matches.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Delivered amount</h3>
+        <p>
+          Confirm the actual value credited to the destination. Do not assume
+          that a displayed requested amount proves equal value was delivered.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Asset</h3>
+        <p>
+          Verify whether the payment delivered native XRP or another XRPL asset.
+          Matching numbers in different assets are not equivalent payments.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Sender</h3>
+        <p>
+          When sender identity matters, compare the source account with the
+          expected payer wallet rather than inferring identity from a message.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="context">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Associate payment with purpose</div>
+      <h2>The correct address may serve many agreements.</h2>
+      <p>
+        Destination Tags and memos can connect a ledger payment to a specific
+        customer, contract or purpose. They provide context used by applications
+        and hosted payment systems.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Destination Tag</h3>
+        <p>
+          A Destination Tag is a numeric identifier. When required, compare it
+          exactly with the tag provided by the payment workflow.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Memo</h3>
+        <p>
+          A memo can carry additional transaction context. Confirm any required
+          value or identifier rather than treating all incoming payments alike.
+        </p>
+      </article>
+    </div>
+
+    <div class="guide-note guide-warning" style="margin-top:20px">
+      <strong>Do not improvise payment instructions.</strong>
+      Copy the destination, tag, memo and amount from the active agreement. An
+      address or tag sent separately in chat may belong to another purpose.
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="mistakes">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Common mistakes</div>
+      <h2>A real transaction is not necessarily the correct transaction.</h2>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Trusting a screenshot</h3>
+        <p>
+          Images do not establish ledger finality, delivered value or payment
+          context. Inspect the actual transaction.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Checking success but not finality</h3>
+        <p>
+          A provisional response can change. Confirm that the result appears in
+          a validated ledger.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Reading Amount instead of delivered_amount</h3>
+        <p>
+          The requested amount is not always the best evidence of what reached
+          the destination. Use the transaction metadata outcome.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Ignoring the Destination Tag</h3>
+        <p>
+          A shared receiving address may use tags to distinguish agreements.
+          The wrong tag can prevent correct off-ledger attribution.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Matching only the number</h3>
+        <p>
+          Verify the asset as well as the amount. Native XRP and issued assets
+          use different representations.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Crediting the same transaction twice</h3>
+        <p>
+          Store or record the transaction hash so one successful payment cannot
+          be reused as evidence for multiple obligations.
+        </p>
+      </article>
+    </div>
+
+    <div class="guide-actions">
+      <a class="guide-btn"
+         href="/developers/xrpl-integration/">
+        Read XRPL Integration →
+      </a>
+
+      <a class="guide-btn secondary"
+         href="/trust/security/">
+        Review Escrow Security
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Official technical references</div>
+      <h2>Verify the verification method.</h2>
+      <p>
+        These XRP Ledger Foundation resources document transaction finality,
+        metadata, delivered amounts and Destination Tags.
+      </p>
+    </div>
+
+    <div class="guide-links">
+      <a href="https://xrpl.org/docs/concepts/transactions/finality-of-results/look-up-transaction-results"
+         target="_blank"
+         rel="noopener">
+        <strong>Look Up Transaction Results ↗</strong>
+        <span>Understand final ledger outcomes and transaction metadata.</span>
+      </a>
+
+      <a href="https://xrpl.org/docs/references/protocol/transactions/metadata"
+         target="_blank"
+         rel="noopener">
+        <strong>Transaction Metadata ↗</strong>
+        <span>Review TransactionResult and delivered_amount fields.</span>
+      </a>
+
+      <a href="https://xrpl.org/docs/concepts/transactions/source-and-destination-tags"
+         target="_blank"
+         rel="noopener">
+        <strong>Source and Destination Tags ↗</strong>
+        <span>Learn how tags provide context for multi-purpose addresses.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="faq">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Frequently asked questions</div>
+      <h2>Verifying XRP payments.</h2>
+    </div>
+
+    <div class="guide-faq">
+      <details>
+        <summary>How can I verify an XRP payment?</summary>
+        <p>
+          Look up the transaction hash using an XRP Ledger explorer or API.
+          Confirm that it is validated, its result is tesSUCCESS and its
+          destination, delivered amount, tag and memo match the instructions.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does tesSUCCESS prove the correct payment was received?</summary>
+        <p>
+          No. It proves that the transaction succeeded in a validated ledger.
+          You must still verify the destination, delivered amount and required
+          payment context against the intended agreement.
+        </p>
+      </details>
+
+      <details>
+        <summary>Should I verify Amount or delivered_amount?</summary>
+        <p>
+          Use delivered_amount from transaction metadata to determine what
+          value actually reached the destination. Do not rely only on Amount
+          from the transaction instructions.
+        </p>
+      </details>
+
+      <details>
+        <summary>Why does a Destination Tag matter?</summary>
+        <p>
+          It can identify a particular customer, agreement or purpose when one
+          XRPL address receives payments for multiple uses.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="guide-cta">
+      <div class="guide-kicker">Proof over payment claims</div>
+      <h2>Connect every funded agreement to verifiable ledger evidence.</h2>
+
+      <p class="hero-copy" style="margin-inline:auto">
+        Trustless Network uses agreement-specific payment instructions and
+        ledger verification before work moves into its funded state.
+      </p>
+
+      <div class="guide-actions" style="justify-content:center">
+        <a class="guide-btn"
+           href="https://trustlessnetwork.app/#/contract"
+           target="_blank"
+           rel="noopener">
+          Create a Contract →
+        </a>
+
+        <a class="guide-btn secondary"
+           href="/trust/how-funds-move/">
+          Follow How Funds Move
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="brand">
+          <span class="brand-mark">T</span>
+          <span>Trustless Payments</span>
+        </div>
+
+        <p class="copy-muted">
+          Escrow infrastructure for internet business.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-title">Products</div>
+        <div class="footer-links">
+          <a href="/products/trustless-network/">Trustless Network</a>
+          <a href="/products/enforcer/">Enforcer</a>
+          <a href="/products/xrpl-payment-infrastructure/">Infrastructure</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Resources</div>
+        <div class="footer-links">
+          <a href="/resources/guides/">Guides</a>
+          <a href="/developers/overview/">Developers</a>
+          <a href="/resources/trustless-times/">Trustless Times</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Trust</div>
+        <div class="footer-links">
+          <a href="/trust/security/">Security</a>
+          <a href="/trust/how-funds-move/">How Funds Move</a>
+          <a href="/trust/risks/">Risks</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Company</div>
+        <div class="footer-links">
+          <a href="/company/about/">About</a>
+          <a href="/company/principles/">Principles</a>
+          <a href="/partners/">Partners</a>
+          <a href="/company/contact/">Contact</a>
+          <a href="/company/terms/">Terms</a>
+          <a href="/company/privacy/">Privacy</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © <span data-year></span> Trustless Payments.
+      Trustless Payments is not affiliated with Ripple.
+      XRP Ledger is an open-source decentralized blockchain technology.
+    </div>
+
+  </div>
+</footer>
+<script src="/assets/js/site.js"></script>
+
+</body>
+</html>
