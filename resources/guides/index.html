@@ -3,14 +3,111 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Guides | Trustless Payments</title>
-  <meta name="description" content="Practical guides for Trustless Network, XRPL payments, escrow and milestone agreements.">
+  <title>Trustless Payments User Guide | XRPL Escrow & Trustless Network</title>
+  <meta name="description" content="The complete guide to Trustless Network, XRPL escrow, milestone payments, contract funding, workrooms, Signals, settlement and payment safety.">
   <link rel="canonical" href="https://trustlesspayments.io/resources/guides/">
   <meta name="theme-color" content="#05080d">
   <link rel="stylesheet" href="/assets/css/site.css?v=20260917-2">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <meta property="og:title" content="Trustless Payments User Guide">
+  <meta property="og:description" content="Learn Trustless Network, XRPL escrow, milestone contracts, funding, settlement and payment safety.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://trustlesspayments.io/resources/guides/">
+  <meta property="og:image" content="https://trustlesspayments.io/assets/img/trustless-network-workroom.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    .guide-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .guide-btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:10px;font-weight:800;text-decoration:none;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg,#0de0bd,#10bde7);color:#02100f}
+    .guide-btn.secondary{background:rgba(255,255,255,.035);color:#eef5f5}
+    .guide-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .guide-nav a{padding:9px 12px;border:1px solid rgba(255,255,255,.1);border-radius:999px;color:#b9c6cb;text-decoration:none;font-size:.88rem;background:rgba(255,255,255,.025)}
+    .guide-nav a:hover{color:#fff;border-color:#11d6bd}
+    .guide-kicker{color:#16d4be;text-transform:uppercase;letter-spacing:.12em;font-size:.77rem;font-weight:900;margin-bottom:10px}
+    .guide-heading{max-width:820px;margin-bottom:28px}
+    .guide-heading h2{margin:0 0 12px;font-size:clamp(1.8rem,4vw,3rem)}
+    .guide-heading p{color:#aeb9bf;line-height:1.75}
+    .guide-card-link{display:block;color:inherit;text-decoration:none;height:100%}
+    .guide-card-link:hover{transform:translateY(-2px)}
+    .guide-card-link strong{color:#13d8bd}
+    .guide-list{display:grid;gap:14px;margin:0;padding:0;list-style:none;counter-reset:guide-step}
+    .guide-list li{counter-increment:guide-step;position:relative;padding:20px 20px 20px 68px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.025);line-height:1.65;color:#b9c3c8}
+    .guide-list li:before{content:counter(guide-step);position:absolute;left:20px;top:19px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#10d8bd;color:#03100e;font-weight:900}
+    .guide-list h3{margin:0 0 5px;color:#f3f7f8;font-size:1rem}
+    .guide-table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.08);border-radius:14px}
+    .guide-table{width:100%;border-collapse:collapse;min-width:680px}
+    .guide-table th,.guide-table td{padding:16px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.07)}
+    .guide-table th{color:#ecf4f4;background:rgba(255,255,255,.035)}
+    .guide-table td{color:#aeb9bf;line-height:1.55}
+    .guide-table tr:last-child td{border-bottom:0}
+    .guide-note{padding:20px;border-left:3px solid #10d8bd;border-radius:0 12px 12px 0;background:rgba(16,216,189,.07);color:#c4d0d3;line-height:1.65}
+    .guide-warning{border-left-color:#e7bd50;background:rgba(231,189,80,.07)}
+    .guide-section{scroll-margin-top:90px}
+    .guide-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .guide-links a{display:block;padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:13px;text-decoration:none;color:#eef4f5;background:rgba(255,255,255,.025)}
+    .guide-links a span{display:block;margin-top:6px;color:#98a6ac;font-size:.9rem;line-height:1.55}
+    .guide-links a:hover{border-color:#10d8bd}
+    .guide-faq details{border-bottom:1px solid rgba(255,255,255,.08);padding:18px 0}
+    .guide-faq summary{cursor:pointer;color:#f1f6f6;font-weight:800}
+    .guide-faq details p{color:#abb7bc;line-height:1.7;margin:12px 0 0}
+    .guide-cta{text-align:center;padding:clamp(28px,6vw,58px);border:1px solid rgba(16,216,189,.24);border-radius:20px;background:radial-gradient(circle at top,rgba(16,216,189,.12),transparent 62%)}
+    .guide-cta h2{margin-top:0}
+    @media(max-width:780px){
+      .guide-links{grid-template-columns:1fr}
+      .guide-actions .guide-btn{width:100%}
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Trustless Payments User Guide",
+    "url":"https://trustlesspayments.io/resources/guides/",
+    "description":"The complete guide to Trustless Network, XRPL escrow, milestone payments, contract funding and settlement.",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Trustless Payments",
+      "url":"https://trustlesspayments.io/"
+    },
+    "about":[
+      {"@type":"Thing","name":"XRPL escrow"},
+      {"@type":"Thing","name":"Milestone payments"},
+      {"@type":"Thing","name":"Trustless Network"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "name":"Home",
+        "item":"https://trustlesspayments.io/"
+      },
+      {
+        "@type":"ListItem",
+        "position":2,
+        "name":"Resources",
+        "item":"https://trustlesspayments.io/resources/"
+      },
+      {
+        "@type":"ListItem",
+        "position":3,
+        "name":"Guides",
+        "item":"https://trustlesspayments.io/resources/guides/"
+      }
+    ]
+  }
+  </script>
+
 </head>
 <body>
 
@@ -45,43 +142,733 @@
   </div>
 </header>
 
+
 <main>
 
 <section class="hero">
   <div class="container hero-inner">
-    <div class="eyebrow">Guides</div>
-    <h1>Practical guidance for <span class="gradient-text">using Trustless systems.</span></h1>
-    <p class="hero-copy">Learn how Trustless products, payment workflows and XRPL settlement fit together.</p>
+    <div class="eyebrow">Official User Guide · XRPL Escrow · Trustless Network</div>
+
+    <h1>
+      The complete guide to
+      <span class="gradient-text">Trustless payments.</span>
+    </h1>
+
+    <p class="hero-copy">
+      Learn how Trustless Network, milestone escrow, workrooms, XRP funding
+      and rule-based settlement fit together—from your first wallet connection
+      to final release or refund.
+    </p>
+
+    <div class="guide-actions">
+      <a class="guide-btn"
+         href="https://trustlessnetwork.app/#/contract"
+         target="_blank"
+         rel="noopener">
+        Create a Contract →
+      </a>
+
+      <a class="guide-btn secondary"
+         href="https://trustlessnetwork.app/"
+         target="_blank"
+         rel="noopener">
+        Open Trustless Network
+      </a>
+    </div>
+
+    <nav class="guide-nav" aria-label="Guide sections">
+      <a href="#choose">Choose a product</a>
+      <a href="#start">Getting started</a>
+      <a href="#network">Trustless Network</a>
+      <a href="#lifecycle">Contract lifecycle</a>
+      <a href="#funding">Funding safely</a>
+      <a href="#enforcer">Enforcer</a>
+      <a href="#safety">Security</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section guide-section" id="choose">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Choose the correct rail</div>
+      <h2>Two products. Two different jobs.</h2>
+      <p>
+        Trustless is an ecosystem of payment tools, not a single checkout
+        button. Start by matching the agreement to the correct enforcement
+        system.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <a class="card guide-card-link"
+         href="/products/trustless-network/">
+        <article>
+          <div class="guide-kicker">Social escrow platform</div>
+          <h3>Trustless Network</h3>
+          <p>
+            Use profiles, Signals, messaging, shareable contracts, milestone
+            workrooms, reviews and XRP settlement for freelance or internet work.
+          </p>
+          <strong>Explore Trustless Network →</strong>
+        </article>
+      </a>
+
+      <a class="card guide-card-link"
+         href="/products/enforcer/">
+        <article>
+          <div class="guide-kicker">Conditional settlement</div>
+          <h3>Trustless Enforcer</h3>
+          <p>
+            Use objective token conditions, target market capitalization and
+            expiry rules for automated release or refund through the Enforcer.
+          </p>
+          <strong>Explore the Enforcer →</strong>
+        </article>
+      </a>
+    </div>
+
+    <div class="guide-note" style="margin-top:20px">
+      <strong>The simple rule:</strong> use Trustless Network when work is
+      delivered and reviewed by people. Use the Enforcer when settlement depends
+      on a defined measurable condition.
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="start">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Before money moves</div>
+      <h2>Start with the agreement—not the transaction.</h2>
+      <p>
+        On-chain payments are final. A clean contract begins with clear scope,
+        correct wallet addresses and terms both parties understand before
+        funding.
+      </p>
+    </div>
+
+    <ol class="guide-list">
+      <li>
+        <h3>Use a compatible XRPL wallet</h3>
+        Connect through the supported wallet flow. Your public XRPL address
+        identifies you; never share a seed phrase or private key.
+      </li>
+
+      <li>
+        <h3>Build your Network identity</h3>
+        Add a display name, title, biography and profile image so counterparties
+        can understand who they are dealing with.
+      </li>
+
+      <li>
+        <h3>Define the work precisely</h3>
+        Record the deliverable, XRP amount, delivery window, review period,
+        included revisions and milestone structure.
+      </li>
+
+      <li>
+        <h3>Verify the counterparty</h3>
+        Confirm the public profile and XRPL address independently. A familiar
+        name or profile image is not proof of wallet ownership.
+      </li>
+
+      <li>
+        <h3>Read the funding instructions</h3>
+        Amount, destination address, Destination Tag and Memo may all matter.
+        Copy them from the active contract rather than from chat.
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section guide-section" id="network">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Trustless Network</div>
+      <h2>From discovery to settled work.</h2>
+      <p>
+        Trustless Network combines public identity, work discovery and
+        structured escrow. The contract becomes the shared source of truth.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Profiles</h3>
+        <p>
+          A profile connects reputation and activity to an XRPL address.
+          Confirm the address before entering an agreement.
+        </p>
+        <a href="https://trustlessnetwork.app/#/account"
+           target="_blank"
+           rel="noopener">Open Account →</a>
+      </article>
+
+      <article class="card">
+        <h3>Signals</h3>
+        <p>
+          Signals publish offers, requests and opportunities. Search by
+          category, inspect the author and move serious terms into a contract.
+        </p>
+        <a href="https://trustlessnetwork.app/#/signals"
+           target="_blank"
+           rel="noopener">Browse Signals →</a>
+      </article>
+
+      <article class="card">
+        <h3>Contracts</h3>
+        <p>
+          Set the parties, XRP amount, deadlines, review rules, revisions and
+          optional milestones before funding begins.
+        </p>
+        <a href="https://trustlessnetwork.app/#/contract"
+           target="_blank"
+           rel="noopener">Create Contract →</a>
+      </article>
+
+      <article class="card">
+        <h3>Workrooms</h3>
+        <p>
+          Funded agreements move into an active workroom containing the current
+          milestone, enforcement clock, participant roles and recorded actions.
+        </p>
+        <a href="https://trustlessnetwork.app/#/active"
+           target="_blank"
+           rel="noopener">View Active Work →</a>
+      </article>
+
+      <article class="card">
+        <h3>Bulletin</h3>
+        <p>
+          Use the contract bulletin for delivery notes, status updates and
+          operational records. Keep important evidence attached to the deal.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Resolved agreements</h3>
+        <p>
+          Completed, refunded, cancelled and expired contracts move out of the
+          active queue while preserving the final state.
+        </p>
+        <a href="https://trustlessnetwork.app/#/resolved"
+           target="_blank"
+           rel="noopener">View Resolved →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="lifecycle">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Contract lifecycle</div>
+      <h2>The rules keep moving when people go quiet.</h2>
+      <p>
+        Each agreement progresses through explicit states. Review the live
+        contract for its exact deadlines because the enforcement clock—not a
+        private message—controls the next action.
+      </p>
+    </div>
+
+    <ol class="guide-list">
+      <li>
+        <h3>Draft or created</h3>
+        Terms are assembled and can be reviewed before any XRP is sent.
+      </li>
+
+      <li>
+        <h3>Awaiting funding</h3>
+        The system provides the required payment details. The contract is not
+        active merely because someone claims to have paid.
+      </li>
+
+      <li>
+        <h3>Funded and active</h3>
+        Payment verification starts the active agreement and its enforcement
+        timeline from the recorded ledger event.
+      </li>
+
+      <li>
+        <h3>Work phase</h3>
+        The provider completes the current deliverable within the agreed
+        delivery window and records delivery in the contract workflow.
+      </li>
+
+      <li>
+        <h3>Review or revision</h3>
+        The client reviews the submitted work. If revision rights remain, the
+        contract can enter a defined revision window.
+      </li>
+
+      <li>
+        <h3>Release, refund or cancellation</h3>
+        The contract resolves according to the recorded actions, milestone
+        state and enforcement rules.
+      </li>
+
+      <li>
+        <h3>Completed and rated</h3>
+        The resolved agreement becomes part of the parties’ visible operating
+        history.
+      </li>
+    </ol>
+
+    <div class="guide-table-wrap" style="margin-top:24px">
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th>Rule</th>
+            <th>Typical behavior</th>
+            <th>What the user should do</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Delivery window</td>
+            <td>Set when the agreement or milestone is created.</td>
+            <td>Deliver and record completion before the enforcement clock expires.</td>
+          </tr>
+          <tr>
+            <td>Review window</td>
+            <td>The buyer receives a defined period to review delivered work.</td>
+            <td>Approve, request an allowed revision or take the available contract action.</td>
+          </tr>
+          <tr>
+            <td>Revision window</td>
+            <td>Applies when revisions are included and properly requested.</td>
+            <td>Keep the request specific and return the revision within the displayed deadline.</td>
+          </tr>
+          <tr>
+            <td>Extension</td>
+            <td>An eligible milestone can support one recorded extension request.</td>
+            <td>Request or decide the extension inside the workroom—not through an informal promise.</td>
+          </tr>
+          <tr>
+            <td>Silence</td>
+            <td>Automation may advance a contract when a deadline passes without action.</td>
+            <td>Watch the enforcement clock. Silence is not a pause button.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="guide-note guide-warning" style="margin-top:20px">
+      Contract configuration can vary. Always follow the deadlines and controls
+      displayed inside the specific funded agreement.
+    </p>
+  </div>
+</section>
+
+<section class="section guide-section" id="funding">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">XRPL payment safety</div>
+      <h2>Verify every field before signing.</h2>
+      <p>
+        A valid transaction sent with incorrect identifying information may not
+        fund the intended contract. Treat the funding panel as an exact
+        instruction set.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Confirm the destination</h3>
+        <p>
+          Compare the complete XRPL destination address. Do not rely on the first
+          or last few characters alone.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Use the exact XRP amount</h3>
+        <p>
+          Send the amount requested by the contract. Do not round it or subtract
+          network fees from it.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Include the Destination Tag</h3>
+        <p>
+          If a tag is supplied, include it exactly. It can identify which
+          contract should receive credit for the deposit.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Preserve the Memo</h3>
+        <p>
+          If the workflow supplies a Memo, keep it attached exactly as shown.
+          Tags and memos are not interchangeable.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Wait for verification</h3>
+        <p>
+          A wallet confirmation proves submission, not necessarily contract
+          recognition. Wait until the contract itself reports funding.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Keep the transaction hash</h3>
+        <p>
+          The XRPL transaction hash is the durable receipt. Save it before
+          closing the funding flow.
+        </p>
+      </article>
+    </div>
+
+    <div class="guide-links" style="margin-top:24px">
+      <a href="/trust/how-funds-move/">
+        How Funds Move
+        <span>Follow the settlement path through Trustless infrastructure.</span>
+      </a>
+
+      <a href="/developers/xrpl-integration/">
+        XRPL Integration
+        <span>Understand addresses, tags, ledger events and verification.</span>
+      </a>
+
+      <a href="/solutions/xrp-payments/">
+        XRP Payments
+        <span>Explore XRP payment infrastructure for internet business.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="enforcer">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Trustless Enforcer</div>
+      <h2>Objective conditions. Automated outcome.</h2>
+      <p>
+        The Enforcer is designed for agreements where settlement depends on a
+        measurable condition rather than subjective approval of delivered work.
+      </p>
+    </div>
+
+    <ol class="guide-list">
+      <li>
+        <h3>Define the payment</h3>
+        Enter the net XRP amount and verify the intended recipient address.
+      </li>
+
+      <li>
+        <h3>Identify the asset correctly</h3>
+        Confirm the token issuer or identifying information used by the
+        monitoring system.
+      </li>
+
+      <li>
+        <h3>Set the target and expiry</h3>
+        Choose an objective target and a deadline that both parties understand.
+      </li>
+
+      <li>
+        <h3>Fund exactly as instructed</h3>
+        Use the supplied address, amount, tag and other identifying payment data.
+      </li>
+
+      <li>
+        <h3>Let the rule resolve</h3>
+        If the condition is satisfied before expiry, the defined release path
+        applies. If not, the defined refund path applies.
+      </li>
+    </ol>
+
+    <div class="guide-note guide-warning" style="margin-top:20px">
+      The Enforcer executes the condition selected by users. It does not promise
+      market performance, verify promotional effort or turn an unrealistic
+      target into a fair agreement.
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="economics">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Economics and transparency</div>
+      <h2>Know the cost before funding.</h2>
+      <p>
+        Review the displayed contract amount and applicable fee information
+        before signing. Trustless publishes its economic structure and important
+        system activity for inspection.
+      </p>
+    </div>
+
+    <div class="guide-links">
+      <a href="/economics/fees/">
+        Fees
+        <span>Review how Trustless charges for settlement infrastructure.</span>
+      </a>
+
+      <a href="/economics/trls/">
+        TRLS
+        <span>Understand the utility token’s role in the wider ecosystem.</span>
+      </a>
+
+      <a href="/economics/transparency/">
+        Transparency
+        <span>Inspect the structure behind wallets, flows and accountability.</span>
+      </a>
+
+      <a href="/economics/tokenomics/">
+        Tokenomics
+        <span>Study supply, allocation and the long-term economic design.</span>
+      </a>
+
+      <a href="/company/ecosystem/">
+        Ecosystem
+        <span>See how the products and economic layers fit together.</span>
+      </a>
+
+      <a href="/partners/">
+        Partners
+        <span>Learn how aligned operators can participate in distribution.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="safety">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Security rules</div>
+      <h2>Automation removes discretion—not responsibility.</h2>
+      <p>
+        Trustless reduces dependence on promises, but users still control the
+        quality of the contract, the accuracy of payment inputs and the wallets
+        they authorize.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Never share wallet secrets</h3>
+        <p>
+          No legitimate guide, profile, support message or counterparty needs
+          your seed phrase or private key.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Do not fund from chat instructions</h3>
+        <p>
+          Return to the official contract and compare every payment field before
+          signing.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Read before approving</h3>
+        <p>
+          Release, cancellation and refund actions can have permanent economic
+          consequences.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Respect the timer</h3>
+        <p>
+          A deadline continues running unless the contract records a valid
+          extension or state change.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Use milestones for larger work</h3>
+        <p>
+          Smaller deliverables reduce ambiguity and prevent one disagreement
+          from controlling the entire agreement.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Verify official domains</h3>
+        <p>
+          Use trustlesspayments.io for corporate documentation and
+          trustlessnetwork.app for the Network application.
+        </p>
+      </article>
+    </div>
+
+    <div class="guide-links" style="margin-top:24px">
+      <a href="/trust/security/">
+        Security
+        <span>Review the security model and user responsibilities.</span>
+      </a>
+
+      <a href="/trust/risks/">
+        Risks
+        <span>Understand technical, market and counterparty risk.</span>
+      </a>
+
+      <a href="/trust/contract-rules/">
+        Contract Rules
+        <span>Learn how defined conditions govern settlement.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="troubleshooting">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Troubleshooting</div>
+      <h2>When something does not look right.</h2>
+    </div>
+
+    <div class="guide-table-wrap">
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th>Problem</th>
+            <th>First checks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Payment is not verified</td>
+            <td>Compare the destination, exact amount, Destination Tag, Memo and transaction status on XRPL.</td>
+          </tr>
+          <tr>
+            <td>Contract still says awaiting funding</td>
+            <td>Confirm the payment was sent to the current contract instructions and allow the verification process to complete.</td>
+          </tr>
+          <tr>
+            <td>Wrong wallet appears connected</td>
+            <td>Disconnect, confirm the intended account inside the wallet and reconnect through the official application.</td>
+          </tr>
+          <tr>
+            <td>Action is unavailable</td>
+            <td>Check your participant role, current milestone, contract phase and whether the action window remains open.</td>
+          </tr>
+          <tr>
+            <td>Extension cannot be requested</td>
+            <td>Check whether the milestone is eligible or its available extension has already been used.</td>
+          </tr>
+          <tr>
+            <td>Contract moved to Resolved</td>
+            <td>Inspect the recorded terminal status: completed, refunded, cancelled or expired.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="guide-actions">
+      <a class="guide-btn secondary" href="/company/contact/">
+        Contact Trustless
+      </a>
+
+      <a class="guide-btn secondary"
+         href="https://trustlessnetwork.app/#/guide"
+         target="_blank"
+         rel="noopener">
+        Open In-App Guide
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="faq">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Quick answers</div>
+      <h2>Trustless user guide FAQ.</h2>
+    </div>
+
+    <div class="guide-faq">
+      <details>
+        <summary>Does Trustless hold my wallet keys?</summary>
+        <p>
+          Never provide a seed phrase or private key. Users authorize supported
+          transactions through their own wallet flow.
+        </p>
+      </details>
+
+      <details>
+        <summary>Is creating a draft the same as funding a contract?</summary>
+        <p>
+          No. A draft records proposed terms. The agreement becomes funded only
+          after the required XRP payment is recognized by the contract system.
+        </p>
+      </details>
+
+      <details>
+        <summary>Why are Destination Tags and Memos important?</summary>
+        <p>
+          They can associate a shared destination payment with the correct
+          contract. Omitting or changing them can prevent automatic matching.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can a private message change the contract rules?</summary>
+        <p>
+          Do not assume so. Important actions should be reflected inside the
+          contract workflow and its recorded state.
+        </p>
+      </details>
+
+      <details>
+        <summary>What happens when a party stays silent?</summary>
+        <p>
+          The result depends on the contract phase and displayed enforcement
+          rules. Deadlines can advance the workflow even when a participant does
+          nothing.
+        </p>
+      </details>
+
+      <details>
+        <summary>Should a large project use one payment?</summary>
+        <p>
+          Milestones are usually clearer for larger work because delivery,
+          review and settlement happen in smaller defined stages.
+        </p>
+      </details>
+
+      <details>
+        <summary>Is Trustless affiliated with Ripple?</summary>
+        <p>
+          No. Trustless Payments is not affiliated with Ripple. XRP Ledger is
+          open-source decentralized blockchain technology.
+        </p>
+      </details>
+    </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="grid-2">
+    <div class="guide-cta">
+      <div class="guide-kicker">The rules are ready</div>
+      <h2>Put the agreement on rails.</h2>
+      <p class="copy-muted">
+        Define the work, verify the wallet, fund carefully and let the recorded
+        contract replace the handshake.
+      </p>
 
-      <article class="card">
-        <h3>Getting started</h3>
-        <p>Understand the basics before creating or funding an agreement.</p>
-      </article>
-        
+      <div class="guide-actions" style="justify-content:center">
+        <a class="guide-btn"
+           href="https://trustlessnetwork.app/#/contract"
+           target="_blank"
+           rel="noopener">
+          Create a Contract →
+        </a>
 
-      <article class="card">
-        <h3>Trustless Network</h3>
-        <p>Learn profiles, Signals, contracts, workrooms and settlement flows.</p>
-      </article>
-        
-
-      <article class="card">
-        <h3>Escrow</h3>
-        <p>Understand funding, review, release and refund concepts.</p>
-      </article>
-        
-
-      <article class="card">
-        <h3>XRPL payments</h3>
-        <p>Learn the payment details required for ledger-based workflows.</p>
-      </article>
-        
+        <a class="guide-btn secondary"
+           href="/developers/contract-lifecycle/">
+          Study the Contract Lifecycle
+        </a>
+      </div>
     </div>
   </div>
 </section>
