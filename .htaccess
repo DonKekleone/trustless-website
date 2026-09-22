@@ -12,3 +12,6 @@ Redirect 301 /tokenomics.html https://trustlesspayments.io/economics/tokenomics/
 Redirect 301 /nfts.html https://trustlesspayments.io/company/ecosystem/
 Redirect 301 /roadmap.html https://trustlesspayments.io/company/about/
 Redirect 301 /whitepaper.html https://trustlesspayments.io/developers/overview/
+
+# Consolidate legacy TRLS acquisition guide
+Redirect 301 /buy.html https://trustlesspayments.io/resources/guides/how-to-buy-trls/

@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>How to Buy TRLS on XRPL | Trustless Payments</title>
+  <meta name="description" content="Learn how to verify the official TRLS issuer, install Xaman, fund an XRPL wallet, add a trustline and trade the TRLS/XRP market on XMagnetic.">
+  <link rel="canonical" href="https://trustlesspayments.io/resources/guides/how-to-buy-trls/">
+  <meta name="theme-color" content="#05080d">
+  <link rel="stylesheet" href="/assets/css/site.css?v=20260917-2">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <meta property="og:title" content="How to Buy TRLS on XRPL">
+  <meta property="og:description" content="Verify the official TRLS issuer, prepare an XRPL wallet, add a trustline and access the TRLS/XRP market.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://trustlesspayments.io/resources/guides/how-to-buy-trls/">
+  <meta property="og:image" content="https://trustlesspayments.io/assets/img/trustless-network-workroom.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    .guide-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .guide-btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:10px;font-weight:800;text-decoration:none;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg,#0de0bd,#10bde7);color:#02100f}
+    .guide-btn.secondary{background:rgba(255,255,255,.035);color:#eef5f5}
+    .guide-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .guide-nav a{padding:9px 12px;border:1px solid rgba(255,255,255,.1);border-radius:999px;color:#b9c6cb;text-decoration:none;font-size:.88rem;background:rgba(255,255,255,.025)}
+    .guide-nav a:hover{color:#fff;border-color:#11d6bd}
+    .guide-kicker{color:#16d4be;text-transform:uppercase;letter-spacing:.12em;font-size:.77rem;font-weight:900;margin-bottom:10px}
+    .guide-heading{max-width:820px;margin-bottom:28px}
+    .guide-heading h2{margin:0 0 12px;font-size:clamp(1.8rem,4vw,3rem)}
+    .guide-heading p{color:#aeb9bf;line-height:1.75}
+    .guide-card-link{display:block;color:inherit;text-decoration:none;height:100%}
+    .guide-card-link:hover{transform:translateY(-2px)}
+    .guide-card-link strong{color:#13d8bd}
+    .guide-list{display:grid;gap:14px;margin:0;padding:0;list-style:none;counter-reset:guide-step}
+    .guide-list li{counter-increment:guide-step;position:relative;padding:20px 20px 20px 68px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.025);line-height:1.65;color:#b9c3c8}
+    .guide-list li:before{content:counter(guide-step);position:absolute;left:20px;top:19px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#10d8bd;color:#03100e;font-weight:900}
+    .guide-list h3{margin:0 0 5px;color:#f3f7f8;font-size:1rem}
+    .guide-table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.08);border-radius:14px}
+    .guide-table{width:100%;border-collapse:collapse;min-width:680px}
+    .guide-table th,.guide-table td{padding:16px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.07)}
+    .guide-table th{color:#ecf4f4;background:rgba(255,255,255,.035)}
+    .guide-table td{color:#aeb9bf;line-height:1.55}
+    .guide-table tr:last-child td{border-bottom:0}
+    .guide-note{padding:20px;border-left:3px solid #10d8bd;border-radius:0 12px 12px 0;background:rgba(16,216,189,.07);color:#c4d0d3;line-height:1.65}
+    .guide-warning{border-left-color:#e7bd50;background:rgba(231,189,80,.07)}
+    .guide-section{scroll-margin-top:90px}
+    .guide-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .guide-links a{display:block;padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:13px;text-decoration:none;color:#eef4f5;background:rgba(255,255,255,.025)}
+    .guide-links a span{display:block;margin-top:6px;color:#98a6ac;font-size:.9rem;line-height:1.55}
+    .guide-links a:hover{border-color:#10d8bd}
+    .guide-faq details{border-bottom:1px solid rgba(255,255,255,.08);padding:18px 0}
+    .guide-faq summary{cursor:pointer;color:#f1f6f6;font-weight:800}
+    .guide-faq details p{color:#abb7bc;line-height:1.7;margin:12px 0 0}
+    .guide-cta{text-align:center;padding:clamp(28px,6vw,58px);border:1px solid rgba(16,216,189,.24);border-radius:20px;background:radial-gradient(circle at top,rgba(16,216,189,.12),transparent 62%)}
+    .guide-cta h2{margin-top:0}
+    @media(max-width:780px){
+      .guide-links{grid-template-columns:1fr}
+      .guide-actions .guide-btn{width:100%}
+    }
+  </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Buy TRLS on XRPL",
+  "description": "Learn how to verify the official TRLS issuer, install Xaman, fund an XRPL wallet, add a trustline and trade the TRLS/XRP market on XMagnetic.",
+  "datePublished": "2026-09-22",
+  "dateModified": "2026-09-22",
+  "mainEntityOfPage": "https://trustlesspayments.io/resources/guides/how-to-buy-trls/",
+  "author": {
+    "@type": "Organization",
+    "name": "Trustless Payments",
+    "url": "https://trustlesspayments.io/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Trustless Payments",
+    "url": "https://trustlesspayments.io/"
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "TRLS"
+    },
+    {
+      "@type": "Thing",
+      "name": "XRP Ledger trustlines"
+    },
+    {
+      "@type": "Thing",
+      "name": "Xaman wallet"
+    },
+    {
+      "@type": "Thing",
+      "name": "XRPL decentralized exchange"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://trustlesspayments.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Resources",
+      "item": "https://trustlesspayments.io/resources/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Guides",
+      "item": "https://trustlesspayments.io/resources/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "How to Buy TRLS",
+      "item": "https://trustlesspayments.io/resources/guides/how-to-buy-trls/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the official TRLS issuer address?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The official TRLS issuer address published by Trustless Payments is r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h. Always verify the full issuer address rather than relying on the TRLS ticker alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does TRLS require a trustline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TRLS is an issued asset on the XRP Ledger. An XRPL account generally needs a trustline to the specific currency and issuer before it can hold that asset."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can TRLS be traded?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The official guide links to the TRLS/XRP market interface on XMagnetic. Availability, liquidity and market conditions can change, so verify the issuer and review the order before signing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is buying TRLS risk-free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. TRLS is a crypto asset with liquidity, price, issuer, wallet, technology and market risks. Nothing in this guide guarantees value, returns or the ability to sell."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="/">
+      <span class="brand-mark">T</span>
+      <span>Trustless Payments</span>
+    </a>
+
+    <nav class="main-nav" data-main-nav>
+      <a href="/products/trustless-network/">Products</a>
+      <a href="/solutions/crypto-escrow/">Solutions</a>
+      <a href="/developers/overview/">Developers</a>
+      <a href="/economics/trls/">Economics</a>
+      <a href="/resources/">Resources</a>
+      <a href="/trust/security/">Trust</a>
+      <a href="/company/about/">About</a>
+    </nav>
+
+    <a class="nav-cta desktop-cta"
+       href="https://trustlessnetwork.app/"
+       target="_blank"
+       rel="noopener">
+      Launch Network →
+    </a>
+
+    <button class="menu-btn"
+            data-menu-button
+            aria-expanded="false"
+            aria-label="Open navigation">☰</button>
+  </div>
+</header>
+
+
+<main>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow">TRLS Acquisition Guide · XRP Ledger</div>
+
+    <h1>
+      How to buy TRLS on XRPL
+      <span class="gradient-text">without trusting the ticker alone.</span>
+    </h1>
+
+    <p class="hero-copy">
+      Verify the official issuer, prepare a compatible XRP Ledger wallet, add
+      the correct trustline and inspect the TRLS/XRP order before signing.
+    </p>
+
+    <div class="guide-actions">
+      <a class="guide-btn"
+         href="https://xmagnetic.org/dex/TRLS%2Br9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h_XRP%2BXRP?network=mainnet"
+         target="_blank"
+         rel="noopener">
+        Open TRLS/XRP Market →
+      </a>
+
+      <a class="guide-btn secondary"
+         href="/economics/trls/">
+        Understand TRLS First
+      </a>
+    </div>
+
+    <nav class="guide-nav" aria-label="Guide sections">
+      <a href="#verify">Verify TRLS</a>
+      <a href="#wallet">Prepare wallet</a>
+      <a href="#trustline">Add trustline</a>
+      <a href="#trade">Review trade</a>
+      <a href="#confirm">Confirm holdings</a>
+      <a href="#risks">Risks</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section guide-section" id="verify">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Step 1 · Verify the asset</div>
+      <h2>The ticker is not the identity.</h2>
+      <p>
+        Anyone can issue an XRPL asset using the same visible currency code.
+        The issuer address distinguishes the official TRLS asset from another
+        token using the same ticker.
+      </p>
+    </div>
+
+    <div class="guide-table-wrap">
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Official TRLS value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Network</td>
+            <td>XRP Ledger Mainnet</td>
+          </tr>
+          <tr>
+            <td>Currency</td>
+            <td>TRLS</td>
+          </tr>
+          <tr>
+            <td>Issuer</td>
+            <td><code>r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</code></td>
+          </tr>
+          <tr>
+            <td>Hex currency code</td>
+            <td><code>54524C5300000000000000000000000000000000</code></td>
+          </tr>
+          <tr>
+            <td>Published supply</td>
+            <td>100,000,000 TRLS</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="guide-note guide-warning" style="margin-top:20px">
+      <strong>Verify every character.</strong>
+      Do not add a trustline or sign a trade based only on a ticker, logo,
+      screenshot, forwarded message or shortened address.
+    </div>
+
+    <div class="guide-actions">
+      <a class="guide-btn"
+         href="/economics/tokenomics/">
+        Review Supply and Wallets →
+      </a>
+
+      <a class="guide-btn secondary"
+         href="/economics/transparency/">
+        Inspect Transparency
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="wallet">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Step 2 · Prepare an XRPL wallet</div>
+      <h2>Use a compatible self-custody wallet carefully.</h2>
+      <p>
+        This guide uses Xaman because it supports XRPL accounts, trustlines and
+        transaction signing. Other compatible wallets may also work.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Install from an official listing</h3>
+        <p>
+          Avoid wallet links delivered through unsolicited messages or search
+          advertisements. Confirm the developer and application listing.
+        </p>
+        <p>
+          <a href="https://play.google.com/store/apps/details?id=com.xrpllabs.xumm"
+             target="_blank"
+             rel="noopener">Xaman on Google Play ↗</a>
+        </p>
+        <p>
+          <a href="https://apps.apple.com/us/app/xaman-xrp-wallet/id1492302343"
+             target="_blank"
+             rel="noopener">Xaman on the App Store ↗</a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Protect the account secret</h3>
+        <p>
+          Generate and store recovery credentials privately. Never send a seed,
+          family seed, secret or private key to Trustless Payments, a promoter,
+          support account or trading interface.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Activate and fund the account</h3>
+        <p>
+          Send enough XRP to activate the account and cover the intended trade,
+          applicable account reserves, trustline requirements and transaction
+          costs.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Confirm the network</h3>
+        <p>
+          The official TRLS asset described here is on XRP Ledger Mainnet.
+          Testnet assets and transactions do not represent Mainnet holdings.
+        </p>
+      </article>
+    </div>
+
+    <div class="guide-note guide-warning" style="margin-top:20px">
+      <strong>Self-custody means responsibility.</strong>
+      Losing recovery credentials, signing a malicious transaction or sending
+      funds to the wrong address can cause permanent loss.
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="trustline">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Step 3 · Add the trustline</div>
+      <h2>A trustline authorizes your account to hold one issued asset.</h2>
+      <p>
+        The trustline must identify both the TRLS currency and the official
+        issuer. Review the transaction inside your wallet before signing.
+      </p>
+    </div>
+
+    <ol class="guide-list">
+      <li>
+        <h3>Open the official trustline flow</h3>
+        Use the prepared XRPL Services link or the trustline flow supplied by
+        the verified TRLS/XRP market.
+      </li>
+
+      <li>
+        <h3>Confirm the currency</h3>
+        The asset should identify TRLS using its XRPL currency representation.
+      </li>
+
+      <li>
+        <h3>Confirm the issuer</h3>
+        Match the full issuer address:
+        <code>r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</code>.
+      </li>
+
+      <li>
+        <h3>Review the limit and transaction</h3>
+        Understand what the trustline transaction authorizes before approving
+        it in the wallet.
+      </li>
+
+      <li>
+        <h3>Sign only inside the wallet</h3>
+        The external page may prepare a transaction, but secret credentials
+        should remain inside the wallet’s signing process.
+      </li>
+    </ol>
+
+    <div class="guide-actions">
+      <a class="guide-btn"
+         href="https://xrpl.services/?currency=54524C5300000000000000000000000000000000&amp;issuer=r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h&amp;limit=100000000"
+         target="_blank"
+         rel="noopener">
+        Open TRLS Trustline Flow →
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="trade">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Step 4 · Review the market</div>
+      <h2>A live market is not a guaranteed exit.</h2>
+      <p>
+        The TRLS/XRP market can be accessed through an XRPL trading interface.
+        Before signing, inspect the asset pair, issuer, order type, quantity,
+        estimated execution and current liquidity.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Market order</h3>
+        <p>
+          A market-style trade prioritizes execution against available offers.
+          In a thin market, the resulting price may differ substantially from
+          the most visible quoted price.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Limit order</h3>
+        <p>
+          A limit order specifies acceptable terms but may remain unfilled,
+          partially fill or never execute if the market does not reach them.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Liquidity</h3>
+        <p>
+          Displayed price does not show how much value can trade near that
+          price. Examine order depth and expected execution before signing.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Issuer verification</h3>
+        <p>
+          Confirm the TRLS issuer again on the proposed trade. A familiar ticker
+          does not prove the order uses the official asset.
+        </p>
+      </article>
+    </div>
+
+    <div class="guide-actions">
+      <a class="guide-btn"
+         href="https://xmagnetic.org/dex/TRLS%2Br9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h_XRP%2BXRP?network=mainnet"
+         target="_blank"
+         rel="noopener">
+        Open TRLS/XRP on XMagnetic →
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="confirm">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Step 5 · Confirm the result</div>
+      <h2>Verify the signed transaction and resulting balance.</h2>
+      <p>
+        After signing, confirm that the transaction reached a validated ledger,
+        succeeded and affected the intended account and asset.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Transaction status</h3>
+        <p>
+          Confirm that the transaction is validated and successful rather than
+          relying on a wallet animation or pending message.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Correct account</h3>
+        <p>
+          Make sure the trustline and resulting balance belong to the XRPL
+          account you intended to use.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Correct issuer</h3>
+        <p>
+          Verify that the balance remains associated with the official TRLS
+          issuer address—not merely an asset displaying the same ticker.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Recorded order outcome</h3>
+        <p>
+          Confirm whether the trade filled completely, partially or remained
+          open. Signing an order does not guarantee immediate full execution.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="risks">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Risk disclosure</div>
+      <h2>TRLS is a utility token—not a promise of profit.</h2>
+      <p>
+        Buying, holding or providing liquidity involves material risk. Review
+        the system and make an independent decision before signing.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>Price and liquidity risk</h3>
+        <p>
+          Market value can change sharply. Available liquidity may be
+          insufficient to buy or sell the desired amount near a quoted price.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Issuer and asset risk</h3>
+        <p>
+          Issued XRPL assets have different properties and issuer relationships
+          than native XRP. Understand the exact asset being held.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Wallet and signing risk</h3>
+        <p>
+          Compromised credentials, malicious links and misunderstood
+          transactions can cause permanent loss.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Platform and technology risk</h3>
+        <p>
+          Wallets, interfaces, applications and infrastructure can contain
+          defects, become unavailable or change their behavior.
+        </p>
+      </article>
+    </div>
+
+    <div class="guide-note guide-warning" style="margin-top:20px">
+      This guide is educational and operational. It is not financial, legal or
+      investment advice, and it does not guarantee market access, liquidity,
+      utility, price performance or returns.
+    </div>
+  </div>
+</section>
+
+<section class="section guide-section" id="faq">
+  <div class="container">
+    <div class="guide-heading">
+      <div class="guide-kicker">Frequently asked questions</div>
+      <h2>Buying and verifying TRLS.</h2>
+    </div>
+
+    <div class="guide-faq">
+      <details>
+        <summary>What is the official TRLS issuer address?</summary>
+        <p>
+          <code>r9NcytRxC1CX1vERGn9HGR2Bwbuo6tGX1h</code>. Always verify the
+          full issuer rather than relying on the ticker alone.
+        </p>
+      </details>
+
+      <details>
+        <summary>Why does TRLS require a trustline?</summary>
+        <p>
+          TRLS is an issued XRPL asset. An account generally needs a trustline
+          to the specific currency and issuer before holding it.
+        </p>
+      </details>
+
+      <details>
+        <summary>Where can TRLS be traded?</summary>
+        <p>
+          This guide links to the TRLS/XRP market on XMagnetic. Availability,
+          liquidity and market conditions can change.
+        </p>
+      </details>
+
+      <details>
+        <summary>Is buying TRLS risk-free?</summary>
+        <p>
+          No. TRLS carries liquidity, price, issuer, wallet, technology and
+          market risks. Nothing guarantees value, returns or an available exit.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="guide-cta">
+      <div class="guide-kicker">Verify before signing</div>
+      <h2>Understand the asset, issuer and market first.</h2>
+
+      <p class="hero-copy" style="margin-inline:auto">
+        Review TRLS utility, documented supply, platform economics and published
+        risk information before adding a trustline or placing an order.
+      </p>
+
+      <div class="guide-actions" style="justify-content:center">
+        <a class="guide-btn"
+           href="/economics/trls/">
+          Understand TRLS →
+        </a>
+
+        <a class="guide-btn secondary"
+           href="/economics/tokenomics/">
+          Review Tokenomics
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="brand">
+          <span class="brand-mark">T</span>
+          <span>Trustless Payments</span>
+        </div>
+
+        <p class="copy-muted">
+          Escrow infrastructure for internet business.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-title">Products</div>
+        <div class="footer-links">
+          <a href="/products/trustless-network/">Trustless Network</a>
+          <a href="/products/enforcer/">Enforcer</a>
+          <a href="/products/xrpl-payment-infrastructure/">Infrastructure</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Resources</div>
+        <div class="footer-links">
+          <a href="/resources/guides/">Guides</a>
+          <a href="/developers/overview/">Developers</a>
+          <a href="/resources/trustless-times/">Trustless Times</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Trust</div>
+        <div class="footer-links">
+          <a href="/trust/security/">Security</a>
+          <a href="/trust/how-funds-move/">How Funds Move</a>
+          <a href="/trust/risks/">Risks</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Company</div>
+        <div class="footer-links">
+          <a href="/company/about/">About</a>
+          <a href="/company/principles/">Principles</a>
+          <a href="/partners/">Partners</a>
+          <a href="/company/contact/">Contact</a>
+          <a href="/company/terms/">Terms</a>
+          <a href="/company/privacy/">Privacy</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © <span data-year></span> Trustless Payments.
+      Trustless Payments is not affiliated with Ripple.
+      XRP Ledger is an open-source decentralized blockchain technology.
+    </div>
+
+  </div>
+</footer>
+<script src="/assets/js/site.js"></script>
+
+</body>
+</html>
